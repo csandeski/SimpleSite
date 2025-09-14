@@ -130,16 +130,16 @@ export default function Home() {
       </section>
 
       {/* Mobile Hero Content Section - Shows below hero on mobile only */}
-      <section className="md:hidden py-8 px-4 bg-gradient-to-b from-white to-gray-50">
-        <h2 className="text-xl text-center mb-4 text-gray-900 font-extrabold leading-tight" data-testid="text-hero-subtitle">
+      <section className="md:hidden py-2 px-4 bg-gradient-to-b from-white to-gray-50">
+        <h2 className="text-3xl text-center mb-3 text-gray-900 font-extrabold leading-tight" data-testid="text-hero-subtitle">
           Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
         </h2>
 
-        <p className="text-base text-center text-gray-700 mb-8 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-hero-description">
+        <p className="text-base text-center text-gray-700 mb-6 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-hero-description">
           Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
         </p>
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <Button 
             size="lg" 
             className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold animate-pulse"

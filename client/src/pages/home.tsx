@@ -85,41 +85,79 @@ export default function Home() {
       >
         {/* Light overlay for text readability - only on larger screens where image might cover */}
         <div className="absolute inset-0 bg-white bg-opacity-10 md:block hidden"></div>
-        {/* Bottom gradient overlay for text readability - adjusted for mobile */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 md:h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
+        {/* Bottom gradient overlay for text readability - only on desktop */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent md:block hidden" />
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[600px] md:min-h-[700px] pb-8">
+        {/* Mobile Layout - Only title box at bottom */}
+        <div className="md:hidden relative min-h-[500px] flex items-end justify-center pb-0">
+          {/* Title box positioned at bottom, overlapping the image */}
+          <div className="bg-amber-50/95 rounded-2xl p-4 mb-[-20px] max-w-[280px] shadow-2xl border border-amber-100 relative z-10">
+            <h1 className="text-xl font-bold text-center text-amber-700" data-testid="text-hero-title">
+              Coleção Crochês que Mais Vendem
+            </h1>
+          </div>
+        </div>
+
+        {/* Desktop Layout - Keep original structure */}
+        <div className="hidden md:flex relative z-10 max-w-4xl mx-auto flex-col items-center justify-end min-h-[700px] pb-8">
           {/* Title in overlay box */}
-          <div className="bg-amber-50/95 rounded-2xl p-3 md:p-8 mb-4 max-w-[280px] md:max-w-3xl shadow-2xl border border-amber-100">
-            <h1 className="text-xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
+          <div className="bg-amber-50/95 rounded-2xl p-8 mb-4 max-w-3xl shadow-2xl border border-amber-100">
+            <h1 className="text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title-desktop">
               Coleção Crochês que Mais Vendem
             </h1>
           </div>
           
-          <h2 className="text-base md:text-2xl text-center mb-3 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
+          <h2 className="text-2xl text-center mb-3 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle-desktop">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
           </h2>
 
-          <p className="text-sm md:text-base text-center text-gray-800 mb-4 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
+          <p className="text-base text-center text-gray-800 mb-4 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description-desktop">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
           </p>
 
           <div className="text-center mb-4">
             <Button 
               size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 md:px-10 md:py-6 text-base md:text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
+              className="bg-green-600 hover:bg-green-700 text-white px-10 py-6 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
               onClick={() => scrollToSection("pricing")}
-              data-testid="button-hero-cta"
+              data-testid="button-hero-cta-desktop"
             >
               QUERO ME INSCREVER
             </Button>
           </div>
 
-          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1 px-4" data-testid="text-promo-notice">
+          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1 px-4" data-testid="text-promo-notice-desktop">
             <span className="text-xl">⏰</span>
-            <span className="text-sm md:text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+            <span className="text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
           </p>
         </div>
+      </section>
+
+      {/* Mobile Hero Content Section - Shows below hero on mobile only */}
+      <section className="md:hidden py-8 px-4 bg-white">
+        <h2 className="text-base text-center mb-3 text-gray-900 font-bold" data-testid="text-hero-subtitle">
+          Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+        </h2>
+
+        <p className="text-sm text-center text-gray-800 mb-6 max-w-2xl mx-auto font-medium" data-testid="text-hero-description">
+          Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+        </p>
+
+        <div className="text-center mb-6">
+          <Button 
+            size="lg" 
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-base rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
+            onClick={() => scrollToSection("pricing")}
+            data-testid="button-hero-cta"
+          >
+            QUERO ME INSCREVER
+          </Button>
+        </div>
+
+        <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
+          <span className="text-xl">⏰</span>
+          <span className="text-sm">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+        </p>
       </section>
 
       {/* Products Section */}

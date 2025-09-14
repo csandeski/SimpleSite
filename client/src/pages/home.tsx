@@ -174,15 +174,15 @@ export default function Home() {
               { name: "Blusa Violeta", image: blusaVioletaImg, description: "Blusa roxa moderna" }
             ].map((product, index) => (
               <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-product-${index}`}>
-                <CardContent className="p-6 md:p-8">
-                  <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden bg-[hsl(var(--color-muted))]">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                      data-testid={`image-product-${index}`}
-                    />
-                  </div>
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    data-testid={`image-product-${index}`}
+                  />
+                </div>
+                <CardContent className="p-4 md:p-6">
                   <h3 className="text-xl md:text-2xl font-semibold leading-snug text-[hsl(var(--color-text))] text-center" data-testid={`text-product-name-${index}`}>
                     {product.name}
                   </h3>

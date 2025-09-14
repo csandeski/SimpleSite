@@ -499,47 +499,118 @@ export default function Home() {
       </section>
 
       {/* About Instructor Section */}
-      <section className="py-12 md:py-20 px-4 bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="text-about-title">
-            Conheça sua professora
-          </h2>
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Title */}
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white" data-testid="text-about-title">
+              Conheça sua <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-500">Professora</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Aprenda com quem já transformou milhares de vidas através do crochê</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="aspect-square rounded-lg overflow-hidden">
-              <img 
-                src={instructorAboutImg} 
-                alt="Professora Claudete Oliveira"
-                className="w-full h-full object-cover"
-                data-testid="image-instructor-about"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Image Column with CTA */}
+            <div className="order-2 lg:order-1">
+              {/* Image Container with gradient background */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-amber-600/20 blur-3xl"></div>
+                <div className="relative bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-2 shadow-2xl">
+                  {/* Image with proper contain */}
+                  <div className="bg-gray-900 rounded-xl overflow-hidden">
+                    <div className="h-[400px] md:h-[500px] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
+                      <img 
+                        src={instructorAboutImg} 
+                        alt="Professora Claudete Oliveira"
+                        className="w-full h-full object-contain"
+                        data-testid="image-instructor-about"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* CTA Button positioned to overlap slightly with image bottom */}
+                <div className="relative -mt-8 z-20 px-4">
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 hover:from-green-700 hover:via-emerald-700 hover:to-green-700 text-white py-7 text-xl rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.5)] transform hover:scale-[1.02] transition-all duration-300 font-bold relative overflow-hidden group"
+                    onClick={() => scrollToSection("pricing")}
+                    data-testid="button-instructor-image-cta"
+                  >
+                    <span className="relative z-10">QUERO ME INSCREVER</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Button>
+                </div>
+              </div>
             </div>
 
-            <div className="text-white">
-              <h3 className="text-2xl font-bold mb-4" data-testid="text-instructor-name">
-                Claudete Oliveira
-              </h3>
-              <p className="leading-relaxed mb-6" data-testid="text-instructor-bio">
-                Com mais de 30 anos de experiência no mundo do crochê, já ensinei mais de 2000 alunas 
-                a transformarem essa arte em uma fonte de renda. Meu ateliê é referência na região e 
-                minhas peças são conhecidas pela qualidade e acabamento impecável. Agora, quero compartilhar 
-                com você os segredos das minhas 5 peças mais vendidas, aquelas que sempre têm fila de espera!
-              </p>
-              <p className="text-amber-400 font-semibold" data-testid="text-instructor-achievement">
-                🏆 Mais de 10.000 peças vendidas
-              </p>
+            {/* Content Column */}
+            <div className="order-1 lg:order-2 lg:pt-8">
+              <div className="space-y-6">
+                {/* Name with decorative element */}
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="text-instructor-name">
+                    Claudete Oliveira
+                  </h3>
+                  <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-amber-500"></div>
+                </div>
+
+                {/* Bio with better typography */}
+                <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+                  <p data-testid="text-instructor-bio">
+                    Com mais de <span className="text-amber-400 font-bold">30 anos de experiência</span> no mundo do crochê, 
+                    já ensinei mais de <span className="text-amber-400 font-bold">2000 alunas</span> a transformarem essa arte 
+                    em uma fonte de renda.
+                  </p>
+                  <p>
+                    Meu ateliê é referência na região e minhas peças são conhecidas pela qualidade e acabamento impecável. 
+                    Agora, quero compartilhar com você os segredos das minhas <span className="text-amber-400 font-bold">5 peças mais vendidas</span>, 
+                    aquelas que sempre têm fila de espera!
+                  </p>
+                </div>
+
+                {/* Achievement Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl p-4 border border-gray-600">
+                    <p className="text-amber-400 text-2xl font-bold mb-1">🏆 10.000+</p>
+                    <p className="text-gray-300 text-sm">Peças vendidas</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl p-4 border border-gray-600">
+                    <p className="text-amber-400 text-2xl font-bold mb-1">👩‍🎓 2.000+</p>
+                    <p className="text-gray-300 text-sm">Alunas formadas</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl p-4 border border-gray-600">
+                    <p className="text-amber-400 text-2xl font-bold mb-1">⭐ 30 anos</p>
+                    <p className="text-gray-300 text-sm">De experiência</p>
+                  </div>
+                  <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl p-4 border border-gray-600">
+                    <p className="text-amber-400 text-2xl font-bold mb-1">💝 100%</p>
+                    <p className="text-gray-300 text-sm">Satisfação garantida</p>
+                  </div>
+                </div>
+
+                {/* Desktop CTA Button - only visible on larger screens */}
+                <div className="hidden lg:block pt-6">
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-6 text-lg rounded-full shadow-xl transform hover:scale-[1.02] transition-all duration-300 font-bold"
+                    onClick={() => scrollToSection("pricing")}
+                    data-testid="button-instructor-desktop-cta"
+                  >
+                    APRENDER COM A CLAUDETE
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg rounded-full shadow-xl"
-              onClick={() => scrollToSection("pricing")}
-              data-testid="button-about-cta"
-            >
-              COMEÇAR AGORA
-            </Button>
+          {/* Bottom Message */}
+          <div className="mt-16 text-center">
+            <div className="inline-block bg-gradient-to-r from-gray-800 to-gray-700 rounded-full px-8 py-4 border border-gray-600">
+              <p className="text-amber-400 font-semibold text-lg" data-testid="text-instructor-achievement">
+                ✨ "Transforme sua paixão pelo crochê em uma fonte de renda real" ✨
+              </p>
+            </div>
           </div>
         </div>
       </section>

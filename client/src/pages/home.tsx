@@ -418,8 +418,8 @@ export default function Home() {
           <Card className="relative rounded-xl border-2 border-[hsl(var(--color-primary))] bg-[hsl(var(--color-surface))] shadow-xl hover:shadow-2xl transition-shadow" data-testid="card-pricing">
             {/* Premium badge */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-[hsl(var(--color-accent))] text-[hsl(var(--color-accent-foreground))] px-6 py-2 rounded-full shadow-lg">
-                <p className="text-sm md:text-base font-bold uppercase tracking-wide">Oferta Especial</p>
+              <div className="bg-[hsl(var(--color-accent))] text-[hsl(var(--color-accent-foreground))] px-4 md:px-6 py-2 rounded-full shadow-lg">
+                <p className="text-xs md:text-base font-bold uppercase tracking-wide whitespace-nowrap">Oferta Especial</p>
               </div>
             </div>
             

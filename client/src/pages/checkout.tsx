@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/form";
 
 // Import images
-import bannerImg from "@assets/image_1757886558330.png";
+import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
 import instructorImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
 
 // Form validation schema

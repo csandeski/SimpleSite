@@ -125,7 +125,7 @@ export default function Home() {
 
           <Button 
             size="lg" 
-            className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+            className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
             onClick={() => scrollToSection("pricing")}
             data-testid="button-hero-cta-desktop"
           >
@@ -157,7 +157,7 @@ export default function Home() {
           <div className="text-center mb-6">
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta"
             >
@@ -245,7 +245,7 @@ export default function Home() {
 
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-lg hover:bg-[hsl(var(--color-muted))]"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-[0_3px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] hover:bg-[hsl(var(--color-muted))] transition-all duration-150 transform active:scale-95"
               data-testid="button-testimonial-prev"
             >
               <ChevronLeft className="w-6 h-6 text-[hsl(var(--color-text))]" />
@@ -253,7 +253,7 @@ export default function Home() {
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-lg hover:bg-[hsl(var(--color-muted))]"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-[0_3px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] hover:bg-[hsl(var(--color-muted))] transition-all duration-150 transform active:scale-95"
               data-testid="button-testimonial-next"
             >
               <ChevronRight className="w-6 h-6 text-[hsl(var(--color-text))]" />
@@ -265,10 +265,10 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`w-2 h-2 rounded-full transition-all transform active:scale-95 ${
                   index === currentTestimonial 
-                    ? "bg-[hsl(var(--color-primary))] w-8" 
-                    : "bg-[hsl(var(--color-border))]"
+                    ? "bg-[hsl(var(--color-primary))] w-8 shadow-[0_2px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_1px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[1px]" 
+                    : "bg-[hsl(var(--color-border))] shadow-[0_2px_0_0_rgba(0,0,0,0.1)] hover:shadow-[0_1px_0_0_rgba(0,0,0,0.1)] hover:translate-y-[1px]"
                 }`}
                 data-testid={`button-testimonial-indicator-${index}`}
               />
@@ -278,7 +278,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-testimonials-cta"
             >
@@ -380,7 +380,7 @@ export default function Home() {
             </p>
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-bonus-cta"
             >
@@ -463,7 +463,7 @@ export default function Home() {
 
               <Button 
                 size="lg" 
-                className="w-full bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+                className="w-full bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
                 onClick={() => window.open('#', '_blank')}
                 data-testid="button-pricing-cta"
               >
@@ -521,7 +521,7 @@ export default function Home() {
               
               <Button 
                 size="lg" 
-                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
                 onClick={() => scrollToSection("pricing")}
                 data-testid="button-about-cta"
               >

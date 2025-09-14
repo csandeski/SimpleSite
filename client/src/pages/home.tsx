@@ -90,7 +90,8 @@ export default function Home() {
         
         {/* Mobile Layout - Only image */}
         <div className="md:hidden relative" style={{ height: '400px' }}>
-          {/* Empty - just show the image */}
+          {/* Bottom gradient overlay for smooth transition */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
         </div>
 
         {/* Desktop Layout - Keep original structure */}
@@ -129,19 +130,19 @@ export default function Home() {
       </section>
 
       {/* Mobile Hero Content Section - Shows below hero on mobile only */}
-      <section className="md:hidden py-8 px-4 bg-white">
-        <h2 className="text-base text-center mb-3 text-gray-900 font-bold" data-testid="text-hero-subtitle">
+      <section className="md:hidden py-8 px-4 bg-gradient-to-b from-white to-gray-50">
+        <h2 className="text-xl text-center mb-4 text-gray-900 font-extrabold leading-tight" data-testid="text-hero-subtitle">
           Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
         </h2>
 
-        <p className="text-sm text-center text-gray-800 mb-6 max-w-2xl mx-auto font-medium" data-testid="text-hero-description">
+        <p className="text-base text-center text-gray-700 mb-8 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-hero-description">
           Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
         </p>
 
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <Button 
             size="lg" 
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-base rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
+            className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold animate-pulse"
             onClick={() => scrollToSection("pricing")}
             data-testid="button-hero-cta"
           >
@@ -149,9 +150,9 @@ export default function Home() {
           </Button>
         </div>
 
-        <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
-          <span className="text-xl">⏰</span>
-          <span className="text-sm">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+        <p className="text-center text-red-600 font-bold flex items-center justify-center gap-2" data-testid="text-promo-notice">
+          <span className="text-2xl animate-pulse">⏰</span>
+          <span className="text-sm uppercase tracking-wide">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
         </p>
       </section>
 

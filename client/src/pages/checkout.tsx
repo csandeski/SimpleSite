@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Lock, ArrowDown, Check } from "lucide-react";
+import { Shield, Lock, ArrowDown, Check, Copy, QrCode, Loader2 } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
@@ -18,6 +18,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import type { Transaction } from "@shared/schema";
 
 // Import images
 import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
@@ -44,6 +54,9 @@ export default function Checkout() {
     acabamentos: false,
     primaveraVerao: false,
   });
+  const [showPixModal, setShowPixModal] = useState(false);
+  const [currentTransaction, setCurrentTransaction] = useState<any>(null);
+  const [isPolling, setIsPolling] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<CheckoutForm>({
@@ -106,20 +119,126 @@ export default function Checkout() {
     return numbers.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
   };
 
-  const onSubmit = async (data: CheckoutForm) => {
-    // Show loading toast
-    toast({
-      title: "Processando pagamento...",
-      description: "Aguarde enquanto geramos seu PIX",
-    });
+  // Create payment mutation
+  const createPaymentMutation = useMutation({
+    mutationFn: async (data: CheckoutForm) => {
+      // Prepare items array
+      const items = [
+        {
+          id: "course_main",
+          title: "Coleção Crochês que Mais Vendem - Vitalício",
+          description: "Acesso vitalício ao curso completo de crochê",
+          price: 29.90,
+          quantity: 1,
+        },
+      ];
 
-    // Simulate processing
-    setTimeout(() => {
+      // Add upsells to items
+      if (upsells.calculoFios) {
+        items.push({
+          id: "upsell_calculo",
+          title: "Aulão: Cálculo de Fios Descomplicado",
+          description: "Aprenda a calcular a quantidade de fio necessária",
+          price: 9.90,
+          quantity: 1,
+        });
+      }
+
+      if (upsells.acabamentos) {
+        items.push({
+          id: "upsell_acabamentos",
+          title: "Guia Prático de Acabamentos",
+          description: "Técnicas profissionais de acabamento",
+          price: 17.90,
+          quantity: 1,
+        });
+      }
+
+      if (upsells.primaveraVerao) {
+        items.push({
+          id: "upsell_primavera",
+          title: "Combo 5 Peças Primavera Verão",
+          description: "Coleção exclusiva com 5 peças leves",
+          price: 29.90,
+          quantity: 1,
+        });
+      }
+
+      const payload = {
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        document: data.document,
+        items,
+        totalAmount: calculateTotal(),
+      };
+
+      const response = await apiRequest("POST", "/api/pix/create-payment", payload);
+      const responseData = await response.json();
+      return responseData;
+    },
+    onSuccess: (data) => {
+      if (data.success && data.transaction) {
+        setCurrentTransaction(data.transaction);
+        setShowPixModal(true);
+        setIsPolling(true);
+
+        toast({
+          title: "PIX Gerado com Sucesso!",
+          description: "Copie o código PIX ou escaneie o QR Code para realizar o pagamento.",
+        });
+      }
+    },
+    onError: (error: any) => {
+      console.error("Payment error:", error);
       toast({
-        title: "PIX Gerado!",
-        description: `Total: R$ ${calculateTotal().toFixed(2).replace(".", ",")}. Você receberá o código PIX em seu email.`,
+        title: "Erro ao processar pagamento",
+        description: error.message || "Tente novamente em alguns instantes.",
+        variant: "destructive",
       });
-    }, 2000);
+    },
+  });
+
+  // Query to check transaction status
+  const { data: transactionStatus } = useQuery<{ transaction: Transaction | null }>({
+    queryKey: currentTransaction?.id ? [`/api/pix/transaction/${currentTransaction.id}`] : ["disabled"],
+    enabled: !!currentTransaction?.id && isPolling,
+    refetchInterval: isPolling ? 3000 : false, // Poll every 3 seconds
+  });
+
+  // Watch for payment confirmation
+  useEffect(() => {
+    const status = transactionStatus?.transaction?.status;
+    // Accept multiple success statuses
+    if (status === "AUTHORIZED" || status === "PAID" || status === "APPROVED") {
+      setIsPolling(false);
+      setShowPixModal(false);
+      
+      toast({
+        title: "Pagamento Confirmado! ✅",
+        description: "Seu pagamento foi processado com sucesso. Você receberá o acesso por email.",
+      });
+
+      // Redirect to success page after 2 seconds
+      setTimeout(() => {
+        window.location.href = "/success";
+      }, 2000);
+    }
+  }, [transactionStatus]);
+
+  const onSubmit = async (data: CheckoutForm) => {
+    createPaymentMutation.mutate(data);
+  };
+
+  // Copy PIX code to clipboard
+  const copyPixCode = () => {
+    if (currentTransaction?.pixPayload) {
+      navigator.clipboard.writeText(currentTransaction.pixPayload);
+      toast({
+        title: "Código PIX copiado!",
+        description: "Cole o código no app do seu banco para pagar.",
+      });
+    }
   };
 
   return (
@@ -491,8 +610,16 @@ export default function Checkout() {
                       size="lg"
                       className="w-full bg-black hover:bg-gray-900 text-white font-bold text-lg py-6 shadow-lg"
                       data-testid="button-submit-payment"
+                      disabled={createPaymentMutation.isPending}
                     >
-                      Pagar R$ {calculateTotal().toFixed(2).replace(".", ",")}
+                      {createPaymentMutation.isPending ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Processando...
+                        </>
+                      ) : (
+                        <>Pagar R$ {calculateTotal().toFixed(2).replace(".", ",")}</>
+                      )}
                     </Button>
 
                     {/* Security Notice */}
@@ -603,6 +730,94 @@ export default function Checkout() {
           </div>
         </div>
       </section>
+
+      {/* PIX Payment Modal */}
+      <Dialog open={showPixModal} onOpenChange={setShowPixModal}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl font-bold">
+              Pagamento via PIX
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              Use o código PIX abaixo ou escaneie o QR Code
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            {/* Payment Amount */}
+            <div className="text-center py-4 bg-green-50 rounded-lg">
+              <p className="text-sm text-gray-600">Valor a pagar:</p>
+              <p className="text-3xl font-bold text-green-600">
+                R$ {calculateTotal().toFixed(2).replace(".", ",")}
+              </p>
+            </div>
+
+            {/* QR Code Placeholder */}
+            <div className="flex justify-center py-6 bg-gray-50 rounded-lg">
+              <div className="w-48 h-48 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
+                <QrCode className="w-32 h-32 text-gray-400" />
+                <span className="sr-only">QR Code do PIX</span>
+              </div>
+            </div>
+
+            {/* PIX Code */}
+            {currentTransaction?.pixPayload && (
+              <div className="space-y-2">
+                <Label>Código PIX (copia e cola):</Label>
+                <div className="flex gap-2">
+                  <Input
+                    value={currentTransaction.pixPayload}
+                    readOnly
+                    className="font-mono text-xs"
+                    data-testid="input-pix-code"
+                  />
+                  <Button
+                    type="button"
+                    size="icon"
+                    variant="outline"
+                    onClick={copyPixCode}
+                    data-testid="button-copy-pix"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {/* Payment Status */}
+            <div className="text-center py-3 bg-blue-50 rounded-lg">
+              {isPolling ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span className="text-sm text-blue-600">
+                    Aguardando confirmação do pagamento...
+                  </span>
+                </div>
+              ) : (
+                <span className="text-sm text-gray-600">
+                  Realize o pagamento para confirmar sua compra
+                </span>
+              )}
+            </div>
+
+            {/* Instructions */}
+            <div className="space-y-2 text-sm text-gray-600">
+              <p className="font-semibold">Como pagar:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Abra o app do seu banco</li>
+                <li>Escolha a opção PIX</li>
+                <li>Use o código copia e cola ou escaneie o QR Code</li>
+                <li>Confirme o pagamento</li>
+              </ol>
+            </div>
+
+            {/* Timer */}
+            <div className="text-center py-2 text-sm text-red-600">
+              ⏱️ Este código expira em 30 minutos
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }

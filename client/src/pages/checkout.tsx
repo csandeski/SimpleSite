@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Shield, Lock, ArrowDown, Check } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
@@ -357,13 +356,9 @@ export default function Checkout() {
                         {/* Content */}
                         <CardContent className="p-4 bg-white dark:bg-gray-900">
                           <div className="flex items-start gap-4">
-                            <Checkbox
-                              checked={upsells.calculoFios}
-                              onCheckedChange={() => {}}
-                              onClick={(e) => e.stopPropagation()}
-                              className="mt-1"
-                              data-testid="checkbox-upsell-calculo"
-                            />
+                            <div className="mt-1 w-4 h-4 border-2 border-gray-300 flex items-center justify-center">
+                              {upsells.calculoFios && <Check className="w-3 h-3 text-green-600" />}
+                            </div>
                             <div className="flex-1">
                               <div className="flex items-start gap-3">
                                 <img 
@@ -421,13 +416,9 @@ export default function Checkout() {
                         {/* Content */}
                         <CardContent className="p-4 bg-white dark:bg-gray-900">
                           <div className="flex items-start gap-4">
-                            <Checkbox
-                              checked={upsells.acabamentos}
-                              onCheckedChange={() => {}}
-                              onClick={(e) => e.stopPropagation()}
-                              className="mt-1"
-                              data-testid="checkbox-upsell-acabamentos"
-                            />
+                            <div className="mt-1 w-4 h-4 border-2 border-gray-300 flex items-center justify-center">
+                              {upsells.acabamentos && <Check className="w-3 h-3 text-green-600" />}
+                            </div>
                             <div className="flex-1">
                               <div className="flex items-start gap-3">
                                 <img 
@@ -485,13 +476,9 @@ export default function Checkout() {
                         {/* Content */}
                         <CardContent className="p-4 bg-white dark:bg-gray-900">
                           <div className="flex items-start gap-4">
-                            <Checkbox
-                              checked={upsells.primaveraVerao}
-                              onCheckedChange={() => {}}
-                              onClick={(e) => e.stopPropagation()}
-                              className="mt-1"
-                              data-testid="checkbox-upsell-primavera"
-                            />
+                            <div className="mt-1 w-4 h-4 border-2 border-gray-300 flex items-center justify-center">
+                              {upsells.primaveraVerao && <Check className="w-3 h-3 text-green-600" />}
+                            </div>
                             <div className="flex-1">
                               <div className="flex items-start gap-3">
                                 <img 

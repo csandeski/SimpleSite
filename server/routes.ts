@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { pixService } from "./services/pixService";
 import { z } from "zod";
+import QRCode from "qrcode";
 
 // Webhook authentication
 const WEBHOOK_SECRET = process.env.PIX_WEBHOOK_SECRET || 'default_webhook_secret_change_in_production';
@@ -62,6 +63,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Create transaction in PIX API
       const pixResponse = await pixService.createTransaction(pixRequest);
       
+      // Generate QR Code from PIX payload
+      let pixQrCode = null;
+      if (pixResponse.pix?.payload) {
+        try {
+          pixQrCode = await QRCode.toDataURL(pixResponse.pix.payload, {
+            width: 300,
+            margin: 1,
+            color: {
+              dark: '#000000',
+              light: '#FFFFFF'
+            }
+          });
+        } catch (error) {
+          console.error("Error generating QR Code:", error);
+        }
+      }
+
       // Store transaction in our database
       const transaction = await storage.createTransaction({
         external_id: externalId,
@@ -83,6 +101,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           externalId: transaction.external_id,
           status: transaction.status,
           pixPayload: transaction.pix_payload,
+          pixQrCode: pixQrCode,
           totalAmount: transaction.total_amount,
         },
       });
@@ -137,6 +156,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
+      // Generate QR Code from PIX payload
+      let pixQrCode = null;
+      if (transaction.pix_payload) {
+        try {
+          pixQrCode = await QRCode.toDataURL(transaction.pix_payload, {
+            width: 300,
+            margin: 1,
+            color: {
+              dark: '#000000',
+              light: '#FFFFFF'
+            }
+          });
+        } catch (error) {
+          console.error("Error generating QR Code:", error);
+        }
+      }
+
       res.json({
         success: true,
         transaction: {
@@ -144,6 +180,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           externalId: transaction.external_id,
           status: transaction.status,
           pixPayload: transaction.pix_payload,
+          pixQrCode: pixQrCode,
           totalAmount: transaction.total_amount,
           createdAt: transaction.created_at,
         },

@@ -8,10 +8,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-// Import images
-import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
-import instructorImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
-
 interface Transaction {
   id: string;
   status: string;
@@ -134,19 +130,10 @@ export default function PixPayment() {
   // Loading state
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-[hsl(var(--color-bg))]">
-        {/* Urgency Timer Bar */}
-        <div className="bg-red-600 text-white py-3 px-4 text-center sticky top-0 z-50">
-          <p className="text-sm md:text-base font-bold" data-testid="text-timer-header">
-            🕒 Complete o pagamento em até {formatTime(timeLeft)} para garantir sua vaga
-          </p>
-        </div>
-
-        <div className="flex items-center justify-center min-h-[80vh]">
-          <div className="text-center">
-            <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-[hsl(var(--color-primary))]" />
-            <p className="text-lg text-[hsl(var(--color-text))]">Carregando informações do pagamento...</p>
-          </div>
+      <main className="min-h-screen bg-[hsl(var(--color-bg))] flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-[hsl(var(--color-primary))]" />
+          <p className="text-lg text-[hsl(var(--color-text))]">Carregando informações do pagamento...</p>
         </div>
       </main>
     );
@@ -176,59 +163,9 @@ export default function PixPayment() {
   }
 
   return (
-    <main className="min-h-screen bg-[hsl(var(--color-bg))]">
-      {/* Urgency Timer Bar */}
-      <div className="bg-red-600 text-white py-3 px-4 text-center sticky top-0 z-50">
-        <p className="text-sm md:text-base font-bold" data-testid="text-timer-header">
-          🕒 Complete o pagamento em até {formatTime(timeLeft)} para garantir sua vaga
-        </p>
-      </div>
-
-      {/* Hero Section with Banner */}
-      <section className="relative bg-gradient-to-b from-[hsl(var(--color-muted))] to-[hsl(var(--color-bg))] py-8 md:py-12">
-        <div className="max-w-4xl mx-auto px-4">
-          {/* Banner Image */}
-          <div className="overflow-hidden mb-6">
-            <img 
-              src={bannerImg} 
-              alt="Coleção Crochês que Mais Vendem"
-              className="w-full h-auto"
-              data-testid="image-pix-banner"
-            />
-          </div>
-
-          {/* Product Card */}
-          <div className="mb-6 border border-gray-300 bg-white p-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                {/* Product Image */}
-                <img 
-                  src={instructorImg}
-                  alt="Claudete Oliveira"
-                  className="w-14 h-14 object-cover border border-gray-200"
-                  data-testid="image-product-instructor"
-                />
-                
-                {/* Product Info */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900" data-testid="text-product-name">
-                    Coleção Crochês que Mais Vendem - Vitalício
-                  </h3>
-                  <p className="text-base font-bold text-gray-900" data-testid="text-price">
-                    {formatCurrency(transaction.amount)}
-                  </p>
-                </div>
-              </div>
-              
-              {/* Status Badge */}
-              {getStatusBadge(transaction.status)}
-            </div>
-          </div>
-        </div>
-      </section>
-
+    <main className="min-h-screen bg-[hsl(var(--color-bg))] py-8">
       {/* Main PIX Payment Content */}
-      <section className="max-w-4xl mx-auto px-4 pb-12">
+      <section className="max-w-4xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - PIX Payment */}
           <div className="lg:col-span-2">
@@ -359,7 +296,7 @@ export default function PixPayment() {
 
           {/* Right Column - Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="border border-gray-300 bg-white sticky top-20">
+            <Card className="border border-gray-300 bg-white sticky top-8">
               <CardContent className="p-6">
                 <h3 className="text-lg font-bold mb-4 text-[hsl(var(--color-text))]" data-testid="text-summary-title">
                   Resumo do Pedido

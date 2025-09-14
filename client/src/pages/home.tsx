@@ -75,97 +75,87 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative">
-        {/* Desktop Layout with background image */}
-        <div 
-          className="hidden md:block relative min-h-[700px]"
-          style={{
-            backgroundImage: `url(${instructorHeroImg})`,
-            backgroundPosition: 'center top',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          {/* Light overlay for text readability */}
-          <div className="absolute inset-0 bg-[hsl(var(--color-bg))] bg-opacity-30"></div>
-          {/* Bottom gradient overlay */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[hsl(var(--color-bg))]/90 via-[hsl(var(--color-bg))]/60 to-transparent" />
+        {/* Desktop Layout */}
+        <div className="hidden md:block">
+          {/* Hero Image with golden text embedded */}
+          <div 
+            className="relative h-[600px]"
+            style={{
+              backgroundImage: `url(${instructorHeroImg})`,
+              backgroundPosition: 'center top',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            {/* Subtle bottom gradient for smooth transition */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[hsl(var(--color-bg))] to-transparent" />
+          </div>
           
-          {/* Desktop Content - positioned as overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-between px-4">
-            {/* Main headline positioned lower on the image */}
-            <div className="flex-1 flex items-end pb-48">
-              <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center text-black bg-white/95 px-6 py-3 rounded-lg shadow-lg max-w-3xl" data-testid="text-hero-title-desktop">
-                Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-              </h1>
-            </div>
+          {/* Desktop Content - positioned below the image */}
+          <div className="flex flex-col items-center px-4 pb-12 -mt-16 relative z-10">
+            <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center text-[hsl(var(--color-text))] mb-6 max-w-3xl" data-testid="text-hero-title-desktop">
+              Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+            </h1>
 
-            {/* Other content at the bottom */}
-            <div className="pb-12 flex flex-col items-center">
-              <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
-                Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
-              </p>
+            <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
+              Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+            </p>
 
-              <Button 
-                size="lg" 
-                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
-                onClick={() => scrollToSection("pricing")}
-                data-testid="button-hero-cta-desktop"
-              >
-                QUERO ME INSCREVER
-              </Button>
+            <Button 
+              size="lg" 
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+              onClick={() => scrollToSection("pricing")}
+              data-testid="button-hero-cta-desktop"
+            >
+              QUERO ME INSCREVER
+            </Button>
 
-              <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2 mt-6" data-testid="text-promo-notice-desktop">
-                <span className="text-xl">⏰</span>
-                <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
-              </p>
-            </div>
+            <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2 mt-6" data-testid="text-promo-notice-desktop">
+              <span className="text-xl">⏰</span>
+              <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+            </p>
           </div>
         </div>
         
-        {/* Mobile Layout with background image and overlay content */}
-        <div 
-          className="md:hidden relative h-[500px]"
-          style={{
-            backgroundImage: `url(${instructorHeroImg})`,
-            backgroundPosition: 'center top',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
-        >
-          {/* Bottom gradient overlay */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[hsl(var(--color-bg))] via-[hsl(var(--color-bg))]/90 to-transparent" />
+        {/* Mobile Layout */}
+        <div className="md:hidden">
+          {/* Hero Image with golden text embedded */}
+          <div 
+            className="relative h-[400px]"
+            style={{
+              backgroundImage: `url(${instructorHeroImg})`,
+              backgroundPosition: 'center top',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            {/* Subtle bottom gradient for smooth transition */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[hsl(var(--color-bg))] to-transparent" />
+          </div>
           
-          {/* Mobile Content - positioned as overlay */}
-          <div className="absolute inset-0 flex flex-col justify-between px-4">
-            {/* Main headline positioned lower on the image */}
-            <div className="flex-1 flex items-end pb-32">
-              <h1 className="text-xl font-bold leading-tight text-center text-black bg-white/95 px-4 py-2 rounded-lg shadow-lg mx-auto" data-testid="text-hero-title">
-                Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-              </h1>
-            </div>
+          {/* Mobile Content - positioned below the image */}
+          <div className="flex flex-col items-center px-4 pb-8 -mt-12 relative z-10">
+            <h1 className="text-xl font-bold leading-tight text-center text-[hsl(var(--color-text))] mb-4" data-testid="text-hero-title">
+              Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+            </h1>
 
-            {/* Other content at the bottom */}
-            <div className="pb-6 flex flex-col">
-              <p className="text-sm leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-4" data-testid="text-hero-description">
-                Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
-              </p>
+            <p className="text-sm leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-6" data-testid="text-hero-description">
+              Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+            </p>
 
-              <div className="text-center mb-3">
-                <Button 
-                  size="lg" 
-                  className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-5 py-3 font-bold text-base shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
-                  onClick={() => scrollToSection("pricing")}
-                  data-testid="button-hero-cta"
-                >
-                  QUERO ME INSCREVER
-                </Button>
-              </div>
+            <Button 
+              size="lg" 
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-5 py-3 font-bold text-base shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 mb-4"
+              onClick={() => scrollToSection("pricing")}
+              data-testid="button-hero-cta"
+            >
+              QUERO ME INSCREVER
+            </Button>
 
-              <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
-                <span className="text-base animate-pulse">⏰</span>
-                <span className="text-xs whitespace-nowrap">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
-              </p>
-            </div>
+            <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
+              <span className="text-base animate-pulse">⏰</span>
+              <span className="text-xs whitespace-nowrap">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+            </p>
           </div>
         </div>
       </section>

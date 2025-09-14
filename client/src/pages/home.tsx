@@ -89,9 +89,9 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent md:block hidden" />
         
         {/* Mobile Layout - Only image */}
-        <div className="md:hidden relative" style={{ height: '400px' }}>
+        <div className="md:hidden relative" style={{ height: '280px' }}>
           {/* Bottom gradient overlay for smooth transition */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
         </div>
 
         {/* Desktop Layout - Keep original structure */}
@@ -130,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* Mobile Hero Content Section - Shows below hero on mobile only */}
-      <section className="md:hidden py-2 px-4 bg-gradient-to-b from-white to-gray-50">
+      <section className="md:hidden py-0 px-4 bg-gradient-to-b from-white to-gray-50">
         <h2 className="text-3xl text-center mb-3 text-gray-900 font-extrabold leading-tight" data-testid="text-hero-subtitle">
           Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
         </h2>

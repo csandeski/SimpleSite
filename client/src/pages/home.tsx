@@ -102,7 +102,7 @@ export default function Home() {
 
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+              className="relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta-desktop"
             >
@@ -144,7 +144,7 @@ export default function Home() {
 
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full pl-[60px] pr-[60px] py-3 font-bold text-[19px] shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 mb-4"
+              className="relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg pl-[60px] pr-[60px] py-3 font-bold text-[19px] border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 mb-4 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta"
             >
@@ -263,7 +263,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+              className="relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-testimonials-cta"
             >
@@ -364,7 +364,7 @@ export default function Home() {
             </p>
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+              className="relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-bonus-cta"
             >
@@ -445,7 +445,7 @@ export default function Home() {
 
               <Button 
                 size="lg" 
-                className="w-full bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+                className="w-full relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
                 onClick={() => window.open('#', '_blank')}
                 data-testid="button-pricing-cta"
               >
@@ -502,7 +502,7 @@ export default function Home() {
               
               <Button 
                 size="lg" 
-                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+                className="relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
                 onClick={() => scrollToSection("pricing")}
                 data-testid="button-about-cta"
               >

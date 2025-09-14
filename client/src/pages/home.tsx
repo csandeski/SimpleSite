@@ -18,6 +18,8 @@ import testimonial4Img from "@assets/imgi_14_3279038_1_175616576468acf6846d04e73
 import crochetHandsImg from "@assets/imgi_15_3279038_1_175616576468acf684622c7931240388_1757863401608.jpg";
 import instructorAboutImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
 import logoImg from "@assets/imgi_22_3279038_1_175616576468acf6846826a252308403_1757863401610.png";
+import whatsappGroupImg from "@assets/generated_images/WhatsApp_group_mockup_19155f98.png";
+import lifetimeAccessImg from "@assets/generated_images/Lifetime_access_infinity_4321bf99.png";
 
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -289,46 +291,32 @@ export default function Home() {
               {
                 title: "Bônus 1",
                 name: "Curso de Crochê Fundamental",
-                description: "Aprenda do zero todas as técnicas básicas do crochê com aulas detalhadas",
-                image: crochetHandsImg,
-                icon: null
+                description: "Você receberá acesso ao meu curso prático que organiza os fundamentos (pontos, modelagem e acabamento) em passos curtos e aplicáveis, para você construir peças autorais.",
+                image: crochetHandsImg
               },
               {
                 title: "Bônus 2",
                 name: "Grupo Exclusivo de Alunas",
-                description: "Acesso ao grupo no WhatsApp com suporte direto e tira-dúvidas diárias",
-                image: null,
-                icon: "whatsapp"
+                description: "Participe da nossa comunidade exclusiva no WhatsApp onde você terá suporte direto comigo e com outras alunas. Tire dúvidas, compartilhe suas criações e receba feedback diário.",
+                image: whatsappGroupImg
               },
               {
                 title: "Bônus 3",
                 name: "Acesso Vitalício",
-                description: "Acesso para sempre ao curso e todas as atualizações futuras",
-                image: null,
-                icon: "infinity"
+                description: "Tenha acesso permanente ao curso e a todas as atualizações futuras. Assista as aulas quantas vezes quiser, no seu tempo, sem pressa e sem prazo de expiração.",
+                image: lifetimeAccessImg
               }
             ].map((bonus, index) => (
               <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-bonus-${index}`}>
                 <CardContent className="p-6 md:p-8">
-                  {bonus.image ? (
-                    <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden bg-[hsl(var(--color-muted))]">
-                      <img 
-                        src={bonus.image} 
-                        alt={bonus.name}
-                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                        data-testid={`image-bonus-${index}`}
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-[4/3] bg-[hsl(var(--color-muted))] rounded-lg mb-6 flex items-center justify-center">
-                      {bonus.icon === "whatsapp" && (
-                        <Users className="w-16 h-16 md:w-20 md:h-20 text-[hsl(var(--color-primary))]" />
-                      )}
-                      {bonus.icon === "infinity" && (
-                        <Infinity className="w-16 h-16 md:w-20 md:h-20 text-[hsl(var(--color-primary))]" />
-                      )}
-                    </div>
-                  )}
+                  <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden bg-[hsl(var(--color-muted))]">
+                    <img 
+                      src={bonus.image} 
+                      alt={bonus.name}
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                      data-testid={`image-bonus-${index}`}
+                    />
+                  </div>
                   
                   <div className="mb-4">
                     <Badge className="bg-[hsl(var(--color-accent))] text-[hsl(var(--color-accent-foreground))] border-0 px-3 py-1 text-sm md:text-base font-medium" data-testid={`badge-bonus-${index}`}>

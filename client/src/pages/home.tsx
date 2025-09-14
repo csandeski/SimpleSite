@@ -4,6 +4,21 @@ import { Badge } from "@/components/ui/badge";
 import { Star, Shield, Check, ChevronLeft, ChevronRight, Users } from "lucide-react";
 import { useState } from "react";
 
+// Import all images
+import instructorHeroImg from "@assets/imgi_1_3279038_1_175616576468acf684611e1979289725_1757863401608.png";
+import blusaAlessandraImg from "@assets/imgi_7_3279038_1_175616576468acf6846c600407934409_1757863401610.jpg";
+import camisaAmandaImg from "@assets/imgi_6_3279038_1_175616576468acf6846c45d610278439_1757863401610.jpg";
+import blusaPamelaImg from "@assets/imgi_8_3279038_1_175616576468acf6846c764643255696_1757863401610.jpg";
+import regataBiancaImg from "@assets/imgi_9_3279038_1_175616576468acf6846cab1769481279_1757863401611.jpg";
+import blusaVioletaImg from "@assets/imgi_10_3279038_1_175616576468acf6846cceb653110487_1757863401609.jpg";
+import testimonial1Img from "@assets/imgi_12_3279038_1_175616576468acf6846d04e7315860909823333_1757863401608.png";
+import testimonial2Img from "@assets/imgi_11_3279038_1_175616576468acf6846d04e7315860902770816_1757863401609.png";
+import testimonial3Img from "@assets/imgi_13_3279038_1_175616576468acf6846d04e7315860909713622_1757863401609.png";
+import testimonial4Img from "@assets/imgi_14_3279038_1_175616576468acf6846d04e7315860903433062_1757863401609.jpg";
+import crochetHandsImg from "@assets/imgi_15_3279038_1_175616576468acf684622c7931240388_1757863401608.jpg";
+import instructorAboutImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
+import logoImg from "@assets/imgi_22_3279038_1_175616576468acf6846826a252308403_1757863401610.png";
+
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -11,17 +26,26 @@ export default function Home() {
     {
       name: "Maria Silva",
       text: "Curso maravilhoso! As aulas são super detalhadas e a Claudete explica tudo com muita paciência. Já estou recebendo encomendas!",
-      rating: 5
+      rating: 5,
+      image: testimonial1Img
     },
     {
       name: "Ana Paula",
       text: "Aprendi técnicas que nunca tinha visto antes. As peças ficam lindas e profissionais. Vale muito a pena o investimento!",
-      rating: 5
+      rating: 5,
+      image: testimonial2Img
     },
     {
       name: "Fernanda Costa",
       text: "Melhor curso de crochê que já fiz! O grupo no WhatsApp é muito acolhedor e a Claudete sempre tira nossas dúvidas.",
-      rating: 5
+      rating: 5,
+      image: testimonial3Img
+    },
+    {
+      name: "Juliana Santos",
+      text: "A Blusa Pamela ficou perfeita! As explicações são claras e o resultado é profissional.",
+      rating: 5,
+      image: testimonial4Img
     }
   ];
 
@@ -52,12 +76,23 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-8 md:py-16 px-4 bg-gradient-to-b from-pink-50 to-white">
         <div className="max-w-6xl mx-auto">
-          {/* Instructor Photo Placeholder */}
-          <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-gray-500 text-center text-xs md:text-sm" data-testid="placeholder-instructor-hero">
-              Foto da Instrutora
-            </span>
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <img 
+              src={logoImg} 
+              alt="Logo do Curso"
+              className="h-20 md:h-24 object-contain"
+              data-testid="image-logo"
+            />
           </div>
+
+          {/* Instructor Photo */}
+          <img 
+            src={instructorHeroImg} 
+            alt="Professora Claudete Oliveira"
+            className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-6 rounded-full object-cover shadow-xl"
+            data-testid="image-instructor-hero"
+          />
 
           <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 text-gray-900" data-testid="text-hero-title">
             Coleção Crochês que Mais Vendem
@@ -100,16 +135,16 @@ export default function Home() {
               <span className="ml-2 text-gray-600" data-testid="text-rating">5.0</span>
             </div>
 
-            {/* Student Avatars Placeholder */}
+            {/* Student Avatars */}
             <div className="flex -space-x-3">
-              {[...Array(4)].map((_, i) => (
-                <div 
+              {[testimonial1Img, testimonial2Img, testimonial3Img, testimonial4Img].map((img, i) => (
+                <img 
                   key={i} 
-                  className="w-10 h-10 bg-gray-300 rounded-full border-2 border-white flex items-center justify-center"
-                  data-testid={`placeholder-student-avatar-${i}`}
-                >
-                  <span className="text-xs text-gray-600">{i + 1}</span>
-                </div>
+                  src={img}
+                  alt={`Aluna ${i + 1}`}
+                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                  data-testid={`image-student-avatar-${i}`}
+                />
               ))}
             </div>
           </div>
@@ -125,18 +160,21 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Blusa Alessandra", color: "white", description: "Blusa branca elegante" },
-              { name: "Camisa Amanda", color: "beige", description: "Cardigan bege versátil" },
-              { name: "Blusa Pamela", color: "brown", description: "Blusa marrom aconchegante" },
-              { name: "Regata Bianca", color: "beige", description: "Regata bege leve" },
-              { name: "Blusa Violeta", color: "purple", description: "Blusa roxa moderna" }
+              { name: "Blusa Alessandra", image: blusaAlessandraImg, description: "Blusa branca elegante" },
+              { name: "Camisa Amanda", image: camisaAmandaImg, description: "Cardigan bege versátil" },
+              { name: "Blusa Pamela", image: blusaPamelaImg, description: "Blusa marrom aconchegante" },
+              { name: "Regata Bianca", image: regataBiancaImg, description: "Regata bege leve" },
+              { name: "Blusa Violeta", image: blusaVioletaImg, description: "Blusa roxa moderna" }
             ].map((product, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700 hover:scale-105 transition-transform" data-testid={`card-product-${index}`}>
+              <Card key={index} className="bg-gray-800 border-gray-700 hover:scale-105 transition-transform overflow-hidden" data-testid={`card-product-${index}`}>
                 <CardContent className="p-6">
-                  <div className="aspect-square bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
-                    <span className="text-gray-400 text-center text-sm" data-testid={`placeholder-product-${index}`}>
-                      {product.description}
-                    </span>
+                  <div className="aspect-square bg-gray-700 rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      data-testid={`image-product-${index}`}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-white text-center" data-testid={`text-product-name-${index}`}>
                     {product.name}
@@ -158,17 +196,29 @@ export default function Home() {
           <div className="relative">
             <Card className="p-8 shadow-xl" data-testid={`card-testimonial-${currentTestimonial}`}>
               <CardContent>
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                  <div>
+                    <div className="flex items-center gap-1 mb-4">
+                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-gray-700 mb-4 italic" data-testid={`text-testimonial-content-${currentTestimonial}`}>
+                      "{testimonials[currentTestimonial].text}"
+                    </p>
+                    <p className="font-semibold text-gray-900" data-testid={`text-testimonial-name-${currentTestimonial}`}>
+                      — {testimonials[currentTestimonial].name}
+                    </p>
+                  </div>
+                  <div className="rounded-lg overflow-hidden shadow-lg">
+                    <img 
+                      src={testimonials[currentTestimonial].image} 
+                      alt={`Depoimento de ${testimonials[currentTestimonial].name}`}
+                      className="w-full h-64 object-cover"
+                      data-testid={`image-testimonial-${currentTestimonial}`}
+                    />
+                  </div>
                 </div>
-                <p className="text-gray-700 mb-4 italic" data-testid={`text-testimonial-content-${currentTestimonial}`}>
-                  "{testimonials[currentTestimonial].text}"
-                </p>
-                <p className="font-semibold text-gray-900" data-testid={`text-testimonial-name-${currentTestimonial}`}>
-                  — {testimonials[currentTestimonial].name}
-                </p>
               </CardContent>
             </Card>
 
@@ -228,23 +278,36 @@ export default function Home() {
                 title: "Bônus 1",
                 name: "Curso de Crochê Fundamental",
                 description: "Aprenda do zero todas as técnicas básicas do crochê",
-                value: "R$ 97"
+                value: "R$ 97",
+                image: crochetHandsImg
               },
               {
                 title: "Bônus 2",
                 name: "Grupo Exclusivo de Alunas",
                 description: "Acesso ao grupo no WhatsApp com suporte direto",
-                value: "R$ 67"
+                value: "R$ 67",
+                image: null
               },
               {
                 title: "Bônus 3",
                 name: "Acesso Vitalício",
                 description: "Acesso para sempre ao curso e todas as atualizações",
-                value: "Inestimável"
+                value: "Inestimável",
+                image: null
               }
             ].map((bonus, index) => (
-              <Card key={index} className="bg-gradient-to-br from-amber-500 to-amber-600 border-0" data-testid={`card-bonus-${index}`}>
+              <Card key={index} className="bg-gradient-to-br from-amber-500 to-amber-600 border-0 overflow-hidden" data-testid={`card-bonus-${index}`}>
                 <CardContent className="p-6 text-white">
+                  {bonus.image && (
+                    <div className="mb-4 rounded-lg overflow-hidden">
+                      <img 
+                        src={bonus.image} 
+                        alt={bonus.name}
+                        className="w-full h-32 object-cover"
+                        data-testid={`image-bonus-${index}`}
+                      />
+                    </div>
+                  )}
                   <Badge className="bg-red-600 text-white mb-3" data-testid={`badge-bonus-${index}`}>
                     {bonus.title}
                   </Badge>
@@ -343,10 +406,13 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="aspect-square bg-gray-700 rounded-lg flex items-center justify-center">
-              <span className="text-gray-400 text-center" data-testid="placeholder-instructor-about">
-                Foto da Professora Claudete
-              </span>
+            <div className="aspect-square rounded-lg overflow-hidden">
+              <img 
+                src={instructorAboutImg} 
+                alt="Professora Claudete Oliveira"
+                className="w-full h-full object-cover"
+                data-testid="image-instructor-about"
+              />
             </div>
 
             <div className="text-white">

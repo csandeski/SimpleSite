@@ -18,7 +18,7 @@ import testimonial4Img from "@assets/imgi_14_3279038_1_175616576468acf6846d04e73
 import crochetHandsImg from "@assets/imgi_15_3279038_1_175616576468acf684622c7931240388_1757863401608.jpg";
 import instructorAboutImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
 import logoImg from "@assets/imgi_22_3279038_1_175616576468acf6846826a252308403_1757863401610.png";
-import whatsappGroupImg from "@assets/generated_images/WhatsApp_group_mockup_19155f98.png";
+import whatsappGroupImg from "@assets/generated_images/whatsapp_grupo_croche_portugues.svg";
 import lifetimeAccessImg from "@assets/generated_images/Lifetime_access_infinity_4321bf99.png";
 
 export default function Home() {

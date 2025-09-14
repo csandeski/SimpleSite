@@ -1,0 +1,118 @@
+<svg width="400" height="700" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone Frame -->
+  <rect x="10" y="10" width="380" height="680" rx="30" fill="#1a1a1a"/>
+  <rect x="20" y="20" width="360" height="660" rx="25" fill="#ffffff"/>
+  
+  <!-- Status Bar -->
+  <rect x="20" y="20" width="360" height="30" rx="0" fill="#075e54"/>
+  <text x="30" y="40" font-family="Arial, sans-serif" font-size="12" fill="white">9:41</text>
+  <text x="340" y="40" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="end">100%</text>
+  
+  <!-- WhatsApp Header -->
+  <rect x="20" y="50" width="360" height="70" fill="#075e54"/>
+  
+  <!-- Back Arrow -->
+  <path d="M35 85 L45 75 L45 80 L35 85 L45 90 L45 95 Z" fill="white"/>
+  
+  <!-- Group Profile Picture Circle -->
+  <circle cx="70" cy="85" r="20" fill="#25d366"/>
+  <text x="70" y="90" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">🧶</text>
+  
+  <!-- Group Name and Info -->
+  <text x="100" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Grupo VIP - Crochê que Vende</text>
+  <text x="100" y="100" font-family="Arial, sans-serif" font-size="12" fill="#b3d4d1">Claudete, Maria, Ana, +47 alunas</text>
+  
+  <!-- Icons -->
+  <circle cx="320" cy="85" r="2" fill="white"/>
+  <circle cx="330" cy="85" r="2" fill="white"/>
+  <circle cx="340" cy="85" r="2" fill="white"/>
+  <path d="M350 75 L365 85 L350 95 Z" fill="none" stroke="white" stroke-width="2"/>
+  
+  <!-- Chat Background -->
+  <rect x="20" y="120" width="360" height="480" fill="#e5ddd5"/>
+  
+  <!-- Background Pattern -->
+  <pattern id="chatPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <rect width="40" height="40" fill="#e5ddd5"/>
+    <rect x="0" y="0" width="20" height="20" fill="#ddd5cd" opacity="0.3"/>
+    <rect x="20" y="20" width="20" height="20" fill="#ddd5cd" opacity="0.3"/>
+  </pattern>
+  <rect x="20" y="120" width="360" height="480" fill="url(#chatPattern)"/>
+  
+  <!-- Date Bubble -->
+  <rect x="160" y="135" width="80" height="25" rx="12" fill="#a8a8a8" opacity="0.8"/>
+  <text x="200" y="151" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">HOJE</text>
+  
+  <!-- Message 1 - Admin -->
+  <rect x="40" y="175" width="280" height="60" rx="10" fill="#dcf8c6"/>
+  <text x="50" y="195" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#075e54">Claudete (Admin)</text>
+  <text x="50" y="210" font-family="Arial, sans-serif" font-size="14" fill="#303030">Bom dia meninas! 🌸</text>
+  <text x="50" y="225" font-family="Arial, sans-serif" font-size="14" fill="#303030">Hoje vamos aprender a Blusa Pamela!</text>
+  <text x="290" y="230" font-family="Arial, sans-serif" font-size="10" fill="#888">08:30 ✓✓</text>
+  
+  <!-- Message 2 - Student -->
+  <rect x="100" y="250" width="260" height="45" rx="10" fill="white"/>
+  <text x="110" y="265" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#25d366">Maria Silva</text>
+  <text x="110" y="280" font-family="Arial, sans-serif" font-size="14" fill="#303030">Ansiosa para começar! Já separei as linhas 🧶</text>
+  <text x="330" y="290" font-family="Arial, sans-serif" font-size="10" fill="#888">08:35</text>
+  
+  <!-- Message 3 - Photo from student -->
+  <rect x="40" y="310" width="200" height="120" rx="10" fill="white"/>
+  <text x="50" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#25d366">Ana Paula</text>
+  <rect x="50" y="335" width="180" height="80" rx="5" fill="#f0f0f0"/>
+  <text x="140" y="375" font-family="Arial, sans-serif" font-size="40" text-anchor="middle">🧵</text>
+  <text x="50" y="425" font-family="Arial, sans-serif" font-size="10" fill="#888">📷 Foto</text>
+  <text x="210" y="425" font-family="Arial, sans-serif" font-size="10" fill="#888">09:15</text>
+  
+  <!-- Message 4 - Admin response -->
+  <rect x="100" y="445" width="260" height="60" rx="10" fill="#dcf8c6"/>
+  <text x="110" y="460" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#075e54">Claudete (Admin)</text>
+  <text x="110" y="475" font-family="Arial, sans-serif" font-size="14" fill="#303030">Perfeito Ana! Essa linha é ótima! 👏</text>
+  <text x="110" y="490" font-family="Arial, sans-serif" font-size="14" fill="#303030">Vamos começar em 10 minutos</text>
+  <text x="330" y="500" font-family="Arial, sans-serif" font-size="10" fill="#888">09:20 ✓✓</text>
+  
+  <!-- Message 5 - Multiple students joined notification -->
+  <rect x="120" y="520" width="160" height="25" rx="12" fill="#b8d4ce" opacity="0.8"/>
+  <text x="200" y="536" font-family="Arial, sans-serif" font-size="11" fill="#075e54" text-anchor="middle">+15 alunas entraram</text>
+  
+  <!-- Voice message -->
+  <rect x="40" y="560" width="240" height="40" rx="10" fill="white"/>
+  <text x="50" y="575" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#25d366">Fernanda</text>
+  <circle cx="60" cy="585" r="8" fill="#25d366"/>
+  <path d="M57 585 L63 581 L63 589 Z" fill="white"/>
+  <rect x="80" y="583" width="100" height="4" rx="2" fill="#e0e0e0"/>
+  <rect x="80" y="583" width="40" height="4" rx="2" fill="#25d366"/>
+  <text x="190" y="588" font-family="Arial, sans-serif" font-size="12" fill="#303030">0:32</text>
+  <text x="250" y="595" font-family="Arial, sans-serif" font-size="10" fill="#888">10:45</text>
+  
+  <!-- Input Area -->
+  <rect x="20" y="600" width="360" height="60" fill="white"/>
+  
+  <!-- Emoji icon -->
+  <circle cx="45" cy="630" r="15" fill="none" stroke="#888" stroke-width="1.5"/>
+  <circle cx="40" cy="627" r="2" fill="#888"/>
+  <circle cx="50" cy="627" r="2" fill="#888"/>
+  <path d="M38 635 Q45 640 52 635" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Input field -->
+  <rect x="70" y="615" width="220" height="30" rx="20" fill="#f0f0f0"/>
+  <text x="80" y="635" font-family="Arial, sans-serif" font-size="14" fill="#999">Digite uma mensagem</text>
+  
+  <!-- Attachment icon -->
+  <circle cx="305" cy="630" r="12" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M305 620 L305 635 M297 628 L313 628" stroke="#888" stroke-width="1.5"/>
+  
+  <!-- Camera icon -->
+  <rect x="325" y="623" width="16" height="14" rx="2" fill="none" stroke="#888" stroke-width="1.5"/>
+  <circle cx="333" cy="630" r="3" fill="none" stroke="#888" stroke-width="1.5"/>
+  
+  <!-- Voice message button -->
+  <circle cx="360" cy="630" r="18" fill="#25d366"/>
+  <circle cx="360" cy="625" r="3" fill="white"/>
+  <rect x="358" y="628" width="4" height="8" rx="2" fill="white"/>
+  <path d="M354 633 Q360 636 366 633" fill="none" stroke="white" stroke-width="1.5"/>
+  
+  <!-- Navigation Bar -->
+  <rect x="20" y="660" width="360" height="20" fill="white"/>
+  <rect x="170" y="665" width="60" height="10" rx="5" fill="#888"/>
+</svg>

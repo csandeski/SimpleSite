@@ -78,7 +78,7 @@ export default function Checkout() {
 
   // Calculate total price
   const calculateTotal = () => {
-    let total = 47.00;
+    let total = 29.90;
     if (upsells.calculoFios) total += 9.90;
     if (upsells.acabamentos) total += 17.90;
     if (upsells.primaveraVerao) total += 29.90;
@@ -143,6 +143,36 @@ export default function Checkout() {
               data-testid="image-checkout-banner"
             />
           </div>
+
+          {/* Product Card */}
+          <Card className="mb-8 border border-[hsl(var(--color-border))] bg-white dark:bg-gray-900">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-4">
+                {/* Product Image */}
+                <img 
+                  src={instructorImg}
+                  alt="Claudete Oliveira"
+                  className="w-16 h-16 rounded-lg object-cover"
+                  data-testid="image-product-instructor"
+                />
+                
+                {/* Product Info */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-[hsl(var(--color-text))]" data-testid="text-product-name">
+                    Coleção Crochês que Mais Vendem - Vitalício
+                  </h3>
+                  <p className="text-2xl font-bold text-[hsl(var(--color-primary))] mt-1" data-testid="text-product-price">
+                    R$ {calculateTotal().toFixed(2).replace(".", ",")}
+                  </p>
+                </div>
+                
+                {/* Quantity */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--color-muted))] rounded-lg">
+                  <span className="text-lg font-semibold text-[hsl(var(--color-text))]">+1</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Hero Text */}
           <div className="text-center space-y-4">
@@ -540,7 +570,7 @@ export default function Checkout() {
                     </h3>
                     <div className="mt-2">
                       <p className="text-xs line-through text-[hsl(var(--color-subtle))]">De: R$ 250,00</p>
-                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 47,00</p>
+                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 29,90</p>
                     </div>
                   </div>
                 </div>
@@ -552,7 +582,7 @@ export default function Checkout() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-[hsl(var(--color-subtle))]">Curso principal</span>
-                      <span className="font-medium">R$ 47,00</span>
+                      <span className="font-medium">R$ 29,90</span>
                     </div>
                     
                     {upsells.calculoFios && (

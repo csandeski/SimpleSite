@@ -74,42 +74,37 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-8 md:py-16 px-4 bg-gradient-to-b from-pink-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <img 
-              src={logoImg} 
-              alt="Logo do Curso"
-              className="h-20 md:h-24 object-contain"
-              data-testid="image-logo"
-            />
+      <section 
+        className="relative min-h-[600px] md:min-h-[700px] py-16 px-4 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${instructorHeroImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Light overlay for text readability */}
+        <div className="absolute inset-0 bg-white bg-opacity-10"></div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+          {/* Title in overlay box */}
+          <div className="bg-amber-50/95 rounded-3xl p-6 md:p-10 mb-8 mx-auto max-w-3xl shadow-2xl border border-amber-100">
+            <h1 className="text-3xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
+              Coleção Crochês que Mais Vendem
+            </h1>
           </div>
-
-          {/* Instructor Photo */}
-          <img 
-            src={instructorHeroImg} 
-            alt="Professora Claudete Oliveira"
-            className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-6 rounded-full object-cover shadow-xl"
-            data-testid="image-instructor-hero"
-          />
-
-          <h1 className="text-3xl md:text-5xl font-bold text-center mb-4 text-gray-900" data-testid="text-hero-title">
-            Coleção Crochês que Mais Vendem
-          </h1>
           
-          <h2 className="text-xl md:text-2xl text-center mb-6 text-gray-700" data-testid="text-hero-subtitle">
+          <h2 className="text-xl md:text-2xl text-center mb-6 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
           </h2>
 
-          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto" data-testid="text-hero-description">
+          <p className="text-center text-gray-800 mb-8 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
           </p>
 
-          <div className="text-center mb-6">
+          <div className="text-center mb-8">
             <Button 
               size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg rounded-full shadow-xl transform hover:scale-105 transition-all"
+              className="bg-green-600 hover:bg-green-700 text-white px-10 py-6 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta"
             >
@@ -117,37 +112,10 @@ export default function Home() {
             </Button>
           </div>
 
-          <p className="text-center text-amber-600 font-semibold mb-8" data-testid="text-promo-notice">
-            ⚡ CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO ⚡
+          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-2 px-4" data-testid="text-promo-notice">
+            <span className="text-2xl">⏰</span>
+            <span className="text-base md:text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
           </p>
-
-          {/* Student Count Section */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-            <div className="flex items-center gap-2">
-              <Users className="w-6 h-6 text-pink-600" />
-              <span className="font-bold text-gray-800" data-testid="text-student-count">+2000 alunas</span>
-            </div>
-            
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-gray-600" data-testid="text-rating">5.0</span>
-            </div>
-
-            {/* Student Avatars */}
-            <div className="flex -space-x-3">
-              {[testimonial1Img, testimonial2Img, testimonial3Img, testimonial4Img].map((img, i) => (
-                <img 
-                  key={i} 
-                  src={img}
-                  alt={`Aluna ${i + 1}`}
-                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                  data-testid={`image-student-avatar-${i}`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

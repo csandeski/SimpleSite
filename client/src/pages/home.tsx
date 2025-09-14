@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Shield, Check, ChevronLeft, ChevronRight, Users, MessageCircle, Infinity } from "lucide-react";
+import { Star, Shield, Check, ChevronLeft, ChevronRight, Users, Infinity } from "lucide-react";
 import { useState } from "react";
 
 // Import all images
@@ -65,18 +65,16 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[hsl(var(--color-bg))]">
       {/* Urgency Header Bar */}
-      <div className="bg-red-600 text-white py-3 px-4 text-center sticky top-0 z-50">
+      <div className="bg-[hsl(var(--color-primary))] text-white py-3 px-4 text-center sticky top-0 z-50">
         <p className="text-sm md:text-base font-bold animate-pulse" data-testid="text-urgency-header">
           🔥 A OFERTA LIBERADA POR POUCO TEMPO! GARANTA SUA VAGA 🔥
         </p>
       </div>
 
       {/* Hero Section */}
-      <section 
-        className="relative bg-gradient-to-b from-amber-50 to-white overflow-hidden"
-      >
+      <section className="relative overflow-hidden">
         {/* Desktop Layout with background image */}
         <div 
           className="hidden md:block absolute inset-0"
@@ -88,9 +86,9 @@ export default function Home() {
           }}
         >
           {/* Light overlay for text readability */}
-          <div className="absolute inset-0 bg-white bg-opacity-10"></div>
-          {/* Bottom gradient overlay for text readability */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
+          <div className="absolute inset-0 bg-[hsl(var(--color-bg))] bg-opacity-30"></div>
+          {/* Bottom gradient overlay */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[hsl(var(--color-bg))]/90 via-[hsl(var(--color-bg))]/60 to-transparent" />
         </div>
         
         {/* Mobile Layout - Full width image */}
@@ -104,76 +102,80 @@ export default function Home() {
             backgroundRepeat: 'no-repeat',
           }}
         >
-          {/* Bottom gradient overlay for smooth transition */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent z-10" />
+          {/* Bottom gradient overlay */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[hsl(var(--color-bg))] via-[hsl(var(--color-bg))]/90 to-transparent z-10" />
         </div>
 
-        {/* Desktop Layout - Keep original structure */}
-        <div className="hidden md:flex relative z-10 max-w-4xl mx-auto flex-col items-center justify-end min-h-[700px] pb-8">
+        {/* Desktop Content */}
+        <div className="hidden md:flex relative z-10 max-w-6xl mx-auto flex-col items-center justify-end min-h-[700px] px-4 pb-12">
           {/* Title in overlay box */}
-          <div className="bg-amber-50/95 rounded-2xl p-8 mb-4 max-w-3xl shadow-2xl border border-amber-100">
-            <h1 className="text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title-desktop">
+          <div className="bg-[hsl(var(--color-surface))]/95 rounded-2xl p-8 mb-6 max-w-3xl shadow-2xl border border-[hsl(var(--color-border))]">
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-center text-[hsl(var(--color-text))]" data-testid="text-hero-title-desktop">
               Coleção Crochês que Mais Vendem
             </h1>
           </div>
           
-          <h2 className="text-2xl text-center mb-3 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle-desktop">
+          <h2 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-4 text-[hsl(var(--color-text))] max-w-2xl" data-testid="text-hero-subtitle-desktop">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
           </h2>
 
-          <p className="text-base text-center text-gray-800 mb-4 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description-desktop">
+          <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
           </p>
 
-          <div className="text-center mb-4">
+          <Button 
+            size="lg" 
+            className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+            onClick={() => scrollToSection("pricing")}
+            data-testid="button-hero-cta-desktop"
+          >
+            QUERO ME INSCREVER
+          </Button>
+
+          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2 mt-6" data-testid="text-promo-notice-desktop">
+            <span className="text-xl">⏰</span>
+            <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+          </p>
+        </div>
+      </section>
+
+      {/* Mobile Hero Content Section */}
+      <section className="md:hidden py-10 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-center mb-4 text-[hsl(var(--color-text))]" data-testid="text-hero-title">
+            Coleção Crochês que Mais Vendem
+          </h1>
+          
+          <h2 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-4 text-[hsl(var(--color-text))]" data-testid="text-hero-subtitle">
+            Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+          </h2>
+
+          <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8" data-testid="text-hero-description">
+            Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+          </p>
+
+          <div className="text-center mb-6">
             <Button 
               size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-10 py-6 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
               onClick={() => scrollToSection("pricing")}
-              data-testid="button-hero-cta-desktop"
+              data-testid="button-hero-cta"
             >
               QUERO ME INSCREVER
             </Button>
           </div>
 
-          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1 px-4" data-testid="text-promo-notice-desktop">
-            <span className="text-xl">⏰</span>
-            <span className="text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2" data-testid="text-promo-notice">
+            <span className="text-xl animate-pulse">⏰</span>
+            <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
           </p>
         </div>
       </section>
 
-      {/* Mobile Hero Content Section - Shows below hero on mobile only */}
-      <section className="md:hidden py-0 px-4 bg-gradient-to-b from-white to-gray-50">
-        <h2 className="text-3xl text-center mb-3 text-gray-900 font-extrabold leading-tight" data-testid="text-hero-subtitle">
-          Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-        </h2>
-
-        <p className="text-base text-center text-gray-700 mb-6 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-hero-description">
-          Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
-        </p>
-
-        <div className="text-center mb-6">
-          <Button 
-            size="lg" 
-            className="bg-green-500 hover:bg-green-600 text-white px-10 py-5 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold animate-pulse"
-            onClick={() => scrollToSection("pricing")}
-            data-testid="button-hero-cta"
-          >
-            QUERO ME INSCREVER
-          </Button>
-        </div>
-
-        <p className="text-center text-red-600 font-bold flex items-center justify-center gap-2" data-testid="text-promo-notice">
-          <span className="text-2xl animate-pulse">⏰</span>
-          <span className="text-sm uppercase tracking-wide">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
-        </p>
-      </section>
-
       {/* Products Section */}
-      <section id="products" className="py-12 md:py-20 px-4 bg-gray-900">
+      <section id="products" className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="text-products-title">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-12 text-[hsl(var(--color-text))]" data-testid="text-products-title">
             Confira as 5 peças que você aprenderá a fazer:
           </h2>
 
@@ -185,17 +187,17 @@ export default function Home() {
               { name: "Regata Bianca", image: regataBiancaImg, description: "Regata bege leve" },
               { name: "Blusa Violeta", image: blusaVioletaImg, description: "Blusa roxa moderna" }
             ].map((product, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700 hover:scale-105 transition-transform overflow-hidden" data-testid={`card-product-${index}`}>
-                <CardContent className="p-6">
-                  <div className="aspect-square bg-gray-700 rounded-lg mb-4 overflow-hidden">
+              <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-product-${index}`}>
+                <CardContent className="p-6 md:p-8">
+                  <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       data-testid={`image-product-${index}`}
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-white text-center" data-testid={`text-product-name-${index}`}>
+                  <h3 className="text-xl md:text-2xl font-semibold leading-snug text-[hsl(var(--color-text))] text-center" data-testid={`text-product-name-${index}`}>
                     {product.name}
                   </h3>
                 </CardContent>
@@ -206,34 +208,34 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-white to-pink-50">
+      <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-bg))]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-gray-900" data-testid="text-testimonials-title">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-12 text-[hsl(var(--color-text))]" data-testid="text-testimonials-title">
             DÁ UMA OLHADA NO QUE AS MINHAS ALUNAS ESTÃO DIZENDO
           </h2>
 
           <div className="relative">
-            <Card className="p-8 shadow-xl" data-testid={`card-testimonial-${currentTestimonial}`}>
+            <Card className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md p-6 md:p-8" data-testid={`card-testimonial-${currentTestimonial}`}>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                   <div>
                     <div className="flex items-center gap-1 mb-4">
                       {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="w-5 h-5 fill-[hsl(var(--color-accent))] text-[hsl(var(--color-accent))]" />
                       ))}
                     </div>
-                    <p className="text-gray-700 mb-4 italic" data-testid={`text-testimonial-content-${currentTestimonial}`}>
+                    <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-text))] mb-4 italic" data-testid={`text-testimonial-content-${currentTestimonial}`}>
                       "{testimonials[currentTestimonial].text}"
                     </p>
-                    <p className="font-semibold text-gray-900" data-testid={`text-testimonial-name-${currentTestimonial}`}>
+                    <p className="font-semibold text-[hsl(var(--color-text))]" data-testid={`text-testimonial-name-${currentTestimonial}`}>
                       — {testimonials[currentTestimonial].name}
                     </p>
                   </div>
-                  <div className="rounded-lg overflow-hidden shadow-lg">
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden">
                     <img 
                       src={testimonials[currentTestimonial].image} 
                       alt={`Depoimento de ${testimonials[currentTestimonial].name}`}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-full object-cover"
                       data-testid={`image-testimonial-${currentTestimonial}`}
                     />
                   </div>
@@ -243,18 +245,18 @@ export default function Home() {
 
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-lg hover:bg-[hsl(var(--color-muted))]"
               data-testid="button-testimonial-prev"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-6 h-6 text-[hsl(var(--color-text))]" />
             </button>
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[hsl(var(--color-surface))] rounded-full p-2 shadow-lg hover:bg-[hsl(var(--color-muted))]"
               data-testid="button-testimonial-next"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-6 h-6 text-[hsl(var(--color-text))]" />
             </button>
           </div>
 
@@ -264,7 +266,9 @@ export default function Home() {
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentTestimonial ? "bg-pink-600 w-8" : "bg-gray-300"
+                  index === currentTestimonial 
+                    ? "bg-[hsl(var(--color-primary))] w-8" 
+                    : "bg-[hsl(var(--color-border))]"
                 }`}
                 data-testid={`button-testimonial-indicator-${index}`}
               />
@@ -274,7 +278,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Button 
               size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-lg rounded-full shadow-xl"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-testimonials-cta"
             >
@@ -285,18 +289,18 @@ export default function Home() {
       </section>
 
       {/* Bonus Section */}
-      <section className="py-8 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50/30 to-white">
+      <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-6 md:mb-14">
-            <h2 className="text-xl md:text-5xl font-bold mb-2 md:mb-4 text-gray-900" data-testid="text-bonus-title">
-              Entrando hoje, você ganhará <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">3 bônus exclusivos</span>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-4 text-[hsl(var(--color-text))]" data-testid="text-bonus-title">
+              Entrando hoje, você ganhará <span className="text-[hsl(var(--color-primary))]">3 bônus exclusivos</span>
             </h2>
-            <p className="text-gray-600 text-sm md:text-xl max-w-2xl mx-auto">
+            <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-subtle))] max-w-2xl mx-auto">
               Tudo isso para garantir seu sucesso no crochê
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 title: "Bônus 1",
@@ -320,63 +324,47 @@ export default function Home() {
                 icon: "infinity"
               }
             ].map((bonus, index) => (
-              <Card key={index} className="group bg-white border border-gray-200 hover:border-green-400 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden relative transform md:hover:-translate-y-2" data-testid={`card-bonus-${index}`}>
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-emerald-50/0 group-hover:from-green-50/10 group-hover:to-emerald-50/10 transition-all duration-300 pointer-events-none z-0"></div>
-                
-                <CardContent className="p-3 md:p-8 relative z-10">
+              <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-bonus-${index}`}>
+                <CardContent className="p-6 md:p-8">
                   {bonus.image ? (
-                    <div className="mb-3 md:mb-6 rounded-lg md:rounded-xl overflow-hidden h-24 md:h-48 shadow-md">
+                    <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden">
                       <img 
                         src={bonus.image} 
                         alt={bonus.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         data-testid={`image-bonus-${index}`}
                       />
                     </div>
                   ) : (
-                    <div className="mb-3 md:mb-6 h-24 md:h-48 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-lg md:rounded-xl flex items-center justify-center shadow-inner relative overflow-hidden">
-                      {/* Background pattern */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="absolute inset-0" style={{
-                          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(34, 197, 94, 0.1) 10px, rgba(34, 197, 94, 0.1) 20px)`,
-                        }}></div>
-                      </div>
-                      
+                    <div className="aspect-[4/3] bg-[hsl(var(--color-muted))] rounded-lg mb-6 flex items-center justify-center">
                       {bonus.icon === "whatsapp" && (
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-green-500/20 blur-3xl"></div>
-                          <Users className="w-12 h-12 md:w-24 md:h-24 text-green-600 relative z-10 drop-shadow-lg" />
-                        </div>
+                        <Users className="w-16 h-16 md:w-20 md:h-20 text-[hsl(var(--color-primary))]" />
                       )}
                       {bonus.icon === "infinity" && (
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-emerald-500/20 blur-3xl"></div>
-                          <Infinity className="w-12 h-12 md:w-24 md:h-24 text-emerald-600 relative z-10 drop-shadow-lg" />
-                        </div>
+                        <Infinity className="w-16 h-16 md:w-20 md:h-20 text-[hsl(var(--color-primary))]" />
                       )}
                     </div>
                   )}
                   
-                  <div className="mb-2 md:mb-4">
-                    <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-2 md:px-4 py-0.5 md:py-1.5 shadow-md text-xs md:text-sm font-medium" data-testid={`badge-bonus-${index}`}>
+                  <div className="mb-4">
+                    <Badge className="bg-[hsl(var(--color-accent))] text-[hsl(var(--color-accent-foreground))] border-0 px-3 py-1 text-sm md:text-base font-medium" data-testid={`badge-bonus-${index}`}>
                       {bonus.title}
                     </Badge>
                   </div>
 
-                  <h3 className="text-sm md:text-xl font-bold mb-1 md:mb-3 text-gray-900 group-hover:text-green-700 transition-colors" data-testid={`text-bonus-name-${index}`}>
+                  <h3 className="text-xl md:text-2xl font-semibold leading-snug mb-3 text-[hsl(var(--color-text))]" data-testid={`text-bonus-name-${index}`}>
                     {bonus.name}
                   </h3>
-                  <p className="text-xs md:text-base text-gray-600 leading-relaxed mb-3 md:mb-6" data-testid={`text-bonus-description-${index}`}>
+                  <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-subtle))] mb-6" data-testid={`text-bonus-description-${index}`}>
                     {bonus.description}
                   </p>
 
-                  <div className="pt-2 md:pt-4 border-t border-gray-100">
-                    <div className="flex items-center gap-1 md:gap-2">
-                      <div className="w-5 h-5 md:w-8 md:h-8 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center shadow-sm">
-                        <Check className="w-3 h-3 md:w-5 md:h-5 text-green-600" />
+                  <div className="pt-4 border-t border-[hsl(var(--color-border))]">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-[hsl(var(--color-primary))]/10 rounded-full flex items-center justify-center">
+                        <Check className="w-4 h-4 text-[hsl(var(--color-primary))]" />
                       </div>
-                      <p className="text-green-700 font-semibold text-xs md:text-sm">
+                      <p className="text-[hsl(var(--color-primary))] font-semibold text-sm md:text-base">
                         Incluído gratuitamente
                       </p>
                     </div>
@@ -386,13 +374,13 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-6 md:mt-14">
-            <p className="text-gray-700 mb-3 md:mb-6 text-sm md:text-lg">
-              Total de bônus: <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 text-base md:text-xl">3 recursos exclusivos</span> para acelerar seu aprendizado
+          <div className="text-center mt-12">
+            <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-text))] mb-6">
+              Total de bônus: <span className="font-bold text-[hsl(var(--color-primary))]">3 recursos exclusivos</span> para acelerar seu aprendizado
             </p>
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 md:px-12 py-4 md:py-7 text-sm md:text-lg rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.4)] transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 font-bold"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-bonus-cta"
             >
@@ -403,21 +391,21 @@ export default function Home() {
       </section>
 
       {/* Guarantee Section */}
-      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-bg))]">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="bg-green-50 rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 flex items-center justify-center">
-            <Shield className="w-16 h-16 md:w-20 md:h-20 text-green-600" />
+          <div className="bg-[hsl(var(--color-primary))]/10 rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 flex items-center justify-center">
+            <Shield className="w-16 h-16 md:w-20 md:h-20 text-[hsl(var(--color-cta))]" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900" data-testid="text-guarantee-title">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight mb-6 text-[hsl(var(--color-text))]" data-testid="text-guarantee-title">
             7 DIAS DE GARANTIA
           </h2>
-          <p className="text-lg text-gray-700 leading-relaxed" data-testid="text-guarantee-content">
+          <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-subtle))]" data-testid="text-guarantee-content">
             Você tem 7 dias para testar o curso. Se por qualquer motivo você não ficar satisfeita, 
             basta solicitar o reembolso e devolveremos 100% do seu investimento. Sem perguntas, 
             sem burocracia. Essa é nossa garantia de qualidade!
           </p>
-          <div className="mt-8 p-4 bg-green-100 rounded-lg inline-block">
-            <p className="text-green-800 font-semibold">
+          <div className="mt-8 p-4 bg-[hsl(var(--color-primary))]/10 rounded-lg inline-block">
+            <p className="text-[hsl(var(--color-primary))] font-semibold text-sm md:text-base">
               ✓ Garantia total de satisfação ou seu dinheiro de volta
             </p>
           </div>
@@ -425,23 +413,23 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-8 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50/20 to-white">
+      <section id="pricing" className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-2xl mx-auto">
-          <Card className="relative bg-white border-2 border-green-400 shadow-[0_20px_50px_rgba(34,197,94,0.15)] hover:shadow-[0_30px_60px_rgba(34,197,94,0.25)] transition-all duration-300" data-testid="card-pricing">
+          <Card className="relative rounded-xl border-2 border-[hsl(var(--color-primary))] bg-[hsl(var(--color-surface))] shadow-xl hover:shadow-2xl transition-shadow" data-testid="card-pricing">
             {/* Premium badge */}
-            <div className="absolute -top-3 md:-top-5 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 md:px-6 py-1 md:py-2 rounded-full shadow-lg">
-                <p className="text-xs md:text-sm font-bold uppercase tracking-wide">Oferta Especial</p>
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="bg-[hsl(var(--color-accent))] text-[hsl(var(--color-accent-foreground))] px-6 py-2 rounded-full shadow-lg">
+                <p className="text-sm md:text-base font-bold uppercase tracking-wide">Oferta Especial</p>
               </div>
             </div>
             
-            <CardContent className="p-4 md:p-10">
-              <h3 className="text-xl md:text-3xl font-bold text-center mb-4 md:mb-8 text-gray-900" data-testid="text-pricing-title">
+            <CardContent className="p-6 md:p-10">
+              <h3 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-8 text-[hsl(var(--color-text))]" data-testid="text-pricing-title">
                 Coleção Crochês que Mais Vendem
               </h3>
 
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg md:rounded-xl p-3 md:p-6 mb-4 md:mb-8">
-                <div className="space-y-2 md:space-y-3">
+              <div className="bg-[hsl(var(--color-muted))] rounded-xl p-6 mb-8">
+                <div className="space-y-3">
                   {[
                     "5 peças completas em vídeo aulas",
                     "Passo a passo detalhado",
@@ -451,124 +439,116 @@ export default function Home() {
                     "Grupo exclusivo no WhatsApp",
                     "Curso bônus de fundamentos"
                   ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-2 md:gap-3" data-testid={`text-pricing-item-${index}`}>
-                      <div className="w-4 h-4 md:w-6 md:h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
-                        <Check className="w-3 h-3 md:w-4 md:h-4 text-white" />
+                    <div key={index} className="flex items-start gap-3" data-testid={`text-pricing-item-${index}`}>
+                      <div className="w-5 h-5 bg-[hsl(var(--color-cta))]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-[hsl(var(--color-cta))]" />
                       </div>
-                      <span className="text-xs md:text-base text-gray-700 font-medium">{item}</span>
+                      <span className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-text))]">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="text-center mb-4 md:mb-8 p-3 md:p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg md:rounded-xl">
-                <p className="text-gray-500 line-through text-sm md:text-xl mb-2 md:mb-3" data-testid="text-pricing-original">
-                  De R$ 250
+              <div className="text-center mb-8 p-6 bg-[hsl(var(--color-muted))] rounded-xl">
+                <p className="text-[hsl(var(--color-subtle))] line-through text-base md:text-lg mb-3" data-testid="text-pricing-original">
+                  De R$ 297,00
                 </p>
-                <div className="space-y-2 md:space-y-3">
-                  <div className="bg-white rounded-lg p-2 md:p-4 shadow-inner">
-                    <p className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600" data-testid="text-pricing-installments">
-                      11x de R$ 5,14
-                    </p>
-                  </div>
-                  <p className="text-sm md:text-xl text-gray-600 font-medium" data-testid="text-pricing-cash">
-                    ou <span className="font-bold text-green-600">R$ 47</span> à vista
-                  </p>
-                </div>
+                <p className="text-3xl md:text-5xl font-bold text-[hsl(var(--color-cta))] mb-2" data-testid="text-pricing-discounted">
+                  R$ 97,00
+                </p>
+                <p className="text-sm md:text-base text-[hsl(var(--color-subtle))]" data-testid="text-pricing-installments">
+                  ou em até 10x de R$ 9,70
+                </p>
               </div>
 
               <Button 
                 size="lg" 
-                className="w-full bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 hover:from-green-700 hover:via-emerald-700 hover:to-green-700 text-white py-4 md:py-7 text-sm md:text-xl rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.5)] transform hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 font-bold relative overflow-hidden group"
+                className="w-full bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+                onClick={() => window.open('#', '_blank')}
                 data-testid="button-pricing-cta"
               >
-                <span className="relative z-10">QUERO ME INSCREVER AGORA</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                GARANTIR MINHA VAGA AGORA
               </Button>
 
-              <div className="mt-3 md:mt-6 flex items-center justify-center gap-1 md:gap-2">
-                <div className="animate-pulse flex items-center gap-1 md:gap-2">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full"></div>
-                  <p className="text-red-600 font-bold text-xs md:text-sm uppercase tracking-wide" data-testid="text-pricing-urgency">
-                    Vagas Limitadas
-                  </p>
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full"></div>
-                </div>
-              </div>
+              <p className="text-center text-sm md:text-base text-[hsl(var(--color-subtle))] mt-6" data-testid="text-pricing-urgency">
+                ⚡ Últimas vagas com desconto especial
+              </p>
             </CardContent>
           </Card>
-
-          {/* Trust badges */}
-          <div className="mt-8 flex justify-center items-center gap-8">
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Compra Segura</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Check className="w-5 h-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Satisfação Garantida</span>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* About Instructor Section */}
-      <section className="py-8 md:py-12 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Title */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white" data-testid="text-about-title">
-              Conheça sua Professora
-            </h2>
-          </div>
-
+      <section className="py-10 md:py-16 px-4 bg-gradient-to-b from-[hsl(var(--color-bg))] to-[hsl(var(--color-muted))]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-12 text-[hsl(var(--color-text))]" data-testid="text-about-title">
+            Conheça sua professora
+          </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Image Column with CTA */}
-            <div>
-              <div className="relative">
-                <div className="bg-gray-800 rounded-xl overflow-hidden shadow-xl">
-                  <div className="h-[300px] md:h-[400px] flex items-center justify-center bg-gradient-to-b from-gray-700 to-gray-800">
-                    <img 
-                      src={instructorAboutImg} 
-                      alt="Professora Claudete Oliveira"
-                      className="w-full h-full object-contain"
-                      data-testid="image-instructor-about"
-                    />
-                  </div>
-                </div>
-                
-                {/* CTA Button below image */}
-                <div className="mt-4">
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-green-600 hover:bg-green-700 text-white py-5 text-lg rounded-full shadow-xl font-bold"
-                    onClick={() => scrollToSection("pricing")}
-                    data-testid="button-instructor-cta"
-                  >
-                    QUERO ME INSCREVER
-                  </Button>
-                </div>
-              </div>
+            <div className="aspect-[4/3] rounded-xl overflow-hidden">
+              <img 
+                src={instructorAboutImg}
+                alt="Claudete - Professora de Crochê"
+                className="w-full h-full object-cover"
+                data-testid="image-instructor"
+              />
             </div>
-
-            {/* Content Column - Simple and Clean */}
-            <div>
-              <div className="space-y-4">
-                {/* Name */}
-                <h3 className="text-2xl md:text-3xl font-bold text-white" data-testid="text-instructor-name">
-                  Claudete Oliveira
-                </h3>
-
-                {/* Brief Bio - 2-3 lines only */}
-                <p className="text-gray-300 text-base leading-relaxed" data-testid="text-instructor-bio">
-                  Com mais de 30 anos de experiência no mundo do crochê, já ensinei mais de 2000 alunas a transformarem 
-                  essa arte em fonte de renda. Agora compartilho com você as 5 peças mais vendidas do meu ateliê.
-                </p>
+            
+            <div className="space-y-4">
+              <h3 className="text-xl md:text-2xl font-semibold leading-snug text-[hsl(var(--color-text))]" data-testid="text-instructor-name">
+                Claudete - Especialista em Crochê
+              </h3>
+              <p className="text-base md:text-lg leading-relaxed text-[hsl(var(--color-subtle))]" data-testid="text-instructor-bio">
+                Com mais de 15 anos de experiência no mundo do crochê, já ensinei centenas de alunas a transformarem 
+                sua paixão em uma fonte de renda. Minhas peças são conhecidas pela qualidade e beleza, e agora quero 
+                compartilhar todos os meus segredos com você.
+              </p>
+              <div className="flex items-center gap-4 pt-4">
+                <div className="text-center">
+                  <p className="text-2xl md:text-3xl font-bold text-[hsl(var(--color-primary))]">500+</p>
+                  <p className="text-sm md:text-base text-[hsl(var(--color-subtle))]">Alunas formadas</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl md:text-3xl font-bold text-[hsl(var(--color-primary))]">15+</p>
+                  <p className="text-sm md:text-base text-[hsl(var(--color-subtle))]">Anos de experiência</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl md:text-3xl font-bold text-[hsl(var(--color-primary))]">98%</p>
+                  <p className="text-sm md:text-base text-[hsl(var(--color-subtle))]">Satisfação</p>
+                </div>
               </div>
+              
+              <Button 
+                size="lg" 
+                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 shadow-lg hover:opacity-95 transition-opacity font-bold text-base md:text-lg"
+                onClick={() => scrollToSection("pricing")}
+                data-testid="button-about-cta"
+              >
+                COMEÇAR AGORA
+              </Button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer with Logo */}
+      <footer className="py-10 md:py-16 px-4 bg-[hsl(var(--color-text))] text-[hsl(var(--color-surface))]">
+        <div className="max-w-6xl mx-auto text-center">
+          <img 
+            src={logoImg}
+            alt="Logo"
+            className="h-16 md:h-20 mx-auto mb-6 opacity-90"
+            data-testid="image-footer-logo"
+          />
+          <p className="text-sm md:text-base mb-2" data-testid="text-footer-copyright">
+            © 2024 Coleção Crochês que Mais Vendem. Todos os direitos reservados.
+          </p>
+          <p className="text-sm md:text-base opacity-80" data-testid="text-footer-contact">
+            Suporte: contato@crochequevendem.com.br
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }

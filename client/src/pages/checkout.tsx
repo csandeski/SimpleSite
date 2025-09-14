@@ -180,32 +180,6 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* Hero Text */}
-          <div className="text-center space-y-4">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[hsl(var(--color-primary))] to-[hsl(var(--color-accent))] bg-clip-text text-transparent" data-testid="text-checkout-title">
-              Coleção Crochês que Mais Vendem
-            </h1>
-            
-            <p className="text-lg md:text-xl text-[hsl(var(--color-text))]" data-testid="text-checkout-subtitle">
-              Finalize sua inscrição e
-            </p>
-            
-            <p className="text-xl md:text-2xl font-bold text-[hsl(var(--color-text))] uppercase tracking-wide max-w-3xl mx-auto" data-testid="text-checkout-main">
-              Aprenda a fazer as 5 peças de crochê mais vendidas do meu ateliê
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base text-[hsl(var(--color-subtle))]">
-              <span className="flex items-center gap-2">
-                ✓ Grupo de Alunas
-              </span>
-              <span className="flex items-center gap-2">
-                ✓ Acesso vitalício
-              </span>
-              <span className="flex items-center gap-2">
-                ✓ Garantia de 7 Dias
-              </span>
-            </div>
-          </div>
         </div>
       </section>
 

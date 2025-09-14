@@ -69,7 +69,13 @@ export class PIXService {
     }
     
     try {
-      const response = await fetch(`${this.apiUrl}${endpoint}`, {
+      const url = `${this.apiUrl}${endpoint}`;
+      console.log(`PIX API Request: ${method} ${url}`);
+      if (body) {
+        console.log("PIX API Request Body:", JSON.stringify(body, null, 2));
+      }
+      
+      const response = await fetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -79,9 +85,11 @@ export class PIXService {
       });
 
       const data = await response.json();
+      console.log("PIX API Response:", JSON.stringify(data, null, 2));
 
       if (!response.ok) {
-        throw new Error(data.error || `API Error: ${response.status}`);
+        console.error("PIX API Error Response:", data);
+        throw new Error(data.error || data.message || `API Error: ${response.status}`);
       }
 
       return data;

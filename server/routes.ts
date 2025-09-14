@@ -35,15 +35,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Generate external ID
       const externalId = pixService.generateExternalId();
       
-      // Get client IP
-      const clientIp = req.headers['x-forwarded-for'] as string || req.socket.remoteAddress || '';
+      // Get client IP (take first IP if multiple)
+      const forwardedIps = req.headers['x-forwarded-for'] as string || '';
+      const clientIp = forwardedIps.split(',')[0].trim() || req.socket.remoteAddress || '127.0.0.1';
       
       // Prepare PIX API request
       const pixRequest = {
         external_id: externalId,
         total_amount: validatedData.totalAmount,
         payment_method: "PIX" as const,
-        webhook_url: `${process.env.APP_URL || 'http://localhost:5000'}/api/pix/webhook`,
+        webhook_url: `${process.env.APP_URL || 'https://webhook.site/unique-id'}/api/pix/webhook`,
         items: validatedData.items.map(item => ({
           ...item,
           is_physical: false,

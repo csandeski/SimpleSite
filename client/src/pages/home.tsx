@@ -75,38 +75,38 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative px-4 bg-cover bg-no-repeat"
+        className="relative bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${instructorHeroImg})`,
-          backgroundPosition: '50% 35%',
+          backgroundPosition: '50% 25%',
           backgroundSize: 'cover',
         }}
       >
         {/* Light overlay for text readability */}
         <div className="absolute inset-0 bg-white bg-opacity-10"></div>
         {/* Bottom gradient overlay for text readability */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[600px] md:min-h-[700px] pt-6 pb-10">
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[550px] md:min-h-[700px] pb-8">
           {/* Title in overlay box */}
-          <div className="bg-amber-50/95 rounded-3xl p-4 md:p-8 mb-6 max-w-xl md:max-w-3xl shadow-2xl border border-amber-100">
-            <h1 className="text-2xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
+          <div className="bg-amber-50/95 rounded-2xl p-3 md:p-8 mb-4 max-w-[280px] md:max-w-3xl shadow-2xl border border-amber-100">
+            <h1 className="text-xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
               Coleção Crochês que Mais Vendem
             </h1>
           </div>
           
-          <h2 className="text-lg md:text-2xl text-center mb-4 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
+          <h2 className="text-base md:text-2xl text-center mb-3 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
           </h2>
 
-          <p className="text-center text-gray-800 mb-6 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
+          <p className="text-sm md:text-base text-center text-gray-800 mb-4 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
           </p>
 
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <Button 
               size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white px-10 py-6 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 md:px-10 md:py-6 text-base md:text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all font-bold"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta"
             >
@@ -114,9 +114,9 @@ export default function Home() {
             </Button>
           </div>
 
-          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-2 px-4" data-testid="text-promo-notice">
-            <span className="text-2xl">⏰</span>
-            <span className="text-base md:text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+          <p className="text-center text-gray-900 font-bold flex items-center justify-center gap-1 px-4" data-testid="text-promo-notice">
+            <span className="text-xl">⏰</span>
+            <span className="text-sm md:text-lg">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
           </p>
         </div>
       </section>

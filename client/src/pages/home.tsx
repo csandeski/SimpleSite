@@ -75,23 +75,37 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative bg-white"
-        style={{
-          backgroundImage: `url(${instructorHeroImg})`,
-          backgroundPosition: 'center top',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-        }}
+        className="relative bg-gradient-to-b from-amber-50 to-white overflow-hidden"
       >
-        {/* Light overlay for text readability - only on larger screens where image might cover */}
-        <div className="absolute inset-0 bg-white bg-opacity-10 md:block hidden"></div>
-        {/* Bottom gradient overlay for text readability - only on desktop */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent md:block hidden" />
+        {/* Desktop Layout with background image */}
+        <div 
+          className="hidden md:block absolute inset-0"
+          style={{
+            backgroundImage: `url(${instructorHeroImg})`,
+            backgroundPosition: 'center 20%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          {/* Light overlay for text readability */}
+          <div className="absolute inset-0 bg-white bg-opacity-10"></div>
+          {/* Bottom gradient overlay for text readability */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
+        </div>
         
-        {/* Mobile Layout - Only image */}
-        <div className="md:hidden relative" style={{ height: '280px' }}>
+        {/* Mobile Layout - Full width image */}
+        <div 
+          className="md:hidden relative" 
+          style={{ 
+            height: '400px',
+            backgroundImage: `url(${instructorHeroImg})`,
+            backgroundPosition: 'center 15%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
           {/* Bottom gradient overlay for smooth transition */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent z-10" />
         </div>
 
         {/* Desktop Layout - Keep original structure */}

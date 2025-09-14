@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Shield, Check, ChevronLeft, ChevronRight, Users, Infinity } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 // Import all images
 import instructorHeroImg from "@assets/imgi_1_3279038_1_175616576468acf684611e1979289725_1757863401608.png";
@@ -23,6 +24,7 @@ import lifetimeAccessImg from "@assets/generated_images/Lifetime_access_infinity
 
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [, setLocation] = useLocation();
 
   const testimonials = [
     {
@@ -439,7 +441,7 @@ export default function Home() {
               <Button 
                 size="lg" 
                 className="w-full relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
-                onClick={() => window.open('#', '_blank')}
+                onClick={() => setLocation('/checkout')}
                 data-testid="button-pricing-cta"
               >
                 GARANTIR MINHA VAGA AGORA

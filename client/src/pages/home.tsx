@@ -454,10 +454,10 @@ export default function Home() {
                   De R$ 297,00
                 </p>
                 <p className="text-3xl md:text-5xl font-bold text-[hsl(var(--color-cta))] mb-2" data-testid="text-pricing-discounted">
-                  R$ 97,00
+                  R$ 29,90
                 </p>
                 <p className="text-sm md:text-base text-[hsl(var(--color-subtle))]" data-testid="text-pricing-installments">
-                  ou em até 10x de R$ 9,70
+                  ou em até 10x de R$ 2,99
                 </p>
               </div>
 

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Shield, Check, ChevronLeft, ChevronRight, Users } from "lucide-react";
+import { Star, Shield, Check, ChevronLeft, ChevronRight, Users, MessageCircle, Infinity } from "lucide-react";
 import { useState } from "react";
 
 // Import all images
@@ -271,71 +271,129 @@ export default function Home() {
       </section>
 
       {/* Bonus Section */}
-      <section className="py-12 md:py-20 px-4 bg-gray-900">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50/30 to-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="text-bonus-title">
-            Entrando hoje, você ganhará 3 bônus exclusivos:
-          </h2>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900" data-testid="text-bonus-title">
+              Entrando hoje, você ganhará <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">3 bônus exclusivos</span>
+            </h2>
+            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+              Tudo isso para garantir seu sucesso no crochê
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "Bônus 1",
                 name: "Curso de Crochê Fundamental",
-                description: "Aprenda do zero todas as técnicas básicas do crochê",
-                value: "R$ 97",
-                image: crochetHandsImg
+                description: "Aprenda do zero todas as técnicas básicas do crochê com aulas detalhadas",
+                image: crochetHandsImg,
+                icon: null
               },
               {
                 title: "Bônus 2",
                 name: "Grupo Exclusivo de Alunas",
-                description: "Acesso ao grupo no WhatsApp com suporte direto",
-                value: "R$ 67",
-                image: null
+                description: "Acesso ao grupo no WhatsApp com suporte direto e tira-dúvidas diárias",
+                image: null,
+                icon: "whatsapp"
               },
               {
                 title: "Bônus 3",
                 name: "Acesso Vitalício",
-                description: "Acesso para sempre ao curso e todas as atualizações",
-                value: "Inestimável",
-                image: null
+                description: "Acesso para sempre ao curso e todas as atualizações futuras",
+                image: null,
+                icon: "infinity"
               }
             ].map((bonus, index) => (
-              <Card key={index} className="bg-gradient-to-br from-amber-500 to-amber-600 border-0 overflow-hidden" data-testid={`card-bonus-${index}`}>
-                <CardContent className="p-6 text-white">
-                  {bonus.image && (
-                    <div className="mb-4 rounded-lg overflow-hidden">
+              <Card key={index} className="group bg-white border border-gray-200 hover:border-green-400 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden relative transform hover:-translate-y-2" data-testid={`card-bonus-${index}`}>
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-emerald-50/0 group-hover:from-green-50/10 group-hover:to-emerald-50/10 transition-all duration-300 pointer-events-none z-0"></div>
+                
+                <CardContent className="p-8 relative z-10">
+                  {bonus.image ? (
+                    <div className="mb-6 rounded-xl overflow-hidden h-48 shadow-md">
                       <img 
                         src={bonus.image} 
                         alt={bonus.name}
-                        className="w-full h-32 object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         data-testid={`image-bonus-${index}`}
                       />
                     </div>
+                  ) : (
+                    <div className="mb-6 h-48 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-xl flex items-center justify-center shadow-inner relative overflow-hidden">
+                      {/* Background pattern */}
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="absolute inset-0" style={{
+                          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(34, 197, 94, 0.1) 10px, rgba(34, 197, 94, 0.1) 20px)`,
+                        }}></div>
+                      </div>
+                      
+                      {bonus.icon === "whatsapp" && (
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-green-500/20 blur-3xl"></div>
+                          <Users className="w-24 h-24 text-green-600 relative z-10 drop-shadow-lg" />
+                        </div>
+                      )}
+                      {bonus.icon === "infinity" && (
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-emerald-500/20 blur-3xl"></div>
+                          <Infinity className="w-24 h-24 text-emerald-600 relative z-10 drop-shadow-lg" />
+                        </div>
+                      )}
+                    </div>
                   )}
-                  <Badge className="bg-red-600 text-white mb-3" data-testid={`badge-bonus-${index}`}>
-                    {bonus.title}
-                  </Badge>
-                  <h3 className="text-xl font-bold mb-2" data-testid={`text-bonus-name-${index}`}>
+                  
+                  <div className="mb-4">
+                    <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-4 py-1.5 shadow-md text-sm font-medium" data-testid={`badge-bonus-${index}`}>
+                      {bonus.title}
+                    </Badge>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-green-700 transition-colors" data-testid={`text-bonus-name-${index}`}>
                     {bonus.name}
                   </h3>
-                  <p className="text-amber-100 mb-4" data-testid={`text-bonus-description-${index}`}>
+                  <p className="text-gray-600 leading-relaxed mb-6" data-testid={`text-bonus-description-${index}`}>
                     {bonus.description}
                   </p>
-                  <p className="text-2xl font-bold" data-testid={`text-bonus-value-${index}`}>
-                    Valor: {bonus.value}
-                  </p>
+
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center shadow-sm">
+                        <Check className="w-5 h-5 text-green-600" />
+                      </div>
+                      <p className="text-green-700 font-semibold text-sm">
+                        Incluído gratuitamente
+                      </p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="text-center mt-14">
+            <p className="text-gray-700 mb-6 text-lg">
+              Total de bônus: <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 text-xl">3 recursos exclusivos</span> para acelerar seu aprendizado
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-12 py-7 text-lg rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.4)] transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 font-bold"
+              onClick={() => scrollToSection("pricing")}
+              data-testid="button-bonus-cta"
+            >
+              QUERO TODOS OS BÔNUS
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Guarantee Section */}
-      <section className="py-12 md:py-20 px-4 bg-gradient-to-r from-orange-100 to-orange-200">
+      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-3xl mx-auto text-center">
-          <Shield className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 text-orange-600" />
+          <div className="bg-green-50 rounded-full w-24 h-24 md:w-28 md:h-28 mx-auto mb-6 flex items-center justify-center">
+            <Shield className="w-16 h-16 md:w-20 md:h-20 text-green-600" />
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900" data-testid="text-guarantee-title">
             7 DIAS DE GARANTIA
           </h2>
@@ -344,62 +402,99 @@ export default function Home() {
             basta solicitar o reembolso e devolveremos 100% do seu investimento. Sem perguntas, 
             sem burocracia. Essa é nossa garantia de qualidade!
           </p>
+          <div className="mt-8 p-4 bg-green-100 rounded-lg inline-block">
+            <p className="text-green-800 font-semibold">
+              ✓ Garantia total de satisfação ou seu dinheiro de volta
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-12 md:py-20 px-4 bg-white">
+      <section id="pricing" className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-gray-50/20 to-white">
         <div className="max-w-2xl mx-auto">
-          <Card className="border-4 border-green-500 shadow-2xl" data-testid="card-pricing">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-center mb-6 text-gray-900" data-testid="text-pricing-title">
+          <Card className="relative bg-white border-2 border-green-400 shadow-[0_20px_50px_rgba(34,197,94,0.15)] hover:shadow-[0_30px_60px_rgba(34,197,94,0.25)] transition-all duration-300" data-testid="card-pricing">
+            {/* Premium badge */}
+            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-6 py-2 rounded-full shadow-lg">
+                <p className="text-sm font-bold uppercase tracking-wide">Oferta Especial</p>
+              </div>
+            </div>
+            
+            <CardContent className="p-10">
+              <h3 className="text-3xl font-bold text-center mb-8 text-gray-900" data-testid="text-pricing-title">
                 Coleção Crochês que Mais Vendem
               </h3>
 
-              <div className="space-y-3 mb-8">
-                {[
-                  "✅ 5 peças completas em vídeo aulas",
-                  "✅ Passo a passo detalhado",
-                  "✅ Suporte direto com a professora",
-                  "✅ Certificado de conclusão",
-                  "✅ Acesso vitalício",
-                  "✅ Grupo exclusivo no WhatsApp",
-                  "✅ Curso bônus de fundamentos"
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-2" data-testid={`text-pricing-item-${index}`}>
-                    <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{item.substring(2)}</span>
-                  </div>
-                ))}
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 mb-8">
+                <div className="space-y-3">
+                  {[
+                    "5 peças completas em vídeo aulas",
+                    "Passo a passo detalhado",
+                    "Suporte direto com a professora",
+                    "Certificado de conclusão",
+                    "Acesso vitalício",
+                    "Grupo exclusivo no WhatsApp",
+                    "Curso bônus de fundamentos"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-3" data-testid={`text-pricing-item-${index}`}>
+                      <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-gray-700 font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="text-center mb-6">
-                <p className="text-gray-500 line-through text-xl mb-2" data-testid="text-pricing-original">
+              <div className="text-center mb-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl">
+                <p className="text-gray-500 line-through text-xl mb-3" data-testid="text-pricing-original">
                   De R$ 250
                 </p>
-                <div className="space-y-2">
-                  <p className="text-4xl font-bold text-green-600" data-testid="text-pricing-installments">
-                    11x de R$ 5,14
-                  </p>
-                  <p className="text-xl text-gray-600" data-testid="text-pricing-cash">
-                    ou R$ 47 à vista
+                <div className="space-y-3">
+                  <div className="bg-white rounded-lg p-4 shadow-inner">
+                    <p className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600" data-testid="text-pricing-installments">
+                      11x de R$ 5,14
+                    </p>
+                  </div>
+                  <p className="text-xl text-gray-600 font-medium" data-testid="text-pricing-cash">
+                    ou <span className="font-bold text-green-600">R$ 47</span> à vista
                   </p>
                 </div>
               </div>
 
               <Button 
                 size="lg" 
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-xl rounded-full shadow-xl"
+                className="w-full bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 hover:from-green-700 hover:via-emerald-700 hover:to-green-700 text-white py-7 text-xl rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.5)] transform hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 font-bold relative overflow-hidden group"
                 data-testid="button-pricing-cta"
               >
-                QUERO ME INSCREVER
+                <span className="relative z-10">QUERO ME INSCREVER AGORA</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
 
-              <p className="text-center text-red-600 font-semibold mt-4 animate-pulse" data-testid="text-pricing-urgency">
-                ⚠️ VAGAS LIMITADAS ⚠️
-              </p>
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <div className="animate-pulse flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <p className="text-red-600 font-bold text-sm uppercase tracking-wide" data-testid="text-pricing-urgency">
+                    Vagas Limitadas
+                  </p>
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                </div>
+              </div>
             </CardContent>
           </Card>
+
+          {/* Trust badges */}
+          <div className="mt-8 flex justify-center items-center gap-8">
+            <div className="flex items-center gap-2">
+              <Shield className="w-5 h-5 text-gray-600" />
+              <span className="text-sm text-gray-600">Compra Segura</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-5 h-5 text-gray-600" />
+              <span className="text-sm text-gray-600">Satisfação Garantida</span>
+            </div>
+          </div>
         </div>
       </section>
 

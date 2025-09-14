@@ -75,10 +75,10 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative bg-amber-50"
+        className="relative bg-white"
         style={{
           backgroundImage: `url(${instructorHeroImg})`,
-          backgroundPosition: 'center',
+          backgroundPosition: 'center top',
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
         }}
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent md:block hidden" />
         
         {/* Mobile Layout - Only image */}
-        <div className="md:hidden relative min-h-[500px]">
+        <div className="md:hidden relative" style={{ height: '400px' }}>
           {/* Empty - just show the image */}
         </div>
 

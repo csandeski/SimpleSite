@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Shield, Lock, ArrowDown, Check } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -78,7 +79,7 @@ export default function Checkout() {
 
   // Calculate total price
   const calculateTotal = () => {
-    let total = 29.90;
+    let total = 47.00;
     if (upsells.calculoFios) total += 9.90;
     if (upsells.acabamentos) total += 17.90;
     if (upsells.primaveraVerao) total += 29.90;
@@ -135,7 +136,7 @@ export default function Checkout() {
       <section className="relative bg-gradient-to-b from-[hsl(var(--color-muted))] to-[hsl(var(--color-bg))] py-8 md:py-12">
         <div className="max-w-4xl mx-auto px-4">
           {/* Banner Image */}
-          <div className="rounded-xl overflow-hidden mb-8 shadow-xl">
+          <div className="overflow-hidden mb-6">
             <img 
               src={bannerImg} 
               alt="Coleção Crochês que Mais Vendem"
@@ -145,34 +146,40 @@ export default function Checkout() {
           </div>
 
           {/* Product Card */}
-          <Card className="mb-8 border border-[hsl(var(--color-border))] bg-white dark:bg-gray-900">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-4">
+          <div className="mb-6 border border-gray-300 bg-white p-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
                 {/* Product Image */}
                 <img 
                   src={instructorImg}
                   alt="Claudete Oliveira"
-                  className="w-16 h-16 rounded-lg object-cover"
+                  className="w-14 h-14 object-cover border border-gray-200"
                   data-testid="image-product-instructor"
                 />
                 
                 {/* Product Info */}
-                <div className="flex-1">
-                  <h3 className="font-semibold text-[hsl(var(--color-text))]" data-testid="text-product-name">
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900" data-testid="text-product-name">
                     Coleção Crochês que Mais Vendem - Vitalício
                   </h3>
-                  <p className="text-2xl font-bold text-[hsl(var(--color-primary))] mt-1" data-testid="text-product-price">
-                    R$ {calculateTotal().toFixed(2).replace(".", ",")}
-                  </p>
-                </div>
-                
-                {/* Quantity */}
-                <div className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--color-muted))] rounded-lg">
-                  <span className="text-lg font-semibold text-[hsl(var(--color-text))]">+1</span>
+                  <p className="text-xs text-gray-500 line-through mt-1" data-testid="text-price-old">De: R$ 250,00</p>
+                  <p className="text-base font-bold text-gray-900" data-testid="text-price-new">Por: R$ 47,00</p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+              
+              {/* Dropdown */}
+              <Select defaultValue="1">
+                <SelectTrigger className="w-16 h-10 border-gray-300" data-testid="select-quantity">
+                  <SelectValue placeholder="1" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">1</SelectItem>
+                  <SelectItem value="2">2</SelectItem>
+                  <SelectItem value="3">3</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
 
           {/* Hero Text */}
           <div className="text-center space-y-4">
@@ -209,7 +216,7 @@ export default function Checkout() {
           {/* Left Column - Form */}
           <div className="lg:col-span-2 space-y-6">
             {/* Personal Information Form */}
-            <Card className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))]">
+            <Card className="border border-gray-300 bg-white">
               <CardContent className="p-6">
                 <h2 className="text-xl font-bold mb-6 text-[hsl(var(--color-text))]" data-testid="text-form-title">
                   Informações pessoais
@@ -228,7 +235,7 @@ export default function Checkout() {
                               placeholder="Digite seu nome completo" 
                               {...field}
                               data-testid="input-fullname"
-                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />
@@ -248,7 +255,7 @@ export default function Checkout() {
                               placeholder="seu@email.com" 
                               {...field}
                               data-testid="input-email"
-                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />
@@ -264,7 +271,7 @@ export default function Checkout() {
                           <FormLabel>Telefone</FormLabel>
                           <FormControl>
                             <div className="flex gap-2">
-                              <div className="flex items-center px-3 h-12 bg-[hsl(var(--color-muted))] rounded-l-md border border-r-0 border-gray-300">
+                              <div className="flex items-center px-3 h-12 bg-[hsl(var(--color-muted))] border border-r-0 border-gray-300">
                                 <span className="text-xl">🇧🇷</span>
                                 <span className="ml-2 text-sm text-[hsl(var(--color-subtle))]">+55</span>
                               </div>
@@ -273,7 +280,7 @@ export default function Checkout() {
                                 {...field}
                                 value={formatPhone(field.value)}
                                 onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
-                                className="rounded-l-none h-12 rounded-r-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                                className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
                                 data-testid="input-phone"
                               />
                             </div>
@@ -289,7 +296,7 @@ export default function Checkout() {
                         Método de pagamento
                       </h3>
                       
-                      <div className="bg-[hsl(var(--color-primary))]/10 border-2 border-[hsl(var(--color-primary))] rounded-lg p-4">
+                      <div className="bg-[hsl(var(--color-primary))]/10 border-2 border-[hsl(var(--color-primary))] p-4">
                         <div className="flex items-center gap-3">
                           <div className="w-5 h-5 rounded-full bg-[hsl(var(--color-primary))] flex items-center justify-center">
                             <div className="w-2 h-2 bg-white rounded-full" />
@@ -315,7 +322,7 @@ export default function Checkout() {
                               onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
                               maxLength={18}
                               data-testid="input-document"
-                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />
@@ -554,14 +561,14 @@ export default function Checkout() {
 
           {/* Right Column - Product Summary */}
           <div className="lg:col-span-1">
-            <Card className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] sticky top-20">
+            <Card className="border border-gray-300 bg-white sticky top-20">
               <CardContent className="p-6">
                 {/* Product Info */}
                 <div className="flex gap-4 mb-6">
                   <img 
                     src={instructorImg} 
                     alt="Claudete"
-                    className="w-16 h-16 rounded-lg object-cover"
+                    className="w-16 h-16 object-cover border border-gray-200"
                     data-testid="image-instructor-small"
                   />
                   <div className="flex-1">
@@ -570,7 +577,7 @@ export default function Checkout() {
                     </h3>
                     <div className="mt-2">
                       <p className="text-xs line-through text-[hsl(var(--color-subtle))]">De: R$ 250,00</p>
-                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 29,90</p>
+                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 47,00</p>
                     </div>
                   </div>
                 </div>
@@ -582,7 +589,7 @@ export default function Checkout() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-[hsl(var(--color-subtle))]">Curso principal</span>
-                      <span className="font-medium">R$ 29,90</span>
+                      <span className="font-medium">R$ 47,00</span>
                     </div>
                     
                     {upsells.calculoFios && (
@@ -621,7 +628,7 @@ export default function Checkout() {
                 </div>
 
                 {/* Guarantee Badge */}
-                <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
+                <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 text-center">
                   <Shield className="w-8 h-8 text-green-600 dark:text-green-400 mx-auto mb-2" />
                   <p className="text-xs font-bold text-green-700 dark:text-green-300">
                     7 DIAS DE GARANTIA

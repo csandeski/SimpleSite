@@ -1,16 +1,19 @@
 # Overview
 
-This is a full-stack web application built with a React frontend and Express.js backend. The project uses a modern TypeScript-based architecture with Vite for build tooling and shadcn/ui for component styling. The application is configured for PostgreSQL database integration using Drizzle ORM and includes a comprehensive UI component library based on Radix UI primitives.
+This is a full-stack web application built with a React frontend and Express.js backend. The project is a mobile-first crochet course sales landing page ("Coleção Crochês que Mais Vendem") featuring instructor Claudete Oliveira's course selling 5 popular crochet pieces. The application includes a comprehensive landing page with course information, testimonials, and a complete checkout page with PIX payment integration.
 
 # User Preferences
 
-Preferred communication style: Simple, everyday language.
+- Preferred communication style: Simple, everyday language
+- Design preferences: Clean, professional, mobile-first approach with warm craft-appropriate colors
+- UI Elements: Squared corners (not rounded), 3D buttons with green gradients
+- Payment: PIX-only payment method, no credit card options
 
 # System Architecture
 
 ## Frontend Architecture
 - **Framework**: React 18 with TypeScript
-- **Routing**: Wouter for client-side routing
+- **Routing**: Wouter for client-side routing  
 - **State Management**: TanStack React Query for server state management
 - **UI Components**: shadcn/ui component library built on Radix UI primitives
 - **Styling**: Tailwind CSS with CSS custom properties for theming
@@ -40,6 +43,41 @@ Preferred communication style: Simple, everyday language.
 - **Component Structure**: Atomic design with ui/, pages/, and hooks/ organization
 - **Theming**: CSS custom properties with light/dark mode support
 - **Accessibility**: Radix UI primitives ensure WCAG compliance
+
+# Application Features
+
+## Landing Page (/)
+- Hero section with course presentation
+- Pricing card with 3D button effects (R$ 29,90)
+- Product showcase with 5 crochet pieces
+- Student testimonials carousel
+- Bonus section with WhatsApp group (Portuguese interface)
+- FAQ section
+- Call-to-action buttons throughout
+
+## Checkout Page (/checkout)
+- Timer countdown for urgency
+- Product card with instructor image and pricing
+- Personal information form (name, email, phone, CPF/CNPJ)
+- PIX-only payment method
+- Three optional upsells with dynamic pricing
+- Order summary with real-time total calculation
+- Security badges and trust indicators
+
+# Design System
+
+## Color Palette
+- Primary: Rose/Pink tones for warmth
+- Accent: Emerald green for CTAs
+- Highlight: Amber for attention
+- Text: Dark grays for readability
+- Background: Light cream/beige tones
+
+## Typography
+- H1: text-3xl md:text-5xl
+- H2: text-2xl md:text-4xl
+- Body: text-base md:text-lg
+- All buttons: Squared corners with 3D gradient effects
 
 # External Dependencies
 
@@ -71,3 +109,11 @@ Preferred communication style: Simple, everyday language.
 - **drizzle-zod**: Integration between Drizzle ORM and Zod schemas
 - **date-fns**: Modern date utility library
 - **nanoid**: URL-safe unique string ID generator
+
+# Recent Changes
+
+- 2025-01-14: Updated checkout page with correct product card design (no rounded corners)
+- 2025-01-14: Fixed pricing to R$ 47,00 base price for consistency
+- 2025-01-14: Implemented PIX-only checkout with upsells functionality
+- 2025-01-14: Created Portuguese WhatsApp group mockup for bonus section
+- 2025-01-14: Standardized all buttons with 3D green gradient effects

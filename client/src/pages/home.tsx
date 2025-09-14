@@ -108,16 +108,10 @@ export default function Home() {
 
         {/* Desktop Content */}
         <div className="hidden md:flex relative z-10 max-w-6xl mx-auto flex-col items-center justify-end min-h-[700px] px-4 pb-12">
-          {/* Title in overlay box */}
-          <div className="bg-[hsl(var(--color-surface))]/95 rounded-2xl p-8 mb-6 max-w-3xl shadow-2xl border border-[hsl(var(--color-border))]">
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-center text-[hsl(var(--color-text))]" data-testid="text-hero-title-desktop">
-              Coleção Crochês que Mais Vendem
-            </h1>
-          </div>
-          
-          <h2 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-4 text-[hsl(var(--color-text))] max-w-2xl" data-testid="text-hero-subtitle-desktop">
+          {/* Main headline positioned to overlap the image */}
+          <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-4 text-white max-w-3xl drop-shadow-[0_3px_6px_rgba(0,0,0,0.9)] -mt-32" data-testid="text-hero-title-desktop">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-          </h2>
+          </h1>
 
           <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
@@ -140,15 +134,12 @@ export default function Home() {
       </section>
 
       {/* Mobile Hero Content Section */}
-      <section className="md:hidden py-10 px-4">
+      <section className="md:hidden relative -mt-24 pt-4 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-center mb-4 text-[hsl(var(--color-text))]" data-testid="text-hero-title">
-            Coleção Crochês que Mais Vendem
-          </h1>
-          
-          <h2 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-4 text-[hsl(var(--color-text))]" data-testid="text-hero-subtitle">
+          {/* Main headline positioned to overlap the image */}
+          <h1 className="text-xl md:text-2xl font-bold leading-tight text-center mb-4 text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.9)]" data-testid="text-hero-title">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-          </h2>
+          </h1>
 
           <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8" data-testid="text-hero-description">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana

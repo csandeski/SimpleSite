@@ -78,7 +78,7 @@ export default function Checkout() {
 
   // Calculate total price
   const calculateTotal = () => {
-    let total = 47.00;
+    let total = 29.90;
     if (upsells.calculoFios) total += 9.90;
     if (upsells.acabamentos) total += 17.90;
     if (upsells.primaveraVerao) total += 29.90;
@@ -162,7 +162,7 @@ export default function Checkout() {
                     Coleção Crochês que Mais Vendem - Vitalício
                   </h3>
                   <p className="text-xs text-gray-500 line-through mt-1" data-testid="text-price-old">De: R$ 250,00</p>
-                  <p className="text-base font-bold text-gray-900" data-testid="text-price-new">Por: R$ 47,00</p>
+                  <p className="text-base font-bold text-gray-900" data-testid="text-price-new">Por: R$ 29,90</p>
                 </div>
               </div>
               
@@ -538,7 +538,7 @@ export default function Checkout() {
                     </h3>
                     <div className="mt-2">
                       <p className="text-xs line-through text-[hsl(var(--color-subtle))]">De: R$ 250,00</p>
-                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 47,00</p>
+                      <p className="text-lg font-bold text-[hsl(var(--color-primary))]">Por: R$ 29,90</p>
                     </div>
                   </div>
                 </div>
@@ -550,7 +550,7 @@ export default function Checkout() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-[hsl(var(--color-subtle))]">Curso principal</span>
-                      <span className="font-medium">R$ 47,00</span>
+                      <span className="font-medium">R$ 29,90</span>
                     </div>
                     
                     {upsells.calculoFios && (

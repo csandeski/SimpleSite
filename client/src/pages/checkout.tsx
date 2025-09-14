@@ -198,6 +198,7 @@ export default function Checkout() {
                               placeholder="Digite seu nome completo" 
                               {...field}
                               data-testid="input-fullname"
+                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />
@@ -217,6 +218,7 @@ export default function Checkout() {
                               placeholder="seu@email.com" 
                               {...field}
                               data-testid="input-email"
+                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />
@@ -232,7 +234,7 @@ export default function Checkout() {
                           <FormLabel>Telefone</FormLabel>
                           <FormControl>
                             <div className="flex gap-2">
-                              <div className="flex items-center px-3 bg-[hsl(var(--color-muted))] rounded-l-md border border-r-0 border-[hsl(var(--color-border))]">
+                              <div className="flex items-center px-3 h-12 bg-[hsl(var(--color-muted))] rounded-l-md border border-r-0 border-gray-300">
                                 <span className="text-xl">🇧🇷</span>
                                 <span className="ml-2 text-sm text-[hsl(var(--color-subtle))]">+55</span>
                               </div>
@@ -241,7 +243,7 @@ export default function Checkout() {
                                 {...field}
                                 value={formatPhone(field.value)}
                                 onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
-                                className="rounded-l-none"
+                                className="rounded-l-none h-12 rounded-r-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
                                 data-testid="input-phone"
                               />
                             </div>
@@ -283,6 +285,7 @@ export default function Checkout() {
                               onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
                               maxLength={18}
                               data-testid="input-document"
+                              className="h-12 rounded-md border-gray-300 focus:border-[hsl(var(--color-primary))]"
                             />
                           </FormControl>
                           <FormMessage />

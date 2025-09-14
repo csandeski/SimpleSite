@@ -75,29 +75,31 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative min-h-[600px] md:min-h-[700px] py-16 px-4 bg-cover bg-center bg-no-repeat"
+        className="relative px-4 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${instructorHeroImg})`,
+          backgroundPosition: '50% 35%',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       >
         {/* Light overlay for text readability */}
         <div className="absolute inset-0 bg-white bg-opacity-10"></div>
+        {/* Bottom gradient overlay for text readability */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-white/80 to-transparent" />
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[600px] md:min-h-[700px] pt-6 pb-10">
           {/* Title in overlay box */}
-          <div className="bg-amber-50/95 rounded-3xl p-6 md:p-10 mb-8 mx-auto max-w-3xl shadow-2xl border border-amber-100">
-            <h1 className="text-3xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
+          <div className="bg-amber-50/95 rounded-3xl p-4 md:p-8 mb-6 max-w-xl md:max-w-3xl shadow-2xl border border-amber-100">
+            <h1 className="text-2xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">
               Coleção Crochês que Mais Vendem
             </h1>
           </div>
           
-          <h2 className="text-xl md:text-2xl text-center mb-6 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
+          <h2 className="text-lg md:text-2xl text-center mb-4 text-gray-900 font-bold px-4" data-testid="text-hero-subtitle">
             Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
           </h2>
 
-          <p className="text-center text-gray-800 mb-8 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
+          <p className="text-center text-gray-800 mb-6 max-w-2xl mx-auto font-medium px-4" data-testid="text-hero-description">
             Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
           </p>
 

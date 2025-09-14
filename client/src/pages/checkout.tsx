@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Shield, Lock, ChevronDown, ChevronUp } from "lucide-react";
+import { Shield, Lock, ArrowDown, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -23,6 +22,10 @@ import {
 // Import images
 import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
 import instructorImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
+// Upsell product images
+import calculoFiosImg from "@assets/imgi_7_3279038_1_175616576468acf6846c600407934409_1757863401610.jpg";
+import acabamentosImg from "@assets/imgi_8_3279038_1_175616576468acf6846c764643255696_1757863401610.jpg";
+import primaveraVeraoImg from "@assets/imgi_9_3279038_1_175616576468acf6846cab1769481279_1757863401611.jpg";
 
 // Form validation schema
 const checkoutSchema = z.object({
@@ -37,11 +40,6 @@ type CheckoutForm = z.infer<typeof checkoutSchema>;
 export default function Checkout() {
   const [timeLeft, setTimeLeft] = useState(516); // 8:36 in seconds
   const [upsells, setUpsells] = useState({
-    calculoFios: false,
-    acabamentos: false,
-    primaveraVerao: false,
-  });
-  const [expandedUpsells, setExpandedUpsells] = useState({
     calculoFios: false,
     acabamentos: false,
     primaveraVerao: false,
@@ -295,151 +293,195 @@ export default function Checkout() {
                     {/* Optional Upsells */}
                     <div className="pt-6 border-t border-[hsl(var(--color-border))] space-y-4">
                       {/* Upsell 1 - Cálculo dos Fios */}
-                      <Collapsible
-                        open={expandedUpsells.calculoFios}
-                        onOpenChange={(open) => setExpandedUpsells(prev => ({ ...prev, calculoFios: open }))}
+                      <Card 
+                        className="cursor-pointer overflow-hidden transition-all hover:shadow-lg"
+                        onClick={() => setUpsells(prev => ({ ...prev, calculoFios: !prev.calculoFios }))}
+                        data-testid="card-upsell-calculo"
                       >
-                        <CollapsibleTrigger asChild>
-                          <Card className="cursor-pointer hover:shadow-md transition-shadow border-2 border-[hsl(var(--color-border))]" data-testid="card-upsell-calculo">
-                            <CardContent className="p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex items-start gap-3 flex-1">
-                                  <Checkbox
-                                    checked={upsells.calculoFios}
-                                    onCheckedChange={(checked) => {
-                                      setUpsells(prev => ({ ...prev, calculoFios: checked as boolean }));
-                                      if (checked) {
-                                        setExpandedUpsells(prev => ({ ...prev, calculoFios: true }));
-                                      }
-                                    }}
-                                    onClick={(e) => e.stopPropagation()}
-                                    data-testid="checkbox-upsell-calculo"
-                                  />
-                                  <div className="flex-1">
-                                    <p className="font-bold text-sm md:text-base text-[hsl(var(--color-primary))] uppercase">
-                                      SIM, EU QUERO APRENDER CÁLCULO DOS FIOS
-                                    </p>
-                                    <p className="text-sm text-[hsl(var(--color-subtle))] mt-1">
-                                      Aulão: Cálculo de Fios Descomplicado
-                                    </p>
+                        {/* Header */}
+                        <div className={`p-4 flex items-center gap-3 text-white font-bold transition-colors ${
+                          upsells.calculoFios ? 'bg-green-500' : 'bg-red-500'
+                        }`}>
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                            {upsells.calculoFios ? (
+                              <Check className="w-5 h-5 text-white" />
+                            ) : (
+                              <ArrowDown className="w-5 h-5 text-white" />
+                            )}
+                          </div>
+                          <span className="text-sm md:text-base uppercase">
+                            {upsells.calculoFios ? 'Adicionado ao carrinho' : 'SIM, EU QUERO APRENDER CÁLCULO DOS FIOS'}
+                          </span>
+                        </div>
+                        
+                        {/* Content */}
+                        <CardContent className="p-4 bg-white dark:bg-gray-900">
+                          <div className="flex items-start gap-4">
+                            <Checkbox
+                              checked={upsells.calculoFios}
+                              onCheckedChange={() => {}}
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-1"
+                              data-testid="checkbox-upsell-calculo"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start gap-3">
+                                <img 
+                                  src={calculoFiosImg}
+                                  alt="Cálculo de Fios"
+                                  className="w-16 h-16 rounded-lg object-cover"
+                                />
+                                <div className="flex-1">
+                                  <div className="flex items-start justify-between">
+                                    <div>
+                                      <h4 className="font-semibold text-sm text-[hsl(var(--color-text))]">
+                                        Aulão: Cálculo de Fios Descomplicado
+                                      </h4>
+                                      <p className="text-xs text-[hsl(var(--color-subtle))] mt-2">
+                                        Aprenda a calcular exatamente a quantidade de fio necessária para suas peças
+                                      </p>
+                                    </div>
+                                    <Badge className="bg-green-100 text-green-700 hover:bg-green-100">
+                                      Preço Especial
+                                    </Badge>
                                   </div>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <div className="text-right">
-                                    <p className="text-xs line-through text-[hsl(var(--color-subtle))]">R$ 29,90</p>
-                                    <p className="text-lg font-bold text-[hsl(var(--color-primary))]">R$ 9,90</p>
+                                  <div className="flex items-center gap-3 mt-3">
+                                    <span className="text-sm line-through text-red-500">R$ 29,90</span>
+                                    <span className="text-lg font-bold text-green-600">R$ 9,90</span>
                                   </div>
-                                  {expandedUpsells.calculoFios ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                                 </div>
                               </div>
-                            </CardContent>
-                          </Card>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="mt-2 px-4">
-                          <p className="text-sm text-[hsl(var(--color-subtle))]">
-                            Aprenda a calcular exatamente a quantidade de fio necessária para suas peças, 
-                            evitando desperdícios e garantindo economia em todos os seus projetos.
-                          </p>
-                        </CollapsibleContent>
-                      </Collapsible>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
 
                       {/* Upsell 2 - Acabamentos */}
-                      <Collapsible
-                        open={expandedUpsells.acabamentos}
-                        onOpenChange={(open) => setExpandedUpsells(prev => ({ ...prev, acabamentos: open }))}
+                      <Card 
+                        className="cursor-pointer overflow-hidden transition-all hover:shadow-lg"
+                        onClick={() => setUpsells(prev => ({ ...prev, acabamentos: !prev.acabamentos }))}
+                        data-testid="card-upsell-acabamentos"
                       >
-                        <CollapsibleTrigger asChild>
-                          <Card className="cursor-pointer hover:shadow-md transition-shadow border-2 border-[hsl(var(--color-border))]" data-testid="card-upsell-acabamentos">
-                            <CardContent className="p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex items-start gap-3 flex-1">
-                                  <Checkbox
-                                    checked={upsells.acabamentos}
-                                    onCheckedChange={(checked) => {
-                                      setUpsells(prev => ({ ...prev, acabamentos: checked as boolean }));
-                                      if (checked) {
-                                        setExpandedUpsells(prev => ({ ...prev, acabamentos: true }));
-                                      }
-                                    }}
-                                    onClick={(e) => e.stopPropagation()}
-                                    data-testid="checkbox-upsell-acabamentos"
-                                  />
-                                  <div className="flex-1">
-                                    <p className="font-bold text-sm md:text-base text-[hsl(var(--color-primary))] uppercase">
-                                      SIM, EU QUERO DOMINAR OS ACABAMENTOS
-                                    </p>
-                                    <p className="text-sm text-[hsl(var(--color-subtle))] mt-1">
-                                      Guia Prático de Acabamentos
-                                    </p>
+                        {/* Header */}
+                        <div className={`p-4 flex items-center gap-3 text-white font-bold transition-colors ${
+                          upsells.acabamentos ? 'bg-green-500' : 'bg-red-500'
+                        }`}>
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                            {upsells.acabamentos ? (
+                              <Check className="w-5 h-5 text-white" />
+                            ) : (
+                              <ArrowDown className="w-5 h-5 text-white" />
+                            )}
+                          </div>
+                          <span className="text-sm md:text-base uppercase">
+                            {upsells.acabamentos ? 'Adicionado ao carrinho' : 'SIM, EU QUERO DOMINAR OS ACABAMENTOS'}
+                          </span>
+                        </div>
+                        
+                        {/* Content */}
+                        <CardContent className="p-4 bg-white dark:bg-gray-900">
+                          <div className="flex items-start gap-4">
+                            <Checkbox
+                              checked={upsells.acabamentos}
+                              onCheckedChange={() => {}}
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-1"
+                              data-testid="checkbox-upsell-acabamentos"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start gap-3">
+                                <img 
+                                  src={acabamentosImg}
+                                  alt="Guia de Acabamentos"
+                                  className="w-16 h-16 rounded-lg object-cover"
+                                />
+                                <div className="flex-1">
+                                  <div className="flex items-start justify-between">
+                                    <div>
+                                      <h4 className="font-semibold text-sm text-[hsl(var(--color-text))]">
+                                        Guia Prático de Acabamentos
+                                      </h4>
+                                      <p className="text-xs text-[hsl(var(--color-subtle))] mt-2">
+                                        Técnicas profissionais que fazem toda a diferença no resultado final
+                                      </p>
+                                    </div>
+                                    <Badge className="bg-green-100 text-green-700 hover:bg-green-100">
+                                      Preço Especial
+                                    </Badge>
                                   </div>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <div className="text-right">
-                                    <p className="text-xs line-through text-[hsl(var(--color-subtle))]">R$ 37,90</p>
-                                    <p className="text-lg font-bold text-[hsl(var(--color-primary))]">R$ 17,90</p>
+                                  <div className="flex items-center gap-3 mt-3">
+                                    <span className="text-sm line-through text-red-500">R$ 37,90</span>
+                                    <span className="text-lg font-bold text-green-600">R$ 17,90</span>
                                   </div>
-                                  {expandedUpsells.acabamentos ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                                 </div>
                               </div>
-                            </CardContent>
-                          </Card>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="mt-2 px-4">
-                          <p className="text-sm text-[hsl(var(--color-subtle))]">
-                            Técnicas profissionais de acabamento que fazem toda a diferença no resultado final. 
-                            Suas peças terão aquele toque especial que as tornam irresistíveis.
-                          </p>
-                        </CollapsibleContent>
-                      </Collapsible>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
 
                       {/* Upsell 3 - Primavera Verão */}
-                      <Collapsible
-                        open={expandedUpsells.primaveraVerao}
-                        onOpenChange={(open) => setExpandedUpsells(prev => ({ ...prev, primaveraVerao: open }))}
+                      <Card 
+                        className="cursor-pointer overflow-hidden transition-all hover:shadow-lg"
+                        onClick={() => setUpsells(prev => ({ ...prev, primaveraVerao: !prev.primaveraVerao }))}
+                        data-testid="card-upsell-primavera"
                       >
-                        <CollapsibleTrigger asChild>
-                          <Card className="cursor-pointer hover:shadow-md transition-shadow border-2 border-[hsl(var(--color-border))] relative overflow-hidden" data-testid="card-upsell-primavera">
-                            <Badge className="absolute top-2 right-2 bg-red-500 text-white">Novidade</Badge>
-                            <CardContent className="p-4">
-                              <div className="flex items-start justify-between">
-                                <div className="flex items-start gap-3 flex-1">
-                                  <Checkbox
-                                    checked={upsells.primaveraVerao}
-                                    onCheckedChange={(checked) => {
-                                      setUpsells(prev => ({ ...prev, primaveraVerao: checked as boolean }));
-                                      if (checked) {
-                                        setExpandedUpsells(prev => ({ ...prev, primaveraVerao: true }));
-                                      }
-                                    }}
-                                    onClick={(e) => e.stopPropagation()}
-                                    data-testid="checkbox-upsell-primavera"
-                                  />
-                                  <div className="flex-1">
-                                    <p className="font-bold text-sm md:text-base text-[hsl(var(--color-primary))] uppercase">
-                                      SIM, EU QUERO AS PEÇAS PRIMAVERA VERÃO
-                                    </p>
-                                    <p className="text-sm text-[hsl(var(--color-subtle))] mt-1">
-                                      Combo 5 Peças Primavera Verão
-                                    </p>
+                        {/* Header */}
+                        <div className={`p-4 flex items-center gap-3 text-white font-bold transition-colors ${
+                          upsells.primaveraVerao ? 'bg-green-500' : 'bg-red-500'
+                        }`}>
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                            {upsells.primaveraVerao ? (
+                              <Check className="w-5 h-5 text-white" />
+                            ) : (
+                              <ArrowDown className="w-5 h-5 text-white" />
+                            )}
+                          </div>
+                          <span className="text-sm md:text-base uppercase">
+                            {upsells.primaveraVerao ? 'Adicionado ao carrinho' : 'SIM, EU QUERO AS PEÇAS PRIMAVERA VERÃO'}
+                          </span>
+                        </div>
+                        
+                        {/* Content */}
+                        <CardContent className="p-4 bg-white dark:bg-gray-900">
+                          <div className="flex items-start gap-4">
+                            <Checkbox
+                              checked={upsells.primaveraVerao}
+                              onCheckedChange={() => {}}
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-1"
+                              data-testid="checkbox-upsell-primavera"
+                            />
+                            <div className="flex-1">
+                              <div className="flex items-start gap-3">
+                                <img 
+                                  src={primaveraVeraoImg}
+                                  alt="Primavera Verão"
+                                  className="w-16 h-16 rounded-lg object-cover"
+                                />
+                                <div className="flex-1">
+                                  <div className="flex items-start justify-between">
+                                    <div>
+                                      <h4 className="font-semibold text-sm text-[hsl(var(--color-text))]">
+                                        Combo 5 Peças Primavera Verão
+                                      </h4>
+                                      <p className="text-xs text-[hsl(var(--color-subtle))] mt-2">
+                                        Coleção exclusiva com 5 peças leves e frescas para a estação
+                                      </p>
+                                    </div>
+                                    <Badge className="bg-red-100 text-red-700 hover:bg-red-100">
+                                      Novidade
+                                    </Badge>
                                   </div>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <div className="text-right">
-                                    <p className="text-lg font-bold text-[hsl(var(--color-primary))]">R$ 29,90</p>
+                                  <div className="flex items-center gap-3 mt-3">
+                                    <span className="text-lg font-bold text-green-600">R$ 29,90</span>
                                   </div>
-                                  {expandedUpsells.primaveraVerao ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
                                 </div>
                               </div>
-                            </CardContent>
-                          </Card>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent className="mt-2 px-4">
-                          <p className="text-sm text-[hsl(var(--color-subtle))]">
-                            Coleção exclusiva com 5 peças leves e frescas, perfeitas para a estação mais quente. 
-                            Modelos que são tendência e vendem muito bem no verão.
-                          </p>
-                        </CollapsibleContent>
-                      </Collapsible>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
 
                     {/* Submit Button */}

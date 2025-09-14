@@ -75,19 +75,20 @@ export default function Home() {
 
       {/* Hero Section */}
       <section 
-        className="relative bg-cover bg-no-repeat"
+        className="relative bg-amber-50"
         style={{
           backgroundImage: `url(${instructorHeroImg})`,
-          backgroundPosition: '50% 25%',
-          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Light overlay for text readability */}
-        <div className="absolute inset-0 bg-white bg-opacity-10"></div>
-        {/* Bottom gradient overlay for text readability */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
+        {/* Light overlay for text readability - only on larger screens where image might cover */}
+        <div className="absolute inset-0 bg-white bg-opacity-10 md:block hidden"></div>
+        {/* Bottom gradient overlay for text readability - adjusted for mobile */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 md:h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent" />
         
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[550px] md:min-h-[700px] pb-8">
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-end min-h-[600px] md:min-h-[700px] pb-8">
           {/* Title in overlay box */}
           <div className="bg-amber-50/95 rounded-2xl p-3 md:p-8 mb-4 max-w-[280px] md:max-w-3xl shadow-2xl border border-amber-100">
             <h1 className="text-xl md:text-5xl font-bold text-center text-amber-700" data-testid="text-hero-title">

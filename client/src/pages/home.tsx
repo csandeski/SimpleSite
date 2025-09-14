@@ -394,9 +394,14 @@ export default function Home() {
             </div>
             
             <CardContent className="p-6 md:p-10">
-              <h3 className="text-xl md:text-2xl font-semibold leading-snug text-center mb-8 text-[hsl(var(--color-text))]" data-testid="text-pricing-title">
-                Coleção Crochês que Mais Vendem
-              </h3>
+              <div className="text-center mb-10">
+                <h3 className="text-3xl md:text-4xl font-extrabold leading-tight mb-3 bg-gradient-to-r from-[hsl(var(--color-primary))] to-[hsl(var(--color-accent))] bg-clip-text text-transparent" data-testid="text-pricing-title">
+                  Coleção Crochês que Mais Vendem
+                </h3>
+                <p className="text-base md:text-lg text-[hsl(var(--color-subtle))]" data-testid="text-pricing-subtitle">
+                  Aprenda as 5 peças mais procuradas e lucrativas do mercado
+                </p>
+              </div>
 
               <div className="bg-[hsl(var(--color-muted))] rounded-xl p-6 mb-8">
                 <div className="space-y-3">

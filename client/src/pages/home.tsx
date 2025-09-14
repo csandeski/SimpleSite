@@ -72,7 +72,6 @@ export default function Home() {
           🔥 A OFERTA LIBERADA POR POUCO TEMPO! GARANTA SUA VAGA 🔥
         </p>
       </div>
-
       {/* Hero Section */}
       <section className="relative">
         {/* Desktop Layout */}
@@ -135,7 +134,7 @@ export default function Home() {
           
           {/* Mobile Content - positioned below the image */}
           <div className="flex flex-col items-center px-4 pb-8 -mt-12 relative z-10">
-            <h1 className="text-xl font-bold leading-tight text-center text-[hsl(var(--color-text))] mb-4" data-testid="text-hero-title">
+            <h1 className="text-center text-[hsl(var(--color-text))] mb-4 text-[25px] font-extrabold pt-[10px] pb-[10px]" data-testid="text-hero-title">
               Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
             </h1>
 
@@ -145,7 +144,7 @@ export default function Home() {
 
             <Button 
               size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-5 py-3 font-bold text-base shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 mb-4"
+              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full pl-[60px] pr-[60px] py-3 font-bold text-[19px] shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 mb-4"
               onClick={() => scrollToSection("pricing")}
               data-testid="button-hero-cta"
             >
@@ -159,7 +158,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Products Section */}
       <section id="products" className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-6xl mx-auto">
@@ -194,7 +192,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Testimonials Section */}
       <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-bg))]">
         <div className="max-w-4xl mx-auto">
@@ -275,7 +272,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Bonus Section */}
       <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-6xl mx-auto">
@@ -377,7 +373,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Guarantee Section */}
       <section className="py-10 md:py-16 px-4 bg-[hsl(var(--color-bg))]">
         <div className="max-w-3xl mx-auto text-center">
@@ -399,7 +394,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Pricing Section */}
       <section id="pricing" className="py-10 md:py-16 px-4 bg-[hsl(var(--color-muted))]">
         <div className="max-w-2xl mx-auto">
@@ -465,7 +459,6 @@ export default function Home() {
           </Card>
         </div>
       </section>
-
       {/* About Instructor Section */}
       <section className="py-10 md:py-16 px-4 bg-gradient-to-b from-[hsl(var(--color-bg))] to-[hsl(var(--color-muted))]">
         <div className="max-w-6xl mx-auto">
@@ -519,7 +512,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Footer with Logo */}
       <footer className="py-10 md:py-16 px-4 bg-[hsl(var(--color-text))] text-[hsl(var(--color-surface))]">
         <div className="max-w-6xl mx-auto text-center">

@@ -80,8 +80,8 @@ export default function Home() {
           className="hidden md:block absolute inset-0"
           style={{
             backgroundImage: `url(${instructorHeroImg})`,
-            backgroundPosition: 'center center',
-            backgroundSize: '75%',
+            backgroundPosition: 'center top',
+            backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
         >
@@ -97,8 +97,8 @@ export default function Home() {
           style={{ 
             height: '400px',
             backgroundImage: `url(${instructorHeroImg})`,
-            backgroundPosition: 'center center',
-            backgroundSize: '80%',
+            backgroundPosition: 'center top',
+            backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
         >

@@ -165,9 +165,9 @@ export default function Home() {
             </Button>
           </div>
 
-          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2" data-testid="text-promo-notice">
-            <span className="text-xl animate-pulse">⏰</span>
-            <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
+            <span className="text-lg animate-pulse">⏰</span>
+            <span className="text-xs md:text-base whitespace-nowrap">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
           </p>
         </div>
       </section>

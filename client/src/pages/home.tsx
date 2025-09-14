@@ -92,7 +92,7 @@ export default function Home() {
           
           {/* Desktop Content - positioned below the image */}
           <div className="flex flex-col items-center px-4 pb-12 -mt-16 relative z-10">
-            <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center text-[hsl(var(--color-text))] mb-6 max-w-3xl" data-testid="text-hero-title-desktop">
+            <h1 className="text-2xl md:text-4xl font-bold leading-snug text-center text-[hsl(var(--color-text))] mb-6 max-w-3xl" data-testid="text-hero-title-desktop">
               Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
             </h1>
 
@@ -134,7 +134,7 @@ export default function Home() {
           
           {/* Mobile Content - positioned below the image */}
           <div className="flex flex-col items-center px-4 pb-8 -mt-12 relative z-10">
-            <h1 className="text-center text-[hsl(var(--color-text))] mb-4 text-[25px] font-extrabold pt-[10px] pb-[10px]" data-testid="text-hero-title">
+            <h1 className="text-center text-[hsl(var(--color-text))] mb-4 text-[25px] font-extrabold pt-[10px] pb-[10px] leading-snug" data-testid="text-hero-title">
               Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
             </h1>
 

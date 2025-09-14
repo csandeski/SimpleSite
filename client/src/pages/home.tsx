@@ -88,14 +88,9 @@ export default function Home() {
         {/* Bottom gradient overlay for text readability - only on desktop */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/90 via-white/60 to-transparent md:block hidden" />
         
-        {/* Mobile Layout - Only title box at bottom */}
-        <div className="md:hidden relative min-h-[500px] flex items-end justify-center pb-0">
-          {/* Title box positioned at bottom, overlapping the image */}
-          <div className="bg-amber-50/95 rounded-2xl p-4 mb-[-20px] max-w-[280px] shadow-2xl border border-amber-100 relative z-10">
-            <h1 className="text-xl font-bold text-center text-amber-700" data-testid="text-hero-title">
-              Coleção Crochês que Mais Vendem
-            </h1>
-          </div>
+        {/* Mobile Layout - Only image */}
+        <div className="md:hidden relative min-h-[500px]">
+          {/* Empty - just show the image */}
         </div>
 
         {/* Desktop Layout - Keep original structure */}

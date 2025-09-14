@@ -486,11 +486,11 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="aspect-[4/3] rounded-xl overflow-hidden">
+            <div className="rounded-xl overflow-hidden bg-[hsl(var(--color-muted))]">
               <img 
                 src={instructorAboutImg}
                 alt="Claudete - Professora de Crochê"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
                 data-testid="image-instructor"
               />
             </div>

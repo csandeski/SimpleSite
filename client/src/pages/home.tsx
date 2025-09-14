@@ -175,11 +175,11 @@ export default function Home() {
             ].map((product, index) => (
               <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-product-${index}`}>
                 <CardContent className="p-6 md:p-8">
-                  <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden">
+                  <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden bg-[hsl(var(--color-muted))]">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                       data-testid={`image-product-${index}`}
                     />
                   </div>
@@ -311,11 +311,11 @@ export default function Home() {
               <Card key={index} className="rounded-xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-surface))] shadow-md hover:shadow-lg transition-shadow overflow-hidden" data-testid={`card-bonus-${index}`}>
                 <CardContent className="p-6 md:p-8">
                   {bonus.image ? (
-                    <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden">
+                    <div className="aspect-[4/3] rounded-lg mb-6 overflow-hidden bg-[hsl(var(--color-muted))]">
                       <img 
                         src={bonus.image} 
                         alt={bonus.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                         data-testid={`image-bonus-${index}`}
                       />
                     </div>

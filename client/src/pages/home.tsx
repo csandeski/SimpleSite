@@ -74,10 +74,10 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative">
         {/* Desktop Layout with background image */}
         <div 
-          className="hidden md:block absolute inset-0"
+          className="hidden md:block relative min-h-[700px]"
           style={{
             backgroundImage: `url(${instructorHeroImg})`,
             backgroundPosition: 'center top',
@@ -89,13 +89,40 @@ export default function Home() {
           <div className="absolute inset-0 bg-[hsl(var(--color-bg))] bg-opacity-30"></div>
           {/* Bottom gradient overlay */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[hsl(var(--color-bg))]/90 via-[hsl(var(--color-bg))]/60 to-transparent" />
+          
+          {/* Desktop Content - positioned as overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end px-4 pb-12">
+            <div className="max-w-6xl mx-auto flex flex-col items-center">
+              {/* Main headline positioned over the image */}
+              <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-4 text-black bg-white/95 px-6 py-3 rounded-lg shadow-lg max-w-3xl" data-testid="text-hero-title-desktop">
+                Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+              </h1>
+
+              <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
+                Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+              </p>
+
+              <Button 
+                size="lg" 
+                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+                onClick={() => scrollToSection("pricing")}
+                data-testid="button-hero-cta-desktop"
+              >
+                QUERO ME INSCREVER
+              </Button>
+
+              <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2 mt-6" data-testid="text-promo-notice-desktop">
+                <span className="text-xl">⏰</span>
+                <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+              </p>
+            </div>
+          </div>
         </div>
         
-        {/* Mobile Layout - Full width image */}
+        {/* Mobile Layout with background image and overlay content */}
         <div 
-          className="md:hidden relative" 
-          style={{ 
-            height: '400px',
+          className="md:hidden relative h-[500px]"
+          style={{
             backgroundImage: `url(${instructorHeroImg})`,
             backgroundPosition: 'center top',
             backgroundSize: 'cover',
@@ -103,63 +130,35 @@ export default function Home() {
           }}
         >
           {/* Bottom gradient overlay */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[hsl(var(--color-bg))] via-[hsl(var(--color-bg))]/90 to-transparent z-10" />
-        </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[hsl(var(--color-bg))] via-[hsl(var(--color-bg))]/90 to-transparent" />
+          
+          {/* Mobile Content - positioned as overlay */}
+          <div className="absolute inset-0 flex flex-col justify-end px-4 pb-6">
+            {/* Main headline positioned over the image */}
+            <h1 className="text-xl font-bold leading-tight text-center mb-3 text-black bg-white/95 px-4 py-2 rounded-lg shadow-lg mx-auto" data-testid="text-hero-title">
+              Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
+            </h1>
 
-        {/* Desktop Content */}
-        <div className="hidden md:flex relative z-10 max-w-6xl mx-auto flex-col items-center justify-end min-h-[700px] px-4 pb-12">
-          {/* Main headline positioned to overlap the image */}
-          <h1 className="text-2xl md:text-4xl font-bold leading-tight text-center mb-4 text-black bg-white/95 px-6 py-3 rounded-lg shadow-lg max-w-3xl -mt-20" data-testid="text-hero-title-desktop">
-            Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-          </h1>
+            <p className="text-sm leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-4" data-testid="text-hero-description">
+              Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
+            </p>
 
-          <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8 max-w-2xl" data-testid="text-hero-description-desktop">
-            Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
-          </p>
+            <div className="text-center mb-3">
+              <Button 
+                size="lg" 
+                className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-5 py-3 font-bold text-base shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
+                onClick={() => scrollToSection("pricing")}
+                data-testid="button-hero-cta"
+              >
+                QUERO ME INSCREVER
+              </Button>
+            </div>
 
-          <Button 
-            size="lg" 
-            className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
-            onClick={() => scrollToSection("pricing")}
-            data-testid="button-hero-cta-desktop"
-          >
-            QUERO ME INSCREVER
-          </Button>
-
-          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-2 mt-6" data-testid="text-promo-notice-desktop">
-            <span className="text-xl">⏰</span>
-            <span className="text-sm md:text-base">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
-          </p>
-        </div>
-      </section>
-
-      {/* Mobile Hero Content Section */}
-      <section className="md:hidden relative -mt-16 pt-4 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Main headline positioned to overlap the image */}
-          <h1 className="text-xl md:text-2xl font-bold leading-tight text-center mb-4 text-black bg-white/95 px-4 py-2 rounded-lg shadow-lg mx-auto" data-testid="text-hero-title">
-            Tenha acesso as 5 peças de crochê mais vendidas do meu ateliê
-          </h1>
-
-          <p className="text-base md:text-lg leading-relaxed text-center text-[hsl(var(--color-subtle))] mb-8" data-testid="text-hero-description">
-            Aprenda a produzir as 5 peças mais em alta e receba encomendas toda a semana
-          </p>
-
-          <div className="text-center mb-6">
-            <Button 
-              size="lg" 
-              className="bg-[hsl(var(--color-cta))] text-[hsl(var(--color-cta-foreground))] rounded-full px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg shadow-[0_5px_0_0_rgba(0,0,0,0.25)] hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95"
-              onClick={() => scrollToSection("pricing")}
-              data-testid="button-hero-cta"
-            >
-              QUERO ME INSCREVER
-            </Button>
+            <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
+              <span className="text-base animate-pulse">⏰</span>
+              <span className="text-xs whitespace-nowrap">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
+            </p>
           </div>
-
-          <p className="text-center text-[hsl(var(--color-accent))] font-bold flex items-center justify-center gap-1" data-testid="text-promo-notice">
-            <span className="text-lg animate-pulse">⏰</span>
-            <span className="text-xs md:text-base whitespace-nowrap">CONDIÇÃO PROMOCIONAL POR TEMPO LIMITADO</span>
-          </p>
         </div>
       </section>
 

@@ -60,9 +60,20 @@ export default function Checkout() {
     },
   });
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts and track Facebook Pixel event
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Fire Facebook Pixel InitiateCheckout event
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        value: 29.90,
+        currency: 'BRL',
+        num_items: 1,
+        content_ids: ['course_main'],
+        content_type: 'product'
+      });
+    }
   }, []);
 
   // Countdown timer

@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 interface Transaction {
   id: string;
   status: string;
-  amount: number;
+  totalAmount: number;
   pixPayload: string;
   pixQrCode: string;
   createdAt: string;
@@ -226,7 +226,7 @@ export default function PixPayment() {
             <div className="mt-4 text-center">
               <p className="text-sm text-[hsl(var(--color-subtle))]">Valor Total:</p>
               <p className="text-2xl font-bold text-[hsl(var(--color-primary))]" data-testid="text-total-amount">
-                {formatCurrency(transaction.amount)}
+                {formatCurrency(transaction.totalAmount)}
               </p>
             </div>
           </CardContent>

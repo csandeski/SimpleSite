@@ -303,7 +303,7 @@ export default function Checkout() {
                               placeholder="Digite seu nome completo" 
                               {...field}
                               data-testid="input-fullname"
-                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))] placeholder:text-gray-400"
                             />
                           </FormControl>
                           <FormMessage />
@@ -323,7 +323,7 @@ export default function Checkout() {
                               placeholder="seu@email.com" 
                               {...field}
                               data-testid="input-email"
-                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))] placeholder:text-gray-400"
                             />
                           </FormControl>
                           <FormMessage />
@@ -348,7 +348,7 @@ export default function Checkout() {
                                 {...field}
                                 value={formatPhone(field.value)}
                                 onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
-                                className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                                className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))] placeholder:text-gray-400"
                                 data-testid="input-phone"
                               />
                             </div>
@@ -405,7 +405,7 @@ export default function Checkout() {
                               }}
                               maxLength={18}
                               data-testid="input-document"
-                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"
+                              className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))] placeholder:text-gray-400"
                             />
                           </FormControl>
                           <FormMessage />

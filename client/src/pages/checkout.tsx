@@ -48,6 +48,7 @@ export default function Checkout() {
     acabamentos: false,
     primaveraVerao: false,
   });
+  const [addPaymentInfoFired, setAddPaymentInfoFired] = useState(false);
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
@@ -386,7 +387,22 @@ export default function Checkout() {
                               placeholder="CPF ou CNPJ" 
                               {...field}
                               value={formatDocument(field.value)}
-                              onChange={(e) => field.onChange(e.target.value.replace(/\D/g, ""))}
+                              onChange={(e) => {
+                                const newValue = e.target.value.replace(/\D/g, "");
+                                field.onChange(newValue);
+                                
+                                // Fire Facebook Pixel AddPaymentInfo event when CPF is filled (only once)
+                                if (!addPaymentInfoFired && newValue.length >= 11 && typeof window !== 'undefined' && (window as any).fbq) {
+                                  (window as any).fbq('track', 'AddPaymentInfo', {
+                                    value: calculateTotal(),
+                                    currency: 'BRL',
+                                    content_ids: ['course_main'],
+                                    content_type: 'product'
+                                  });
+                                  setAddPaymentInfoFired(true);
+                                  console.log('Facebook Pixel AddPaymentInfo event fired');
+                                }
+                              }}
                               maxLength={18}
                               data-testid="input-document"
                               className="h-12 border-gray-300 focus:border-[hsl(var(--color-primary))]"

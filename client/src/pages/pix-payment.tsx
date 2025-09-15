@@ -39,10 +39,27 @@ export default function PixPayment() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Trigger confetti effect when transaction loads
+  // Trigger confetti effect and Facebook event when transaction loads
   useEffect(() => {
     if (transaction && !hasShownConfetti && !isLoading) {
       setHasShownConfetti(true);
+      
+      // Fire Facebook Pixel custom event for PIX Generated
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('trackCustom', 'PIX_GERADO', {
+          value: transaction.totalAmount,
+          currency: 'BRL',
+          content_ids: ['course_main'],
+          content_type: 'product',
+          content_name: 'Coleção Crochês que Mais Vendem',
+          order_id: transaction.id
+        });
+        
+        console.log('Facebook Pixel PIX_GERADO event fired:', {
+          value: transaction.totalAmount,
+          order_id: transaction.id
+        });
+      }
       
       // Multiple confetti bursts for better spread effect
       const count = 200;

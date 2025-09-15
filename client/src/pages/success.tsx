@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Mail, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Success() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-green-50 to-white flex items-center justify-center px-4">
       <Card className="max-w-md w-full">

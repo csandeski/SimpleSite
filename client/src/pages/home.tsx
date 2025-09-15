@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Shield, Check, ChevronLeft, ChevronRight, Users, Infinity } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 
 // Import all images
@@ -25,6 +25,11 @@ import lifetimeAccessImg from "@assets/generated_images/Lifetime_access_infinity
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [, setLocation] = useLocation();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const testimonials = [
     {

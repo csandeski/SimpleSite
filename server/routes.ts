@@ -41,8 +41,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const forwardedIps = req.headers['x-forwarded-for'] as string || '';
       const clientIp = forwardedIps.split(',')[0].trim() || req.socket.remoteAddress || '127.0.0.1';
       
-      // Prepare PIX API request with UTM parameters
-      const pixRequest: any = {
+      // Prepare PIX API request
+      const pixRequest = {
         external_id: externalId,
         total_amount: validatedData.totalAmount,
         payment_method: "PIX" as const,
@@ -61,10 +61,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         },
       };
       
-      // Add UTM parameters to PIX request if they exist
+      // Log UTM parameters if they exist (store in DB but don't send to LiraPay API)
       if (validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0) {
-        pixRequest.tracking = validatedData.utmParams;
-        console.log('UTM Parameters being sent to LiraPay:', validatedData.utmParams);
+        console.log('UTM Parameters captured (storing in DB):', validatedData.utmParams);
       }
 
       // Create transaction in PIX API

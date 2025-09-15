@@ -41,6 +41,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const forwardedIps = req.headers['x-forwarded-for'] as string || '';
       const clientIp = forwardedIps.split(',')[0].trim() || req.socket.remoteAddress || '127.0.0.1';
       
+      // Prepare customer object with UTM parameters
+      const customer: any = {
+        name: validatedData.fullName,
+        email: validatedData.email,
+        phone: validatedData.phone.replace(/\D/g, ''),
+        document_type: pixService.determineDocumentType(validatedData.document),
+        document: pixService.formatCPF(validatedData.document),
+      };
+      
+      // Add UTM parameters to customer object if they exist
+      if (validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0) {
+        // Map UTM parameters to LiraPay expected format
+        if (validatedData.utmParams.utm_source) customer.utm_source = validatedData.utmParams.utm_source;
+        if (validatedData.utmParams.utm_medium) customer.utm_medium = validatedData.utmParams.utm_medium;
+        if (validatedData.utmParams.utm_campaign) customer.utm_campaign = validatedData.utmParams.utm_campaign;
+        if (validatedData.utmParams.utm_content) customer.utm_content = validatedData.utmParams.utm_content;
+        if (validatedData.utmParams.utm_term) customer.utm_term = validatedData.utmParams.utm_term;
+        
+        console.log('UTM Parameters being sent to LiraPay (in customer object):', {
+          utm_source: customer.utm_source,
+          utm_medium: customer.utm_medium,
+          utm_campaign: customer.utm_campaign,
+          utm_content: customer.utm_content,
+          utm_term: customer.utm_term,
+        });
+      }
+      
       // Prepare PIX API request
       const pixRequest = {
         external_id: externalId,
@@ -52,19 +79,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           is_physical: false,
         })),
         ip: clientIp,
-        customer: {
-          name: validatedData.fullName,
-          email: validatedData.email,
-          phone: validatedData.phone.replace(/\D/g, ''),
-          document_type: pixService.determineDocumentType(validatedData.document),
-          document: pixService.formatCPF(validatedData.document),
-        },
+        customer: customer,
       };
-      
-      // Log UTM parameters if they exist (store in DB but don't send to LiraPay API)
-      if (validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0) {
-        console.log('UTM Parameters captured (storing in DB):', validatedData.utmParams);
-      }
 
       // Create transaction in PIX API
       const pixResponse = await pixService.createTransaction(pixRequest);

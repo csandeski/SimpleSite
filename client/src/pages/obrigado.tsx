@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Mail, ArrowRight, Heart } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 
 // Import images
 import instructorImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
@@ -10,21 +10,36 @@ import logoImg from "@assets/imgi_22_3279038_1_175616576468acf6846826a252308403_
 
 export default function Obrigado() {
   const [, setLocation] = useLocation();
+  const searchParams = useSearch();
+  
+  // Parse URL parameters
+  const params = new URLSearchParams(searchParams);
+  const amount = params.get('amount') ? parseFloat(params.get('amount')!) : 29.90;
+  const transactionId = params.get('transactionId') || 'unknown';
 
   // Scroll to top and track purchase event
   useEffect(() => {
     window.scrollTo(0, 0);
     
-    // Fire Facebook Pixel Purchase event
+    // Fire Facebook Pixel Purchase event with actual transaction data
     if (typeof window !== 'undefined' && (window as any).fbq) {
       (window as any).fbq('track', 'Purchase', {
-        value: 29.90,
+        value: amount,
         currency: 'BRL',
         content_ids: ['course_main'],
-        content_type: 'product'
+        content_type: 'product',
+        content_name: 'Coleção Crochês que Mais Vendem',
+        num_items: 1,
+        order_id: transactionId
+      });
+      
+      console.log('Facebook Pixel Purchase event fired:', {
+        value: amount,
+        currency: 'BRL',
+        order_id: transactionId
       });
     }
-  }, []);
+  }, [amount, transactionId]);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[hsl(var(--color-bg))] to-[hsl(var(--color-bg-secondary))]">

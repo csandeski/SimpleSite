@@ -104,9 +104,18 @@ export default function PixPayment() {
         description: "Seu pagamento foi processado com sucesso. Você receberá o acesso por email.",
       });
 
-      // Redirect to success page after 2 seconds
+      // Redirect to thank you page after 2 seconds with transaction data
       setTimeout(() => {
-        setLocation("/success");
+        // Pass transaction data in URL params for Facebook Pixel tracking
+        if (transaction) {
+          const params = new URLSearchParams({
+            amount: transaction.totalAmount.toString(),
+            transactionId: transaction.id
+          });
+          setLocation(`/obgdo?${params.toString()}`);
+        } else {
+          setLocation("/obgdo");
+        }
       }, 2000);
     }
   }, [transaction?.status, setLocation, toast]);

@@ -241,37 +241,23 @@ export default function Checkout() {
 
           {/* Product Card */}
           <div className="mb-6 border border-gray-300 bg-white p-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                {/* Product Image */}
-                <img 
-                  src={instructorImg}
-                  alt="Claudete Oliveira"
-                  className="w-14 h-14 object-cover border border-gray-200"
-                  data-testid="image-product-instructor"
-                />
-                
-                {/* Product Info */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-900" data-testid="text-product-name">
-                    Coleção Crochês que Mais Vendem - Vitalício
-                  </h3>
-                  <p className="text-xs text-gray-500 line-through mt-1" data-testid="text-price-old">De: R$ 250,00</p>
-                  <p className="text-base font-bold text-gray-900" data-testid="text-price-new">Por: R$ 29,90</p>
-                </div>
-              </div>
+            <div className="flex items-center gap-3">
+              {/* Product Image */}
+              <img 
+                src={instructorImg}
+                alt="Claudete Oliveira"
+                className="w-14 h-14 object-cover border border-gray-200"
+                data-testid="image-product-instructor"
+              />
               
-              {/* Dropdown */}
-              <Select defaultValue="1">
-                <SelectTrigger className="w-16 h-10 border-gray-300" data-testid="select-quantity">
-                  <SelectValue placeholder="1" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1</SelectItem>
-                  <SelectItem value="2">2</SelectItem>
-                  <SelectItem value="3">3</SelectItem>
-                </SelectContent>
-              </Select>
+              {/* Product Info */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-900" data-testid="text-product-name">
+                  Coleção Crochês que Mais Vendem - Vitalício
+                </h3>
+                <p className="text-xs text-gray-500 line-through mt-1" data-testid="text-price-old">De: R$ 250,00</p>
+                <p className="text-base font-bold text-gray-900" data-testid="text-price-new">Por: R$ 29,90</p>
+              </div>
             </div>
           </div>
 

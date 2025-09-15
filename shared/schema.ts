@@ -30,6 +30,7 @@ export const transactions = pgTable("transactions", {
   customer_phone: text("customer_phone").notNull(),
   customer_document: text("customer_document").notNull(),
   items: text("items").notNull(), // JSON string
+  utm_params: text("utm_params"), // JSON string with UTM parameters
   created_at: timestamp("created_at").defaultNow(),
   updated_at: timestamp("updated_at").defaultNow(),
 });

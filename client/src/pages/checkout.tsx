@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/form";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { formatUTMsForAPI } from "@/lib/utm-tracker";
 
 // Import images
 import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
@@ -171,6 +172,9 @@ export default function Checkout() {
         });
       }
 
+      // Get stored UTM parameters
+      const utmParams = formatUTMsForAPI();
+      
       const payload = {
         fullName: data.fullName,
         email: data.email,
@@ -178,6 +182,7 @@ export default function Checkout() {
         document: data.document,
         items,
         totalAmount: calculateTotal(),
+        utmParams, // Include UTM parameters
       };
 
       const response = await apiRequest("POST", "/api/pix/create-payment", payload);

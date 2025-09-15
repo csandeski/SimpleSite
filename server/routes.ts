@@ -22,6 +22,7 @@ const createPaymentSchema = z.object({
     quantity: z.number(),
   })),
   totalAmount: z.number(),
+  utmParams: z.record(z.string()).optional(), // UTM parameters from Facebook/Google ads
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -40,8 +41,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const forwardedIps = req.headers['x-forwarded-for'] as string || '';
       const clientIp = forwardedIps.split(',')[0].trim() || req.socket.remoteAddress || '127.0.0.1';
       
-      // Prepare PIX API request
-      const pixRequest = {
+      // Prepare PIX API request with UTM parameters
+      const pixRequest: any = {
         external_id: externalId,
         total_amount: validatedData.totalAmount,
         payment_method: "PIX" as const,
@@ -59,6 +60,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           document: pixService.formatCPF(validatedData.document),
         },
       };
+      
+      // Add UTM parameters to PIX request if they exist
+      if (validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0) {
+        pixRequest.tracking = validatedData.utmParams;
+        console.log('UTM Parameters being sent to LiraPay:', validatedData.utmParams);
+      }
 
       // Create transaction in PIX API
       const pixResponse = await pixService.createTransaction(pixRequest);
@@ -80,7 +87,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      // Store transaction in our database
+      // Store transaction in our database with UTM parameters
       const transaction = await storage.createTransaction({
         external_id: externalId,
         api_transaction_id: pixResponse.id,
@@ -92,6 +99,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         customer_phone: validatedData.phone,
         customer_document: validatedData.document,
         items: JSON.stringify(validatedData.items),
+        utm_params: validatedData.utmParams ? JSON.stringify(validatedData.utmParams) : null,
       });
 
       res.json({

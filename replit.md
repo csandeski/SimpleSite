@@ -112,6 +112,8 @@ This is a full-stack web application built with a React frontend and Express.js 
 
 # Recent Changes
 
+- 2025-01-15: Implemented complete UTM tracking system for Facebook Ads with LiraPay integration
+- 2025-01-15: UTM format: utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}
 - 2025-01-14: Updated checkout page with correct product card design (no rounded corners)
 - 2025-01-14: Fixed pricing to R$ 47,00 base price for consistency
 - 2025-01-14: Implemented PIX-only checkout with upsells functionality

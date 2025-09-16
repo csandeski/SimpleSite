@@ -50,22 +50,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         document: pixService.formatCPF(validatedData.document),
       };
       
-      // Add UTM parameters to customer object if they exist
-      if (validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0) {
-        // Map UTM parameters to LiraPay expected format
-        if (validatedData.utmParams.utm_source) customer.utm_source = validatedData.utmParams.utm_source;
-        if (validatedData.utmParams.utm_medium) customer.utm_medium = validatedData.utmParams.utm_medium;
-        if (validatedData.utmParams.utm_campaign) customer.utm_campaign = validatedData.utmParams.utm_campaign;
-        if (validatedData.utmParams.utm_content) customer.utm_content = validatedData.utmParams.utm_content;
-        if (validatedData.utmParams.utm_term) customer.utm_term = validatedData.utmParams.utm_term;
-        
-        console.log('UTM Parameters being sent to LiraPay (in customer object):', {
-          utm_source: customer.utm_source,
-          utm_medium: customer.utm_medium,
-          utm_campaign: customer.utm_campaign,
-          utm_content: customer.utm_content,
-          utm_term: customer.utm_term,
-        });
+      // Store UTM parameters separately - don't add to customer object
+      // as LiraPay API may not accept extra fields
+      const utmData = validatedData.utmParams && Object.keys(validatedData.utmParams).length > 0 
+        ? validatedData.utmParams 
+        : null;
+      
+      if (utmData) {
+        console.log('UTM Parameters received (will be stored in our DB):', utmData);
       }
       
       // Prepare PIX API request

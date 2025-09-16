@@ -585,7 +585,7 @@ export default function Checkout() {
                     <Button 
                       type="submit"
                       size="lg"
-                      className="w-full bg-black hover:bg-gray-900 text-white font-bold text-lg py-6 shadow-lg"
+                      className="w-full relative overflow-hidden bg-gradient-to-b from-green-400 to-green-600 text-white rounded-lg px-6 md:px-8 py-3 md:py-4 font-bold text-base md:text-lg border border-green-500/30 shadow-[0_4px_0_0_#15803d,0_7px_0_0_rgba(0,0,0,0.15)] hover:shadow-[0_2px_0_0_#15803d,0_4px_0_0_rgba(0,0,0,0.15)] hover:translate-y-[2px] transition-all duration-150 transform active:scale-95 before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-b before:from-white/20 before:to-transparent before:pointer-events-none"
                       data-testid="button-submit-payment"
                       disabled={createPaymentMutation.isPending}
                     >

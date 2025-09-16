@@ -26,6 +26,7 @@ import { formatUTMsForAPI } from "@/lib/utm-tracker";
 // Import images
 import bannerImg from "@assets/272e6e60-4077-41f3-bea7-3f35166880f4 (1)_1757887269746.png";
 import instructorImg from "@assets/imgi_20_3279038_1_175616576468acf684670db711360838_1757863401611.png";
+import pixIcon from "@assets/logo-pix-520x520_1757997625466.png";
 // Upsell product images
 import calculoFiosImg from "@assets/imgi_7_3279038_1_175616576468acf6846c600407934409_1757863401610.jpg";
 import acabamentosImg from "@assets/imgi_8_3279038_1_175616576468acf6846c764643255696_1757863401610.jpg";
@@ -432,34 +433,30 @@ export default function Checkout() {
                       )}
                     />
 
-                    {/* Payment Method */}
+                    {/* Payment Method - Mobile First */}
                     <div className="pt-6 border-t border-[hsl(var(--color-border))]">
-                      <h3 className="text-lg font-bold mb-4 text-[hsl(var(--color-text))]" data-testid="text-payment-title">
+                      <h3 className="text-base md:text-lg font-bold mb-3 text-[hsl(var(--color-text))]" data-testid="text-payment-title">
                         Método de pagamento
                       </h3>
                       
-                      <div className="bg-emerald-50/40 border border-emerald-200 rounded-lg p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            {/* Simplified PIX Icon */}
-                            <div className="w-10 h-10 rounded bg-[#32BCAD] flex items-center justify-center">
-                              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                  <path d="M19.5 8.5L16.5 5.5L13.5 8.5C12.5 7.8 11.3 7.4 10 7.4C6.4 7.4 3.5 10.3 3.5 13.9C3.5 17.5 6.4 20.4 10 20.4C11.3 20.4 12.5 20 13.5 19.3L16.5 22.3L19.5 19.3L22.5 22.3L24.5 20.3L19.5 15.3L24.5 10.3L22.5 8.3L19.5 11.3V8.5Z" fill="white"/>
-                                  <path d="M8.5 19.5L5.5 22.5L3.5 20.5L5.5 18.5C4.8 17.5 4.4 16.3 4.4 15C4.4 11.4 7.3 8.5 10.9 8.5C12.2 8.5 13.4 8.9 14.4 9.6L16.4 7.6L19.4 10.6L22.4 7.6L20.4 5.6L15.4 10.6L10.4 5.6L8.4 7.6L11.4 10.6C10.4 9.9 9.2 9.5 7.9 9.5C4.3 9.5 1.4 12.4 1.4 16C1.4 19.6 4.3 22.5 7.9 22.5C9.2 22.5 10.4 22.1 11.4 21.4L8.5 19.5Z" fill="white" opacity="0.7"/>
-                                </g>
-                              </svg>
-                            </div>
-                            
-                            <div>
-                              <span className="font-semibold text-[hsl(var(--color-text))] text-base">PIX</span>
-                              <p className="text-xs text-gray-500">Pagamento instantâneo</p>
-                            </div>
-                          </div>
+                      {/* PIX Card - Mobile optimized */}
+                      <div className="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-3 md:p-4">
+                        <div className="flex items-center gap-3">
+                          {/* PIX Icon */}
+                          <img 
+                            src={pixIcon} 
+                            alt="PIX" 
+                            className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                          />
                           
-                          <Badge className="bg-emerald-500 text-white border-0 text-xs">
-                            Desconto aplicado
-                          </Badge>
+                          {/* PIX Info */}
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="font-bold text-[hsl(var(--color-text))] text-base">PIX</span>
+                              <span className="text-xs text-emerald-600 font-medium">Economia de R$ 17,10</span>
+                            </div>
+                            <p className="text-xs text-gray-500 mt-1">Pagamento instantâneo • Desconto aplicado</p>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -36,7 +36,36 @@ const checkoutSchema = z.object({
   fullName: z.string().min(3, "Nome completo é obrigatório"),
   email: z.string().email("Email inválido"),
   phone: z.string().min(10, "Telefone é obrigatório"),
-  document: z.string().min(11, "CPF/CNPJ é obrigatório"),
+  document: z.string().min(11, "CPF/CNPJ é obrigatório").refine((doc) => {
+    const numbers = doc.replace(/\D/g, "");
+    // For now, only validate CPF (11 digits), not CNPJ (14 digits)
+    if (numbers.length === 11) {
+      // Check if all digits are the same (invalid CPFs like 111.111.111-11)
+      if (/^(\d)\1+$/.test(numbers)) return false;
+      
+      // Validate first digit
+      let sum = 0;
+      for (let i = 0; i < 9; i++) {
+        sum += parseInt(numbers.charAt(i)) * (10 - i);
+      }
+      let remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+      if (remainder !== parseInt(numbers.charAt(9))) return false;
+      
+      // Validate second digit
+      sum = 0;
+      for (let i = 0; i < 10; i++) {
+        sum += parseInt(numbers.charAt(i)) * (11 - i);
+      }
+      remainder = (sum * 10) % 11;
+      if (remainder === 10) remainder = 0;
+      if (remainder !== parseInt(numbers.charAt(10))) return false;
+      
+      return true;
+    }
+    // For CNPJ or other lengths, just pass for now
+    return true;
+  }, "CPF inválido. Por favor, verifique os números digitados."),
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
@@ -117,6 +146,36 @@ export default function Checkout() {
       // CNPJ format: 00.000.000/0000-00
       return numbers.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
     }
+  };
+  
+  // Validate CPF
+  const validateCPF = (cpf: string): boolean => {
+    const numbers = cpf.replace(/\D/g, "");
+    
+    if (numbers.length !== 11) return false;
+    
+    // Check if all digits are the same
+    if (/^(\d)\1+$/.test(numbers)) return false;
+    
+    // Validate first digit
+    let sum = 0;
+    for (let i = 0; i < 9; i++) {
+      sum += parseInt(numbers.charAt(i)) * (10 - i);
+    }
+    let remainder = (sum * 10) % 11;
+    if (remainder === 10) remainder = 0;
+    if (remainder !== parseInt(numbers.charAt(9))) return false;
+    
+    // Validate second digit
+    sum = 0;
+    for (let i = 0; i < 10; i++) {
+      sum += parseInt(numbers.charAt(i)) * (11 - i);
+    }
+    remainder = (sum * 10) % 11;
+    if (remainder === 10) remainder = 0;
+    if (remainder !== parseInt(numbers.charAt(10))) return false;
+    
+    return true;
   };
 
   // Format phone
@@ -205,10 +264,39 @@ export default function Checkout() {
     },
     onError: (error: any) => {
       console.error("Payment error:", error);
+      
+      // Extract error message from response
+      let errorMessage = "Tente novamente em alguns instantes.";
+      let errorTitle = "Erro ao processar pagamento";
+      
+      // Check if error has a specific message from the server
+      if (error.message) {
+        // Parse specific error types for better user messages
+        if (error.message.includes("CPF") || error.message.includes("CNPJ")) {
+          errorTitle = "Erro no documento";
+          errorMessage = error.message;
+        } else if (error.message.includes("Email")) {
+          errorTitle = "Erro no email";
+          errorMessage = error.message;
+        } else if (error.message.includes("Telefone")) {
+          errorTitle = "Erro no telefone";
+          errorMessage = error.message;
+        } else if (error.message.includes("Nome")) {
+          errorTitle = "Erro no nome";
+          errorMessage = error.message;
+        } else if (error.message.includes("Dados inválidos")) {
+          errorTitle = "Dados incorretos";
+          errorMessage = error.message;
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
       toast({
-        title: "Erro ao processar pagamento",
-        description: error.message || "Tente novamente em alguns instantes.",
+        title: errorTitle,
+        description: errorMessage,
         variant: "destructive",
+        duration: 5000, // Show for 5 seconds so user has time to read
       });
     },
   });

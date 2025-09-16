@@ -132,16 +132,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error creating PIX payment:", error);
       
       if (error instanceof z.ZodError) {
+        // Parse Zod validation errors to user-friendly messages
+        let errorMessage = "Dados inválidos: ";
+        const fieldErrors = error.errors.map(err => {
+          const field = err.path.join('.');
+          if (field === 'fullName') return 'Nome completo é obrigatório';
+          if (field === 'email') return 'Email inválido';
+          if (field === 'phone') return 'Telefone inválido (mínimo 10 dígitos)';
+          if (field === 'document') return 'CPF/CNPJ inválido (mínimo 11 dígitos)';
+          return `${field} inválido`;
+        });
+        errorMessage += fieldErrors.join(', ');
+        
         return res.status(400).json({
           success: false,
-          error: "Invalid request data",
+          error: errorMessage,
           details: error.errors,
         });
       }
       
+      // Send specific error message from PIX service or a user-friendly fallback
+      let userErrorMessage = error.message || "Falha ao criar pagamento";
+      
+      // Additional error translations if needed
+      if (userErrorMessage.includes("PIX_API_SECRET")) {
+        userErrorMessage = "Erro de configuração do sistema. Entre em contato com o suporte.";
+      }
+      
       res.status(500).json({
         success: false,
-        error: error.message || "Failed to create payment",
+        error: userErrorMessage,
       });
     }
   });

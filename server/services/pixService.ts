@@ -89,7 +89,53 @@ export class PIXService {
 
       if (!response.ok) {
         console.error("PIX API Error Response:", data);
-        throw new Error(data.error || data.message || `API Error: ${response.status}`);
+        
+        // Parse specific error messages from LiraPay
+        let errorMessage = data.error || data.message || `API Error: ${response.status}`;
+        
+        // Check for field-specific errors
+        if (data.errorFields && Array.isArray(data.errorFields)) {
+          // Parse error fields to provide user-friendly messages
+          const fieldErrors = data.errorFields.map((field: string) => {
+            if (field.includes('document')) {
+              return 'CPF/CNPJ inválido';
+            }
+            if (field.includes('email')) {
+              return 'Email inválido';
+            }
+            if (field.includes('phone')) {
+              return 'Telefone inválido';
+            }
+            if (field.includes('name')) {
+              return 'Nome inválido';
+            }
+            if (field.includes('amount')) {
+              return 'Valor inválido';
+            }
+            return field;
+          });
+          
+          if (fieldErrors.length > 0) {
+            errorMessage = fieldErrors.join(', ');
+          }
+        }
+        
+        // Additional error message translations
+        if (errorMessage.includes('invalid document')) {
+          errorMessage = 'CPF/CNPJ inválido. Verifique os números digitados.';
+        } else if (errorMessage.includes('invalid CPF')) {
+          errorMessage = 'CPF inválido. Verifique os números digitados.';
+        } else if (errorMessage.includes('invalid CNPJ')) {
+          errorMessage = 'CNPJ inválido. Verifique os números digitados.';
+        } else if (errorMessage.includes('invalid email')) {
+          errorMessage = 'Email inválido. Use um formato como exemplo@email.com';
+        } else if (errorMessage.includes('invalid phone')) {
+          errorMessage = 'Telefone inválido. Use apenas números com DDD.';
+        } else if (errorMessage.includes('Erro na validação dos campos')) {
+          errorMessage = 'Erro na validação dos dados. Verifique as informações fornecidas.';
+        }
+        
+        throw new Error(errorMessage);
       }
 
       return data;

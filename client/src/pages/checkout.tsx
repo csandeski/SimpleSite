@@ -438,39 +438,28 @@ export default function Checkout() {
                         Método de pagamento
                       </h3>
                       
-                      <div className="relative bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-4 shadow-sm overflow-hidden">
-                        {/* Decorative gradient background */}
-                        <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-emerald-200/30 to-green-200/30 rounded-full blur-2xl" />
-                        
-                        <div className="relative flex items-center justify-between">
+                      <div className="bg-emerald-50/40 border border-emerald-200 rounded-lg p-4">
+                        <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            {/* PIX Icon */}
-                            <div className="relative">
-                              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-sm">
-                                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M18.6889 7.29333L16.7556 5.36L14.1778 7.93778C13.0444 7.18667 11.6889 6.72 10.2222 6.72C6.00001 6.72 2.55557 10.1644 2.55557 14.3867C2.55557 18.6089 6.00001 22.0533 10.2222 22.0533C14.4445 22.0533 17.8889 18.6089 17.8889 14.3867C17.8889 12.92 17.4222 11.5644 16.6667 10.4311L19.2445 7.85333L21.1778 9.78667L22.5778 8.38667L20.0889 5.89778L18.6889 7.29333Z" fill="currentColor"/>
-                                  <path d="M10.2222 8.44444C11.2889 8.44444 12.2667 8.77778 13.0889 9.32222L10.2222 12.1889L7.35556 9.32222C8.17778 8.77778 9.15556 8.44444 10.2222 8.44444Z" fill="currentColor"/>
-                                  <path d="M4.27778 14.3867C4.27778 13.32 4.61111 12.3422 5.15556 11.52L8.02222 14.3867L5.15556 17.2533C4.61111 16.4311 4.27778 15.4533 4.27778 14.3867Z" fill="currentColor"/>
-                                  <path d="M10.2222 20.3289C9.15556 20.3289 8.17778 19.9956 7.35556 19.4511L10.2222 16.5844L13.0889 19.4511C12.2667 19.9956 11.2889 20.3289 10.2222 20.3289Z" fill="currentColor"/>
-                                  <path d="M15.2889 17.2533L12.4222 14.3867L15.2889 11.52C15.8333 12.3422 16.1667 13.32 16.1667 14.3867C16.1667 15.4533 15.8333 16.4311 15.2889 17.2533Z" fill="currentColor"/>
-                                </svg>
-                              </div>
-                              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+                            {/* Simplified PIX Icon */}
+                            <div className="w-10 h-10 rounded bg-[#32BCAD] flex items-center justify-center">
+                              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                  <path d="M19.5 8.5L16.5 5.5L13.5 8.5C12.5 7.8 11.3 7.4 10 7.4C6.4 7.4 3.5 10.3 3.5 13.9C3.5 17.5 6.4 20.4 10 20.4C11.3 20.4 12.5 20 13.5 19.3L16.5 22.3L19.5 19.3L22.5 22.3L24.5 20.3L19.5 15.3L24.5 10.3L22.5 8.3L19.5 11.3V8.5Z" fill="white"/>
+                                  <path d="M8.5 19.5L5.5 22.5L3.5 20.5L5.5 18.5C4.8 17.5 4.4 16.3 4.4 15C4.4 11.4 7.3 8.5 10.9 8.5C12.2 8.5 13.4 8.9 14.4 9.6L16.4 7.6L19.4 10.6L22.4 7.6L20.4 5.6L15.4 10.6L10.4 5.6L8.4 7.6L11.4 10.6C10.4 9.9 9.2 9.5 7.9 9.5C4.3 9.5 1.4 12.4 1.4 16C1.4 19.6 4.3 22.5 7.9 22.5C9.2 22.5 10.4 22.1 11.4 21.4L8.5 19.5Z" fill="white" opacity="0.7"/>
+                                </g>
+                              </svg>
                             </div>
                             
                             <div>
-                              <span className="font-bold text-[hsl(var(--color-text))] text-base">PIX</span>
+                              <span className="font-semibold text-[hsl(var(--color-text))] text-base">PIX</span>
                               <p className="text-xs text-gray-500">Pagamento instantâneo</p>
                             </div>
                           </div>
                           
-                          {/* Discount Badge */}
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-emerald-600 font-medium">Economia de R$ 17,10</span>
-                            <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-sm px-2 py-0.5 text-xs font-semibold">
-                              Desconto aplicado
-                            </Badge>
-                          </div>
+                          <Badge className="bg-emerald-500 text-white border-0 text-xs">
+                            Desconto aplicado
+                          </Badge>
                         </div>
                       </div>
                     </div>

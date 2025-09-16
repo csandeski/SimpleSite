@@ -350,13 +350,39 @@ export default function Checkout() {
                         Método de pagamento
                       </h3>
                       
-                      <div className="bg-[hsl(var(--color-primary))]/10 border-2 border-[hsl(var(--color-primary))] p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-5 h-5 rounded-full bg-[hsl(var(--color-primary))] flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full" />
+                      <div className="relative bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-4 shadow-sm overflow-hidden">
+                        {/* Decorative gradient background */}
+                        <div className="absolute -right-6 -top-6 w-24 h-24 bg-gradient-to-br from-emerald-200/30 to-green-200/30 rounded-full blur-2xl" />
+                        
+                        <div className="relative flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            {/* PIX Icon */}
+                            <div className="relative">
+                              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-sm">
+                                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M18.6889 7.29333L16.7556 5.36L14.1778 7.93778C13.0444 7.18667 11.6889 6.72 10.2222 6.72C6.00001 6.72 2.55557 10.1644 2.55557 14.3867C2.55557 18.6089 6.00001 22.0533 10.2222 22.0533C14.4445 22.0533 17.8889 18.6089 17.8889 14.3867C17.8889 12.92 17.4222 11.5644 16.6667 10.4311L19.2445 7.85333L21.1778 9.78667L22.5778 8.38667L20.0889 5.89778L18.6889 7.29333Z" fill="currentColor"/>
+                                  <path d="M10.2222 8.44444C11.2889 8.44444 12.2667 8.77778 13.0889 9.32222L10.2222 12.1889L7.35556 9.32222C8.17778 8.77778 9.15556 8.44444 10.2222 8.44444Z" fill="currentColor"/>
+                                  <path d="M4.27778 14.3867C4.27778 13.32 4.61111 12.3422 5.15556 11.52L8.02222 14.3867L5.15556 17.2533C4.61111 16.4311 4.27778 15.4533 4.27778 14.3867Z" fill="currentColor"/>
+                                  <path d="M10.2222 20.3289C9.15556 20.3289 8.17778 19.9956 7.35556 19.4511L10.2222 16.5844L13.0889 19.4511C12.2667 19.9956 11.2889 20.3289 10.2222 20.3289Z" fill="currentColor"/>
+                                  <path d="M15.2889 17.2533L12.4222 14.3867L15.2889 11.52C15.8333 12.3422 16.1667 13.32 16.1667 14.3867C16.1667 15.4533 15.8333 16.4311 15.2889 17.2533Z" fill="currentColor"/>
+                                </svg>
+                              </div>
+                              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+                            </div>
+                            
+                            <div>
+                              <span className="font-bold text-[hsl(var(--color-text))] text-base">PIX</span>
+                              <p className="text-xs text-gray-500">Pagamento instantâneo</p>
+                            </div>
                           </div>
-                          <span className="font-semibold text-[hsl(var(--color-text))]">PIX</span>
-                          <Badge className="bg-green-500 text-white">Desconto aplicado</Badge>
+                          
+                          {/* Discount Badge */}
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-emerald-600 font-medium">Economia de R$ 17,10</span>
+                            <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-sm px-2 py-0.5 text-xs font-semibold">
+                              Desconto aplicado
+                            </Badge>
+                          </div>
                         </div>
                       </div>
                     </div>

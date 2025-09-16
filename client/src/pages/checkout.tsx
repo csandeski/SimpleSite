@@ -314,9 +314,8 @@ export default function Checkout() {
           🕒 Compre em até {formatTime(timeLeft)} para não perder essa oferta
         </p>
       </div>
-
       {/* Hero Section with Banner */}
-      <section className="relative bg-gradient-to-b from-[hsl(var(--color-muted))] to-[hsl(var(--color-bg))] py-8 md:py-12">
+      <section className="relative bg-gradient-to-b from-[hsl(var(--color-muted))] to-[hsl(var(--color-bg))] py-8 md:py-12 pt-[0px] pb-[0px]">
         <div className="max-w-4xl mx-auto px-4">
           {/* Banner Image */}
           <div className="overflow-hidden mb-6">
@@ -352,7 +351,6 @@ export default function Checkout() {
 
         </div>
       </section>
-
       {/* Main Checkout Content */}
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -807,7 +805,6 @@ export default function Checkout() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

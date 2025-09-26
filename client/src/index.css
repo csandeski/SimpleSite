@@ -14,19 +14,19 @@
   --platinum: #f7f7f7;
   
   /* Metallic Accents */
-  --gold: #dc143c;
-  --rose-gold: #ff0040;
-  --copper: #b87333;
-  --bronze: #cd7f32;
+  --gold: #8B0000;
+  --rose-gold: #B22222;
+  --copper: #A52A2A;
+  --bronze: #800000;
   --chrome: linear-gradient(135deg, #e8e8e8 0%, #999 50%, #e8e8e8 100%);
   
-  /* Sensual Reds */
-  --crimson: #dc143c;
-  --burgundy: #800020;
-  --wine: #722f37;
-  --ruby: #ff0040;
-  --scarlet: #ff2400;
-  --velvet: #8b0000;
+  /* Sensual Reds - Darker */
+  --crimson: #8B0000;
+  --burgundy: #4B0000;
+  --wine: #3B0000;
+  --ruby: #B22222;
+  --scarlet: #A52A2A;
+  --velvet: #800000;
   
   /* Glass Effects */
   --glass-ultra: rgba(255, 255, 255, 0.01);
@@ -379,7 +379,7 @@ body {
 }
 
 .btn-accept {
-  background: linear-gradient(135deg, var(--ruby), var(--crimson));
+  background: linear-gradient(135deg, #4B0000 0%, #8B0000 30%, #B22222 50%, #DC143C 70%, #FF0000 100%);
   color: white;
   border: 1px solid rgba(255,0,64,0.2);
   position: relative;
@@ -473,17 +473,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   background: linear-gradient(90deg, 
-    var(--gold) 0%, 
-    var(--platinum) 30%, 
-    var(--gold) 60%, 
-    var(--platinum) 100%);
+    #4B0000 0%, 
+    #8B0000 30%, 
+    #B22222 60%, 
+    #DC143C 80%,
+    #FF0000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
   position: relative;
-  filter: drop-shadow(0 2px 4px rgba(212,175,55,0.3));
+  filter: drop-shadow(0 2px 4px rgba(139,0,0,0.5));
 }
 
 @keyframes shimmer {
@@ -493,7 +494,7 @@ body {
 
 /* Premium CTA Button with Magnetic Effect */
 .cta {
-  background: linear-gradient(135deg, var(--ruby), var(--crimson));
+  background: linear-gradient(135deg, #4B0000 0%, #8B0000 30%, #B22222 50%, #DC143C 70%, #FF0000 100%);
   color: white;
   padding: 16px 36px;
   border-radius: 50px;
@@ -604,6 +605,11 @@ body {
   display: inline-block;
   animation: word-float 6s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  background: linear-gradient(135deg, #4B0000 0%, #8B0000 25%, #B22222 50%, #DC143C 75%, #FF0000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(139, 0, 0, 0.6));
 }
 
 @keyframes word-float {
@@ -615,11 +621,11 @@ body {
   font-size: 1.2em;
   font-style: italic;
   background: linear-gradient(135deg, 
-    var(--gold) 0%, 
-    var(--rose-gold) 25%, 
-    var(--ruby) 50%, 
-    var(--gold) 75%, 
-    var(--rose-gold) 100%);
+    #800000 0%, 
+    #B22222 25%, 
+    #DC143C 50%, 
+    #FF0000 75%, 
+    #FF6347 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -732,7 +738,7 @@ body {
   border-radius: 50%;
   background: 
     radial-gradient(circle at 30% 30%, rgba(255,255,255,0.2), transparent),
-    linear-gradient(135deg, var(--ruby), var(--crimson));
+    linear-gradient(135deg, #4B0000 0%, #8B0000 25%, #B22222 50%, #DC143C 75%, #FF0000 100%);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -49,7 +49,7 @@ function App() {
       <header className="header">
         <div className="container header-inner">
           <div className="logo">
-            <span className="logo-text">Noite Rubra</span>
+            <span className="logo-text">Sexy Premium</span>
           </div>
           <a 
             className="cta desktop-cta" 
@@ -57,13 +57,23 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Entrar no WhatsApp
+            <span className="cta-text">Entrar no WhatsApp</span>
           </a>
         </div>
       </header>
 
       {/* Hero Section */}
       <main className="container">
+        {/* Main Headline - Before Video */}
+        <h1 className="main-headline">
+          O Segredo Que Vai Mudar<br />
+          <span className="highlight">Suas Noites Para Sempre</span>
+        </h1>
+        
+        <p className="sub-headline">
+          Descubra o método exclusivo que está revolucionando a vida íntima de milhares de pessoas
+        </p>
+        
         <section className="hero">
           <div className="hero-content">
             {/* VSL Video Player */}
@@ -99,9 +109,11 @@ function App() {
               )}
             </div>
 
-            <h1 className="headline">Encontros rápidos. Discrição total.</h1>
+            <h1 className="headline">
+              <span className="headline-accent">Encontros rápidos.</span> Discrição total.
+            </h1>
             <p className="sub">
-              Grupo exclusivo para solteiros adultos. Encontre encontros casuais com segurança e consentimento.
+              Grupo VIP exclusivo para adultos sofisticados. Conexões reais com segurança e consentimento.
             </p>
             
             <div className="cta-wrapper">

@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import './index.css';
 
 function App() {
   const [ageVerified, setAgeVerified] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const magneticRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check if user already verified age
@@ -11,6 +13,65 @@ function App() {
     if (verified === 'true') {
       setAgeVerified(true);
     }
+
+    // Add scroll animations
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      
+      parallaxElements.forEach((el) => {
+        const speed = (el as HTMLElement).dataset.parallax || '0.5';
+        const yPos = -(scrolled * parseFloat(speed));
+        (el as HTMLElement).style.transform = `translateY(${yPos}px)`;
+      });
+    };
+
+    // Add magnetic cursor effect
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      const magneticElements = document.querySelectorAll('.magnetic');
+      magneticElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distX = e.clientX - centerX;
+        const distY = e.clientY - centerY;
+        const distance = Math.sqrt(distX * distX + distY * distY);
+        
+        if (distance < 150) {
+          const force = Math.min(20, (1 - distance / 150) * 20);
+          (el as HTMLElement).style.transform = `translate(${distX * force / distance}px, ${distY * force / distance}px) scale(1.05)`;
+        } else {
+          (el as HTMLElement).style.transform = '';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Add entrance animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      observer.disconnect();
+    };
   }, []);
 
   const handleAgeConfirm = () => {
@@ -26,7 +87,25 @@ function App() {
     setVideoPlaying(true);
   };
 
-  const WHATSAPP_LINK = "https://wa.me/5511999999999?text=Quero%20entrar%20no%20grupo"; // Replace with actual WhatsApp link
+  const WHATSAPP_LINK = "https://wa.me/5511999999999?text=Quero%20entrar%20no%20grupo";
+
+  // Kinetic typography animation for headline
+  const animateText = useCallback(() => {
+    const headline = document.querySelector('.main-headline');
+    if (headline) {
+      const text = headline.textContent || '';
+      const words = text.split(' ');
+      headline.innerHTML = words.map((word, i) => 
+        `<span class="word" style="--delay: ${i * 0.1}s">${word}</span>`
+      ).join(' ');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ageVerified) {
+      setTimeout(animateText, 100);
+    }
+  }, [ageVerified, animateText]);
 
   if (!ageVerified) {
     return (
@@ -35,8 +114,8 @@ function App() {
           <h2>Conteúdo apenas para maiores de 18 anos</h2>
           <p>Este site contém material adulto e é voltado apenas para pessoas maiores de 18 anos. Confirma que você tem 18 anos ou mais?</p>
           <div className="age-actions">
-            <button className="btn-ghost" onClick={handleAgeDecline}>Não</button>
-            <button className="btn-accept" onClick={handleAgeConfirm}>Sim, sou maior</button>
+            <button className="btn-ghost magnetic" onClick={handleAgeDecline}>Não</button>
+            <button className="btn-accept magnetic" onClick={handleAgeConfirm}>Sim, sou maior</button>
           </div>
         </div>
       </div>
@@ -44,7 +123,24 @@ function App() {
   }
 
   return (
-    <div className="main-wrapper">
+    <>
+      {/* Luxury Background Layers */}
+      <div className="luxury-bg" />
+      
+      {/* Animated Spotlights */}
+      <div className="spotlight-container">
+        <div className="spotlight" />
+        <div className="spotlight" />
+      </div>
+      
+      {/* Particle Field */}
+      <div className="particle-field">
+        {[...Array(10)].map((_, i) => (
+          <div key={i} className="particle" />
+        ))}
+      </div>
+
+      <div className="main-wrapper">
       {/* Header */}
       <header className="header">
         <div className="container header-inner">
@@ -52,7 +148,7 @@ function App() {
             <span className="logo-text">Sexy Premium</span>
           </div>
           <a 
-            className="cta desktop-cta" 
+            className="cta desktop-cta magnetic" 
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
@@ -65,19 +161,19 @@ function App() {
       {/* Hero Section */}
       <main className="container">
         {/* Main Headline - Before Video */}
-        <h1 className="main-headline">
+        <h1 className="main-headline animate-on-scroll" data-parallax="0.3">
           O Segredo Que Vai Mudar<br />
           <span className="highlight">Suas Noites Para Sempre</span>
         </h1>
         
-        <p className="sub-headline">
+        <p className="sub-headline animate-on-scroll" data-parallax="0.2">
           Descubra o método exclusivo que está revolucionando a vida íntima de milhares de pessoas
         </p>
         
-        <section className="hero">
+        <section className="hero animate-on-scroll">
           <div className="hero-content">
             {/* VSL Video Player */}
-            <div className="vsl-wrap">
+            <div className="vsl-wrap" data-parallax="0.1">
               {!videoPlaying ? (
                 <div 
                   className="poster"
@@ -118,7 +214,7 @@ function App() {
             
             <div className="cta-wrapper">
               <a 
-                className="cta cta-primary cta-pulse" 
+                className="cta cta-primary cta-pulse magnetic" 
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -145,7 +241,7 @@ function App() {
               <p className="proof-number">+7.892</p>
               <p className="proof-desc">membros ativos</p>
               <a 
-                className="cta cta-card" 
+                className="cta cta-card magnetic" 
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -157,18 +253,18 @@ function App() {
         </section>
 
         {/* Steps Section */}
-        <section className="steps">
-          <div className="step">
+        <section className="steps animate-on-scroll">
+          <div className="step" style={{ '--i': 0 } as React.CSSProperties}>
             <div className="step-icon">1</div>
             <h4>Perfil rápido</h4>
             <p>Crie um perfil curto; sem dados sensíveis.</p>
           </div>
-          <div className="step">
+          <div className="step" style={{ '--i': 1 } as React.CSSProperties}>
             <div className="step-icon">2</div>
             <h4>Escolha e combine</h4>
             <p>Converse com segurança e marque encontros com consentimento.</p>
           </div>
-          <div className="step">
+          <div className="step" style={{ '--i': 2 } as React.CSSProperties}>
             <div className="step-icon">3</div>
             <h4>Regras & segurança</h4>
             <p>Grupo moderado por regras claras; respeito obrigatório.</p>
@@ -176,7 +272,7 @@ function App() {
         </section>
 
         {/* Testimonials */}
-        <section className="testimonials">
+        <section className="testimonials animate-on-scroll">
           <h2 className="section-title">O que dizem nossos membros</h2>
           <div className="testimonial-grid">
             <div className="testimonial">
@@ -221,7 +317,7 @@ function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="faq">
+        <section className="faq animate-on-scroll">
           <h2 className="section-title">Perguntas frequentes</h2>
           <div className="faq-grid">
             <div className="faq-item">
@@ -266,7 +362,7 @@ function App() {
 
       {/* Mobile WhatsApp FAB */}
       <a 
-        className="whatsapp-fab"
+        className="whatsapp-fab magnetic"
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
@@ -277,6 +373,7 @@ function App() {
         </svg>
       </a>
     </div>
+    </>
   );
 }
 

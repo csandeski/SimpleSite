@@ -13,11 +13,9 @@ export default function App() {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px',
       }}
     >
-      {/* Overlay escuro */}
+      {/* Overlay escuro suave */}
       <div 
         style={{
           position: 'absolute',
@@ -25,71 +23,61 @@ export default function App() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
           zIndex: 1
         }}
       />
       
-      {/* Conteúdo */}
+      {/* Barra fixa no topo */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        padding: '10px 15px',
+        zIndex: 3,
+        borderBottom: '1px solid rgba(255, 0, 0, 0.3)',
+      }}>
+        <p style={{
+          fontSize: '13px',
+          color: '#ffffff',
+          margin: 0,
+          textAlign: 'center',
+          letterSpacing: '0.5px',
+        }}>
+          ACESSE AGORA O <span style={{ color: '#FF0000', fontWeight: 'bold' }}>GRUPO SECRETO</span> DAS CASADAS DA SUA REGIÃO.
+        </p>
+      </div>
+      
+      {/* Conteúdo principal */}
       <div style={{
         position: 'relative',
         zIndex: 2,
         width: '100%',
         maxWidth: '500px',
+        margin: '0 auto',
         textAlign: 'center',
+        padding: '80px 20px 40px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        minHeight: '100vh',
       }}>
-        
-        {/* Texto superior */}
-        <p style={{
-          fontSize: '14px',
-          color: '#ffffff',
-          marginBottom: '20px',
-          marginTop: '10px',
-          letterSpacing: '0.5px',
-          lineHeight: '1.4'
-        }}>
-          ACESSE AGORA O <span style={{ color: '#FF0000', fontWeight: 'bold' }}>GRUPO SECRETO</span>
-          <br />
-          DAS CASADAS DA SUA REGIÃO.
-        </p>
         
         {/* Título principal */}
         <h1 style={{
-          fontSize: '28px',
+          fontSize: '36px',
           fontWeight: 'bold',
           color: '#ffffff',
-          marginBottom: '30px',
-          lineHeight: '1.2',
-          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+          lineHeight: '1.3',
+          textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
+          marginBottom: '30px'
         }}>
           ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...
           <br />
           QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.
         </h1>
-        
-        {/* Container do vídeo */}
-        <div style={{
-          width: '100%',
-          maxWidth: '400px',
-          margin: '0 auto',
-          aspectRatio: '9/16',
-          backgroundColor: '#000000',
-          borderRadius: '20px',
-          overflow: 'hidden',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)'
-        }}>
-          {/* Área do vídeo - placeholder preto */}
-          <div style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: '#000000',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            {/* Você pode adicionar um iframe de vídeo aqui se necessário */}
-          </div>
-        </div>
         
       </div>
     </div>

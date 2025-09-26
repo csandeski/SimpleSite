@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import './index.css';
+import logoImg from '@assets/123123_1758883312995.png';
 
 function App() {
   const [ageVerified, setAgeVerified] = useState(false);
@@ -145,7 +146,7 @@ function App() {
       <header className="header">
         <div className="container header-inner">
           <div className="logo">
-            <span className="logo-text">Sexy Premium</span>
+            <img src={logoImg} alt="Sexy Premium" className="logo-img" />
           </div>
           <a 
             className="cta desktop-cta magnetic" 

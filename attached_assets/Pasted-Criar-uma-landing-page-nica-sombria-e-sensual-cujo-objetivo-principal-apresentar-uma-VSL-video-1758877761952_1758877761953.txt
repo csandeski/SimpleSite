@@ -1,0 +1,318 @@
+Criar uma landing page única, sombria e sensual, cujo objetivo principal é apresentar uma VSL (video sales letter) e converter visitantes a entrar num grupo de WhatsApp para adultos (18+). A estética deve ser “black premium”: fundo preto texturizado (micro-grid quadriculado), destaques em vermelho com degradê “sangue → neon” e pequenos efeitos de glow. Visual elegante, tipografia forte e legível, layout minimalista com foco no vídeo e CTAs (conversão).
+
+Entregáveis: design em Figma + assets exportáveis (SVG/PNG/JPG), variantes de desktop (1440px), tablet (768px) e mobile (375px), e HTML/CSS/JS responsivo pronto para deploy (estrutura sem backend). Fornecer tokens de design (CSS variables), escala de espaçamento, sistema de 12 colunas para desktop e 6 colunas para mobile.
+
+Seções & prioridade (na ordem):
+	1.	Age gate / Warning (modal obrigatória antes de ver conteúdo): “Você tem 18+?” com opções Sim/Não; bloquear conteúdo até confirmação.
+	2.	Header minimal (logo à esquerda, botão “Entrar no Whatsapp” à direita — CTA sticky ao scroll).
+	3.	Hero (VSL): grande bloco central com player de vídeo responsivo (poster preto texturizado), play overlay grande, headline curta e punchy, subheadline e CTA primário (abrir grupo WhatsApp). Incluir contadores/tags de prova social sutis (ex.: “+7.892 membros”, “membros verificados”).
+	4.	Como funciona (3 passos) — simples, com ícones, copy direta e orientada a segurança/consentimento.
+	5.	Provas sociais / Testemunhos — blocos curtos, avatar pequeno, texto sucinto.
+	6.	FAQ curto + regras / política de uso (regras do grupo) + link para Política de Privacidade.
+	7.	Footer com disclaimers legais (“apenas 18+”, “consentimento”, “não oferecemos serviços pagos de acompanhantes”) e contatos.
+
+Design details:
+	•	Fundo: preto absoluto (#050505 ou #0b0b0b) com overlay de micro-grid (repeating linear gradients) + textura leve de ruído; não competir com o vídeo.
+	•	Paleta: vermelho sangue → vermelho neon com variações; texto principal em off-white (#eaeaea).
+	•	Tipografia: headline com fonte condensada e forte (ex.: Oswald / Montserrat Alternates / Poppins Bold); corpo com Inter ou Poppins Regular para legibilidade.
+	•	CTA: botão principal com degradê vermelho (ex.: #ff1f2e → #b20000), glow suave, animação pulse discreta em mobile; hover intensifica glow.
+	•	Som/Autoplay: NÃO iniciar com som. Player deve carregar muted autoplay apenas se suportado; exibir botão play central que ativa som quando o usuário clicar. For mobile, exibir poster + play (evitar autoplay com som).
+	•	Acessibilidade: contraste suficiente em textos principais; elementos com aria-label; navegação por teclado.
+	•	Interações: micro-interações sutis (hover nos cards, transições 160–220ms, CTA pulse a cada 6s).
+	•	Performance: lazyload do vídeo, compressão dos assets, usar poster estático para VSL.
+
+Regras & compliance (importante): age-gate obrigatório; disclaimer de conteúdo sexual para maiores de 18 anos; política clara sobre consentimento e proibição de conteúdo/atividades ilegais; link para Política de Privacidade. Não projetar nada que incentive tráfico de pessoas, exploração ou atividades ilegais.
+
+Outputs esperados: arquivos Figma com componentes, tokens CSS (cores, espaçamentos, tipografia), e um HTML/CSS/JS responsivo de referência.
+
+⸻
+
+Paleta cromática (com HEX + uso)
+	•	Fundo primário: #070707 (preto profundo — base)
+	•	Grid/textura overlay (clara sutil): rgba(255,255,255,0.02)
+	•	Vermelho 1 (neon): #ff1f2e — uso: highlights, ícones, CTA (start)
+	•	Vermelho 2 (sangue profundo): #b20000 — uso: CTA (end do degradê), hover, bordas subtis
+	•	Off-white (texto principal): #eaeaea
+	•	Cinza escuro (subtexto): #9b9b9b
+	•	Verde/Verificação (pequeno accent para “verificado”): #3ddc84 (usar com parcimônia)
+
+Sugestão de degradê CTA: linear-gradient(90deg, #ff1f2e 0%, #b20000 100%).
+
+Contraste: texto principal sempre em #eaeaea sobre o preto; vermelho usado para ênfase, nunca para blocos de texto longos.
+
+⸻
+
+Tipografia (Google Fonts recomendadas)
+	•	Headline: Oswald (700) ou Montserrat Alternates (700) — uso: H1, H2
+	•	Body: Inter (400/500) — uso: parágrafos, pequenas chamadas
+	•	Accent / UI: Poppins (600) — uso: botões, CTAs
+
+Escala de tamanhos (mobile-first):
+	•	H1: 1.8rem (mobile) → 2.6rem (desktop)
+	•	H2: 1.25rem → 1.75rem
+	•	Body: 1rem (16px)
+	•	Small UI text: 0.875rem
+
+Espaçamentos (scale): base 8px — tokens: 8, 12, 16, 24, 32, 48, 64.
+
+⸻
+
+Micro-texturas & CSS para o background (snippet pronto)
+
+Usei esse padrão em CSS para o grid microquadriculado e ruído leve:
+
+/* background microgrid + noise overlay */
+:root{
+  --bg:#070707;
+}
+body{
+  background: var(--bg);
+  color: #eaeaea;
+}
+.bg-grid::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:12px 12px;
+  mix-blend-mode:overlay;
+  z-index:0;
+  opacity:0.9;
+}
+/* subtle noise overlay (datauri or img) */
+.bg-grid::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900"><filter id="n"><feTurbulence baseFrequency="0.8" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.02" /></svg>');
+  mix-blend-mode:overlay;
+  z-index:0;
+}
+
+
+⸻
+
+Exemplo prático: Template HTML/CSS/JS (minimal, pronto para testar)
+
+Copia e cola esse arquivo como demo. ATENÇÃO: Substitua WHATSAPP_LINK pelo link do teu grupo (ou link de convite). Substitua o poster.jpg e vsl.mp4 pelos teus ativos.
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Noite Rubra — Encontre encontros adultos</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070707;
+  --text:#eaeaea;
+  --muted:#9b9b9b;
+  --red1:#ff1f2e;
+  --red2:#b20000;
+  --glass: rgba(255,255,255,0.03);
+  --gap:16px;
+  --radius:12px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  padding-bottom:80px;
+}
+.bg-grid::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:12px 12px;mix-blend-mode:overlay;z-index:0;opacity:0.9;
+}
+.container{max-width:1100px;margin:0 auto;padding:24px;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;position:relative;z-index:10}
+.logo{font-family:Oswald, sans-serif;letter-spacing:1px;font-size:1.1rem;}
+.cta{background:linear-gradient(90deg,var(--red1),var(--red2));color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;box-shadow:0 8px 28px rgba(178,0,0,0.12);transition:transform .16s,box-shadow .16s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(255,31,46,0.18)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:28px 0;position:relative;z-index:5}
+.hero .vsl-wrap{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,0.6)}
+.poster{width:100%;display:block;background:#000;min-height:220px;position:relative}
+.play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.play-btn{
+  width:88px;height:88px;border-radius:999px;background:linear-gradient(90deg,var(--red1),var(--red2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-family:Oswald;font-size:1.1rem;box-shadow:0 6px 28px rgba(255,31,46,0.18);transition:transform .16s;
+}
+.play-btn:hover{transform:scale(1.04)}
+.headline{font-family:Oswald, sans-serif;font-size:1.6rem;margin:0}
+.sub{color:var(--muted);margin-top:6px;font-size:0.98rem}
+
+/* Floating whatsapp button (mobile) */
+.whatsapp-fab{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--red1),var(--red2));width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:50;box-shadow:0 12px 30px rgba(178,0,0,0.2);border:2px solid rgba(255,255,255,0.03)}
+.whatsapp-fab img{width:26px;height:26px;}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.step{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px}
+.step h4{margin:0 0 8px 0;font-size:1rem;font-family:Oswald}
+
+/* Footer */
+.footer{margin-top:40px;color:var(--muted);font-size:0.9rem;padding:28px 0;border-top:1px solid rgba(255,255,255,0.03)}
+
+/* Responsive */
+@media(min-width:900px){
+  .hero{grid-template-columns: 1fr 420px; gap:32px}
+  .poster{min-height:360px}
+  .headline{font-size:2.4rem}
+}
+@media(max-width:720px){
+  .steps{grid-template-columns:1fr}
+  .cta{padding:10px 14px}
+}
+
+/* Age gate */
+.age-gate{
+  position:fixed;inset:0;background:linear-gradient(0deg, rgba(7,7,7,0.92), rgba(7,7,7,0.98));display:flex;align-items:center;justify-content:center;z-index:1000;
+}
+.age-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:14px;width:min(520px,92%);text-align:center}
+.age-card h2{font-family:Oswald;margin:0 0 8px 0}
+.age-actions{display:flex;gap:12px;justify-content:center;margin-top:18px}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:10px}
+.btn-accept{background:linear-gradient(90deg,var(--red1),var(--red2));color:#fff;padding:10px 14px;border-radius:10px}
+</style>
+</head>
+<body class="bg-grid">
+
+<!-- Age gate (js hides if consent in localStorage) -->
+<div id="ageGate" class="age-gate" role="dialog" aria-modal="true">
+  <div class="age-card" role="document">
+    <h2>Conteúdo apenas para maiores de 18 anos</h2>
+    <p>Este site contém material adulto e é voltado apenas para pessoas maiores de 18 anos. Confirma que você tem 18 anos ou mais?</p>
+    <div class="age-actions">
+      <button class="btn-ghost" id="noAge">Não</button>
+      <button class="btn-accept" id="yesAge">Sim, sou maior</button>
+    </div>
+  </div>
+</div>
+
+<header class="container header">
+  <div class="logo">Noite Rubra</div>
+  <a class="cta" href="#join" id="desktopJoin">Entrar no WhatsApp</a>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <div class="vsl-wrap" id="vslWrap">
+        <!-- Use poster image for mobile; clicking play will replace with <video> or play -->
+        <div class="poster" id="poster" style="background-image:url('poster.jpg');background-size:cover;background-position:center;">
+          <div class="play-overlay" id="playOverlay" role="button" aria-label="Play VSL">
+            <div class="play-btn">PLAY</div>
+          </div>
+        </div>
+      </div>
+      <h1 class="headline">Encontros rápidos. Discrição total.</h1>
+      <p class="sub">Grupo exclusivo para solteiros adultos. Encontre encontros casuais com segurança e consentimento.</p>
+      <div style="margin-top:14px">
+        <a class="cta" id="joinTop" href="WHATSAPP_LINK">Entrar no grupo</a>
+      </div>
+
+      <div class="steps" aria-hidden="false">
+        <div class="step"><h4>1 — Perfil rápido</h4><p class="sub">Crie um perfil curto; sem dados sensíveis.</p></div>
+        <div class="step"><h4>2 — Escolha e combine</h4><p class="sub">Converse com segurança e marque encontros com consentimento.</p></div>
+        <div class="step"><h4>3 — Regras & segurança</h4><p class="sub">Grupo moderado por regras claras; respeito obrigatório.</p></div>
+      </div>
+    </div>
+
+    <aside style="position:relative;">
+      <div style="background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px">
+        <p style="margin:0;font-weight:600">Prova social</p>
+        <p style="font-size:2rem;margin:6px 0 0 0">+7.892</p>
+        <p class="sub" style="margin-top:6px">membros ativos</p>
+        <div style="margin-top:12px">
+          <a class="cta" href="WHATSAPP_LINK">Entrar no grupo</a>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:0.95rem;color:var(--muted)">
+        <strong>Segurança:</strong> encontros consensuais. Não toleramos assédio ou atividades ilegais.
+      </div>
+    </aside>
+  </section>
+
+  <section class="footer">
+    <p>Este site é destinado a maiores de 18 anos. Ao entrar no grupo, você concorda com as regras e com a política de privacidade.</p>
+    <p style="margin-top:8px">© <span id="year"></span> Noite Rubra — Todos os direitos reservados</p>
+  </section>
+</main>
+
+<!-- floating whatsapp (mobile) -->
+<a class="whatsapp-fab" id="whatsFab" href="WHATSAPP_LINK" aria-label="Entrar no WhatsApp">
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='white' d='M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.3 7.1L4 29l6-2.3C11.9 27.6 13.9 28 16 28c6.6 0 12-5.4 12-12S22.6 3 16 3zm-1.2 19.3c-.5.2-1.2.4-2.4.1-2.8-.6-5-3.3-5.3-3.6-.4-.4-.8-.9-.1-1.9.6-.9.9-1.2 1.3-1.6.3-.3.4-.6.6-.9.2-.3.1-.6 0-.9-.2-.3-1.8-4.2-2.5-5.6-.6-1.3-1.2-1.1-1.6-1.1-.4 0-1 .1-1.6 1.6-.6 1.6-.8 3.2.9 5.6 1.7 2.4 4.7 5 8 6.2 3.4 1.2 4.7.9 5.4.8.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.9-.1-.2-.4-.3-.9-.5-.5-.2-2.9-1.1-3.4-1.2-.5-.2-1-.1-1.4.2-.5.3-1.3 1-1.6 1.3-.3.3-.6.3-1.1.1z'/></svg>" alt="whatsapp">
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Age gate logic
+const ageGate = document.getElementById('ageGate');
+const yesAge = document.getElementById('yesAge');
+const noAge = document.getElementById('noAge');
+if(localStorage.getItem('nr_age_ok') === '1'){
+  ageGate.style.display='none';
+}
+yesAge.addEventListener('click', () => {
+  localStorage.setItem('nr_age_ok','1');
+  ageGate.style.display='none';
+});
+noAge.addEventListener('click', () => {
+  window.location.href = 'about:blank'; // send away (replace with your public info page)
+});
+
+// Play overlay -> replace poster with <video>
+document.getElementById('playOverlay').addEventListener('click', function(){
+  const wrap = document.getElementById('vslWrap');
+  // create video element
+  const video = document.createElement('video');
+  video.src = 'vsl.mp4';
+  video.controls = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  video.muted = false;
+  video.style.width='100%';
+  video.style.height='100%';
+  video.style.display='block';
+  // replace poster with video
+  wrap.innerHTML='';
+  wrap.appendChild(video);
+  video.focus();
+});
+</script>
+
+</body>
+</html>
+
+
+⸻
+
+Copy / textos prontos (para VSL e CTAs)
+	•	Headline curta: “Encontros rápidos. Discrição total.”
+	•	Subheadline: “Grupo exclusivo para adultos: combine, converse e marque. Respeito sempre.”
+	•	CTA principal: “Entrar no grupo” / secundário: “Ver regras”
+	•	Aviso legal curto: “Apenas maiores de 18 anos. Respeito e consentimento obrigatórios.”
+
+⸻
+
+Dicas finais e checklist antes do lançamento
+	1.	Age gate obrigatório (conforme template) — registra em localStorage e exige confirmação.
+	2.	Política de privacidade e termos visíveis — link no footer.
+	3.	Não iniciar áudio automaticamente — usuário deve clicar para ativar som.
+	4.	Compressão do vídeo + poster — usa H.264/MP4 e fallback para o YouTube/Vimeo se precisar.
+	5.	Testar contrates e legibilidade em iPhone/Android (modo escuro já nativo).
+	6.	M

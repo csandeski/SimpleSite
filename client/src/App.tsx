@@ -60,19 +60,50 @@ export default function App() {
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        background: 'linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF0000 100%)',
         padding: '10px 15px',
         zIndex: 3,
-        borderBottom: '1px solid rgba(255, 0, 0, 0.3)',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
+        overflow: 'hidden'
       }}>
+        {/* Textura quadriculada */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.1,
+          backgroundImage: `
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 10px,
+              rgba(255, 255, 255, 0.1) 10px,
+              rgba(255, 255, 255, 0.1) 20px
+            ),
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 10px,
+              rgba(255, 255, 255, 0.1) 10px,
+              rgba(255, 255, 255, 0.1) 20px
+            )
+          `,
+          pointerEvents: 'none'
+        }} />
+        
         <p style={{
           fontSize: '13px',
           color: '#ffffff',
           margin: 0,
           textAlign: 'center',
           letterSpacing: '0.5px',
+          position: 'relative',
+          fontWeight: '500',
+          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'
         }}>
-          ACESSE AGORA O <span style={{ color: '#FF0000', fontWeight: 'bold' }}>GRUPO SECRETO</span> DAS CASADAS SAFADAS!
+          ACESSE AGORA O <span style={{ color: '#ffffff', fontWeight: 'bold' }}>GRUPO SECRETO</span> DAS CASADAS SAFADAS!
         </p>
       </div>
       

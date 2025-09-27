@@ -4,10 +4,43 @@ import fundoImg from '@assets/fundo_1758886315966.png';
 import sexyLogo from '@assets/123123_1758969742043.png';
 import TinderPage from './pages/TinderPage';
 
+// Import das imagens do carousel
+import carouselImg1 from '@assets/spdexpebofal7eo3wog800wssw0gg4k.r300x600.gCenter.c4c29140b4094c23306128ad1c2d1a0b_1758970676857.jpg';
+import carouselImg2 from '@assets/spdexp2hx3d8j2jikgosk88o04sws8c.r300x600.gCenter.1a39b309bb6e294ef63f1beeb4883481_1758970676857.jpg';
+import carouselImg3 from '@assets/spdexp3qiloznib0w0cgck0gwwwwcg8.r300x600.gCenter.7e1f146c635ea199c41a60453af0b0a1_1758970676857.jpg';
+import carouselImg4 from '@assets/spdexp5ibqj5sfto0sw004k8k0ogsg0.r300x600.gCenter.e34511c00bcb166e82fbc64a34baaf79_1758970676857.jpg';
+import carouselImg5 from '@assets/spdexp7su2nlahsykgg0g8og4k4gkks.r300x600.gCenter.ebfbd3c6fc70b5da5d7fc5750f0517cf_1758970676858.jpg';
+import carouselImg6 from '@assets/spdexp644v2rmpihoggwoc0o40ocoww.r300x600.gCenter.197ffc158329553d1042da9df9ff7892_1758970676858.jpg';
+import carouselImg7 from '@assets/spdexpa2t0l397emg484kgkk08skccg.r300x600.gCenter.888f5bf95410c3fc5af69ebc004513fe_1758970676858.jpg';
+import carouselImg8 from '@assets/spdexpadf2cvksw6gocggw8ckkc4wco.r300x600.gCenter.69bd2f45182bd2e9cfb385d9f6930ebc_1758970676858.jpg';
+import carouselImg9 from '@assets/spdexpblbgnpvsoxkw0s00oo0okog40.r300x600.gCenter.7f2e70918b64751fb781d152a4116633_1758970676859.jpg';
+import carouselImg10 from '@assets/spdexpbx0ncxyud80s04ks4cgkckwco.r300x600.gCenter.59f17c71f447b3f2383bcfc813b05d96_1758970676859.jpg';
+import carouselImg11 from '@assets/spdexpccnb58qhrtsg0o88go84kksw8.r300x600.gCenter.53b3b56174eebac222096b23576e8edd_1758970676859.jpg';
+import carouselImg12 from '@assets/spdexpcubkzd5c2lcg0o448o0os4g48.r300x600.gCenter.6ba57bd8c0cfd8306fd170652fc94e3c_1758970676859.jpg';
+import carouselImg13 from '@assets/spdexpd81p0qn9fk84kwgoks8co4w4c.r300x600.gCenter.5db384b664ad16f5057607f9ee5469b1_1758970676860.jpg';
+
 function HomePage() {
   const [userCity, setUserCity] = useState<string | null>(null);
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
   const [, setLocation] = useLocation();
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+  
+  // Array de imagens do carousel
+  const carouselImages = [
+    carouselImg1,
+    carouselImg2,
+    carouselImg3,
+    carouselImg4,
+    carouselImg5,
+    carouselImg6,
+    carouselImg7,
+    carouselImg8,
+    carouselImg9,
+    carouselImg10,
+    carouselImg11,
+    carouselImg12,
+    carouselImg13
+  ];
 
   useEffect(() => {
     // Função para obter a cidade através do nosso backend (sem CORS)
@@ -30,6 +63,48 @@ function HomePage() {
     // Chama a função de geolocalização
     getCityFromBackend();
   }, []);
+  
+  // Auto-rotate do carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCarouselIndex(prev => (prev + 1) % carouselImages.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+  
+  // Função para calcular a posição e escala de cada imagem no carousel
+  const getCarouselItemStyle = (index: number) => {
+    const totalImages = carouselImages.length;
+    const anglePerItem = 360 / totalImages;
+    const rotation = ((index - currentCarouselIndex) * anglePerItem + 360) % 360;
+    
+    // Converte rotação para radianos
+    const radian = (rotation * Math.PI) / 180;
+    
+    // Calcula posição X e Z
+    const translateX = Math.sin(radian) * 250;
+    const translateZ = Math.cos(radian) * 250 - 250;
+    
+    // Escala baseada na posição Z (mais perto = maior)
+    const scale = translateZ > -150 ? 1.2 : 0.8 + (translateZ + 500) / 1000;
+    
+    // Opacidade baseada na posição
+    const opacity = translateZ > -300 ? 1 : 0.6;
+    
+    // Z-index baseado na posição Z
+    const zIndex = Math.floor(translateZ + 500);
+    
+    return {
+      position: 'absolute' as const,
+      transform: `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale})`,
+      opacity,
+      zIndex,
+      transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+      width: '180px',
+      height: '320px'
+    };
+  };
 
   return (
     <div 
@@ -888,6 +963,158 @@ function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* 3D Carousel Component */}
+        <div style={{
+          marginTop: '60px',
+          marginBottom: '60px',
+          position: 'relative',
+          width: '100%',
+          maxWidth: '100vw',
+          overflow: 'hidden',
+          padding: '40px 0'
+        }}>
+          <h2 style={{
+            fontSize: '24px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            marginBottom: '10px',
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+          }}>
+            🔥 Mulheres Online Agora em {userCity || 'Sua Região'}
+          </h2>
+          <p style={{
+            fontSize: '14px',
+            color: '#FFD700',
+            textAlign: 'center',
+            marginBottom: '40px',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}>
+            ⚡ Deslize para ver mais perfis disponíveis ⚡
+          </p>
+          
+          {/* Container do Carousel 3D */}
+          <div style={{
+            position: 'relative',
+            height: '400px',
+            width: '100%',
+            perspective: '1200px',
+            perspectiveOrigin: 'center center',
+            transformStyle: 'preserve-3d',
+            margin: '0 auto'
+          }}>
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              transformStyle: 'preserve-3d',
+              transform: 'translateZ(-250px)',
+              left: '50%',
+              marginLeft: '-90px'
+            }}>
+              {carouselImages.map((img, index) => (
+                <div
+                  key={index}
+                  style={getCarouselItemStyle(index)}
+                  onClick={() => setCurrentCarouselIndex(index)}
+                >
+                  <div style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '15px',
+                    overflow: 'hidden',
+                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.6)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                  }}>
+                    <img
+                      src={img}
+                      alt={`Perfil ${index + 1}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    
+                    {/* Badge verde "disponível agora" */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '10px',
+                      left: '10px',
+                      background: 'linear-gradient(135deg, #00C853 0%, #00E676 100%)',
+                      padding: '6px 12px',
+                      borderRadius: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      boxShadow: '0 4px 12px rgba(0, 230, 118, 0.5)',
+                      animation: index === currentCarouselIndex ? 'pulse 1.5s infinite' : 'none'
+                    }}>
+                      <span style={{
+                        width: '8px',
+                        height: '8px',
+                        background: '#FFFFFF',
+                        borderRadius: '50%',
+                        animation: 'blink 1s infinite'
+                      }} />
+                      <span style={{
+                        color: '#FFFFFF',
+                        fontSize: '11px',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase'
+                      }}>
+                        Disponível Agora
+                      </span>
+                    </div>
+                    
+                    {/* Overlay gradient no bottom */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '60px',
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)'
+                    }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Indicadores de posição */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '8px',
+            marginTop: '40px'
+          }}>
+            {carouselImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentCarouselIndex(index)}
+                style={{
+                  width: index === currentCarouselIndex ? '30px' : '10px',
+                  height: '10px',
+                  borderRadius: '5px',
+                  border: 'none',
+                  background: index === currentCarouselIndex 
+                    ? 'linear-gradient(90deg, #FF0000, #FFD700)'
+                    : 'rgba(255, 255, 255, 0.3)',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: index === currentCarouselIndex 
+                    ? '0 0 10px rgba(255, 0, 0, 0.5)'
+                    : 'none'
+                }}
+              />
+            ))}
           </div>
         </div>
         

@@ -42,6 +42,12 @@ function HomePage() {
     carouselImg13
   ];
 
+  const womenNames = [
+    "Carolina", "Amanda", "Juliana", "Patricia", "Fernanda",
+    "Beatriz", "Rafaela", "Mariana", "Isabella", "Gabriela",
+    "Larissa", "Letícia", "Natália"
+  ];
+
   useEffect(() => {
     // Função para obter a cidade através do nosso backend (sem CORS)
     const getCityFromBackend = async () => {
@@ -87,7 +93,7 @@ function HomePage() {
     const translateZ = Math.cos(radian) * 250 - 250;
     
     // Escala baseada na posição Z (mais perto = maior)
-    const scale = translateZ > -150 ? 1.2 : 0.8 + (translateZ + 500) / 1000;
+    const scale = translateZ > -150 ? 1.2 : 0.6 + (translateZ + 500) / 2000;
     
     // Opacidade baseada na posição
     const opacity = translateZ > -300 ? 1 : 0.6;
@@ -1042,6 +1048,16 @@ function HomePage() {
                       }}
                     />
                     
+                    {/* Dark overlay for non-center images */}
+                    {index !== currentCarouselIndex && (
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'rgba(0, 0, 0, 0.5)',
+                        zIndex: 1
+                      }} />
+                    )}
+                    
                     {/* Badge verde "disponível agora" */}
                     <div style={{
                       position: 'absolute',
@@ -1073,15 +1089,32 @@ function HomePage() {
                       </span>
                     </div>
                     
-                    {/* Overlay gradient no bottom */}
+                    {/* Bottom info section with name and location */}
                     <div style={{
                       position: 'absolute',
                       bottom: 0,
                       left: 0,
                       right: 0,
-                      height: '60px',
-                      background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)'
-                    }} />
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
+                      padding: '15px 10px 10px',
+                      zIndex: 2
+                    }}>
+                      <p style={{
+                        color: '#FFFFFF',
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        margin: '0 0 2px 0'
+                      }}>
+                        {womenNames[index]}
+                      </p>
+                      <p style={{
+                        color: '#FFD700',
+                        fontSize: '11px',
+                        margin: 0
+                      }}>
+                        📍 {userCity || 'Sua cidade'}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}

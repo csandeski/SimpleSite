@@ -59,25 +59,33 @@ export default function App() {
         margin: '0 auto',
         textAlign: 'center',
         padding: '80px 20px 40px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        minHeight: '100vh',
       }}>
         
-        {/* Título principal */}
+        {/* Título principal em 2 linhas */}
         <h1 style={{
-          fontSize: '36px',
+          fontSize: '28px',
           fontWeight: 'bold',
           color: '#ffffff',
           lineHeight: '1.3',
           textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
-          marginBottom: '30px'
+          marginBottom: '20px',
+          marginTop: '20px'
         }}>
-          ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...
-          <br />
-          QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.
+          <div>ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...</div>
+          <div>QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.</div>
         </h1>
+        
+        {/* Descrição */}
+        <p style={{
+          fontSize: '16px',
+          color: '#ffffff',
+          lineHeight: '1.5',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+          marginBottom: '30px',
+          padding: '0 10px'
+        }}>
+          Clique no vídeo para liberar sua vaga no grupo das casadas safadas da sua região!
+        </p>
         
       </div>
     </div>

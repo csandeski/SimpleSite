@@ -422,282 +422,350 @@ export default function App() {
         <div style={{
           backgroundColor: 'transparent',
           padding: '30px 15px',
-          marginTop: '40px',
-          borderTop: '2px solid rgba(255, 0, 0, 0.2)'
+          marginTop: '40px'
         }}>
           <h2 style={{
-            fontSize: '18px',
+            fontSize: '20px',
             color: '#FFFFFF',
             textAlign: 'center',
-            marginBottom: '20px',
-            fontWeight: 'bold'
+            marginBottom: '5px',
+            fontWeight: 'bold',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
           }}>
-            👀 Conversas Reais Rolando AGORA no Grupo…
+            💬 Conversas QUENTES do Grupo
           </h2>
+          <p style={{
+            fontSize: '12px',
+            color: '#FFD700',
+            textAlign: 'center',
+            marginBottom: '20px',
+            textTransform: 'uppercase',
+            letterSpacing: '1px'
+          }}>
+            ⚠️ Conteúdo Adulto +18 ⚠️
+          </p>
           
-          {/* Container do Chat */}
+          {/* Container do Chat estilo WhatsApp */}
           <div style={{
             maxWidth: '380px',
             margin: '0 auto',
-            backgroundColor: '#1C2831',
-            borderRadius: '10px',
-            padding: '15px',
-            minHeight: '400px',
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg width="40" height="40" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23grid)" /%3E%3C/svg%3E")'
+            backgroundColor: '#0B141A',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
           }}>
-            
-            {/* Mensagem 1 - Mulher */}
+            {/* Header do Chat */}
             <div style={{
-              marginBottom: '12px',
-              animation: 'fadeInLeft 0.5s ease-out',
-              opacity: 1
+              background: 'linear-gradient(90deg, #1F2C34 0%, #2A3942 100%)',
+              padding: '12px 15px',
+              display: 'flex',
+              alignItems: 'center',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
             }}>
               <div style={{
-                backgroundColor: '#25D366',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '0 15px 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #FF0000 0%, #8B0000 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: '12px',
+                boxShadow: '0 2px 8px rgba(255, 0, 0, 0.3)'
               }}>
+                <span style={{ fontSize: '20px' }}>🔥</span>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  fontSize: '15px',
+                  fontWeight: 'bold',
+                  color: '#FFFFFF',
+                  marginBottom: '2px'
+                }}>
+                  Casadas Safadas {userCity ? `- ${userCity}` : ''}
+                </div>
                 <div style={{
                   fontSize: '11px',
-                  fontWeight: 'bold',
+                  color: '#8EBDA1'
+                }}>
+                  247 participantes • 89 online agora
+                </div>
+              </div>
+            </div>
+            
+            {/* Área de Mensagens */}
+            <div style={{
+              backgroundColor: '#0B141A',
+              padding: '15px',
+              minHeight: '280px',
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='a' patternUnits='userSpaceOnUse' width='60' height='60'%3E%3Cpath d='M0 0h60v60H0z' fill='%230B141A'/%3E%3Cpath d='M30 30m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0' fill='%23111B21' fill-opacity='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3C/svg%3E")`
+            }}>
+              
+              {/* Mensagem 1 - Mulher */}
+              <div style={{
+                marginBottom: '16px',
+                animation: 'fadeInLeft 0.5s ease-out'
+              }}>
+                <div style={{
+                  fontSize: '10px',
+                  color: '#8696A0',
                   marginBottom: '4px',
-                  color: '#D4FFE4'
+                  paddingLeft: '8px'
                 }}>
                   Patrícia, 32
                 </div>
                 <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
+                  backgroundColor: '#1C5A4E',
+                  color: '#FFFFFF',
+                  padding: '8px 12px',
+                  borderRadius: '0 10px 10px 10px',
+                  maxWidth: '80%',
+                  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)',
+                  position: 'relative'
                 }}>
-                  Tô carente demais... quem vem me fazer companhia hoje? 🔥
+                  <div style={{
+                    fontSize: '14px',
+                    lineHeight: '1.4',
+                    marginBottom: '4px'
+                  }}>
+                    Marido dormindo do meu lado e eu aqui no grupo 🤫 Alguém online pra conversa safada?
+                  </div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#8EBDA1',
+                    textAlign: 'right',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    gap: '3px'
+                  }}>
+                    23:47
+                    <span style={{ fontSize: '12px' }}>✓✓</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Mensagem 2 - Homem */}
-            <div style={{
-              marginBottom: '12px',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              animation: 'fadeInRight 0.7s ease-out',
-              opacity: 1
-            }}>
+              
+              {/* Mensagem 2 - Homem */}
               <div style={{
-                backgroundColor: '#373737',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '15px 0 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                marginBottom: '16px',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                animation: 'fadeInRight 0.7s ease-out'
               }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#B8B8B8'
-                }}>
-                  Carlos, 28
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }}>
-                  Eu vou! Adoro uma casada safada... onde vc mora? 😈
+                <div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#8696A0',
+                    marginBottom: '4px',
+                    paddingRight: '8px',
+                    textAlign: 'right'
+                  }}>
+                    Carlos, 28
+                  </div>
+                  <div style={{
+                    backgroundColor: '#1F2C34',
+                    color: '#FFFFFF',
+                    padding: '8px 12px',
+                    borderRadius: '10px 0 10px 10px',
+                    maxWidth: '80%',
+                    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
+                  }}>
+                    <div style={{
+                      fontSize: '14px',
+                      lineHeight: '1.4',
+                      marginBottom: '4px'
+                    }}>
+                      Eu tô! Chama no privado 🔥 Adoro casadas
+                    </div>
+                    <div style={{
+                      fontSize: '10px',
+                      color: '#8696A0',
+                      textAlign: 'right'
+                    }}>
+                      23:48
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Mensagem 3 - Mulher */}
-            <div style={{
-              marginBottom: '12px',
-              animation: 'fadeInLeft 0.9s ease-out',
-              opacity: 1
-            }}>
+              
+              {/* Mensagem 3 - Mulher com foto */}
               <div style={{
-                backgroundColor: '#25D366',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '0 15px 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                marginBottom: '16px',
+                animation: 'fadeInLeft 0.9s ease-out'
               }}>
                 <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
+                  fontSize: '10px',
+                  color: '#8696A0',
                   marginBottom: '4px',
-                  color: '#D4FFE4'
+                  paddingLeft: '8px'
                 }}>
                   Amanda, 29
                 </div>
                 <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
+                  backgroundColor: '#1C5A4E',
+                  color: '#FFFFFF',
+                  padding: '8px 12px',
+                  borderRadius: '0 10px 10px 10px',
+                  maxWidth: '80%',
+                  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
                 }}>
-                  Alguém curte fazer ao ar livre? Tenho um lugar bem discreto 💦
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(255,0,0,0.2), rgba(139,0,0,0.2))',
+                    padding: '6px',
+                    borderRadius: '6px',
+                    marginBottom: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <span style={{ fontSize: '20px' }}>🔒</span>
+                    <span style={{ fontSize: '12px', fontStyle: 'italic' }}>Foto • Clique para ver</span>
+                  </div>
+                  <div style={{
+                    fontSize: '14px',
+                    lineHeight: '1.4',
+                    marginBottom: '4px'
+                  }}>
+                    Acabei de enviar uma prévia... quem quiser ver mais, só chamar 😈
+                  </div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#8EBDA1',
+                    textAlign: 'right',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    gap: '3px'
+                  }}>
+                    23:51
+                    <span style={{ fontSize: '12px' }}>✓✓</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Mensagem 4 - Homem */}
-            <div style={{
-              marginBottom: '12px',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              animation: 'fadeInRight 1.1s ease-out',
-              opacity: 1
-            }}>
+              
+              {/* Mensagem 4 - Áudio */}
               <div style={{
-                backgroundColor: '#373737',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '15px 0 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                marginBottom: '16px',
+                display: 'flex',
+                justifyContent: 'flex-end',
+                animation: 'fadeInRight 1.1s ease-out'
               }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#B8B8B8'
-                }}>
-                  Rafael, 35
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }}>
-                  Acabei de sair do motel com uma do grupo... valeu a pena! 🍑
+                <div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#8696A0',
+                    marginBottom: '4px',
+                    paddingRight: '8px',
+                    textAlign: 'right'
+                  }}>
+                    Rafael, 35
+                  </div>
+                  <div style={{
+                    backgroundColor: '#1F2C34',
+                    color: '#FFFFFF',
+                    padding: '10px 12px',
+                    borderRadius: '10px 0 10px 10px',
+                    maxWidth: '200px',
+                    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginBottom: '4px'
+                    }}>
+                      <div style={{
+                        width: '30px',
+                        height: '30px',
+                        borderRadius: '50%',
+                        backgroundColor: '#00AF9C',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <span style={{ fontSize: '14px' }}>▶️</span>
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{
+                          height: '20px',
+                          background: `repeating-linear-gradient(
+                            90deg,
+                            #4A5A64,
+                            #4A5A64 2px,
+                            transparent 2px,
+                            transparent 4px
+                          )`,
+                          borderRadius: '10px',
+                          position: 'relative'
+                        }}>
+                          <div style={{
+                            position: 'absolute',
+                            bottom: '-14px',
+                            left: 0,
+                            fontSize: '10px',
+                            color: '#8696A0'
+                          }}>
+                            0:18
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style={{
+                      fontSize: '10px',
+                      color: '#8696A0',
+                      textAlign: 'right',
+                      marginTop: '14px'
+                    }}>
+                      23:52
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Mensagem 5 - Mulher */}
-            <div style={{
-              marginBottom: '12px',
-              animation: 'fadeInLeft 1.3s ease-out',
-              opacity: 1
-            }}>
+              
+              {/* Indicador de digitação */}
               <div style={{
-                backgroundColor: '#25D366',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '0 15px 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px',
+                animation: 'fadeIn 1.5s ease-out'
               }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#D4FFE4'
+                <span style={{
+                  fontSize: '12px',
+                  color: '#00AF9C',
+                  fontStyle: 'italic'
                 }}>
-                  Juliana, 36
-                </div>
+                  Juliana está digitando
+                </span>
                 <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
+                  display: 'flex',
+                  gap: '2px'
                 }}>
-                  Marido viajou... casa livre o fds todo! Quem vem? 🏠🔥
-                </div>
-              </div>
-            </div>
-            
-            {/* Mensagem 6 - Homem */}
-            <div style={{
-              marginBottom: '12px',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              animation: 'fadeInRight 1.5s ease-out',
-              opacity: 1
-            }}>
-              <div style={{
-                backgroundColor: '#373737',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '15px 0 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
-              }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#B8B8B8'
-                }}>
-                  Bruno, 31
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }}>
-                  Prefiro as mais experientes... tem alguma 40+ online? 😋
-                </div>
-              </div>
-            </div>
-            
-            {/* Mensagem 7 - Mulher */}
-            <div style={{
-              marginBottom: '12px',
-              animation: 'fadeInLeft 1.7s ease-out',
-              opacity: 1
-            }}>
-              <div style={{
-                backgroundColor: '#25D366',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '0 15px 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
-              }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#D4FFE4'
-                }}>
-                  Fernanda, 42
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }}>
-                  Eu estou Bruno! E adoro ensinar os mais novos... vem privado 💋
-                </div>
-              </div>
-            </div>
-            
-            {/* Mensagem 8 - Homem */}
-            <div style={{
-              marginBottom: '12px',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              animation: 'fadeInRight 1.9s ease-out',
-              opacity: 1
-            }}>
-              <div style={{
-                backgroundColor: '#373737',
-                color: '#FFFFFF',
-                padding: '10px 14px',
-                borderRadius: '15px 0 15px 15px',
-                maxWidth: '75%',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
-              }}>
-                <div style={{
-                  fontSize: '11px',
-                  fontWeight: 'bold',
-                  marginBottom: '4px',
-                  color: '#B8B8B8'
-                }}>
-                  Pedro, 26
-                </div>
-                <div style={{
-                  fontSize: '14px',
-                  lineHeight: '1.4'
-                }}>
-                  Alguém topa algo agora? Hotel centro, pago tudo! 💰
+                  <span style={{
+                    width: '4px',
+                    height: '4px',
+                    backgroundColor: '#00AF9C',
+                    borderRadius: '50%',
+                    animation: 'bounce 1.4s infinite',
+                    animationDelay: '0s'
+                  }} />
+                  <span style={{
+                    width: '4px',
+                    height: '4px',
+                    backgroundColor: '#00AF9C',
+                    borderRadius: '50%',
+                    animation: 'bounce 1.4s infinite',
+                    animationDelay: '0.2s'
+                  }} />
+                  <span style={{
+                    width: '4px',
+                    height: '4px',
+                    backgroundColor: '#00AF9C',
+                    borderRadius: '50%',
+                    animation: 'bounce 1.4s infinite',
+                    animationDelay: '0.4s'
+                  }} />
                 </div>
               </div>
             </div>

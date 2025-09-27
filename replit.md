@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack web application built with a React frontend and Express.js backend. The project is a mobile-first crochet course sales landing page ("Coleção Crochês que Mais Vendem") featuring instructor Claudete Oliveira's course selling 5 popular crochet pieces. The application includes a comprehensive landing page with course information, testimonials, and a complete checkout page with PIX payment integration.
+This is a full-stack web application built with a React frontend and Express.js backend. The project is a mobile-optimized landing page for adult content promotion featuring geolocation, video section, statistics cards, WhatsApp conversation simulation, and a complete Tinder-style matching page. The site uses sensual background imagery with targeted messaging and includes an interactive user journey from landing page to matching experience.
 
 # User Preferences
 

@@ -1,6 +1,76 @@
+import { useState, useEffect } from 'react';
 import fundoImg from '@assets/fundo_1758886315966.png';
 
 export default function App() {
+  const [userCity, setUserCity] = useState<string | null>(null);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(true);
+
+  useEffect(() => {
+    // Função para obter a cidade através de reverse geocoding
+    const getCityFromCoords = async (latitude: number, longitude: number) => {
+      try {
+        // Usando Nominatim (OpenStreetMap) para reverse geocoding
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`,
+          {
+            headers: {
+              'Accept-Language': 'pt-BR,pt;q=0.9',
+            }
+          }
+        );
+        
+        if (!response.ok) throw new Error('Erro ao buscar localização');
+        
+        const data = await response.json();
+        
+        // Prioridade: city > town > municipality > village > suburb
+        const city = data.address?.city || 
+                    data.address?.town || 
+                    data.address?.municipality ||
+                    data.address?.village ||
+                    data.address?.suburb ||
+                    data.address?.county ||
+                    null;
+        
+        if (city) {
+          setUserCity(city);
+        }
+      } catch (error) {
+        console.error('Erro no reverse geocoding:', error);
+      } finally {
+        setIsLoadingLocation(false);
+      }
+    };
+
+    // Tentar obter localização do usuário
+    const getLocation = () => {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          // Sucesso
+          (position) => {
+            getCityFromCoords(position.coords.latitude, position.coords.longitude);
+          },
+          // Erro ou negação de permissão
+          (error) => {
+            console.error('Erro ao obter localização:', error);
+            setIsLoadingLocation(false);
+          },
+          // Opções
+          {
+            enableHighAccuracy: false,
+            timeout: 10000,
+            maximumAge: 300000 // Cache de 5 minutos
+          }
+        );
+      } else {
+        // Navegador não suporta geolocalização
+        setIsLoadingLocation(false);
+      }
+    };
+
+    getLocation();
+  }, []);
+
   return (
     <div 
       style={{
@@ -75,16 +145,34 @@ export default function App() {
           <div>QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.</div>
         </h1>
         
-        {/* Descrição */}
+        {/* Descrição com cidade dinâmica */}
         <p style={{
           fontSize: '16px',
           color: '#ffffff',
           lineHeight: '1.5',
           textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
           marginBottom: '30px',
-          padding: '0 10px'
+          padding: '0 10px',
+          minHeight: '48px'
         }}>
-          Clique no vídeo para liberar sua vaga no grupo das casadas safadas da sua região!
+          {isLoadingLocation ? (
+            <span style={{ opacity: 0.7 }}>Localizando...</span>
+          ) : userCity ? (
+            <>
+              Clique no vídeo para liberar sua vaga no grupo das casadas safadas{' '}
+              <span style={{ 
+                color: '#FFD700', 
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                fontSize: '18px'
+              }}>
+                de {userCity}
+              </span>
+              !
+            </>
+          ) : (
+            'Clique no vídeo para liberar sua vaga no grupo das casadas safadas da sua região!'
+          )}
         </p>
         
       </div>

@@ -118,6 +118,35 @@ export default function App() {
         padding: '80px 20px 40px',
       }}>
         
+        {/* Card de localização */}
+        <div style={{
+          display: 'inline-block',
+          background: 'linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(139, 0, 0, 0.1))',
+          border: '1px solid rgba(255, 0, 0, 0.3)',
+          borderRadius: '8px',
+          padding: '8px 16px',
+          marginBottom: '20px',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+        }}>
+          <p style={{
+            fontSize: '12px',
+            color: '#ffffff',
+            margin: 0,
+            fontWeight: '500',
+            letterSpacing: '0.5px',
+            textTransform: 'uppercase'
+          }}>
+            Grupo Exclusivo para:{' '}
+            <span style={{ 
+              color: '#FFD700',
+              fontWeight: 'bold'
+            }}>
+              {isLoadingLocation ? '...' : userCity || 'sua cidade'}!
+            </span>
+          </p>
+        </div>
+
         {/* Título principal em exatamente 2 linhas */}
         <h1 style={{
           fontSize: '24px',
@@ -126,7 +155,7 @@ export default function App() {
           lineHeight: '1.3',
           textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)',
           marginBottom: '20px',
-          marginTop: '20px'
+          marginTop: '0'
         }}>
           <div style={{ marginBottom: '5px' }}>
             ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...

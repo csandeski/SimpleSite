@@ -604,7 +604,7 @@ function HomePage() {
                   color: '#8EBDA1',
                   textAlign: 'left'
                 }}>
-                  247 participantes • 89 online agora
+                  642 participantes • 227 online agora
                 </div>
               </div>
             </div>

@@ -707,24 +707,27 @@ function HomePage() {
               {/* Mensagem 3 - Mulher com foto */}
               <div style={{
                 marginBottom: '16px',
+                display: 'flex',
+                justifyContent: 'flex-start',
                 animation: 'fadeInLeft 0.9s ease-out'
               }}>
-                <div style={{
-                  fontSize: '10px',
-                  color: '#8696A0',
-                  marginBottom: '4px',
-                  paddingLeft: '8px'
-                }}>
-                  Amanda, 29
-                </div>
-                <div style={{
-                  backgroundColor: '#1C5A4E',
-                  color: '#FFFFFF',
-                  padding: '8px 12px',
-                  borderRadius: '0 10px 10px 10px',
-                  maxWidth: '80%',
-                  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
-                }}>
+                <div>
+                  <div style={{
+                    fontSize: '10px',
+                    color: '#8696A0',
+                    marginBottom: '4px',
+                    paddingLeft: '8px'
+                  }}>
+                    Amanda, 29
+                  </div>
+                  <div style={{
+                    backgroundColor: '#1C5A4E',
+                    color: '#FFFFFF',
+                    padding: '8px 12px',
+                    borderRadius: '0 10px 10px 10px',
+                    maxWidth: '80%',
+                    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.4)'
+                  }}>
                   <div style={{
                     background: 'linear-gradient(135deg, rgba(255,0,0,0.2), rgba(139,0,0,0.2))',
                     padding: '6px',
@@ -756,6 +759,7 @@ function HomePage() {
                     23:51
                     <span style={{ fontSize: '12px' }}>✓✓</span>
                   </div>
+                </div>
                 </div>
               </div>
               

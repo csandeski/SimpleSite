@@ -218,6 +218,157 @@ export default function App() {
           />
         </div>
         
+        {/* Seção de Estatísticas */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '12px',
+          marginTop: '30px',
+          width: '100%',
+          maxWidth: '400px',
+          margin: '30px auto 0'
+        }}>
+          {/* Card 1 - Casadas Online */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 0, 0, 0.9))',
+            border: '1px solid rgba(255, 0, 0, 0.2)',
+            borderRadius: '10px',
+            padding: '15px',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '24px',
+              marginBottom: '8px',
+              animation: 'pulse 1.5s ease-in-out infinite'
+            }}>
+              🔥
+            </div>
+            <div style={{
+              fontSize: '22px',
+              fontWeight: 'bold',
+              color: '#FF0000',
+              marginBottom: '4px'
+            }}>
+              1.327
+            </div>
+            <div style={{
+              fontSize: '11px',
+              color: '#cccccc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}>
+              Casadas Online Agora
+            </div>
+          </div>
+
+          {/* Card 2 - Encontros Hoje */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 0, 0, 0.9))',
+            border: '1px solid rgba(255, 0, 0, 0.2)',
+            borderRadius: '10px',
+            padding: '15px',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '24px',
+              marginBottom: '8px',
+              animation: 'bounce 2s ease-in-out infinite'
+            }}>
+              🍑
+            </div>
+            <div style={{
+              fontSize: '22px',
+              fontWeight: 'bold',
+              color: '#FFD700',
+              marginBottom: '4px'
+            }}>
+              189
+            </div>
+            <div style={{
+              fontSize: '11px',
+              color: '#cccccc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}>
+              Encontros Hoje
+            </div>
+          </div>
+
+          {/* Card 3 - Mensagens */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 0, 0, 0.9))',
+            border: '1px solid rgba(255, 0, 0, 0.2)',
+            borderRadius: '10px',
+            padding: '15px',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '24px',
+              marginBottom: '8px',
+              animation: 'shake 2.5s ease-in-out infinite'
+            }}>
+              💌
+            </div>
+            <div style={{
+              fontSize: '22px',
+              fontWeight: 'bold',
+              color: '#FF69B4',
+              marginBottom: '4px'
+            }}>
+              14.562
+            </div>
+            <div style={{
+              fontSize: '11px',
+              color: '#cccccc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}>
+              Mensagens Safadas
+            </div>
+          </div>
+
+          {/* Card 4 - Tempo Médio */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 0, 0, 0.9))',
+            border: '1px solid rgba(255, 0, 0, 0.2)',
+            borderRadius: '10px',
+            padding: '15px',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              fontSize: '24px',
+              marginBottom: '8px',
+              animation: 'rotate 3s linear infinite'
+            }}>
+              ⏳
+            </div>
+            <div style={{
+              fontSize: '22px',
+              fontWeight: 'bold',
+              color: '#00FF00',
+              marginBottom: '4px'
+            }}>
+              2 Dias
+            </div>
+            <div style={{
+              fontSize: '11px',
+              color: '#cccccc',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}>
+              Média 1º Encontro
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   );

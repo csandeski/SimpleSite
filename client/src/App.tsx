@@ -72,7 +72,7 @@ export default function App() {
           textAlign: 'center',
           letterSpacing: '0.5px',
         }}>
-          ACESSE AGORA O <span style={{ color: '#FF0000', fontWeight: 'bold' }}>GRUPO SECRETO</span> DAS CASADAS DA SUA REGIÃO.
+          ACESSE AGORA O <span style={{ color: '#FF0000', fontWeight: 'bold' }}>GRUPO SECRETO</span> DAS CASADAS SAFADAS!
         </p>
       </div>
       

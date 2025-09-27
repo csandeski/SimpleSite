@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
 import fundoImg from '@assets/fundo_1758886315966.png';
+import sexyLogo from '@assets/123123_1758969742043.png';
 import TinderPage from './pages/TinderPage';
 
 function HomePage() {
@@ -109,6 +110,17 @@ function HomePage() {
         textAlign: 'center',
         padding: '80px 20px 40px',
       }}>
+        
+        {/* Logo Sexy Premium */}
+        <img
+          src={sexyLogo}
+          alt="Sexy Premium"
+          style={{
+            width: '120px',
+            height: 'auto',
+            marginBottom: '15px'
+          }}
+        />
         
         {/* Card de localização */}
         <div style={{

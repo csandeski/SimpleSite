@@ -529,7 +529,7 @@ function HomePage() {
           <h2 style={{
             fontSize: '20px',
             color: '#FFFFFF',
-            textAlign: 'center',
+            textAlign: 'left',
             marginBottom: '5px',
             fontWeight: 'bold',
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
@@ -539,7 +539,7 @@ function HomePage() {
           <p style={{
             fontSize: '12px',
             color: '#FFD700',
-            textAlign: 'center',
+            textAlign: 'left',
             marginBottom: '20px',
             textTransform: 'uppercase',
             letterSpacing: '1px'
@@ -550,7 +550,6 @@ function HomePage() {
           {/* Container do Chat estilo WhatsApp */}
           <div style={{
             maxWidth: '380px',
-            margin: '0 auto',
             backgroundColor: '#0B141A',
             borderRadius: '12px',
             overflow: 'hidden',

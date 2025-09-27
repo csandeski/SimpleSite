@@ -165,6 +165,30 @@ export default function App() {
           )}
         </p>
         
+        {/* Vídeo 9:16 */}
+        <div style={{
+          width: '100%',
+          maxWidth: '350px',
+          margin: '0 auto',
+          aspectRatio: '9/16',
+          backgroundColor: '#000000',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
+          position: 'relative'
+        }}>
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            style={{
+              width: '100%',
+              height: '100%',
+              border: 'none'
+            }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+        
       </div>
     </div>
   );

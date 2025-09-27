@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Route, Switch, useLocation } from 'wouter';
 import fundoImg from '@assets/fundo_1758886315966.png';
+import TinderPage from './pages/TinderPage';
 
-export default function App() {
+function HomePage() {
   const [userCity, setUserCity] = useState<string | null>(null);
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     // Função para obter a cidade através do nosso backend (sem CORS)
@@ -214,7 +217,7 @@ export default function App() {
           textAlign: 'center'
         }}>
           <button
-            onClick={() => window.open('https://af.sejalinked.fun?utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}', '_blank')}
+            onClick={() => setLocation('/tinder')}
             style={{
               display: 'inline-block',
               padding: '20px 40px',
@@ -874,5 +877,14 @@ export default function App() {
         
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Switch>
+      <Route path="/" component={HomePage} />
+      <Route path="/tinder" component={TinderPage} />
+    </Switch>
   );
 }

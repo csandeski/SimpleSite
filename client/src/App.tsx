@@ -222,64 +222,56 @@ export default function App() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '15px',
-          marginTop: '30px',
+          gap: '10px',
+          marginTop: '25px',
           width: '100%',
-          maxWidth: '400px',
-          margin: '30px auto 0'
+          maxWidth: '380px',
+          margin: '25px auto 0'
         }}>
           {/* Card 1 - Casadas Online */}
           <div style={{
-            background: 'linear-gradient(145deg, #2B0000 0%, #5C0000 25%, #8B0000 50%, #B22222 75%, #DC143C 100%)',
-            borderRadius: '15px',
-            padding: '20px',
+            background: 'linear-gradient(135deg, #4B0000 0%, #8B0000 50%, #B22222 100%)',
+            borderRadius: '8px',
+            padding: '12px 10px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: `
-              inset 0 1px 1px rgba(255, 255, 255, 0.1),
-              0 8px 32px rgba(139, 0, 0, 0.5),
-              0 0 40px rgba(255, 0, 0, 0.2)
-            `,
-            textAlign: 'center',
-            transform: 'perspective(1000px) rotateX(2deg)',
-            transition: 'all 0.3s ease'
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+            textAlign: 'center'
           }}>
-            {/* Brilho superior */}
+            {/* Brilho sutil */}
             <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              height: '40%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%)',
-              borderRadius: '15px 15px 0 0',
+              height: '30%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
               pointerEvents: 'none'
             }} />
             <div style={{
-              fontSize: '28px',
-              marginBottom: '10px',
+              fontSize: '20px',
+              marginBottom: '6px',
               animation: 'pulse 1.5s ease-in-out infinite',
-              filter: 'drop-shadow(0 0 10px rgba(255, 100, 0, 0.8))',
-              position: 'relative'
+              position: 'relative',
+              display: 'inline-block'
             }}>
               🔥
             </div>
             <div style={{
-              fontSize: '26px',
-              fontWeight: '900',
+              fontSize: '20px',
+              fontWeight: 'bold',
               color: '#FFFFFF',
-              marginBottom: '6px',
-              textShadow: '0 2px 10px rgba(255, 0, 0, 0.8)',
+              marginBottom: '3px',
               position: 'relative'
             }}>
               1.327
             </div>
             <div style={{
-              fontSize: '10px',
-              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '9px',
+              color: 'rgba(255, 255, 255, 0.85)',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontWeight: '600',
+              letterSpacing: '0.5px',
+              fontWeight: '500',
               position: 'relative'
             }}>
               Casadas Online Agora
@@ -288,56 +280,48 @@ export default function App() {
 
           {/* Card 2 - Encontros Hoje */}
           <div style={{
-            background: 'linear-gradient(145deg, #2B0000 0%, #5C0000 25%, #8B0000 50%, #B22222 75%, #DC143C 100%)',
-            borderRadius: '15px',
-            padding: '20px',
+            background: 'linear-gradient(135deg, #4B0000 0%, #8B0000 50%, #B22222 100%)',
+            borderRadius: '8px',
+            padding: '12px 10px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: `
-              inset 0 1px 1px rgba(255, 255, 255, 0.1),
-              0 8px 32px rgba(139, 0, 0, 0.5),
-              0 0 40px rgba(255, 0, 0, 0.2)
-            `,
-            textAlign: 'center',
-            transform: 'perspective(1000px) rotateX(2deg)',
-            transition: 'all 0.3s ease'
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+            textAlign: 'center'
           }}>
-            {/* Brilho superior */}
+            {/* Brilho sutil */}
             <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              height: '40%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%)',
-              borderRadius: '15px 15px 0 0',
+              height: '30%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
               pointerEvents: 'none'
             }} />
             <div style={{
-              fontSize: '28px',
-              marginBottom: '10px',
+              fontSize: '20px',
+              marginBottom: '6px',
               animation: 'bounce 2s ease-in-out infinite',
-              filter: 'drop-shadow(0 0 10px rgba(255, 165, 0, 0.8))',
-              position: 'relative'
+              position: 'relative',
+              display: 'inline-block'
             }}>
               🍑
             </div>
             <div style={{
-              fontSize: '26px',
-              fontWeight: '900',
+              fontSize: '20px',
+              fontWeight: 'bold',
               color: '#FFD700',
-              marginBottom: '6px',
-              textShadow: '0 2px 10px rgba(255, 215, 0, 0.8)',
+              marginBottom: '3px',
               position: 'relative'
             }}>
               189
             </div>
             <div style={{
-              fontSize: '10px',
-              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '9px',
+              color: 'rgba(255, 255, 255, 0.85)',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontWeight: '600',
+              letterSpacing: '0.5px',
+              fontWeight: '500',
               position: 'relative'
             }}>
               Encontros Hoje
@@ -346,56 +330,48 @@ export default function App() {
 
           {/* Card 3 - Mensagens */}
           <div style={{
-            background: 'linear-gradient(145deg, #2B0000 0%, #5C0000 25%, #8B0000 50%, #B22222 75%, #DC143C 100%)',
-            borderRadius: '15px',
-            padding: '20px',
+            background: 'linear-gradient(135deg, #4B0000 0%, #8B0000 50%, #B22222 100%)',
+            borderRadius: '8px',
+            padding: '12px 10px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: `
-              inset 0 1px 1px rgba(255, 255, 255, 0.1),
-              0 8px 32px rgba(139, 0, 0, 0.5),
-              0 0 40px rgba(255, 0, 0, 0.2)
-            `,
-            textAlign: 'center',
-            transform: 'perspective(1000px) rotateX(2deg)',
-            transition: 'all 0.3s ease'
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+            textAlign: 'center'
           }}>
-            {/* Brilho superior */}
+            {/* Brilho sutil */}
             <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              height: '40%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%)',
-              borderRadius: '15px 15px 0 0',
+              height: '30%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
               pointerEvents: 'none'
             }} />
             <div style={{
-              fontSize: '28px',
-              marginBottom: '10px',
+              fontSize: '20px',
+              marginBottom: '6px',
               animation: 'shake 2.5s ease-in-out infinite',
-              filter: 'drop-shadow(0 0 10px rgba(255, 105, 180, 0.8))',
-              position: 'relative'
+              position: 'relative',
+              display: 'inline-block'
             }}>
               💌
             </div>
             <div style={{
-              fontSize: '26px',
-              fontWeight: '900',
+              fontSize: '20px',
+              fontWeight: 'bold',
               color: '#FF69B4',
-              marginBottom: '6px',
-              textShadow: '0 2px 10px rgba(255, 105, 180, 0.8)',
+              marginBottom: '3px',
               position: 'relative'
             }}>
               14.562
             </div>
             <div style={{
-              fontSize: '10px',
-              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '9px',
+              color: 'rgba(255, 255, 255, 0.85)',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontWeight: '600',
+              letterSpacing: '0.5px',
+              fontWeight: '500',
               position: 'relative'
             }}>
               Mensagens Safadas
@@ -404,56 +380,48 @@ export default function App() {
 
           {/* Card 4 - Tempo Médio */}
           <div style={{
-            background: 'linear-gradient(145deg, #2B0000 0%, #5C0000 25%, #8B0000 50%, #B22222 75%, #DC143C 100%)',
-            borderRadius: '15px',
-            padding: '20px',
+            background: 'linear-gradient(135deg, #4B0000 0%, #8B0000 50%, #B22222 100%)',
+            borderRadius: '8px',
+            padding: '12px 10px',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: `
-              inset 0 1px 1px rgba(255, 255, 255, 0.1),
-              0 8px 32px rgba(139, 0, 0, 0.5),
-              0 0 40px rgba(255, 0, 0, 0.2)
-            `,
-            textAlign: 'center',
-            transform: 'perspective(1000px) rotateX(2deg)',
-            transition: 'all 0.3s ease'
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+            textAlign: 'center'
           }}>
-            {/* Brilho superior */}
+            {/* Brilho sutil */}
             <div style={{
               position: 'absolute',
               top: 0,
               left: 0,
               right: 0,
-              height: '40%',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%)',
-              borderRadius: '15px 15px 0 0',
+              height: '30%',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
               pointerEvents: 'none'
             }} />
             <div style={{
-              fontSize: '28px',
-              marginBottom: '10px',
+              fontSize: '20px',
+              marginBottom: '6px',
               animation: 'rotate 3s linear infinite',
-              filter: 'drop-shadow(0 0 10px rgba(0, 255, 0, 0.8))',
-              position: 'relative'
+              position: 'relative',
+              display: 'inline-block'
             }}>
               ⏳
             </div>
             <div style={{
-              fontSize: '26px',
-              fontWeight: '900',
+              fontSize: '20px',
+              fontWeight: 'bold',
               color: '#00FF00',
-              marginBottom: '6px',
-              textShadow: '0 2px 10px rgba(0, 255, 0, 0.8)',
+              marginBottom: '3px',
               position: 'relative'
             }}>
               2 Dias
             </div>
             <div style={{
-              fontSize: '10px',
-              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '9px',
+              color: 'rgba(255, 255, 255, 0.85)',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              fontWeight: '600',
+              letterSpacing: '0.5px',
+              fontWeight: '500',
               position: 'relative'
             }}>
               Média 1º Encontro

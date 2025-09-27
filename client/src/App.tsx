@@ -594,13 +594,15 @@ function HomePage() {
                   fontSize: '15px',
                   fontWeight: 'bold',
                   color: '#FFFFFF',
-                  marginBottom: '2px'
+                  marginBottom: '2px',
+                  textAlign: 'left'
                 }}>
                   Casadas Safadas {userCity ? `- ${userCity}` : ''}
                 </div>
                 <div style={{
                   fontSize: '11px',
-                  color: '#8EBDA1'
+                  color: '#8EBDA1',
+                  textAlign: 'left'
                 }}>
                   247 participantes • 89 online agora
                 </div>

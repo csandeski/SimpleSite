@@ -26,6 +26,31 @@ const createPaymentSchema = z.object({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Location API endpoint - para contornar CORS
+  app.get("/api/location", async (req, res) => {
+    try {
+      // Pega o IP do cliente
+      const forwardedIps = req.headers['x-forwarded-for'] as string || '';
+      const clientIp = forwardedIps.split(',')[0].trim() || req.socket.remoteAddress || '127.0.0.1';
+      
+      // Se for localhost, usa um IP público para teste
+      const ipToCheck = clientIp === '127.0.0.1' || clientIp === '::1' ? '' : clientIp;
+      
+      // Usa ip-api.com para obter a cidade
+      const response = await fetch(`http://ip-api.com/json/${ipToCheck}?fields=city,country,status`);
+      const data = await response.json();
+      
+      if (data.status === 'success' && data.city) {
+        res.json({ success: true, city: data.city });
+      } else {
+        res.json({ success: false, city: null });
+      }
+    } catch (error) {
+      console.error('Erro ao obter localização:', error);
+      res.json({ success: false, city: null });
+    }
+  });
+
   // PIX Payment endpoints
   
   // Create a new PIX payment

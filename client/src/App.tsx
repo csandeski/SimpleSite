@@ -6,69 +6,25 @@ export default function App() {
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
 
   useEffect(() => {
-    // Função para obter a cidade através de reverse geocoding
-    const getCityFromCoords = async (latitude: number, longitude: number) => {
+    // Função para obter a cidade através do nosso backend (sem CORS)
+    const getCityFromBackend = async () => {
       try {
-        // Usando Nominatim (OpenStreetMap) para reverse geocoding
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=10&addressdetails=1`,
-          {
-            headers: {
-              'Accept-Language': 'pt-BR,pt;q=0.9',
-            }
-          }
-        );
-        
-        if (!response.ok) throw new Error('Erro ao buscar localização');
-        
+        // Faz requisição para nosso próprio backend
+        const response = await fetch('/api/location');
         const data = await response.json();
         
-        // Prioridade: city > town > municipality > village > suburb
-        const city = data.address?.city || 
-                    data.address?.town || 
-                    data.address?.municipality ||
-                    data.address?.village ||
-                    data.address?.suburb ||
-                    data.address?.county ||
-                    null;
-        
-        if (city) {
-          setUserCity(city);
+        if (data.success && data.city) {
+          setUserCity(data.city);
         }
       } catch (error) {
-        console.error('Erro no reverse geocoding:', error);
+        console.error('Erro ao obter localização:', error);
       } finally {
         setIsLoadingLocation(false);
       }
     };
 
-    // Tentar obter localização do usuário
-    const getLocation = () => {
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          // Sucesso
-          (position) => {
-            getCityFromCoords(position.coords.latitude, position.coords.longitude);
-          },
-          // Erro ou negação de permissão
-          (error) => {
-            console.error('Erro ao obter localização:', error);
-            setIsLoadingLocation(false);
-          },
-          // Opções
-          {
-            enableHighAccuracy: false,
-            timeout: 10000,
-            maximumAge: 300000 // Cache de 5 minutos
-          }
-        );
-      } else {
-        // Navegador não suporta geolocalização
-        setIsLoadingLocation(false);
-      }
-    };
-
-    getLocation();
+    // Chama a função de geolocalização
+    getCityFromBackend();
   }, []);
 
   return (

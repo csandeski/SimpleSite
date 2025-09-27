@@ -107,13 +107,13 @@ export default function App() {
         
         {/* Descrição com cidade dinâmica */}
         <p style={{
-          fontSize: '16px',
+          fontSize: '14px',
           color: '#ffffff',
           lineHeight: '1.5',
           textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
           marginBottom: '30px',
           padding: '0 10px',
-          minHeight: '48px'
+          minHeight: '42px'
         }}>
           {isLoadingLocation ? (
             <span style={{ opacity: 0.7 }}>Localizando...</span>
@@ -123,8 +123,7 @@ export default function App() {
               <span style={{ 
                 color: '#FFD700', 
                 fontWeight: 'bold',
-                textTransform: 'uppercase',
-                fontSize: '18px'
+                textTransform: 'uppercase'
               }}>
                 de {userCity}
               </span>

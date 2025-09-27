@@ -702,39 +702,6 @@ export default function App() {
               </div>
             </div>
           </div>
-          
-          {/* Botão CTA */}
-          <button
-            onClick={() => window.open('https://af.sejalinked.fun?utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}', '_blank')}
-            style={{
-              display: 'block',
-              width: 'calc(100% - 30px)',
-              maxWidth: '350px',
-              margin: '25px auto 0',
-              padding: '18px 20px',
-              background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-              border: 'none',
-              borderRadius: '50px',
-              color: '#FFFFFF',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              boxShadow: '0 5px 20px rgba(37, 211, 102, 0.4)',
-              transform: 'scale(1)',
-              transition: 'all 0.3s ease',
-              animation: 'pulse 2s infinite'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)';
-              e.currentTarget.style.boxShadow = '0 8px 30px rgba(37, 211, 102, 0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 5px 20px rgba(37, 211, 102, 0.4)';
-            }}
-          >
-            👉 Entrar Agora e Responder Essas Mensagens
-          </button>
         </div>
         
       </div>

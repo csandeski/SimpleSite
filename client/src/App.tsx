@@ -295,7 +295,6 @@ function HomePage() {
             }}>
               <span>🔥</span>
               <span>ACESSAR GRUPO AGORA!</span>
-              <span>🔥</span>
             </div>
           </button>
           

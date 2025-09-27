@@ -429,6 +429,325 @@ export default function App() {
           </div>
         </div>
         
+        {/* Seção de Conversa WhatsApp */}
+        <div style={{
+          backgroundColor: '#0D1418',
+          padding: '30px 15px',
+          marginTop: '40px',
+          borderTop: '2px solid rgba(255, 0, 0, 0.2)'
+        }}>
+          <h2 style={{
+            fontSize: '18px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            marginBottom: '20px',
+            fontWeight: 'bold'
+          }}>
+            👀 Conversas Reais Rolando AGORA no Grupo…
+          </h2>
+          
+          {/* Container do Chat */}
+          <div style={{
+            maxWidth: '380px',
+            margin: '0 auto',
+            backgroundColor: '#1C2831',
+            borderRadius: '10px',
+            padding: '15px',
+            minHeight: '400px',
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg width="40" height="40" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23grid)" /%3E%3C/svg%3E")'
+          }}>
+            
+            {/* Mensagem 1 - Mulher */}
+            <div style={{
+              marginBottom: '12px',
+              animation: 'fadeInLeft 0.5s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#25D366',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '0 15px 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#D4FFE4'
+                }}>
+                  Patrícia, 32
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Tô carente demais... quem vem me fazer companhia hoje? 🔥
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 2 - Homem */}
+            <div style={{
+              marginBottom: '12px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              animation: 'fadeInRight 0.7s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#373737',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '15px 0 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#B8B8B8'
+                }}>
+                  Carlos, 28
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Eu vou! Adoro uma casada safada... onde vc mora? 😈
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 3 - Mulher */}
+            <div style={{
+              marginBottom: '12px',
+              animation: 'fadeInLeft 0.9s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#25D366',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '0 15px 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#D4FFE4'
+                }}>
+                  Amanda, 29
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Alguém curte fazer ao ar livre? Tenho um lugar bem discreto 💦
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 4 - Homem */}
+            <div style={{
+              marginBottom: '12px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              animation: 'fadeInRight 1.1s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#373737',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '15px 0 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#B8B8B8'
+                }}>
+                  Rafael, 35
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Acabei de sair do motel com uma do grupo... valeu a pena! 🍑
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 5 - Mulher */}
+            <div style={{
+              marginBottom: '12px',
+              animation: 'fadeInLeft 1.3s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#25D366',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '0 15px 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#D4FFE4'
+                }}>
+                  Juliana, 36
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Marido viajou... casa livre o fds todo! Quem vem? 🏠🔥
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 6 - Homem */}
+            <div style={{
+              marginBottom: '12px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              animation: 'fadeInRight 1.5s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#373737',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '15px 0 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#B8B8B8'
+                }}>
+                  Bruno, 31
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Prefiro as mais experientes... tem alguma 40+ online? 😋
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 7 - Mulher */}
+            <div style={{
+              marginBottom: '12px',
+              animation: 'fadeInLeft 1.7s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#25D366',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '0 15px 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#D4FFE4'
+                }}>
+                  Fernanda, 42
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Eu estou Bruno! E adoro ensinar os mais novos... vem privado 💋
+                </div>
+              </div>
+            </div>
+            
+            {/* Mensagem 8 - Homem */}
+            <div style={{
+              marginBottom: '12px',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              animation: 'fadeInRight 1.9s ease-out',
+              opacity: 1
+            }}>
+              <div style={{
+                backgroundColor: '#373737',
+                color: '#FFFFFF',
+                padding: '10px 14px',
+                borderRadius: '15px 0 15px 15px',
+                maxWidth: '75%',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.3)'
+              }}>
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 'bold',
+                  marginBottom: '4px',
+                  color: '#B8B8B8'
+                }}>
+                  Pedro, 26
+                </div>
+                <div style={{
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  Alguém topa algo agora? Hotel centro, pago tudo! 💰
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Botão CTA */}
+          <button
+            onClick={() => window.open('https://af.sejalinked.fun?utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}', '_blank')}
+            style={{
+              display: 'block',
+              width: 'calc(100% - 30px)',
+              maxWidth: '350px',
+              margin: '25px auto 0',
+              padding: '18px 20px',
+              background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+              border: 'none',
+              borderRadius: '50px',
+              color: '#FFFFFF',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              boxShadow: '0 5px 20px rgba(37, 211, 102, 0.4)',
+              transform: 'scale(1)',
+              transition: 'all 0.3s ease',
+              animation: 'pulse 2s infinite'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(37, 211, 102, 0.6)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(37, 211, 102, 0.4)';
+            }}
+          >
+            👉 Entrar Agora e Responder Essas Mensagens
+          </button>
+        </div>
+        
       </div>
     </div>
   );

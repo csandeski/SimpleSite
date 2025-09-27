@@ -131,9 +131,9 @@ export default function App() {
         padding: '80px 20px 40px',
       }}>
         
-        {/* Título principal em 2 linhas */}
+        {/* Título principal em exatamente 2 linhas */}
         <h1 style={{
-          fontSize: '28px',
+          fontSize: '24px',
           fontWeight: 'bold',
           color: '#ffffff',
           lineHeight: '1.3',
@@ -141,8 +141,12 @@ export default function App() {
           marginBottom: '20px',
           marginTop: '20px'
         }}>
-          <div>ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...</div>
-          <div>QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.</div>
+          <div style={{ marginBottom: '5px' }}>
+            ELAS NÃO QUEREM <span style={{ color: '#FF0000' }}>MARIDO</span>...
+          </div>
+          <div>
+            QUEREM <span style={{ color: '#FF0000' }}>APENAS DIVERSÃO</span>.
+          </div>
         </h1>
         
         {/* Descrição com cidade dinâmica */}

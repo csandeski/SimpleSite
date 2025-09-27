@@ -36,23 +36,12 @@ export default function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Overlay escuro suave */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
-          zIndex: 1
-        }}
-      />
       
       {/* Barra fixa no topo */}
       <div style={{
@@ -431,7 +420,7 @@ export default function App() {
         
         {/* Seção de Conversa WhatsApp */}
         <div style={{
-          backgroundColor: '#0D1418',
+          backgroundColor: 'transparent',
           padding: '30px 15px',
           marginTop: '40px',
           borderTop: '2px solid rgba(255, 0, 0, 0.2)'

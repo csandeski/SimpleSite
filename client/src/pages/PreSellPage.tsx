@@ -8,14 +8,240 @@ export default function PreSellPage() {
   const [, setLocation] = useLocation();
 
   const handleContinue = () => {
-    setCurrentStep(2);
+    if (currentStep === 1) {
+      setCurrentStep(2);
+    } else if (currentStep === 2) {
+      setCurrentStep(3);
+    }
   };
 
   const handleEnterGroup = () => {
     setLocation('/home');
   };
 
+  // Step 1: Age verification
   if (currentStep === 1) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        width: '100%',
+        background: 'linear-gradient(180deg, #1a0000 0%, #2d0000 50%, #000000 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Background pattern */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.1,
+          background: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 0, 0, 0.1) 10px, rgba(139, 0, 0, 0.1) 20px)',
+          pointerEvents: 'none'
+        }} />
+        
+        {/* Content container */}
+        <div style={{
+          position: 'relative',
+          zIndex: 1,
+          width: '100%',
+          maxWidth: '400px',
+          textAlign: 'center',
+          paddingTop: '40px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh'
+        }}>
+          {/* Logo */}
+          <img
+            src={sexyLogo}
+            alt="SEXY PREMIUM"
+            style={{
+              width: '150px',
+              height: 'auto',
+              marginBottom: '30px'
+            }}
+            data-testid="img-logo-age-verification"
+          />
+          
+          {/* Progress bar - 33% */}
+          <div style={{
+            width: '100%',
+            height: '10px',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            borderRadius: '5px',
+            marginBottom: '60px',
+            overflow: 'hidden',
+            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
+          }}>
+            <div style={{
+              width: '33%',
+              height: '100%',
+              background: 'linear-gradient(90deg, #CC0000 0%, #FF0000 100%)',
+              borderRadius: '5px',
+              boxShadow: '0 0 10px rgba(255, 0, 0, 0.5)',
+              transition: 'width 0.3s ease'
+            }}
+              data-testid="progress-bar-33"
+            />
+          </div>
+          
+          {/* Age verification question */}
+          <h1 style={{
+            fontSize: '32px',
+            color: '#FFFFFF',
+            marginBottom: '50px',
+            fontWeight: 'bold',
+            lineHeight: '1.3',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.8)'
+          }}
+            data-testid="text-age-question"
+          >
+            Você tem mais de 18 anos?
+          </h1>
+          
+          {/* Buttons container */}
+          <div style={{
+            display: 'flex',
+            gap: '20px',
+            justifyContent: 'center',
+            width: '100%',
+            maxWidth: '350px'
+          }}>
+            {/* YES button */}
+            <button
+              onClick={() => setCurrentStep(2)}
+              style={{
+                flex: 1,
+                padding: '20px 40px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                color: '#FFFFFF',
+                background: 'linear-gradient(180deg, #00C851 0%, #00953D 50%, #006B2B 100%)',
+                border: 'none',
+                borderRadius: '50px',
+                cursor: 'pointer',
+                position: 'relative',
+                boxShadow: `
+                  0 6px 0 #004D1F,
+                  0 8px 10px rgba(0, 0, 0, 0.4),
+                  0 12px 20px rgba(0, 200, 81, 0.2),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.3)
+                `,
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+                transform: 'translateY(0) scale(1)',
+                transition: 'all 0.1s ease',
+                letterSpacing: '1px',
+                textTransform: 'uppercase'
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(3px) scale(0.98)';
+                e.currentTarget.style.boxShadow = `
+                  0 3px 0 #004D1F,
+                  0 5px 8px rgba(0, 0, 0, 0.3),
+                  0 8px 15px rgba(0, 200, 81, 0.15),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.3)
+                `;
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = `
+                  0 6px 0 #004D1F,
+                  0 8px 10px rgba(0, 0, 0, 0.4),
+                  0 12px 20px rgba(0, 200, 81, 0.2),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.3)
+                `;
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(180deg, #00DB5C 0%, #00A644 50%, #007A30 100%)';
+                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(180deg, #00C851 0%, #00953D 50%, #006B2B 100%)';
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              }}
+              data-testid="button-age-yes"
+            >
+              SIM
+            </button>
+            
+            {/* NO button */}
+            <button
+              onClick={() => setCurrentStep(2)}
+              style={{
+                flex: 1,
+                padding: '20px 40px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                color: '#FFFFFF',
+                background: 'linear-gradient(180deg, #4A4A4A 0%, #303030 50%, #1A1A1A 100%)',
+                border: 'none',
+                borderRadius: '50px',
+                cursor: 'pointer',
+                position: 'relative',
+                boxShadow: `
+                  0 6px 0 #0D0D0D,
+                  0 8px 10px rgba(0, 0, 0, 0.4),
+                  0 12px 20px rgba(74, 74, 74, 0.2),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2)
+                `,
+                textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
+                transform: 'translateY(0) scale(1)',
+                transition: 'all 0.1s ease',
+                letterSpacing: '1px',
+                textTransform: 'uppercase'
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(3px) scale(0.98)';
+                e.currentTarget.style.boxShadow = `
+                  0 3px 0 #0D0D0D,
+                  0 5px 8px rgba(0, 0, 0, 0.3),
+                  0 8px 15px rgba(74, 74, 74, 0.15),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2)
+                `;
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = `
+                  0 6px 0 #0D0D0D,
+                  0 8px 10px rgba(0, 0, 0, 0.4),
+                  0 12px 20px rgba(74, 74, 74, 0.2),
+                  inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2)
+                `;
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(180deg, #5A5A5A 0%, #404040 50%, #2A2A2A 100%)';
+                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(180deg, #4A4A4A 0%, #303030 50%, #1A1A1A 100%)';
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              }}
+              data-testid="button-age-no"
+            >
+              NÃO
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Step 2: ATENÇÃO warning
+  if (currentStep === 2) {
     return (
       <div style={{
         minHeight: '100vh',
@@ -58,10 +284,10 @@ export default function PreSellPage() {
               height: 'auto',
               marginBottom: '30px'
             }}
-            data-testid="img-logo-step1"
+            data-testid="img-logo-step2"
           />
           
-          {/* Progress bar */}
+          {/* Progress bar - 66% */}
           <div style={{
             width: '100%',
             height: '10px',
@@ -72,14 +298,14 @@ export default function PreSellPage() {
             boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3)'
           }}>
             <div style={{
-              width: '50%',
+              width: '66%',
               height: '100%',
               background: 'linear-gradient(90deg, #CC0000 0%, #FF0000 100%)',
               borderRadius: '5px',
               boxShadow: '0 0 10px rgba(255, 0, 0, 0.5)',
               transition: 'width 0.3s ease'
             }}
-              data-testid="progress-bar-50"
+              data-testid="progress-bar-66"
             />
           </div>
           
@@ -224,7 +450,7 @@ export default function PreSellPage() {
     );
   }
 
-  // Step 2
+  // Step 3: Blurred image with ENTRAR NO GRUPO
   return (
     <div style={{
       minHeight: '100vh',
@@ -284,7 +510,7 @@ export default function PreSellPage() {
             height: 'auto',
             marginBottom: '30px'
           }}
-          data-testid="img-logo-step2"
+          data-testid="img-logo-step3"
         />
         
         {/* Progress bar - 100% */}

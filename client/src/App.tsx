@@ -140,22 +140,35 @@ function HomePage() {
   };
 
   return (
-    <div 
-      style={{
-        minHeight: '100vh',
+    <>
+      {/* Fixed background layer */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         width: '100%',
+        height: '100%',
         backgroundImage: `url(${fundoImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+        zIndex: -1
+      }} />
       
-      {/* Barra fixa no topo */}
+      {/* Main content */}
+      <div 
+        style={{
+          minHeight: '100vh',
+          width: '100%',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        
+        {/* Barra fixa no topo */}
       <div style={{
         position: 'fixed',
         top: 0,
@@ -1168,9 +1181,9 @@ function HomePage() {
             ))}
           </div>
         </div>
-        
       </div>
     </div>
+  </>
   );
 }
 

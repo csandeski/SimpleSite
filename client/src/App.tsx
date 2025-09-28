@@ -36,6 +36,8 @@ function HomePage() {
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
   const [, setLocation] = useLocation();
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+  const [showNotification, setShowNotification] = useState(false);
+  const [currentName, setCurrentName] = useState('');
   
   // Array de imagens do carousel
   const carouselImages = [
@@ -55,9 +57,10 @@ function HomePage() {
   ];
 
   const womenNames = [
-    "Carolina", "Amanda", "Juliana", "Patricia", "Fernanda",
-    "Beatriz", "Rafaela", "Mariana", "Isabella", "Gabriela",
-    "Larissa", "Letícia", "Natália"
+    "Maria", "Ana", "Juliana", "Beatriz", "Fernanda",
+    "Carolina", "Patricia", "Amanda", "Larissa", "Gabriela",
+    "Rafaela", "Natália", "Isabella", "Letícia", "Camila",
+    "Bruna", "Mariana", "Vanessa", "Aline", "Renata"
   ];
 
   useEffect(() => {
@@ -106,6 +109,40 @@ function HomePage() {
     };
   }, []);
   
+  // Notification system effect
+  useEffect(() => {
+    const notificationNames = [
+      "Maria", "Ana", "Juliana", "Beatriz", "Fernanda",
+      "Carolina", "Patricia", "Amanda", "Larissa", "Gabriela",
+      "Rafaela", "Natália", "Isabella", "Letícia", "Camila",
+      "Bruna", "Mariana", "Vanessa", "Aline", "Renata"
+    ];
+    
+    const showRandomNotification = () => {
+      const randomName = notificationNames[Math.floor(Math.random() * notificationNames.length)];
+      setCurrentName(randomName);
+      setShowNotification(true);
+      
+      // Hide after 4 seconds
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 4000);
+    };
+    
+    // Show first notification after 2 seconds
+    const initialTimeout = setTimeout(showRandomNotification, 2000);
+    
+    // Then show notifications every 6-8 seconds
+    const interval = setInterval(() => {
+      showRandomNotification();
+    }, Math.random() * 2000 + 6000);
+    
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(interval);
+    };
+  }, []);
+  
   // Função para calcular a posição e escala de cada imagem no carousel
   const getCarouselItemStyle = (index: number) => {
     const totalImages = carouselImages.length;
@@ -141,6 +178,19 @@ function HomePage() {
 
   return (
     <>
+      <style>{`
+        @keyframes slideInLeft {
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
+      
       {/* Fixed background layer */}
       <div style={{
         position: 'fixed',
@@ -156,6 +206,63 @@ function HomePage() {
         backgroundRepeat: 'no-repeat',
         zIndex: -1
       }} />
+      
+      {/* Notification container */}
+      {showNotification && (
+        <div style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '20px',
+          background: 'rgba(0, 0, 0, 0.9)',
+          borderRadius: '30px',
+          padding: '10px 20px 10px 10px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+          zIndex: 1000,
+          animation: 'slideInLeft 0.5s ease-out',
+          maxWidth: '280px'
+        }}>
+          {/* Pink circle with letter */}
+          <div style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #FF1493 0%, #FF69B4 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0
+          }}>
+            <span style={{
+              color: '#FFFFFF',
+              fontSize: '20px',
+              fontWeight: 'bold'
+            }}>
+              {currentName ? currentName[0] : 'M'}
+            </span>
+          </div>
+          
+          {/* Text content */}
+          <div>
+            <div style={{
+              color: '#FFFFFF',
+              fontSize: '14px',
+              fontWeight: 'bold'
+            }}>
+              {currentName} acabou de entrar
+            </div>
+            <div style={{
+              color: '#999999',
+              fontSize: '12px',
+              marginTop: '2px'
+            }}>
+              de {userCity || 'sua cidade'}
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Main content */}
       <div 

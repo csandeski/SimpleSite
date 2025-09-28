@@ -38,6 +38,8 @@ function HomePage() {
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [currentName, setCurrentName] = useState('');
+  const [showCTAButton, setShowCTAButton] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(380); // 6 min 20 seg
   
   // Array de imagens do carousel
   const carouselImages = [
@@ -107,6 +109,22 @@ function HomePage() {
         script.parentNode.removeChild(script);
       }
     };
+  }, []);
+  
+  // Timer para o botão CTA
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeRemaining(prev => {
+        if (prev <= 1) {
+          setShowCTAButton(true);
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    
+    return () => clearInterval(timer);
   }, []);
   
   // Notification system effect
@@ -447,6 +465,45 @@ function HomePage() {
           marginBottom: '20px',
           textAlign: 'center'
         }}>
+          {/* Countdown Timer */}
+          {!showCTAButton && (
+            <div style={{
+              marginBottom: '30px',
+              textAlign: 'center',
+              padding: '20px',
+              background: 'rgba(0, 0, 0, 0.7)',
+              borderRadius: '15px',
+              border: '2px solid #FF0000'
+            }}>
+              <p style={{
+                fontSize: '16px',
+                color: '#FFD700',
+                marginBottom: '10px',
+                fontWeight: 'bold'
+              }}>
+                ⏰ Conteúdo Exclusivo Liberado Em:
+              </p>
+              <div style={{
+                fontSize: '32px',
+                color: '#FFFFFF',
+                fontWeight: 'bold',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+              }}>
+                {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
+              </div>
+              <p style={{
+                fontSize: '14px',
+                color: '#FF6B6B',
+                marginTop: '10px'
+              }}>
+                Aguarde para acessar o grupo completo
+              </p>
+            </div>
+          )}
+          
+          {/* Botão CTA - só aparece após o timer */}
+          {showCTAButton && (
+          <>
           <button
             onClick={() => setLocation('/tinder')}
             style={{
@@ -538,6 +595,8 @@ function HomePage() {
           }}>
             Garanta seu acesso as mais safadas da cidade
           </p>
+          </>
+          )}
         </div>
         
         {/* Seção de Estatísticas */}

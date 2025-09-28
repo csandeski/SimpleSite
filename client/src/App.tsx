@@ -469,7 +469,29 @@ function HomePage() {
           {showCTAButton && (
           <>
           <button
-            onClick={() => setLocation('/tinder')}
+            onClick={() => {
+              // Get current URL parameters
+              const currentParams = new URLSearchParams(window.location.search);
+              
+              // Base LiraPay URL
+              const baseUrl = 'https://pay.lirapaybr.com/RDTKJmxS';
+              
+              // Preserve all UTM parameters
+              const utmParams: string[] = [];
+              currentParams.forEach((value, key) => {
+                if (key.startsWith('utm_') || key === 'src' || key === 'sck') {
+                  utmParams.push(`${key}=${encodeURIComponent(value)}`);
+                }
+              });
+              
+              // Build final URL with UTMs
+              const finalUrl = utmParams.length > 0 
+                ? `${baseUrl}?${utmParams.join('&')}`
+                : baseUrl;
+              
+              // Redirect to LiraPay
+              window.location.href = finalUrl;
+            }}
             style={{
               display: 'inline-block',
               padding: '20px 40px',

@@ -99,7 +99,7 @@ function HomePage() {
   useEffect(() => {
     // Load vturb smartplayer script
     const script = document.createElement("script");
-    script.src = "https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d901df232c1a965f3d0813/v4/player.js";
+    script.src = "https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d915ace29a31783c99d9b3/v4/player.js";
     script.async = true;
     document.head.appendChild(script);
     
@@ -456,7 +456,7 @@ function HomePage() {
           boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
           position: 'relative'
         }}>
-          <vturb-smartplayer id="vid-68d901df232c1a965f3d0813" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
+          <vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
         </div>
         
         {/* Botão 3D CTA Principal */}

@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'wouter';
 import fundoImg from '@assets/fundo_1758886315966.png';
 import sexyLogo from '@assets/123123_1758969742043.png';
 import TinderPage from './pages/TinderPage';
+import PreSellPage from './pages/PreSellPage';
 
 // Import das imagens do carousel
 import carouselImg1 from '@assets/spdexpebofal7eo3wog800wssw0gg4k.r300x600.gCenter.c4c29140b4094c23306128ad1c2d1a0b_1758970676857.jpg';
@@ -1176,7 +1177,8 @@ function HomePage() {
 export default function App() {
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
+      <Route path="/" component={PreSellPage} />
+      <Route path="/home" component={HomePage} />
       <Route path="/tinder" component={TinderPage} />
     </Switch>
   );

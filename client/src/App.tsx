@@ -465,42 +465,6 @@ function HomePage() {
           marginBottom: '20px',
           textAlign: 'center'
         }}>
-          {/* Countdown Timer */}
-          {!showCTAButton && (
-            <div style={{
-              marginBottom: '30px',
-              textAlign: 'center',
-              padding: '20px',
-              background: 'rgba(0, 0, 0, 0.7)',
-              borderRadius: '15px',
-              border: '2px solid #FF0000'
-            }}>
-              <p style={{
-                fontSize: '16px',
-                color: '#FFD700',
-                marginBottom: '10px',
-                fontWeight: 'bold'
-              }}>
-                ⏰ Conteúdo Exclusivo Liberado Em:
-              </p>
-              <div style={{
-                fontSize: '32px',
-                color: '#FFFFFF',
-                fontWeight: 'bold',
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
-              }}>
-                {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
-              </div>
-              <p style={{
-                fontSize: '14px',
-                color: '#FF6B6B',
-                marginTop: '10px'
-              }}>
-                Aguarde para acessar o grupo completo
-              </p>
-            </div>
-          )}
-          
           {/* Botão CTA - só aparece após o timer */}
           {showCTAButton && (
           <>

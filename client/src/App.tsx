@@ -19,6 +19,17 @@ import carouselImg11 from '@assets/spdexpccnb58qhrtsg0o88go84kksw8.r300x600.gCen
 import carouselImg12 from '@assets/spdexpcubkzd5c2lcg0o448o0os4g48.r300x600.gCenter.6ba57bd8c0cfd8306fd170652fc94e3c_1758970676859.jpg';
 import carouselImg13 from '@assets/spdexpd81p0qn9fk84kwgoks8co4w4c.r300x600.gCenter.5db384b664ad16f5057607f9ee5469b1_1758970676860.jpg';
 
+// Type declaration for vturb-smartplayer custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'vturb-smartplayer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+        id?: string;
+      }, HTMLElement>;
+    }
+  }
+}
+
 function HomePage() {
   const [userCity, setUserCity] = useState<string | null>(null);
   const [isLoadingLocation, setIsLoadingLocation] = useState(true);
@@ -78,6 +89,21 @@ function HomePage() {
     
     return () => clearInterval(interval);
   }, [carouselImages.length]);
+  
+  useEffect(() => {
+    // Load vturb smartplayer script
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d901df232c1a965f3d0813/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup: remove script when component unmounts
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
   
   // Função para calcular a posição e escala de cada imagem no carousel
   const getCarouselItemStyle = (index: number) => {
@@ -291,16 +317,7 @@ function HomePage() {
           boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
           position: 'relative'
         }}>
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            style={{
-              width: '100%',
-              height: '100%',
-              border: 'none'
-            }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <vturb-smartplayer id="vid-68d901df232c1a965f3d0813" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
         </div>
         
         {/* Botão 3D CTA Principal */}

@@ -38,8 +38,6 @@ function HomePage() {
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [currentName, setCurrentName] = useState('');
-  const [showCTAButton, setShowCTAButton] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(380); // 6 min 20 seg
   
   // Array de imagens do carousel
   const carouselImages = [
@@ -111,21 +109,6 @@ function HomePage() {
     };
   }, []);
   
-  // Timer para o botão CTA
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeRemaining(prev => {
-        if (prev <= 1) {
-          setShowCTAButton(true);
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    
-    return () => clearInterval(timer);
-  }, []);
   
   // Notification system effect
   useEffect(() => {
@@ -465,124 +448,6 @@ function HomePage() {
           marginBottom: '20px',
           textAlign: 'center'
         }}>
-          {/* Botão CTA - só aparece após o timer */}
-          {showCTAButton && (
-          <>
-          <button
-            onClick={() => {
-              // Get current URL parameters
-              const currentParams = new URLSearchParams(window.location.search);
-              
-              // Base LiraPay URL
-              const baseUrl = 'https://pay.lirapaybr.com/RDTKJmxS';
-              
-              // Preserve all UTM parameters
-              const utmParams: string[] = [];
-              currentParams.forEach((value, key) => {
-                if (key.startsWith('utm_') || key === 'src' || key === 'sck') {
-                  utmParams.push(`${key}=${encodeURIComponent(value)}`);
-                }
-              });
-              
-              // Build final URL with UTMs
-              const finalUrl = utmParams.length > 0 
-                ? `${baseUrl}?${utmParams.join('&')}`
-                : baseUrl;
-              
-              // Redirect to LiraPay
-              window.location.href = finalUrl;
-            }}
-            style={{
-              display: 'inline-block',
-              padding: '20px 40px',
-              fontSize: '18px',
-              fontWeight: 'bold',
-              color: '#FFFFFF',
-              background: 'linear-gradient(180deg, #FF4444 0%, #CC0000 50%, #990000 100%)',
-              border: 'none',
-              borderRadius: '50px',
-              cursor: 'pointer',
-              position: 'relative',
-              boxShadow: `
-                0 6px 0 #660000,
-                0 8px 10px rgba(0, 0, 0, 0.4),
-                0 12px 20px rgba(255, 0, 0, 0.2),
-                inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3)
-              `,
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-              transform: 'translateY(0) scale(1)',
-              transition: 'all 0.1s ease',
-              animation: 'scaleUpDown 2s ease-in-out infinite',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              overflow: 'visible'
-            }}
-            onMouseDown={(e) => {
-              e.currentTarget.style.transform = 'translateY(3px) scale(0.98)';
-              e.currentTarget.style.boxShadow = `
-                0 3px 0 #660000,
-                0 5px 8px rgba(0, 0, 0, 0.3),
-                0 8px 15px rgba(255, 0, 0, 0.15),
-                inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3)
-              `;
-            }}
-            onMouseUp={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = `
-                0 6px 0 #660000,
-                0 8px 10px rgba(0, 0, 0, 0.4),
-                0 12px 20px rgba(255, 0, 0, 0.2),
-                inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3)
-              `;
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(180deg, #FF5555 0%, #DD1111 50%, #AA0000 100%)';
-              e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-              e.currentTarget.style.boxShadow = `
-                0 8px 0 #660000,
-                0 10px 15px rgba(0, 0, 0, 0.5),
-                0 15px 30px rgba(255, 0, 0, 0.3),
-                inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3)
-              `;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(180deg, #FF4444 0%, #CC0000 50%, #990000 100%)';
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = `
-                0 6px 0 #660000,
-                0 8px 10px rgba(0, 0, 0, 0.4),
-                0 12px 20px rgba(255, 0, 0, 0.2),
-                inset 0 -3px 0 rgba(0, 0, 0, 0.2),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3)
-              `;
-            }}
-          >
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
-            }}>
-              <span>🔥</span>
-              <span>ACESSAR GRUPO AGORA!</span>
-            </div>
-          </button>
-          
-          <p style={{
-            marginTop: '12px',
-            fontSize: '13px',
-            color: '#FFD700',
-            textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
-            letterSpacing: '0.5px'
-          }}>
-            Garanta seu acesso as mais safadas da cidade
-          </p>
-          </>
-          )}
         </div>
         
         {/* Seção de Estatísticas */}

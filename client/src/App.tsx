@@ -28,6 +28,7 @@ function HomePage() {
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [currentName, setCurrentName] = useState('');
+  const [showButton, setShowButton] = useState(false);
   
   // Array de imagens do carousel
   const carouselImages = [
@@ -98,6 +99,15 @@ function HomePage() {
     };
   }, []);
   
+  // Timer to show button after 6 minutes and 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 370000); // 370 seconds = 6 minutes and 10 seconds
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
   // Função para calcular a posição e escala de cada imagem no carousel
   const getCarouselItemStyle = (index: number) => {
     const totalImages = carouselImages.length;
@@ -155,6 +165,11 @@ function HomePage() {
           100% {
             transform: translateY(0) scale(1);
           }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
         }
       `}</style>
       
@@ -408,18 +423,57 @@ function HomePage() {
         </div>
         
         {/* CTA Button Section */}
-        <div style={{
-          marginTop: '30px',
-          marginBottom: '40px',
-          textAlign: 'center'
-        }}>
-          <button
+        {showButton && (
+          <div style={{
+            marginTop: '30px',
+            marginBottom: '40px',
+            textAlign: 'center'
+          }}>
+            {/* Pricing Information */}
+            <div style={{
+              marginBottom: '20px',
+              padding: '15px',
+              background: 'rgba(0, 0, 0, 0.5)',
+              borderRadius: '10px',
+              maxWidth: '350px',
+              margin: '0 auto 20px'
+            }}>
+              <p style={{
+                fontSize: '16px',
+                color: '#FFD700',
+                margin: '0 0 8px 0',
+                textDecoration: 'line-through',
+                opacity: 0.8
+              }}>
+                De R$ 97,00
+              </p>
+              <p style={{
+                fontSize: '24px',
+                color: '#00FF00',
+                fontWeight: 'bold',
+                margin: '0 0 10px 0',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+              }}>
+                Por apenas R$ 47,00
+              </p>
+              <p style={{
+                fontSize: '14px',
+                color: '#FF4444',
+                fontWeight: 'bold',
+                margin: 0,
+                animation: 'pulse 1.5s infinite'
+              }}>
+                ⚠️ Restam apenas 16 vagas na sua região!
+              </p>
+            </div>
+            
+            <button
             onClick={() => {
               // Get current URL parameters
               const currentParams = new URLSearchParams(window.location.search);
               
-              // Base LiraPay URL
-              const baseUrl = 'https://pay.lirapaybr.com/RDTKJmxS';
+              // Base PepperPay URL
+              const baseUrl = 'https://go.pepperpay.com.br/rwxfk';
               
               // Preserve all UTM parameters
               const utmParams: string[] = [];
@@ -434,7 +488,7 @@ function HomePage() {
                 ? `${baseUrl}?${utmParams.join('&')}`
                 : baseUrl;
               
-              // Redirect to LiraPay
+              // Redirect to PepperPay
               window.location.href = finalUrl;
             }}
             style={{
@@ -526,7 +580,8 @@ function HomePage() {
           }}>
             ⚡ Últimas vagas disponíveis
           </p>
-        </div>
+          </div>
+        )}
         
         {/* Seção de Estatísticas */}
         <div style={{

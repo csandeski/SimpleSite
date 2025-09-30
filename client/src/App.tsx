@@ -20,16 +20,6 @@ import carouselImg11 from '@assets/spdexpccnb58qhrtsg0o88go84kksw8.r300x600.gCen
 import carouselImg12 from '@assets/spdexpcubkzd5c2lcg0o448o0os4g48.r300x600.gCenter.6ba57bd8c0cfd8306fd170652fc94e3c_1758970676859.jpg';
 import carouselImg13 from '@assets/spdexpd81p0qn9fk84kwgoks8co4w4c.r300x600.gCenter.5db384b664ad16f5057607f9ee5469b1_1758970676860.jpg';
 
-// Type declaration for vturb-smartplayer custom element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'vturb-smartplayer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        id?: string;
-      }, HTMLElement>;
-    }
-  }
-}
 
 function HomePage() {
   const [userCity, setUserCity] = useState<string | null>(null);
@@ -97,6 +87,7 @@ function HomePage() {
   useEffect(() => {
     // Load vturb smartplayer script
     const script = document.createElement("script");
+    script.type = "text/javascript";
     script.src = "https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d915ace29a31783c99d9b3/v4/player.js";
     script.async = true;
     document.head.appendChild(script);
@@ -439,7 +430,9 @@ function HomePage() {
           boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
           position: 'relative'
         }}>
-          <vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
+          <div dangerouslySetInnerHTML={{ 
+            __html: '<vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
+          }} />
         </div>
         
         {/* Botão 3D CTA Principal */}

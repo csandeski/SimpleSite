@@ -397,11 +397,11 @@ function HomePage() {
             maxWidth: '400px'
           }}>
             <div dangerouslySetInnerHTML={{ 
-              __html: '<vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
+              __html: '<vturb-smartplayer id="vid-68d901df232c1a965f3d0813" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
             }} />
             <Helmet>
               <script type="text/javascript">
-                {`var s=document.createElement("script");s.src="https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d915ace29a31783c99d9b3/v4/player.js",s.async=!0,document.head.appendChild(s);`}
+                {`var s=document.createElement("script");s.src="https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d901df232c1a965f3d0813/v4/player.js",s.async=!0,document.head.appendChild(s);`}
               </script>
             </Helmet>
           </div>

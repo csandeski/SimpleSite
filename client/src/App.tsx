@@ -23,8 +23,7 @@ import carouselImg13 from '@assets/spdexpd81p0qn9fk84kwgoks8co4w4c.r300x600.gCen
 
 
 function HomePage() {
-  const [userCity, setUserCity] = useState<string | null>(null);
-  const [isLoadingLocation, setIsLoadingLocation] = useState(true);
+  const [userCity] = useState<string>('Sua região (até 20km)');
   const [, setLocation] = useLocation();
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
@@ -54,27 +53,7 @@ function HomePage() {
     "Bruna", "Mariana", "Vanessa", "Aline", "Renata"
   ];
 
-  useEffect(() => {
-    // Função para obter a cidade através do nosso backend (sem CORS)
-    const getCityFromBackend = async () => {
-      try {
-        // Faz requisição para nosso próprio backend
-        const response = await fetch('/api/location');
-        const data = await response.json();
-        
-        if (data.success && data.city) {
-          setUserCity(data.city);
-        }
-      } catch (error) {
-        console.error('Erro ao obter localização:', error);
-      } finally {
-        setIsLoadingLocation(false);
-      }
-    };
-
-    // Chama a função de geolocalização
-    getCityFromBackend();
-  }, []);
+  // Location fetching removed - now using static text
   
   // Auto-rotate do carousel
   useEffect(() => {
@@ -246,7 +225,7 @@ function HomePage() {
               fontSize: '12px',
               marginTop: '2px'
             }}>
-              de {userCity || 'sua cidade'}
+              de {userCity}
             </div>
           </div>
         </div>
@@ -362,7 +341,7 @@ function HomePage() {
               color: '#FFD700',
               fontWeight: 'bold'
             }}>
-              {isLoadingLocation ? '...' : userCity || 'sua cidade'}!
+              {userCity}!
             </span>
           </p>
         </div>
@@ -395,23 +374,15 @@ function HomePage() {
           padding: '0 10px',
           minHeight: '42px'
         }}>
-          {isLoadingLocation ? (
-            <span style={{ opacity: 0.7 }}>Localizando...</span>
-          ) : userCity ? (
-            <>
-              Clique no vídeo para liberar sua vaga no grupo das casadas safadas{' '}
-              <span style={{ 
-                color: '#FFD700', 
-                fontWeight: 'bold',
-                textTransform: 'uppercase'
-              }}>
-                de {userCity}
-              </span>
-              !
-            </>
-          ) : (
-            'Clique no vídeo para liberar sua vaga no grupo das casadas safadas da sua região!'
-          )}
+          Clique no vídeo para liberar sua vaga no grupo das casadas safadas{' '}
+          <span style={{
+            color: '#FFD700',
+            fontWeight: 'bold',
+            textTransform: 'uppercase'
+          }}>
+            de {userCity}
+          </span>
+          !
         </p>
         
         {/* Vídeo Section */}
@@ -833,7 +804,7 @@ function HomePage() {
                   marginBottom: '2px',
                   textAlign: 'left'
                 }}>
-                  Casadas Safadas {userCity ? `- ${userCity}` : ''}
+                  Casadas Safadas - {userCity}
                 </div>
                 <div style={{
                   fontSize: '11px',
@@ -1146,7 +1117,7 @@ function HomePage() {
             fontWeight: 'bold',
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
           }}>
-            🔥 Mulheres Online Agora em {userCity || 'Sua Região'}
+            🔥 Mulheres Online Agora em {userCity}
           </h2>
           <p style={{
             fontSize: '14px',
@@ -1268,7 +1239,7 @@ function HomePage() {
                         fontSize: '11px',
                         margin: 0
                       }}>
-                        📍 {userCity || 'Sua cidade'}
+                        📍 {userCity}
                       </p>
                     </div>
                   </div>

@@ -93,7 +93,7 @@ function HomePage() {
     document.head.appendChild(script);
     
     return () => {
-      // Cleanup: remove script when component unmounts
+      // Cleanup when component unmounts
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
@@ -418,21 +418,19 @@ function HomePage() {
           )}
         </p>
         
-        {/* Vídeo 9:16 */}
+        {/* Vídeo Section */}
         <div style={{
-          width: '100%',
-          maxWidth: '350px',
-          margin: '0 auto',
-          aspectRatio: '9/16',
-          backgroundColor: '#000000',
-          borderRadius: '12px',
-          overflow: 'hidden',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.8)',
-          position: 'relative'
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '40px',
+          padding: '0 20px'
         }}>
-          <div dangerouslySetInnerHTML={{ 
-            __html: '<vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
-          }} />
+          <div 
+            id="vturb-player-container"
+            dangerouslySetInnerHTML={{ 
+              __html: '<vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
+            }} 
+          />
         </div>
         
         {/* Botão 3D CTA Principal */}

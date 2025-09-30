@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import fundoImg from '@assets/fundo_1758886315966.png';
 import sexyLogo from '@assets/123123_1758969742043.png';
 import TinderPage from './pages/TinderPage';
@@ -83,23 +84,6 @@ function HomePage() {
     
     return () => clearInterval(interval);
   }, [carouselImages.length]);
-  
-  useEffect(() => {
-    // Load vturb smartplayer script
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d915ace29a31783c99d9b3/v4/player.js";
-    script.async = true;
-    document.head.appendChild(script);
-    
-    return () => {
-      // Cleanup when component unmounts
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
-  
   
   // Notification system effect
   useEffect(() => {
@@ -425,12 +409,19 @@ function HomePage() {
           marginBottom: '40px',
           padding: '0 20px'
         }}>
-          <div 
-            id="vturb-player-container"
-            dangerouslySetInnerHTML={{ 
+          <div style={{
+            width: '100%',
+            maxWidth: '400px'
+          }}>
+            <div dangerouslySetInnerHTML={{ 
               __html: '<vturb-smartplayer id="vid-68d915ace29a31783c99d9b3" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>' 
-            }} 
-          />
+            }} />
+            <Helmet>
+              <script type="text/javascript">
+                {`var s=document.createElement("script");s.src="https://scripts.converteai.net/35834812-7106-48d5-a046-1382b29c0d59/players/68d915ace29a31783c99d9b3/v4/player.js",s.async=!0,document.head.appendChild(s);`}
+              </script>
+            </Helmet>
+          </div>
         </div>
         
         {/* Botão 3D CTA Principal */}

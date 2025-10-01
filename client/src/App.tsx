@@ -595,8 +595,8 @@ function HomePage() {
           </div>
         </div>
         
-        {/* 3D Carousel Component - Hidden */}
-        {false && (
+        {/* 3D Carousel Component */}
+        {true && (
         <div style={{
           marginTop: '60px',
           marginBottom: '60px',

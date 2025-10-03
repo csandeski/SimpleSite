@@ -143,7 +143,7 @@ export function QuizPage() {
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        padding: '20px',
+        padding: '16px 20px',
         position: 'sticky',
         top: 0,
         zIndex: 10
@@ -154,10 +154,10 @@ export function QuizPage() {
         }}>
           {/* Progress bar */}
           <div style={{
-            height: '6px',
+            height: '5px',
             background: 'rgba(255, 255, 255, 0.1)',
             borderRadius: '3px',
-            marginBottom: '15px',
+            marginBottom: '10px',
             overflow: 'hidden'
           }}>
             <div style={{
@@ -166,7 +166,7 @@ export function QuizPage() {
               borderRadius: '2px',
               width: `${progress}%`,
               transition: 'width 0.5s ease',
-              boxShadow: '0 0 10px rgba(212, 164, 144, 0.5)'
+              boxShadow: '0 0 8px rgba(212, 164, 144, 0.4)'
             }} />
           </div>
           
@@ -179,12 +179,12 @@ export function QuizPage() {
               src="/logo-deusa.png" 
               alt="DEUSA18DAY" 
               style={{
-                height: '30px',
+                height: '28px',
                 objectFit: 'contain'
               }}
             />
             <span style={{
-              fontSize: '14px',
+              fontSize: '13px',
               color: 'rgba(255, 255, 255, 0.7)'
             }}>
               Pergunta {currentQuestion + 1} de {questions.length}
@@ -195,7 +195,7 @@ export function QuizPage() {
 
       {/* Quiz Content */}
       <div style={{
-        padding: '40px 20px',
+        padding: window.innerWidth <= 640 ? '32px 16px' : '36px 20px',
         maxWidth: '420px',
         margin: '0 auto'
       }}>
@@ -206,15 +206,15 @@ export function QuizPage() {
         }}>
           {/* Question */}
           <div style={{
-            marginBottom: '40px',
+            marginBottom: '32px',
             textAlign: 'left'
           }}>
             <h2 style={{
-              fontSize: '20px',
+              fontSize: window.innerWidth <= 640 ? '18px' : '20px',
               fontWeight: '600',
               color: '#FFFFFF',
-              lineHeight: '1.5',
-              margin: '0 0 8px 0',
+              lineHeight: '1.4',
+              margin: '0 0 6px 0',
               textAlign: 'left'
             }}>
               {questions[currentQuestion].question}
@@ -236,14 +236,14 @@ export function QuizPage() {
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '15px'
+            gap: '12px'
           }}>
             {questions[currentQuestion].answers.map((answer, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(index, answer.isDNA)}
                 style={{
-                  padding: '16px',
+                  padding: '14px 16px',
                   background: 'rgba(255, 255, 255, 0.05)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
@@ -255,13 +255,15 @@ export function QuizPage() {
                   fontSize: '15px',
                   color: 'rgba(255, 255, 255, 0.9)',
                   transition: 'all 0.2s ease',
-                  fontWeight: '500'
+                  fontWeight: '500',
+                  display: 'flex',
+                  alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#d4a490';
                   e.currentTarget.style.borderLeft = '4px solid #d4a490'; // Maintain left border on hover
                   e.currentTarget.style.background = 'rgba(212, 164, 144, 0.1)';
-                  e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 164, 144, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(212, 164, 144, 0.3)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
@@ -271,7 +273,7 @@ export function QuizPage() {
                 }}
                 data-testid={`answer-${index}`}
               >
-                <span style={{ marginRight: '12px', fontSize: '20px' }}>✓</span>
+                <span style={{ marginRight: '10px', fontSize: '18px', lineHeight: '1', flexShrink: 0 }}>✓</span>
                 {answer.text}
               </button>
             ))}
@@ -280,10 +282,12 @@ export function QuizPage() {
 
         {/* Bottom hint */}
         <p style={{
-          marginTop: '40px',
-          fontSize: '13px',
-          color: 'rgba(255, 255, 255, 0.6)',
-          textAlign: 'center'
+          marginTop: '32px',
+          fontSize: '12px',
+          color: 'rgba(255, 255, 255, 0.5)',
+          textAlign: 'center',
+          paddingTop: '16px',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)'
         }}>
           💡 Responda com sinceridade para um resultado preciso
         </p>

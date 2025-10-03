@@ -4,10 +4,11 @@ This is a sophisticated conversion funnel for the DEUSA18DAY program - an 18-day
 
 # User Preferences
 
-- Design preferences: Clean, minimalist, sophisticated
-- Color scheme: Light backgrounds (white/light gray) with pink gradient accents (#FF006E to #FF4458)
+- Design preferences: Clean, minimalist, sophisticated, premium dark theme
+- Color scheme: Dark gradient backgrounds (#131313 to #6e5046) with rose gold accents (#d4a490)
 - Mobile-first responsive design
 - Smooth animations and transitions
+- Glassmorphism effects for premium feel
 
 # System Architecture
 
@@ -76,11 +77,13 @@ This is a sophisticated conversion funnel for the DEUSA18DAY program - an 18-day
 # Design System
 
 ## Color Palette
-- Primary: Pink gradient (#FF006E to #FF4458)
-- Background: White to light gray (#FFFFFF to #F8F9FA)
-- Text Primary: #1A1A1A
-- Text Secondary: #4A4A4A, #6A6A6A
-- Accent Background: #FFF5F8
+- Background: Dark gradient (#131313 to #6e5046)
+- Primary Accent: Rose gold (#d4a490)
+- Text Primary: #FFFFFF with 0.95 opacity
+- Text Secondary: #FFFFFF with 0.8 opacity
+- Text Tertiary: #FFFFFF with 0.6 opacity
+- Card Backgrounds: rgba(255, 255, 255, 0.05) with backdrop blur
+- Special Accent: Gold (#FFD700) for pricing highlights
 
 ## Typography
 - Font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
@@ -94,6 +97,13 @@ This is a sophisticated conversion funnel for the DEUSA18DAY program - an 18-day
 - pulse: CTA buttons
 - shimmer: Loading states
 - Smooth transitions with cubic-bezier easing
+
+## Effects & Styling
+- Glassmorphism: Cards with backdrop-filter blur(10px)
+- Glow effects: Using #d4a490 for premium feel
+- Custom scrollbar with brand colors
+- Premium animations: premiumGlow, luxuryShimmer, elegantFloat
+- Selection color: rgba(212, 164, 144, 0.3)
 
 # External Dependencies
 
@@ -134,3 +144,8 @@ This is a sophisticated conversion funnel for the DEUSA18DAY program - an 18-day
 - 2025-01-17: Built comprehensive offer page with testimonials and FAQs
 - 2025-01-17: Added smooth animations and mobile-optimized design
 - 2025-01-17: Implemented clean, sophisticated UI with light color scheme
+- 2025-01-17: Complete redesign to premium dark theme with rose gold accents
+- 2025-01-17: Added DEUSA18DAY logo across all pages
+- 2025-01-17: Implemented glassmorphism effects for sophisticated appearance
+- 2025-01-17: Enhanced animations with premium glow and shimmer effects
+- 2025-01-17: Custom scrollbar and selection styling for cohesive experience

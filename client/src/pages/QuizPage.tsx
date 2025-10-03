@@ -134,13 +134,15 @@ export function QuizPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)',
+      background: 'linear-gradient(135deg, #131313 0%, #6e5046 100%)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     }}>
       {/* Header */}
       <div style={{
-        background: '#FFFFFF',
-        borderBottom: '1px solid #F0F0F0',
+        background: 'rgba(20, 20, 20, 0.8)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         padding: '20px',
         position: 'sticky',
         top: 0,
@@ -153,17 +155,18 @@ export function QuizPage() {
           {/* Progress bar */}
           <div style={{
             height: '4px',
-            background: '#F0F0F0',
+            background: 'rgba(255, 255, 255, 0.1)',
             borderRadius: '2px',
             marginBottom: '15px',
             overflow: 'hidden'
           }}>
             <div style={{
               height: '100%',
-              background: 'linear-gradient(90deg, #FF006E 0%, #FF4458 100%)',
+              background: `linear-gradient(90deg, #d4a490 0%, #d4a490 100%)`,
               borderRadius: '2px',
               width: `${progress}%`,
-              transition: 'width 0.5s ease'
+              transition: 'width 0.5s ease',
+              boxShadow: '0 0 10px rgba(212, 164, 144, 0.5)'
             }} />
           </div>
           
@@ -172,18 +175,17 @@ export function QuizPage() {
             justifyContent: 'space-between',
             alignItems: 'center'
           }}>
-            <span style={{
-              fontSize: '12px',
-              fontWeight: '600',
-              color: '#FF006E',
-              letterSpacing: '1px',
-              textTransform: 'uppercase'
-            }}>
-              DEUSA18DAY
-            </span>
+            <img 
+              src="/logo-deusa.png" 
+              alt="DEUSA18DAY" 
+              style={{
+                height: '30px',
+                objectFit: 'contain'
+              }}
+            />
             <span style={{
               fontSize: '14px',
-              color: '#9A9A9A'
+              color: 'rgba(255, 255, 255, 0.7)'
             }}>
               Pergunta {currentQuestion + 1} de {questions.length}
             </span>
@@ -206,7 +208,7 @@ export function QuizPage() {
           <h2 style={{
             fontSize: '24px',
             fontWeight: '700',
-            color: '#1A1A1A',
+            color: '#FFFFFF',
             marginBottom: '40px',
             lineHeight: '1.4'
           }}>
@@ -225,23 +227,27 @@ export function QuizPage() {
                 onClick={() => handleAnswer(index, answer.isDNA)}
                 style={{
                   padding: '20px',
-                  background: '#FFFFFF',
-                  border: '2px solid #F0F0F0',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '2px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '16px',
                   textAlign: 'left',
                   cursor: 'pointer',
                   fontSize: '16px',
-                  color: '#4A4A4A',
+                  color: 'rgba(255, 255, 255, 0.9)',
                   transition: 'all 0.2s ease',
                   fontWeight: '500'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#FF006E';
-                  e.currentTarget.style.background = '#FFF5F8';
+                  e.currentTarget.style.borderColor = '#d4a490';
+                  e.currentTarget.style.background = 'rgba(212, 164, 144, 0.1)';
+                  e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 164, 144, 0.3)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#F0F0F0';
-                  e.currentTarget.style.background = '#FFFFFF';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
                 data-testid={`answer-${index}`}
               >
@@ -255,7 +261,7 @@ export function QuizPage() {
         <p style={{
           marginTop: '40px',
           fontSize: '13px',
-          color: '#9A9A9A',
+          color: 'rgba(255, 255, 255, 0.6)',
           textAlign: 'center'
         }}>
           💡 Responda com sinceridade para um resultado preciso

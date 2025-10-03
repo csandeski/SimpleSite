@@ -204,16 +204,46 @@ export function QuizPage() {
           transform: isAnimating ? 'translateX(20px)' : 'translateX(0)',
           transition: 'all 0.3s ease'
         }}>
-          {/* Question */}
-          <h2 style={{
-            fontSize: '24px',
-            fontWeight: '700',
-            color: '#FFFFFF',
+          {/* Question with Icon */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '20px',
             marginBottom: '40px',
-            lineHeight: '1.4'
+            padding: '25px',
+            background: 'rgba(255, 255, 255, 0.03)',
+            borderRadius: '20px',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(212, 164, 144, 0.1)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
           }}>
-            {questions[currentQuestion].question}
-          </h2>
+            {/* Icon */}
+            <div style={{
+              minWidth: '45px',
+              height: '45px',
+              background: 'linear-gradient(135deg, #d4a490 0%, #6e5046 100%)',
+              borderRadius: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px',
+              boxShadow: '0 4px 15px rgba(212, 164, 144, 0.3)'
+            }}>
+              ✨
+            </div>
+            
+            {/* Question Text */}
+            <h2 style={{
+              fontSize: '22px',
+              fontWeight: '600',
+              color: '#FFFFFF',
+              lineHeight: '1.5',
+              margin: 0,
+              flex: 1
+            }}>
+              {questions[currentQuestion].question}
+            </h2>
+          </div>
 
           {/* Answers */}
           <div style={{

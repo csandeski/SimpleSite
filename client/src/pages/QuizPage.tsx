@@ -130,6 +130,12 @@ export function QuizPage() {
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
+  
+  // Helper function to get the icon for each answer option
+  const getAnswerIcon = (index: number) => {
+    const icons = ['○', '□', '△', '◇'];
+    return icons[index] || '○';
+  };
 
   return (
     <div style={{
@@ -204,11 +210,8 @@ export function QuizPage() {
           transform: isAnimating ? 'translateX(20px)' : 'translateX(0)',
           transition: 'all 0.3s ease'
         }}>
-          {/* Question with Icon */}
+          {/* Question */}
           <div style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '20px',
             marginBottom: '40px',
             padding: '25px',
             background: 'rgba(255, 255, 255, 0.03)',
@@ -217,44 +220,26 @@ export function QuizPage() {
             border: '1px solid rgba(212, 164, 144, 0.1)',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
           }}>
-            {/* Icon */}
-            <div style={{
-              minWidth: '45px',
-              height: '45px',
-              background: 'linear-gradient(135deg, #d4a490 0%, #6e5046 100%)',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '24px',
-              boxShadow: '0 4px 15px rgba(212, 164, 144, 0.3)'
+            <h2 style={{
+              fontSize: '22px',
+              fontWeight: '600',
+              color: '#FFFFFF',
+              lineHeight: '1.5',
+              margin: 0,
             }}>
-              ✨
-            </div>
+              {questions[currentQuestion].question}
+            </h2>
             
-            {/* Question Text Container */}
-            <div style={{ flex: 1 }}>
-              <h2 style={{
-                fontSize: '22px',
-                fontWeight: '600',
-                color: '#FFFFFF',
-                lineHeight: '1.5',
-                margin: 0,
-              }}>
-                {questions[currentQuestion].question}
-              </h2>
-              
-              {/* Small description */}
-              <p style={{
-                fontSize: '14px',
-                color: 'rgba(255, 255, 255, 0.6)',
-                marginTop: '8px',
-                margin: '8px 0 0 0',
-                fontWeight: '400'
-              }}>
-                Toque em uma das opções abaixo:
-              </p>
-            </div>
+            {/* Small description */}
+            <p style={{
+              fontSize: '14px',
+              color: 'rgba(255, 255, 255, 0.6)',
+              marginTop: '8px',
+              margin: '8px 0 0 0',
+              fontWeight: '400'
+            }}>
+              Toque em uma das opções abaixo:
+            </p>
           </div>
 
           {/* Answers */}
@@ -293,6 +278,7 @@ export function QuizPage() {
                 }}
                 data-testid={`answer-${index}`}
               >
+                <span style={{ marginRight: '12px', fontSize: '20px' }}>{getAnswerIcon(index)}</span>
                 {answer.text}
               </button>
             ))}

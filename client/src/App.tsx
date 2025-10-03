@@ -30,8 +30,8 @@ function LandingPage() {
       
       {/* Hero Section */}
       <div style={{
-        padding: '60px 20px',
-        maxWidth: '500px',
+        padding: '32px 20px',
+        maxWidth: '420px',
         margin: '0 auto',
         textAlign: 'center',
         position: 'relative',
@@ -51,7 +51,7 @@ function LandingPage() {
         
         {/* Main headline */}
         <h1 style={{
-          fontSize: '32px',
+          fontSize: '28px',
           fontWeight: '800',
           lineHeight: '1.2',
           color: '#FFFFFF',
@@ -89,7 +89,7 @@ function LandingPage() {
         
         {/* Subheadline */}
         <p style={{
-          fontSize: '18px',
+          fontSize: '16px',
           lineHeight: '1.6',
           color: 'rgba(255, 255, 255, 0.8)',
           marginBottom: '40px'
@@ -113,13 +113,13 @@ function LandingPage() {
             '✨ 20 minutos por dia apenas'
           ].map((benefit, index) => (
             <div key={index} className="card-enter" style={{
-              padding: '18px',
+              padding: '14px',
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '16px',
+              borderRadius: '12px',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-              fontSize: '16px',
+              fontSize: '15px',
               color: 'rgba(255, 255, 255, 0.95)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
               animationDelay: `${index * 0.1}s`,
@@ -148,12 +148,12 @@ function LandingPage() {
           onClick={() => setLocation('/quiz')}
           style={{
             width: '100%',
-            padding: '22px',
+            padding: '16px',
             background: 'linear-gradient(135deg, #d4a490 0%, #c09480 50%, #d4a490 100%)',
             backgroundSize: '200% 200%',
             animation: 'shimmer 3s ease infinite',
             border: 'none',
-            borderRadius: '30px',
+            borderRadius: '12px',
             color: '#FFFFFF',
             fontSize: '16px',
             fontWeight: '700',

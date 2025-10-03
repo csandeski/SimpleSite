@@ -39,7 +39,7 @@ export function OfferPage() {
         }} />
         
         <div style={{
-          maxWidth: '500px',
+          maxWidth: '420px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 1
@@ -56,7 +56,7 @@ export function OfferPage() {
           </p>
           
           <h1 style={{
-            fontSize: '32px',
+            fontSize: '22px',
             fontWeight: '800',
             lineHeight: '1.2',
             marginBottom: '20px',
@@ -68,7 +68,7 @@ export function OfferPage() {
           </h1>
           
           <p style={{
-            fontSize: '18px',
+            fontSize: '16px',
             lineHeight: '1.6',
             color: '#FFFFFF',
             opacity: 0.8
@@ -81,7 +81,7 @@ export function OfferPage() {
       {/* Content */}
       <div style={{
         padding: '40px 20px',
-        maxWidth: '500px',
+        maxWidth: '420px',
         margin: '0 auto'
       }}>
         {/* What's Included */}
@@ -89,7 +89,7 @@ export function OfferPage() {
           marginBottom: '40px'
         }}>
           <h2 style={{
-            fontSize: '24px',
+            fontSize: '18px',
             fontWeight: '700',
             color: '#FFFFFF',
             opacity: 0.95,
@@ -143,7 +143,7 @@ export function OfferPage() {
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(10px)',
                 WebkitBackdropFilter: 'blur(10px)',
-                borderRadius: '15px',
+                borderRadius: '12px',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                 alignItems: 'flex-start'
@@ -151,7 +151,7 @@ export function OfferPage() {
                 <span style={{ fontSize: '24px' }}>{item.icon}</span>
                 <div style={{ flex: 1 }}>
                   <h3 style={{
-                    fontSize: '16px',
+                    fontSize: '15px',
                     fontWeight: '600',
                     color: '#FFFFFF',
                     opacity: 0.95,
@@ -180,11 +180,11 @@ export function OfferPage() {
           background: 'rgba(212, 164, 144, 0.05)',
           backdropFilter: 'blur(5px)',
           WebkitBackdropFilter: 'blur(5px)',
-          borderRadius: '20px',
+          borderRadius: '12px',
           border: '1px solid rgba(212, 164, 144, 0.2)'
         }}>
           <h3 style={{
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '700',
             color: '#d4a490',
             marginBottom: '20px',
@@ -226,7 +226,7 @@ export function OfferPage() {
           background: 'rgba(26, 26, 26, 0.8)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: '20px',
+          borderRadius: '12px',
           padding: '30px',
           color: '#FFFFFF',
           textAlign: 'center',
@@ -274,7 +274,7 @@ export function OfferPage() {
           </p>
           
           <div style={{
-            fontSize: '48px',
+            fontSize: '30px',
             fontWeight: '800',
             marginBottom: '10px',
             color: '#FFD700',
@@ -296,10 +296,10 @@ export function OfferPage() {
             onClick={handlePurchase}
             style={{
               width: '100%',
-              padding: '20px',
+              padding: '16px',
               background: 'linear-gradient(135deg, #d4a490 0%, #a08070 100%)',
               border: 'none',
-              borderRadius: '30px',
+              borderRadius: '12px',
               color: '#FFFFFF',
               fontSize: '16px',
               fontWeight: '700',
@@ -361,7 +361,7 @@ export function OfferPage() {
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '15px',
+              borderRadius: '12px',
               fontSize: '14px',
               color: '#FFFFFF',
               opacity: 0.8,
@@ -408,7 +408,7 @@ export function OfferPage() {
           marginBottom: '30px'
         }}>
           <h3 style={{
-            fontSize: '18px',
+            fontSize: '16px',
             fontWeight: '700',
             color: '#FFFFFF',
             opacity: 0.95,
@@ -438,12 +438,12 @@ export function OfferPage() {
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              borderRadius: '15px',
+              borderRadius: '12px',
               border: '1px solid rgba(255, 255, 255, 0.1)',
               boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
             }}>
               <p style={{
-                fontSize: '15px',
+                fontSize: '14px',
                 fontWeight: '600',
                 color: '#FFFFFF',
                 opacity: 0.95,
@@ -470,7 +470,7 @@ export function OfferPage() {
           background: 'rgba(26, 26, 26, 0.95)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: '20px',
+          borderRadius: '12px',
           padding: '20px',
           border: '1px solid rgba(212, 164, 144, 0.3)',
           boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.4)'
@@ -479,10 +479,10 @@ export function OfferPage() {
             onClick={handlePurchase}
             style={{
               width: '100%',
-              padding: '20px',
+              padding: '16px',
               background: 'linear-gradient(135deg, #d4a490 0%, #a08070 100%)',
               border: 'none',
-              borderRadius: '30px',
+              borderRadius: '12px',
               color: '#FFFFFF',
               fontSize: '16px',
               fontWeight: '700',

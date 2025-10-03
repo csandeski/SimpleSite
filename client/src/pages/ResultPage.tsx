@@ -73,7 +73,7 @@ export function ResultPage() {
     }}>
       <div style={{
         padding: '40px 20px',
-        maxWidth: '500px',
+        maxWidth: '420px',
         margin: '0 auto',
         opacity: showContent ? 1 : 0,
         transform: showContent ? 'translateY(0)' : 'translateY(20px)',
@@ -107,7 +107,7 @@ export function ResultPage() {
           </div>
           
           <h1 style={{
-            fontSize: '32px',
+            fontSize: '22px',
             fontWeight: '800',
             lineHeight: '1.2',
             color: '#FFFFFF',
@@ -125,7 +125,7 @@ export function ResultPage() {
           background: 'rgba(255, 255, 255, 0.05)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: '20px',
+          borderRadius: '12px',
           padding: '30px',
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
           marginBottom: '30px',
@@ -134,7 +134,7 @@ export function ResultPage() {
           {isDNA ? (
             <>
               <p style={{
-                fontSize: '18px',
+                fontSize: '16px',
                 lineHeight: '1.6',
                 color: '#FFFFFF',
                 marginBottom: '20px',
@@ -183,7 +183,7 @@ export function ResultPage() {
           ) : (
             <>
               <p style={{
-                fontSize: '18px',
+                fontSize: '16px',
                 lineHeight: '1.6',
                 color: '#FFFFFF',
                 marginBottom: '20px',
@@ -209,7 +209,7 @@ export function ResultPage() {
           background: 'rgba(212, 164, 144, 0.15)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderRadius: '20px',
+          borderRadius: '12px',
           padding: '30px',
           color: '#FFFFFF',
           textAlign: 'center',
@@ -229,7 +229,7 @@ export function ResultPage() {
           </p>
           
           <h2 style={{
-            fontSize: '24px',
+            fontSize: '22px',
             fontWeight: '700',
             marginBottom: '20px',
             color: '#FFFFFF'
@@ -238,7 +238,7 @@ export function ResultPage() {
           </h2>
           
           <div style={{
-            fontSize: '36px',
+            fontSize: '30px',
             fontWeight: '800',
             marginBottom: '10px',
             color: '#d4a490',
@@ -260,10 +260,10 @@ export function ResultPage() {
             onClick={() => setLocation('/oferta')}
             style={{
               width: '100%',
-              padding: '18px',
+              padding: '16px',
               background: 'linear-gradient(135deg, #d4a490 0%, #b8917a 100%)',
               border: 'none',
-              borderRadius: '30px',
+              borderRadius: '12px',
               color: '#FFFFFF',
               fontSize: '16px',
               fontWeight: '700',
@@ -297,7 +297,7 @@ export function ResultPage() {
           background: 'rgba(212, 164, 144, 0.1)',
           backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(10px)',
-          borderRadius: '15px',
+          borderRadius: '12px',
           marginBottom: '20px',
           border: '1px solid rgba(212, 164, 144, 0.2)'
         }}>

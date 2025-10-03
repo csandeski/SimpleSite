@@ -149,14 +149,14 @@ export function QuizPage() {
         zIndex: 10
       }}>
         <div style={{
-          maxWidth: '500px',
+          maxWidth: '420px',
           margin: '0 auto'
         }}>
           {/* Progress bar */}
           <div style={{
-            height: '4px',
+            height: '6px',
             background: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '2px',
+            borderRadius: '3px',
             marginBottom: '15px',
             overflow: 'hidden'
           }}>
@@ -196,7 +196,7 @@ export function QuizPage() {
       {/* Quiz Content */}
       <div style={{
         padding: '40px 20px',
-        maxWidth: '500px',
+        maxWidth: '420px',
         margin: '0 auto'
       }}>
         <div style={{
@@ -210,7 +210,7 @@ export function QuizPage() {
             textAlign: 'left'
           }}>
             <h2 style={{
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: '600',
               color: '#FFFFFF',
               lineHeight: '1.5',
@@ -222,7 +222,7 @@ export function QuizPage() {
             
             {/* Small description */}
             <p style={{
-              fontSize: '14px',
+              fontSize: '13px',
               color: 'rgba(255, 255, 255, 0.6)',
               margin: 0,
               fontWeight: '400',
@@ -243,16 +243,16 @@ export function QuizPage() {
                 key={index}
                 onClick={() => handleAnswer(index, answer.isDNA)}
                 style={{
-                  padding: '20px',
+                  padding: '16px',
                   background: 'rgba(255, 255, 255, 0.05)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
                   border: '2px solid rgba(255, 255, 255, 0.1)',
                   borderLeft: '4px solid #d4a490',  // Add a thick left border with rose gold color
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   textAlign: 'left',
                   cursor: 'pointer',
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: 'rgba(255, 255, 255, 0.9)',
                   transition: 'all 0.2s ease',
                   fontWeight: '500'

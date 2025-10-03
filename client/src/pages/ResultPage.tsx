@@ -34,7 +34,7 @@ export function ResultPage() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+        fontFamily: '"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
       }}>
         <div style={{
           textAlign: 'center'

@@ -135,7 +135,7 @@ export function QuizPage() {
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #131313 0%, #6e5046 100%)',
-      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+      fontFamily: '"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     }}>
       {/* Header */}
       <div style={{

@@ -122,7 +122,7 @@ export function QuizPage() {
         
         // Store results in sessionStorage
         sessionStorage.setItem('quizScore', score.toString());
-        sessionStorage.setItem('quizAnswers', JSON.stringify(answers));
+        sessionStorage.setItem('quizAnswers', JSON.stringify([...answers, { questionId: questions[currentQuestion].id, answerId, isDNA }]));
         
         setLocation('/resultado');
       }

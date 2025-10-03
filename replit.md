@@ -1,13 +1,13 @@
 # Overview
 
-This is a full-stack web application built with a React frontend and Express.js backend. The project is a mobile-optimized landing page for adult content promotion featuring geolocation, video section, statistics cards, WhatsApp conversation simulation, and a complete Tinder-style matching page. The site uses sensual background imagery with targeted messaging and includes an interactive user journey from landing page to matching experience.
+This is a sophisticated conversion funnel for the DEUSA18DAY program - an 18-day Pilates aesthetic transformation program for women. The funnel features a magnetic landing page, interactive quiz system, personalized results, and optimized sales page.
 
 # User Preferences
 
-- Preferred communication style: Simple, everyday language
-- Design preferences: Clean, professional, mobile-first approach with warm craft-appropriate colors
-- UI Elements: Squared corners (not rounded), 3D buttons with green gradients
-- Payment: PIX-only payment method, no credit card options
+- Design preferences: Clean, minimalist, sophisticated
+- Color scheme: Light backgrounds (white/light gray) with pink gradient accents (#FF006E to #FF4458)
+- Mobile-first responsive design
+- Smooth animations and transitions
 
 # System Architecture
 
@@ -47,37 +47,53 @@ This is a full-stack web application built with a React frontend and Express.js 
 # Application Features
 
 ## Landing Page (/)
-- Hero section with course presentation
-- Pricing card with 3D button effects (R$ 29,90)
-- Product showcase with 5 crochet pieces
-- Student testimonials carousel
-- Bonus section with WhatsApp group (Portuguese interface)
-- FAQ section
-- Call-to-action buttons throughout
+- Compelling headline about the 1% of women who can handle the challenge
+- Benefits list with emoji icons
+- Strong CTA to start the quiz
+- Minimalist design with gradient accents
 
-## Checkout Page (/checkout)
-- Timer countdown for urgency
-- Product card with instructor image and pricing
-- Personal information form (name, email, phone, CPF/CNPJ)
-- PIX-only payment method
-- Three optional upsells with dynamic pricing
-- Order summary with real-time total calculation
-- Security badges and trust indicators
+## Quiz System (/quiz)
+- 10 strategic questions to identify "DNA de Deusa"
+- Progress bar showing completion
+- Smooth transitions between questions
+- Score calculation based on answers
+
+## Results Page (/resultado)
+- Personalized result based on quiz score
+- Different messaging for "DNA detected" (score ≥ 6) vs "DNA dormant"
+- Immediate offer presentation
+- Loading animation for dramatic effect
+
+## Offer Page (/oferta)
+- Complete sales page with program details
+- What's included section with 6 key features
+- Customer testimonials
+- Pricing section (R$ 49)
+- 30-day guarantee
+- FAQ section
+- Sticky CTA button
 
 # Design System
 
 ## Color Palette
-- Primary: Rose/Pink tones for warmth
-- Accent: Emerald green for CTAs
-- Highlight: Amber for attention
-- Text: Dark grays for readability
-- Background: Light cream/beige tones
+- Primary: Pink gradient (#FF006E to #FF4458)
+- Background: White to light gray (#FFFFFF to #F8F9FA)
+- Text Primary: #1A1A1A
+- Text Secondary: #4A4A4A, #6A6A6A
+- Accent Background: #FFF5F8
 
 ## Typography
-- H1: text-3xl md:text-5xl
-- H2: text-2xl md:text-4xl
-- Body: text-base md:text-lg
-- All buttons: Squared corners with 3D gradient effects
+- Font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
+- H1: 32px, weight 800
+- H2: 24px, weight 700
+- Body: 16-18px, weight 400-500
+
+## Animations
+- fadeIn: Page transitions
+- scaleIn: Card appearances
+- pulse: CTA buttons
+- shimmer: Loading states
+- Smooth transitions with cubic-bezier easing
 
 # External Dependencies
 
@@ -112,10 +128,9 @@ This is a full-stack web application built with a React frontend and Express.js 
 
 # Recent Changes
 
-- 2025-01-15: Implemented complete UTM tracking system for Facebook Ads with LiraPay integration
-- 2025-01-15: UTM format: utm_source=FB&utm_campaign={{campaign.name}}|{{campaign.id}}&utm_medium={{adset.name}}|{{adset.id}}&utm_content={{ad.name}}|{{ad.id}}&utm_term={{placement}}
-- 2025-01-14: Updated checkout page with correct product card design (no rounded corners)
-- 2025-01-14: Fixed pricing to R$ 47,00 base price for consistency
-- 2025-01-14: Implemented PIX-only checkout with upsells functionality
-- 2025-01-14: Created Portuguese WhatsApp group mockup for bonus section
-- 2025-01-14: Standardized all buttons with 3D green gradient effects
+- 2025-01-17: Complete redesign from adult content to DEUSA18DAY funnel
+- 2025-01-17: Implemented quiz system with 10 questions
+- 2025-01-17: Created personalized results page with score logic
+- 2025-01-17: Built comprehensive offer page with testimonials and FAQs
+- 2025-01-17: Added smooth animations and mobile-optimized design
+- 2025-01-17: Implemented clean, sophisticated UI with light color scheme

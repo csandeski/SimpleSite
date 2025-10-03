@@ -2,6 +2,7 @@ import { Route, Switch, useLocation } from "wouter";
 import { useState } from "react";
 import { QuizPage } from "./pages/QuizPage";
 import { ResultPage } from "./pages/ResultPage";
+import { OfferPage } from "./pages/OfferPage";
 
 function LandingPage() {
   const [, setLocation] = useLocation();
@@ -155,7 +156,7 @@ function App() {
       <Route path="/" component={LandingPage} />
       <Route path="/quiz" component={QuizPage} />
       <Route path="/resultado" component={ResultPage} />
-      <Route path="/oferta">Offer Page (To be implemented)</Route>
+      <Route path="/oferta" component={OfferPage} />
     </Switch>
   );
 }

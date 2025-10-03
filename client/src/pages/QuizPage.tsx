@@ -130,12 +130,6 @@ export function QuizPage() {
   };
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
-  
-  // Helper function to get the icon for each answer option
-  const getAnswerIcon = (index: number) => {
-    const icons = ['○', '□', '△', '◇'];
-    return icons[index] || '○';
-  };
 
   return (
     <div style={{
@@ -274,7 +268,7 @@ export function QuizPage() {
                 }}
                 data-testid={`answer-${index}`}
               >
-                <span style={{ marginRight: '12px', fontSize: '20px' }}>{getAnswerIcon(index)}</span>
+                <span style={{ marginRight: '12px', fontSize: '20px' }}>✓</span>
                 {answer.text}
               </button>
             ))}

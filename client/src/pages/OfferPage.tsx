@@ -14,26 +14,43 @@ export function OfferPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+      background: 'linear-gradient(135deg, #131313 0%, #6e5046 100%)',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      position: 'relative'
     }}>
       {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, #FF006E 0%, #FF4458 100%)',
+        background: 'linear-gradient(135deg, #d4a490 0%, #6e5046 100%)',
         padding: '40px 20px',
         color: '#FFFFFF',
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
+        {/* Decorative glow effect */}
+        <div style={{
+          position: 'absolute',
+          top: '-50%',
+          left: '-25%',
+          width: '150%',
+          height: '200%',
+          background: 'radial-gradient(circle, rgba(212, 164, 144, 0.3) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        
         <div style={{
           maxWidth: '500px',
-          margin: '0 auto'
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1
         }}>
           <p style={{
             fontSize: '14px',
             fontWeight: '600',
             letterSpacing: '2px',
             marginBottom: '20px',
-            opacity: 0.9
+            color: '#d4a490',
+            textShadow: '0 2px 10px rgba(212, 164, 144, 0.5)'
           }}>
             OFERTA EXCLUSIVA
           </p>
@@ -42,7 +59,10 @@ export function OfferPage() {
             fontSize: '32px',
             fontWeight: '800',
             lineHeight: '1.2',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            color: '#FFFFFF',
+            opacity: 0.95,
+            textShadow: '0 4px 20px rgba(0, 0, 0, 0.5)'
           }}>
             Ative seu DNA de Deusa Irresistível
           </h1>
@@ -50,7 +70,8 @@ export function OfferPage() {
           <p style={{
             fontSize: '18px',
             lineHeight: '1.6',
-            opacity: 0.95
+            color: '#FFFFFF',
+            opacity: 0.8
           }}>
             Transforme sua cintura, glúteos e confiança em apenas 18 dias
           </p>
@@ -70,7 +91,8 @@ export function OfferPage() {
           <h2 style={{
             fontSize: '24px',
             fontWeight: '700',
-            color: '#1A1A1A',
+            color: '#FFFFFF',
+            opacity: 0.95,
             marginBottom: '20px',
             textAlign: 'center'
           }}>
@@ -118,9 +140,12 @@ export function OfferPage() {
                 display: 'flex',
                 gap: '15px',
                 padding: '20px',
-                background: '#FFFFFF',
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
                 borderRadius: '15px',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                 alignItems: 'flex-start'
               }}>
                 <span style={{ fontSize: '24px' }}>{item.icon}</span>
@@ -128,14 +153,16 @@ export function OfferPage() {
                   <h3 style={{
                     fontSize: '16px',
                     fontWeight: '600',
-                    color: '#1A1A1A',
+                    color: '#FFFFFF',
+                    opacity: 0.95,
                     marginBottom: '5px'
                   }}>
                     {item.title}
                   </h3>
                   <p style={{
                     fontSize: '14px',
-                    color: '#6A6A6A',
+                    color: '#FFFFFF',
+                    opacity: 0.6,
                     margin: 0
                   }}>
                     {item.description}
@@ -150,15 +177,19 @@ export function OfferPage() {
         <div style={{
           marginBottom: '40px',
           padding: '30px',
-          background: '#FFF5F8',
-          borderRadius: '20px'
+          background: 'rgba(212, 164, 144, 0.05)',
+          backdropFilter: 'blur(5px)',
+          WebkitBackdropFilter: 'blur(5px)',
+          borderRadius: '20px',
+          border: '1px solid rgba(212, 164, 144, 0.2)'
         }}>
           <h3 style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: '#1A1A1A',
+            color: '#d4a490',
             marginBottom: '20px',
-            textAlign: 'center'
+            textAlign: 'center',
+            textShadow: '0 2px 8px rgba(212, 164, 144, 0.3)'
           }}>
             Mulheres que já ativaram o DNA:
           </h3>
@@ -175,12 +206,14 @@ export function OfferPage() {
             ].map((testimonial, index) => (
               <p key={index} style={{
                 fontSize: '14px',
-                color: '#4A4A4A',
+                color: '#FFFFFF',
+                opacity: 0.8,
                 fontStyle: 'italic',
                 padding: '15px',
-                background: '#FFFFFF',
+                background: 'rgba(255, 255, 255, 0.03)',
                 borderRadius: '10px',
-                margin: 0
+                margin: 0,
+                border: '1px solid rgba(255, 255, 255, 0.05)'
               }}>
                 {testimonial}
               </p>
@@ -190,15 +223,31 @@ export function OfferPage() {
 
         {/* Price Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)',
+          background: 'rgba(26, 26, 26, 0.8)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderRadius: '20px',
           padding: '30px',
           color: '#FFFFFF',
           textAlign: 'center',
           marginBottom: '30px',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          border: '1px solid rgba(212, 164, 144, 0.3)',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
         }}>
+          {/* Golden glow effect */}
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '200px',
+            height: '200px',
+            background: 'radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
+            pointerEvents: 'none'
+          }} />
+          
           {/* Ribbon */}
           <div style={{
             position: 'absolute',
@@ -209,7 +258,8 @@ export function OfferPage() {
             padding: '5px 40px',
             transform: 'rotate(45deg)',
             fontSize: '12px',
-            fontWeight: '700'
+            fontWeight: '700',
+            boxShadow: '0 4px 15px rgba(255, 215, 0, 0.5)'
           }}>
             HOJE
           </div>
@@ -217,6 +267,7 @@ export function OfferPage() {
           <p style={{
             fontSize: '16px',
             marginBottom: '10px',
+            color: '#FFFFFF',
             opacity: 0.8
           }}>
             Investimento único
@@ -225,7 +276,9 @@ export function OfferPage() {
           <div style={{
             fontSize: '48px',
             fontWeight: '800',
-            marginBottom: '10px'
+            marginBottom: '10px',
+            color: '#FFD700',
+            textShadow: '0 0 30px rgba(255, 215, 0, 0.5)'
           }}>
             R$ 49
           </div>
@@ -233,7 +286,8 @@ export function OfferPage() {
           <p style={{
             fontSize: '14px',
             marginBottom: '25px',
-            opacity: 0.8
+            color: '#FFFFFF',
+            opacity: 0.6
           }}>
             ou 5x de R$ 9,80 no cartão
           </p>
@@ -243,7 +297,7 @@ export function OfferPage() {
             style={{
               width: '100%',
               padding: '20px',
-              background: 'linear-gradient(135deg, #FF006E 0%, #FF4458 100%)',
+              background: 'linear-gradient(135deg, #d4a490 0%, #a08070 100%)',
               border: 'none',
               borderRadius: '30px',
               color: '#FFFFFF',
@@ -251,14 +305,18 @@ export function OfferPage() {
               fontWeight: '700',
               letterSpacing: '1px',
               cursor: 'pointer',
-              boxShadow: '0 10px 30px rgba(255, 0, 110, 0.5)',
-              transition: 'transform 0.2s ease'
+              boxShadow: '0 10px 30px rgba(212, 164, 144, 0.4)',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 15px 40px rgba(212, 164, 144, 0.6)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(212, 164, 144, 0.4)';
             }}
             data-testid="purchase-button"
           >
@@ -268,7 +326,8 @@ export function OfferPage() {
           <p style={{
             fontSize: '12px',
             marginTop: '15px',
-            opacity: 0.7
+            color: '#FFFFFF',
+            opacity: 0.6
           }}>
             🔒 Pagamento 100% seguro
           </p>
@@ -284,11 +343,12 @@ export function OfferPage() {
             style={{
               background: 'none',
               border: 'none',
-              color: '#FF006E',
+              color: '#d4a490',
               fontSize: '14px',
               fontWeight: '600',
               cursor: 'pointer',
-              textDecoration: 'underline'
+              textDecoration: 'underline',
+              textShadow: '0 2px 8px rgba(212, 164, 144, 0.3)'
             }}
           >
             🛡️ Ver garantia de 30 dias
@@ -298,11 +358,15 @@ export function OfferPage() {
             <div style={{
               marginTop: '20px',
               padding: '20px',
-              background: '#F8F9FA',
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
               borderRadius: '15px',
               fontSize: '14px',
-              color: '#4A4A4A',
-              lineHeight: '1.6'
+              color: '#FFFFFF',
+              opacity: 0.8,
+              lineHeight: '1.6',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
               Se em 30 dias você não estiver completamente satisfeita com sua transformação,
               devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
@@ -312,23 +376,28 @@ export function OfferPage() {
 
         {/* Urgency */}
         <div style={{
-          background: '#FFF5F8',
+          background: 'rgba(212, 164, 144, 0.1)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
           borderRadius: '15px',
           padding: '20px',
           textAlign: 'center',
-          marginBottom: '30px'
+          marginBottom: '30px',
+          border: '1px solid rgba(212, 164, 144, 0.2)'
         }}>
           <p style={{
             fontSize: '16px',
-            color: '#FF006E',
+            color: '#d4a490',
             fontWeight: '600',
-            marginBottom: '10px'
+            marginBottom: '10px',
+            textShadow: '0 2px 8px rgba(212, 164, 144, 0.3)'
           }}>
             ⏰ Oferta por tempo limitado!
           </p>
           <p style={{
             fontSize: '14px',
-            color: '#4A4A4A'
+            color: '#FFFFFF',
+            opacity: 0.6
           }}>
             Esta condição especial pode acabar a qualquer momento
           </p>
@@ -341,7 +410,8 @@ export function OfferPage() {
           <h3 style={{
             fontSize: '18px',
             fontWeight: '700',
-            color: '#1A1A1A',
+            color: '#FFFFFF',
+            opacity: 0.95,
             marginBottom: '20px',
             textAlign: 'center'
           }}>
@@ -365,21 +435,26 @@ export function OfferPage() {
             <div key={index} style={{
               marginBottom: '15px',
               padding: '20px',
-              background: '#FFFFFF',
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
               borderRadius: '15px',
-              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)'
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
             }}>
               <p style={{
                 fontSize: '15px',
                 fontWeight: '600',
-                color: '#1A1A1A',
+                color: '#FFFFFF',
+                opacity: 0.95,
                 marginBottom: '8px'
               }}>
                 {faq.q}
               </p>
               <p style={{
                 fontSize: '14px',
-                color: '#6A6A6A',
+                color: '#FFFFFF',
+                opacity: 0.6,
                 margin: 0
               }}>
                 {faq.a}
@@ -392,17 +467,20 @@ export function OfferPage() {
         <div style={{
           position: 'sticky',
           bottom: '20px',
-          background: '#FFFFFF',
+          background: 'rgba(26, 26, 26, 0.95)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderRadius: '20px',
           padding: '20px',
-          boxShadow: '0 -10px 30px rgba(0, 0, 0, 0.1)'
+          border: '1px solid rgba(212, 164, 144, 0.3)',
+          boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.4)'
         }}>
           <button
             onClick={handlePurchase}
             style={{
               width: '100%',
               padding: '20px',
-              background: 'linear-gradient(135deg, #FF006E 0%, #FF4458 100%)',
+              background: 'linear-gradient(135deg, #d4a490 0%, #a08070 100%)',
               border: 'none',
               borderRadius: '30px',
               color: '#FFFFFF',
@@ -410,7 +488,17 @@ export function OfferPage() {
               fontWeight: '700',
               letterSpacing: '1px',
               cursor: 'pointer',
-              animation: 'pulse 2s infinite'
+              animation: 'pulse 2s infinite',
+              boxShadow: '0 0 30px rgba(212, 164, 144, 0.5)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 0 40px rgba(212, 164, 144, 0.7)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 164, 144, 0.5)';
             }}
             data-testid="final-cta-button"
           >
@@ -419,11 +507,17 @@ export function OfferPage() {
         </div>
       </div>
 
-      {/* Add pulse animation */}
+      {/* Add pulse animation with glow effect */}
       <style>{`
         @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.02); }
+          0%, 100% { 
+            transform: scale(1);
+            filter: brightness(1);
+          }
+          50% { 
+            transform: scale(1.02);
+            filter: brightness(1.1);
+          }
         }
       `}</style>
     </div>

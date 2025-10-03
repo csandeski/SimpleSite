@@ -232,17 +232,29 @@ export function QuizPage() {
               ✨
             </div>
             
-            {/* Question Text */}
-            <h2 style={{
-              fontSize: '22px',
-              fontWeight: '600',
-              color: '#FFFFFF',
-              lineHeight: '1.5',
-              margin: 0,
-              flex: 1
-            }}>
-              {questions[currentQuestion].question}
-            </h2>
+            {/* Question Text Container */}
+            <div style={{ flex: 1 }}>
+              <h2 style={{
+                fontSize: '22px',
+                fontWeight: '600',
+                color: '#FFFFFF',
+                lineHeight: '1.5',
+                margin: 0,
+              }}>
+                {questions[currentQuestion].question}
+              </h2>
+              
+              {/* Small description */}
+              <p style={{
+                fontSize: '14px',
+                color: 'rgba(255, 255, 255, 0.6)',
+                marginTop: '8px',
+                margin: '8px 0 0 0',
+                fontWeight: '400'
+              }}>
+                Toque em uma das opções abaixo:
+              </p>
+            </div>
           </div>
 
           {/* Answers */}

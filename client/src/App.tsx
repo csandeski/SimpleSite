@@ -1,5 +1,5 @@
 import { Route, Switch, useLocation } from "wouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QuizPage } from "./pages/QuizPage";
 import { ResultPage } from "./pages/ResultPage";
 import { OfferPage } from "./pages/OfferPage";
@@ -8,7 +8,7 @@ function LandingPage() {
   const [, setLocation] = useLocation();
   
   return (
-    <div style={{
+    <div className="page-enter" style={{
       minHeight: '100vh',
       background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
@@ -93,14 +93,15 @@ function LandingPage() {
             '✨ Transformar postura e confiança',
             '✨ 20 minutos por dia apenas'
           ].map((benefit, index) => (
-            <div key={index} style={{
+            <div key={index} className="card-enter" style={{
               padding: '15px',
               background: '#FFFFFF',
               borderRadius: '12px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               fontSize: '16px',
               color: '#4A4A4A',
-              border: '1px solid #F0F0F0'
+              border: '1px solid #F0F0F0',
+              animationDelay: `${index * 0.1}s`
             }}>
               {benefit}
             </div>
@@ -150,13 +151,47 @@ function LandingPage() {
   );
 }
 
+// Animated wrapper component for smooth page transitions
+function AnimatedPage({ children }: { children: React.ReactNode }) {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => setIsVisible(true), 10);
+    return () => clearTimeout(timer);
+  }, []);
+  
+  return (
+    <div className={isVisible ? "page-enter" : ""} style={{ opacity: isVisible ? 1 : 0 }}>
+      {children}
+    </div>
+  );
+}
+
+// Wrapper components for each route with animations
+function AnimatedLandingPage() {
+  return <AnimatedPage><LandingPage /></AnimatedPage>;
+}
+
+function AnimatedQuizPage() {
+  return <AnimatedPage><QuizPage /></AnimatedPage>;
+}
+
+function AnimatedResultPage() {
+  return <AnimatedPage><ResultPage /></AnimatedPage>;
+}
+
+function AnimatedOfferPage() {
+  return <AnimatedPage><OfferPage /></AnimatedPage>;
+}
+
 function App() {
   return (
     <Switch>
-      <Route path="/" component={LandingPage} />
-      <Route path="/quiz" component={QuizPage} />
-      <Route path="/resultado" component={ResultPage} />
-      <Route path="/oferta" component={OfferPage} />
+      <Route path="/" component={AnimatedLandingPage} />
+      <Route path="/quiz" component={AnimatedQuizPage} />
+      <Route path="/resultado" component={AnimatedResultPage} />
+      <Route path="/oferta" component={AnimatedOfferPage} />
     </Switch>
   );
 }

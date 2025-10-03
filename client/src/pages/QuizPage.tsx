@@ -213,19 +213,15 @@ export function QuizPage() {
           {/* Question */}
           <div style={{
             marginBottom: '40px',
-            padding: '25px',
-            background: 'rgba(255, 255, 255, 0.03)',
-            borderRadius: '20px',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(212, 164, 144, 0.1)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            textAlign: 'left'
           }}>
             <h2 style={{
               fontSize: '22px',
               fontWeight: '600',
               color: '#FFFFFF',
               lineHeight: '1.5',
-              margin: 0,
+              margin: '0 0 8px 0',
+              textAlign: 'left'
             }}>
               {questions[currentQuestion].question}
             </h2>
@@ -234,9 +230,9 @@ export function QuizPage() {
             <p style={{
               fontSize: '14px',
               color: 'rgba(255, 255, 255, 0.6)',
-              marginTop: '8px',
-              margin: '8px 0 0 0',
-              fontWeight: '400'
+              margin: 0,
+              fontWeight: '400',
+              textAlign: 'left'
             }}>
               Toque em uma das opções abaixo:
             </p>

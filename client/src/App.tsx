@@ -30,7 +30,7 @@ function LandingPage() {
       
       {/* Hero Section */}
       <div style={{
-        padding: '32px 20px',
+        padding: window.innerWidth < 768 ? '24px 20px' : '40px 20px',
         maxWidth: '420px',
         margin: '0 auto',
         textAlign: 'center',
@@ -42,9 +42,10 @@ function LandingPage() {
           src="/logo-deusa.png" 
           alt="DEUSA18DAY" 
           style={{
-            height: '60px',
-            marginBottom: '30px',
-            filter: 'drop-shadow(0 4px 20px rgba(212, 164, 144, 0.3))',
+            height: window.innerWidth < 768 ? '60px' : '80px',
+            maxHeight: window.innerWidth < 768 ? '60px' : '80px',
+            marginBottom: '36px',
+            filter: 'drop-shadow(0 2px 12px rgba(212, 164, 144, 0.3))',
             animation: 'fadeInScale 0.8s ease-out'
           }}
         />
@@ -55,7 +56,7 @@ function LandingPage() {
           fontWeight: '800',
           lineHeight: '1.2',
           color: '#FFFFFF',
-          marginBottom: '20px',
+          marginBottom: '16px',
           textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
         }}>
           99% das mulheres não suportam este desafio.
@@ -82,7 +83,7 @@ function LandingPage() {
           width: '60px',
           height: '4px',
           background: 'linear-gradient(90deg, #d4a490 0%, #e8c4b8 100%)',
-          margin: '40px auto',
+          margin: '48px auto',
           borderRadius: '2px',
           boxShadow: '0 0 20px rgba(212, 164, 144, 0.4)'
         }} />
@@ -92,7 +93,7 @@ function LandingPage() {
           fontSize: '16px',
           lineHeight: '1.6',
           color: 'rgba(255, 255, 255, 0.8)',
-          marginBottom: '40px'
+          marginBottom: '48px'
         }}>
           Não é dieta. Não é academia.<br/>
           É um <strong style={{ color: '#d4a490' }}>método secreto de Pilates estético</strong> que modela cintura, levanta glúteos e transforma a sua presença em apenas 18 dias.
@@ -102,8 +103,8 @@ function LandingPage() {
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '15px',
-          marginBottom: '40px',
+          gap: '12px',
+          marginBottom: '48px',
           textAlign: 'left'
         }}>
           {[
@@ -118,7 +119,7 @@ function LandingPage() {
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
               borderRadius: '12px',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
               fontSize: '15px',
               color: 'rgba(255, 255, 255, 0.95)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -131,12 +132,12 @@ function LandingPage() {
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
               e.currentTarget.style.transform = 'translateX(5px)';
-              e.currentTarget.style.boxShadow = '0 8px 40px rgba(212, 164, 144, 0.2)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(212, 164, 144, 0.2)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
               e.currentTarget.style.transform = 'translateX(0)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+              e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.1)';
             }}>
               {benefit}
             </div>
@@ -148,6 +149,9 @@ function LandingPage() {
           onClick={() => setLocation('/quiz')}
           style={{
             width: '100%',
+            maxWidth: '320px',
+            margin: '0 auto',
+            display: 'block',
             padding: '16px',
             background: 'linear-gradient(135deg, #d4a490 0%, #c09480 50%, #d4a490 100%)',
             backgroundSize: '200% 200%',
@@ -159,20 +163,20 @@ function LandingPage() {
             fontWeight: '700',
             letterSpacing: '1.2px',
             cursor: 'pointer',
-            boxShadow: '0 10px 40px rgba(212, 164, 144, 0.4)',
-            transform: 'translateY(0)',
+            boxShadow: '0 6px 24px rgba(212, 164, 144, 0.4)',
+            transform: 'scale(1)',
             transition: 'all 0.3s ease',
             textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
             position: 'relative',
             overflow: 'hidden'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-3px)';
-            e.currentTarget.style.boxShadow = '0 15px 50px rgba(212, 164, 144, 0.5)';
+            e.currentTarget.style.transform = 'scale(1.02)';
+            e.currentTarget.style.boxShadow = '0 8px 28px rgba(212, 164, 144, 0.5)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 10px 40px rgba(212, 164, 144, 0.4)';
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = '0 6px 24px rgba(212, 164, 144, 0.4)';
           }}
         >
           FAÇA O QUIZ GRATUITO E DESCUBRA SE VOCÊ É A ESCOLHIDA

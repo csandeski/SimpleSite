@@ -248,6 +248,7 @@ export function QuizPage() {
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
                   border: '2px solid rgba(255, 255, 255, 0.1)',
+                  borderLeft: '4px solid #d4a490',  // Add a thick left border with rose gold color
                   borderRadius: '16px',
                   textAlign: 'left',
                   cursor: 'pointer',
@@ -258,11 +259,13 @@ export function QuizPage() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = '#d4a490';
+                  e.currentTarget.style.borderLeft = '4px solid #d4a490'; // Maintain left border on hover
                   e.currentTarget.style.background = 'rgba(212, 164, 144, 0.1)';
                   e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 164, 144, 0.3)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.borderLeft = '4px solid #d4a490'; // Maintain left border after hover
                   e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}

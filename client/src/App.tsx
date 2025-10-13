@@ -802,9 +802,17 @@ export default function App() {
                   fontSize: '12px',
                   color: '#65676b'
                 }}>
-                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>15 min</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
+                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>😮</span>
+                    </div>
+                    <span style={{ color: '#65676b', fontSize: '12px' }}>47</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -861,6 +869,14 @@ export default function App() {
                   </button>
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>32 min</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
+                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>💪</span>
+                    </div>
+                    <span style={{ color: '#65676b', fontSize: '12px' }}>89</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -915,6 +931,13 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>1h</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>👍</span>
+                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🤔</span>
+                    </div>
+                    <span style={{ color: '#65676b', fontSize: '12px' }}>15</span>
+                  </div>
                 </div>
                 
                 {/* Reply */}
@@ -965,9 +988,16 @@ export default function App() {
                       fontSize: '12px',
                       color: '#65676b'
                     }}>
-                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>45 min</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>👍</span>
+                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>❤️</span>
+                        </div>
+                        <span style={{ color: '#65676b', fontSize: '11px' }}>28</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1024,9 +1054,13 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>2h</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#1877f2' }}>
-                    <span style={{ fontSize: '16px' }}>👍</span>
-                    <span>3</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
+                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🙏</span>
+                    </div>
+                    <span style={{ color: '#65676b', fontSize: '12px' }}>156</span>
                   </div>
                 </div>
               </div>
@@ -1082,6 +1116,13 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>3h</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>👍</span>
+                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🤔</span>
+                    </div>
+                    <span style={{ color: '#65676b', fontSize: '12px' }}>34</span>
+                  </div>
                 </div>
                 
                 {/* Reply from Leandro */}
@@ -1132,9 +1173,17 @@ export default function App() {
                       fontSize: '12px',
                       color: '#65676b'
                     }}>
-                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>2h</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 3 }}>👍</span>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>❤️</span>
+                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>💪</span>
+                        </div>
+                        <span style={{ color: '#65676b', fontSize: '11px' }}>67</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1190,9 +1239,14 @@ export default function App() {
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>1h</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#1877f2' }}>
-                        <span style={{ fontSize: '16px' }}>❤️</span>
-                        <span>8</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 4 }}>👍</span>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 3 }}>❤️</span>
+                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>😮</span>
+                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>🚀</span>
+                        </div>
+                        <span style={{ color: '#65676b', fontSize: '11px' }}>234</span>
                       </div>
                     </div>
                   </div>

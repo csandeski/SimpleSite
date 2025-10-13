@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function App() {
   const [liked, setLiked] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
   const [reactions] = useState({
     likes: 2341,
     loves: 523,
@@ -10,6 +12,15 @@ export default function App() {
     shares: 47
   });
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -17,16 +28,16 @@ export default function App() {
       alignItems: 'center',
       justifyContent: 'center',
       background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%)',
-      padding: '20px',
+      padding: isMobile ? '0' : '20px',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
     }}>
       {/* Facebook Card Container */}
       <div style={{
         width: '100%',
-        maxWidth: '500px',
+        maxWidth: isMobile ? '100%' : '680px',
         background: '#ffffff',
-        borderRadius: '8px',
-        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+        borderRadius: isMobile ? '0' : '8px',
+        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
         overflow: 'hidden'
       }}>
         {/* Post Header */}
@@ -360,6 +371,351 @@ export default function App() {
             </svg>
             Compartilhar
           </button>
+        </div>
+
+        {/* Comments Section */}
+        <div style={{
+          borderTop: '1px solid #e4e6eb',
+          padding: '16px'
+        }}>
+          {/* Existing Comments */}
+          <div style={{
+            marginBottom: '16px'
+          }}>
+            {/* Comment 1 */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}>
+                MS
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  background: '#f0f2f5',
+                  borderRadius: '16px',
+                  padding: '8px 12px',
+                  display: 'inline-block',
+                  maxWidth: '100%'
+                }}>
+                  <div style={{
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    marginBottom: '2px'
+                  }}>
+                    Maria Silva
+                  </div>
+                  <div style={{
+                    fontSize: '15px',
+                    lineHeight: '1.4'
+                  }}>
+                    Incrível! Isso realmente funciona? 🤩
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '4px',
+                  marginLeft: '12px',
+                  fontSize: '12px',
+                  color: '#65676b'
+                }}>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                  <span>15 min</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Comment 2 */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}>
+                PC
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  background: '#f0f2f5',
+                  borderRadius: '16px',
+                  padding: '8px 12px',
+                  display: 'inline-block',
+                  maxWidth: '100%'
+                }}>
+                  <div style={{
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    marginBottom: '2px'
+                  }}>
+                    Pedro Costa
+                  </div>
+                  <div style={{
+                    fontSize: '15px',
+                    lineHeight: '1.4'
+                  }}>
+                    Já estou aplicando e os resultados são impressionantes! Recomendo muito 💪
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '4px',
+                  marginLeft: '12px',
+                  fontSize: '12px',
+                  color: '#65676b'
+                }}>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>
+                    <span style={{ marginRight: '4px' }}>👍</span>Curtir
+                  </button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                  <span>32 min</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Comment 3 with reply */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              marginBottom: '12px'
+            }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+                flexShrink: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#333',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}>
+                AL
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  background: '#f0f2f5',
+                  borderRadius: '16px',
+                  padding: '8px 12px',
+                  display: 'inline-block',
+                  maxWidth: '100%'
+                }}>
+                  <div style={{
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    marginBottom: '2px'
+                  }}>
+                    Ana Lima
+                  </div>
+                  <div style={{
+                    fontSize: '15px',
+                    lineHeight: '1.4'
+                  }}>
+                    Onde posso saber mais sobre isso?
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '4px',
+                  marginLeft: '12px',
+                  fontSize: '12px',
+                  color: '#65676b'
+                }}>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                  <span>1h</span>
+                </div>
+                
+                {/* Reply */}
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '12px',
+                  marginLeft: '32px'
+                }}>
+                  <div style={{
+                    width: '24px',
+                    height: '24px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontSize: '11px',
+                    fontWeight: 'bold'
+                  }}>
+                    JD
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{
+                      background: '#f0f2f5',
+                      borderRadius: '16px',
+                      padding: '8px 12px',
+                      display: 'inline-block',
+                      maxWidth: '100%'
+                    }}>
+                      <div style={{
+                        fontWeight: '600',
+                        fontSize: '13px',
+                        marginBottom: '2px'
+                      }}>
+                        João Digital
+                      </div>
+                      <div style={{
+                        fontSize: '15px',
+                        lineHeight: '1.4'
+                      }}>
+                        <span style={{ color: '#1877f2', fontWeight: '600' }}>@Ana Lima</span> Clique no vídeo para assistir a apresentação completa! 😊
+                      </div>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginTop: '4px',
+                      marginLeft: '12px',
+                      fontSize: '12px',
+                      color: '#65676b'
+                    }}>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                      <span>45 min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* View more comments link */}
+            <button style={{
+              background: 'none',
+              border: 'none',
+              color: '#65676b',
+              fontSize: '15px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              padding: '8px 0',
+              marginBottom: '8px'
+            }}>
+              Ver mais comentários
+            </button>
+          </div>
+
+          {/* Comment Input */}
+          <div style={{
+            display: 'flex',
+            gap: '8px',
+            alignItems: 'flex-start'
+          }}>
+            <div style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #00d2ff 0%, #3a47d5 100%)',
+              flexShrink: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontSize: '14px',
+              fontWeight: 'bold'
+            }}>
+              VC
+            </div>
+            <div style={{
+              flex: 1,
+              position: 'relative'
+            }}>
+              <input
+                type="text"
+                placeholder="Escreva um comentário..."
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '8px 60px 8px 12px',
+                  background: '#f0f2f5',
+                  border: 'none',
+                  borderRadius: '20px',
+                  fontSize: '15px',
+                  outline: 'none',
+                  fontFamily: 'inherit'
+                }}
+              />
+              <div style={{
+                position: 'absolute',
+                right: '4px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                display: 'flex',
+                gap: '2px'
+              }}>
+                <button style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '6px',
+                  cursor: 'pointer',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+                  <span style={{ fontSize: '18px' }}>😊</span>
+                </button>
+                <button style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '6px',
+                  cursor: 'pointer',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'background 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#65676b">
+                    <path d="M9 12h6m-3-3v6m5 5H7a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z" stroke="#65676b" strokeWidth="2" fill="none"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

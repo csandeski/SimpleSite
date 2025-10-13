@@ -464,12 +464,12 @@ export default function App() {
             {/* Comments and Shares */}
             <div style={{
               display: 'flex',
-              gap: isMobile ? '8px' : '16px',
+              gap: isMobile ? '12px' : '16px',
               fontSize: isMobile ? '13px' : '15px',
               color: '#65676b'
             }}>
-              <span>{reactions.comments} {isMobile ? 'coment.' : 'comentários'}</span>
-              <span>{reactions.shares} {isMobile ? 'comp.' : 'compartilhamentos'}</span>
+              <span>{reactions.comments} comentários</span>
+              <span>{reactions.shares} compartilhamentos</span>
             </div>
           </div>
         </div>

@@ -826,16 +826,15 @@ export default function App() {
               width: '32px',
               height: '32px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #00d2ff 0%, #3a47d5 100%)',
+              background: '#e4e6eb',
               flexShrink: 0,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 'bold'
+              justifyContent: 'center'
             }}>
-              VC
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="#65676b">
+                <path d="M10 10a3 3 0 100-6 3 3 0 000 6zm0 1.5c-4.5 0-8 2.5-8 5.5v1h16v-1c0-3-3.5-5.5-8-5.5z"/>
+              </svg>
             </div>
             <div style={{
               flex: 1,

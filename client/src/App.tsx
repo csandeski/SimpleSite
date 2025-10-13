@@ -53,7 +53,7 @@ export default function App() {
         }}>
           {/* Profile Picture */}
           <img 
-            src="/attached_assets/Face_1760378621067.jpeg"
+            src="/attached_assets/leandro-castro.webp"
             alt="Leandro Castro"
             style={{
               width: '40px',
@@ -563,7 +563,7 @@ export default function App() {
                   marginLeft: '32px'
                 }}>
                   <img 
-                    src="/attached_assets/Face_1760378621067.jpeg"
+                    src="/attached_assets/leandro-castro.webp"
                     alt="Leandro Castro"
                     style={{
                       width: '24px',

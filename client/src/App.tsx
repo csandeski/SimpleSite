@@ -604,21 +604,17 @@ export default function App() {
               gap: '12px',
               marginBottom: '16px'
             }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
-                MS
-              </div>
+              <img 
+                src="/maria-silva.jpg"
+                alt="Maria Silva"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  objectFit: 'cover'
+                }}
+              />
               <div style={{ flex: 1 }}>
                 <div style={{
                   background: '#f0f2f5',
@@ -662,21 +658,17 @@ export default function App() {
               gap: '12px',
               marginBottom: '16px'
             }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
-                PC
-              </div>
+              <img 
+                src="/ana-costa.jpg"
+                alt="Ana Costa"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  objectFit: 'cover'
+                }}
+              />
               <div style={{ flex: 1 }}>
                 <div style={{
                   background: '#f0f2f5',
@@ -690,7 +682,7 @@ export default function App() {
                     fontSize: '13px',
                     marginBottom: '2px'
                   }}>
-                    Pedro Costa
+                    Ana Costa
                   </div>
                   <div style={{
                     fontSize: isMobile ? '14px' : '15px',
@@ -722,21 +714,17 @@ export default function App() {
               gap: '12px',
               marginBottom: '12px'
             }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-                flexShrink: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#333',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
-                AL
-              </div>
+              <img 
+                src="/juliana-santos.jpg"
+                alt="Juliana Santos"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  objectFit: 'cover'
+                }}
+              />
               <div style={{ flex: 1 }}>
                 <div style={{
                   background: '#f0f2f5',
@@ -750,7 +738,7 @@ export default function App() {
                     fontSize: '13px',
                     marginBottom: '2px'
                   }}>
-                    Ana Lima
+                    Juliana Santos
                   </div>
                   <div style={{
                     fontSize: isMobile ? '14px' : '15px',
@@ -809,7 +797,7 @@ export default function App() {
                         fontSize: isMobile ? '14px' : '15px',
                         lineHeight: '1.4'
                       }}>
-                        <span style={{ color: '#1877f2', fontWeight: '600' }}>@Ana Lima</span> Clique no vídeo para assistir a apresentação completa! 😊
+                        <span style={{ color: '#1877f2', fontWeight: '600' }}>@Juliana Santos</span> Clique no vídeo para assistir a apresentação completa! 😊
                       </div>
                     </div>
                     <div style={{
@@ -823,6 +811,232 @@ export default function App() {
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>45 min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Comment 4 */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              marginBottom: '16px'
+            }}>
+              <img 
+                src="/carla-mendes.jpg"
+                alt="Carla Mendes"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  objectFit: 'cover'
+                }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  background: '#f0f2f5',
+                  borderRadius: '16px',
+                  padding: '8px 12px',
+                  display: 'inline-block',
+                  maxWidth: '100%'
+                }}>
+                  <div style={{
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    marginBottom: '2px'
+                  }}>
+                    Carla Mendes
+                  </div>
+                  <div style={{
+                    fontSize: isMobile ? '14px' : '15px',
+                    lineHeight: '1.4'
+                  }}>
+                    Já enviei meu currículo! Tomara que dê certo 🙏
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '4px',
+                  marginLeft: '12px',
+                  fontSize: '12px',
+                  color: '#65676b'
+                }}>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                  <span>2h</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#1877f2' }}>
+                    <span style={{ fontSize: '16px' }}>👍</span>
+                    <span>3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Comment 5 with replies */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              marginBottom: '12px'
+            }}>
+              <img 
+                src="/beatriz-rocha.jpg"
+                alt="Beatriz Rocha"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  objectFit: 'cover'
+                }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{
+                  background: '#f0f2f5',
+                  borderRadius: '16px',
+                  padding: '8px 12px',
+                  display: 'inline-block',
+                  maxWidth: '100%'
+                }}>
+                  <div style={{
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    marginBottom: '2px'
+                  }}>
+                    Beatriz Rocha
+                  </div>
+                  <div style={{
+                    fontSize: isMobile ? '14px' : '15px',
+                    lineHeight: '1.4'
+                  }}>
+                    Precisa de experiência prévia ou aceita iniciantes?
+                  </div>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '4px',
+                  marginLeft: '12px',
+                  fontSize: '12px',
+                  color: '#65676b'
+                }}>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                  <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                  <span>3h</span>
+                </div>
+                
+                {/* Reply from Leandro */}
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '12px',
+                  marginLeft: '32px'
+                }}>
+                  <img 
+                    src="/leandro-castro.jpg"
+                    alt="Leandro Castro"
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      flexShrink: 0,
+                      objectFit: 'cover'
+                    }}
+                  />
+                  <div style={{ flex: 1 }}>
+                    <div style={{
+                      background: '#f0f2f5',
+                      borderRadius: '16px',
+                      padding: '8px 12px',
+                      display: 'inline-block',
+                      maxWidth: '100%'
+                    }}>
+                      <div style={{
+                        fontWeight: '600',
+                        fontSize: '13px',
+                        marginBottom: '2px'
+                      }}>
+                        Leandro Castro
+                      </div>
+                      <div style={{
+                        fontSize: isMobile ? '14px' : '15px',
+                        lineHeight: '1.4'
+                      }}>
+                        <span style={{ color: '#1877f2', fontWeight: '600' }}>@Beatriz Rocha</span> Oferecemos treinamento completo! Não precisa de experiência prévia 💪
+                      </div>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginTop: '4px',
+                      marginLeft: '12px',
+                      fontSize: '12px',
+                      color: '#65676b'
+                    }}>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Curtir</button>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                      <span>2h</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Another reply */}
+                <div style={{
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '8px',
+                  marginLeft: '32px'
+                }}>
+                  <img 
+                    src="/larissa-alves.jpg"
+                    alt="Larissa Alves"
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      flexShrink: 0,
+                      objectFit: 'cover'
+                    }}
+                  />
+                  <div style={{ flex: 1 }}>
+                    <div style={{
+                      background: '#f0f2f5',
+                      borderRadius: '16px',
+                      padding: '8px 12px',
+                      display: 'inline-block',
+                      maxWidth: '100%'
+                    }}>
+                      <div style={{
+                        fontWeight: '600',
+                        fontSize: '13px',
+                        marginBottom: '2px'
+                      }}>
+                        Larissa Alves
+                      </div>
+                      <div style={{
+                        fontSize: isMobile ? '14px' : '15px',
+                        lineHeight: '1.4'
+                      }}>
+                        Eu comecei sem experiência e hoje ganho R$ 7.000! Vale muito a pena 🚀
+                      </div>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      gap: '12px',
+                      marginTop: '4px',
+                      marginLeft: '12px',
+                      fontSize: '12px',
+                      color: '#65676b'
+                    }}>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1877f2', fontWeight: '600', padding: 0 }}>Curtir</button>
+                      <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
+                      <span>1h</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#1877f2' }}>
+                        <span style={{ fontSize: '16px' }}>❤️</span>
+                        <span>8</span>
+                      </div>
                     </div>
                   </div>
                 </div>

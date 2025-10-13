@@ -52,21 +52,17 @@ export default function App() {
           gap: '10px'
         }}>
           {/* Profile Picture */}
-          <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            flexShrink: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: 'bold',
-            fontSize: '16px'
-          }}>
-            JD
-          </div>
+          <img 
+            src="/attached_assets/Face_1760378621067.jpeg"
+            alt="Leandro Castro"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              flexShrink: 0,
+              objectFit: 'cover'
+            }}
+          />
           
           {/* Post Info */}
           <div style={{ flex: 1 }}>
@@ -80,7 +76,7 @@ export default function App() {
                 fontWeight: '600',
                 color: '#050505'
               }}>
-                João Digital
+                Leandro Castro
               </span>
               <svg width="15" height="15" viewBox="0 0 20 20" fill="#1877f2">
                 <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm-1 15l-5-5 1.41-1.41L9 12.17l7.59-7.59L18 6l-9 9z"/>
@@ -566,21 +562,17 @@ export default function App() {
                   marginTop: '12px',
                   marginLeft: '32px'
                 }}>
-                  <div style={{
-                    width: '24px',
-                    height: '24px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    flexShrink: 0,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '11px',
-                    fontWeight: 'bold'
-                  }}>
-                    JD
-                  </div>
+                  <img 
+                    src="/attached_assets/Face_1760378621067.jpeg"
+                    alt="Leandro Castro"
+                    style={{
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '50%',
+                      flexShrink: 0,
+                      objectFit: 'cover'
+                    }}
+                  />
                   <div style={{ flex: 1 }}>
                     <div style={{
                       background: '#f0f2f5',
@@ -594,7 +586,7 @@ export default function App() {
                         fontSize: '13px',
                         marginBottom: '2px'
                       }}>
-                        João Digital
+                        Leandro Castro
                       </div>
                       <div style={{
                         fontSize: '15px',

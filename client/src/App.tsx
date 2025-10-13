@@ -5,6 +5,9 @@ export default function App() {
   const [commentText, setCommentText] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [videoFocused, setVideoFocused] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [showCheckmark, setShowCheckmark] = useState(false);
   const [reactions] = useState({
     likes: 2341,
     loves: 523,
@@ -21,6 +24,160 @@ export default function App() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  const handleVerification = () => {
+    setIsVerifying(true);
+    setTimeout(() => {
+      setShowCheckmark(true);
+      setTimeout(() => {
+        setIsVerified(true);
+      }, 800);
+    }, 500);
+  };
+
+  // Verification Screen
+  if (!isVerified) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        padding: '20px',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+      }}>
+        <div style={{
+          background: 'white',
+          borderRadius: '20px',
+          padding: '40px 30px',
+          maxWidth: '400px',
+          width: '100%',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+          textAlign: 'center'
+        }}>
+          <div style={{
+            fontSize: '60px',
+            marginBottom: '20px'
+          }}>
+            🤖
+          </div>
+          
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            color: '#1a202c',
+            marginBottom: '12px'
+          }}>
+            Verificação de Segurança
+          </h2>
+          
+          <p style={{
+            fontSize: '16px',
+            color: '#718096',
+            marginBottom: '30px',
+            lineHeight: '1.5'
+          }}>
+            Toque na caixa abaixo para confirmar que você não é um robô
+          </p>
+
+          <div 
+            onClick={handleVerification}
+            style={{
+              width: '80px',
+              height: '80px',
+              margin: '0 auto 20px',
+              border: showCheckmark ? '3px solid #48bb78' : '3px solid #cbd5e0',
+              borderRadius: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: isVerifying ? 'default' : 'pointer',
+              background: showCheckmark ? '#f0fff4' : 'white',
+              transition: 'all 0.3s ease',
+              transform: isVerifying && !showCheckmark ? 'rotate(360deg) scale(1.1)' : 'scale(1)',
+              animation: isVerifying && !showCheckmark ? 'spin 0.5s ease-in-out' : 'none',
+              ...((!isVerifying && !showCheckmark) ? {
+                ':hover': {
+                  transform: 'scale(1.05)',
+                  borderColor: '#667eea'
+                }
+              } : {})
+            }}
+            onMouseEnter={(e) => {
+              if (!isVerifying && !showCheckmark) {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.borderColor = '#667eea';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!isVerifying && !showCheckmark) {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.borderColor = '#cbd5e0';
+              }
+            }}
+          >
+            {showCheckmark && (
+              <svg 
+                width="40" 
+                height="40" 
+                viewBox="0 0 24 24" 
+                fill="none"
+                style={{
+                  animation: 'fadeIn 0.3s ease-in-out'
+                }}
+              >
+                <path 
+                  d="M20 6L9 17L4 12" 
+                  stroke="#48bb78" 
+                  strokeWidth="3" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  style={{
+                    strokeDasharray: '24',
+                    strokeDashoffset: '0',
+                    animation: 'checkmark 0.4s ease-in-out'
+                  }}
+                />
+              </svg>
+            )}
+          </div>
+
+          {showCheckmark && (
+            <p style={{
+              fontSize: '14px',
+              color: '#48bb78',
+              fontWeight: '600',
+              animation: 'fadeIn 0.5s ease-in-out'
+            }}>
+              ✓ Verificação concluída!
+            </p>
+          )}
+        </div>
+
+        <style>
+          {`
+            @keyframes spin {
+              0% { transform: rotate(0deg) scale(1); }
+              50% { transform: rotate(180deg) scale(1.1); }
+              100% { transform: rotate(360deg) scale(1); }
+            }
+            
+            @keyframes fadeIn {
+              0% { opacity: 0; transform: scale(0.8); }
+              100% { opacity: 1; transform: scale(1); }
+            }
+            
+            @keyframes checkmark {
+              0% { stroke-dashoffset: 24; }
+              100% { stroke-dashoffset: 0; }
+            }
+          `}
+        </style>
+      </div>
+    );
+  }
 
   return (
     <div style={{

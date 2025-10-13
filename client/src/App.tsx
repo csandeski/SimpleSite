@@ -806,10 +806,10 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>15 min</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
-                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>😮</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                      <img src="/fb-like.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 3, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                      <img src="/fb-love.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="love" />
+                      <img src="/fb-wow.png" style={{ width: '18px', height: '18px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                     </div>
                     <span style={{ color: '#65676b', fontSize: '12px' }}>47</span>
                   </div>
@@ -870,10 +870,10 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>32 min</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
-                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>💪</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                      <img src="/fb-like.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 3, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                      <img src="/fb-love.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="love" />
+                      <img src="/fb-wow.png" style={{ width: '18px', height: '18px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                     </div>
                     <span style={{ color: '#65676b', fontSize: '12px' }}>89</span>
                   </div>
@@ -932,9 +932,9 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>1h</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>👍</span>
-                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🤔</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                      <img src="/fb-like.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                      <img src="/fb-wow.png" style={{ width: '18px', height: '18px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                     </div>
                     <span style={{ color: '#65676b', fontSize: '12px' }}>15</span>
                   </div>
@@ -992,9 +992,9 @@ export default function App() {
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>45 min</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>👍</span>
-                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>❤️</span>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                          <img src="/fb-like.png" style={{ width: '16px', height: '16px', marginRight: '-5px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                          <img src="/fb-love.png" style={{ width: '16px', height: '16px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="love" />
                         </div>
                         <span style={{ color: '#65676b', fontSize: '11px' }}>28</span>
                       </div>
@@ -1055,10 +1055,10 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>2h</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 3 }}>👍</span>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>❤️</span>
-                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🙏</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                      <img src="/fb-like.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 3, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                      <img src="/fb-love.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="love" />
+                      <img src="/fb-wow.png" style={{ width: '18px', height: '18px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                     </div>
                     <span style={{ color: '#65676b', fontSize: '12px' }}>156</span>
                   </div>
@@ -1117,9 +1117,9 @@ export default function App() {
                   <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                   <span>3h</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                      <span style={{ fontSize: '16px', marginRight: '-4px', zIndex: 2 }}>👍</span>
-                      <span style={{ fontSize: '16px', marginRight: '4px', zIndex: 1 }}>🤔</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                      <img src="/fb-like.png" style={{ width: '18px', height: '18px', marginRight: '-6px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                      <img src="/fb-wow.png" style={{ width: '18px', height: '18px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                     </div>
                     <span style={{ color: '#65676b', fontSize: '12px' }}>34</span>
                   </div>
@@ -1177,10 +1177,10 @@ export default function App() {
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>2h</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 3 }}>👍</span>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>❤️</span>
-                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>💪</span>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                          <img src="/fb-like.png" style={{ width: '16px', height: '16px', marginRight: '-5px', zIndex: 3, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                          <img src="/fb-love.png" style={{ width: '16px', height: '16px', marginRight: '-5px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="love" />
+                          <img src="/fb-wow.png" style={{ width: '16px', height: '16px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                         </div>
                         <span style={{ color: '#65676b', fontSize: '11px' }}>67</span>
                       </div>
@@ -1240,11 +1240,10 @@ export default function App() {
                       <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#65676b', fontWeight: '600', padding: 0 }}>Responder</button>
                       <span>1h</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px' }}>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 4 }}>👍</span>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 3 }}>❤️</span>
-                          <span style={{ fontSize: '14px', marginRight: '-3px', zIndex: 2 }}>😮</span>
-                          <span style={{ fontSize: '14px', marginRight: '4px', zIndex: 1 }}>🚀</span>
+                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '8px', position: 'relative' }}>
+                          <img src="/fb-like.png" style={{ width: '16px', height: '16px', marginRight: '-5px', zIndex: 3, borderRadius: '50%', border: '1px solid white' }} alt="like" />
+                          <img src="/fb-love.png" style={{ width: '16px', height: '16px', marginRight: '-5px', zIndex: 2, borderRadius: '50%', border: '1px solid white' }} alt="love" />
+                          <img src="/fb-wow.png" style={{ width: '16px', height: '16px', marginRight: '4px', zIndex: 1, borderRadius: '50%', border: '1px solid white' }} alt="wow" />
                         </div>
                         <span style={{ color: '#65676b', fontSize: '11px' }}>234</span>
                       </div>

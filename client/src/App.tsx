@@ -24,26 +24,212 @@ export default function App() {
   return (
     <div style={{
       minHeight: '100vh',
-      display: 'flex',
-      alignItems: isMobile ? 'flex-start' : 'center',
-      justifyContent: 'center',
       background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%)',
-      padding: isMobile ? '0' : '20px',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
       overflowX: 'hidden'
     }}>
-      {/* Facebook Card Container */}
+      {/* Fixed Header */}
       <div style={{
-        width: '100%',
-        maxWidth: isMobile ? '100%' : '680px',
-        minHeight: isMobile ? '100vh' : 'auto',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '56px',
         background: '#ffffff',
-        borderRadius: isMobile ? '0' : '8px',
-        boxShadow: isMobile ? 'none' : '0 1px 2px rgba(0, 0, 0, 0.2)',
-        overflow: 'hidden',
+        borderBottom: '1px solid #e4e6eb',
+        zIndex: 100,
         display: 'flex',
-        flexDirection: 'column'
+        alignItems: 'center',
+        padding: '0 16px',
+        gap: '12px',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
       }}>
+        {/* Facebook Logo */}
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#1877f2"/>
+          <path d="M27.7852 25.9844L28.4688 21.125H23.8281V18.2031C23.8281 16.957 24.4258 15.7422 26.3164 15.7422H28.6562V11.5703C28.6562 11.5703 26.5039 11.25 24.4297 11.25C20.1328 11.25 17.8594 13.332 17.8594 17.6875V21.125H13.5625V25.9844H17.8594V37.8125C18.6602 37.9375 19.4805 38 20.3125 38C21.1445 38 21.9648 37.9375 22.7656 37.8125V25.9844H27.7852Z" fill="white"/>
+        </svg>
+
+        {/* Search Bar */}
+        <div style={{
+          flex: 1,
+          maxWidth: '240px',
+          position: 'relative'
+        }}>
+          <input 
+            type="text"
+            placeholder="Pesquisar no Facebook"
+            style={{
+              width: '100%',
+              padding: '8px 12px 8px 36px',
+              background: '#f0f2f5',
+              border: 'none',
+              borderRadius: '20px',
+              fontSize: '15px',
+              outline: 'none',
+              fontFamily: 'inherit'
+            }}
+          />
+          <svg style={{
+            position: 'absolute',
+            left: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '16px',
+            height: '16px'
+          }} viewBox="0 0 16 16" fill="#65676b">
+            <path d="M6.5 0a6.5 6.5 0 0 1 5.25 10.335l3.957 3.958a1 1 0 0 1-1.414 1.414l-3.958-3.957A6.5 6.5 0 1 1 6.5 0zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z"/>
+          </svg>
+        </div>
+
+        {/* Spacer */}
+        <div style={{ flex: 1 }} />
+
+        {/* Navigation Icons */}
+        <button style={{
+          background: 'none',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="#050505">
+            <rect x="1" y="1" width="5" height="5" rx="1"/>
+            <rect x="7.5" y="1" width="5" height="5" rx="1"/>
+            <rect x="14" y="1" width="5" height="5" rx="1"/>
+            <rect x="1" y="7.5" width="5" height="5" rx="1"/>
+            <rect x="7.5" y="7.5" width="5" height="5" rx="1"/>
+            <rect x="14" y="7.5" width="5" height="5" rx="1"/>
+            <rect x="1" y="14" width="5" height="5" rx="1"/>
+            <rect x="7.5" y="14" width="5" height="5" rx="1"/>
+            <rect x="14" y="14" width="5" height="5" rx="1"/>
+          </svg>
+        </button>
+
+        {/* Messenger */}
+        <button style={{
+          background: 'none',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="#050505">
+            <path d="M10 0C4.477 0 0 4.477 0 10c0 2.778 1.135 5.284 2.965 7.088.182.178.285.432.274.688l-.056 2.027a.72.72 0 001.048.632l2.253-1.001a.72.72 0 01.535-.04A9.941 9.941 0 0010 20c5.523 0 10-4.477 10-10S15.523 0 10 0zM5.594 12.083l2.374-3.764a.36.36 0 01.576-.047l1.89 1.417a.72.72 0 00.866-.002l2.553-1.938a.454.454 0 01.654.662l-2.376 3.765a.36.36 0 01-.575.047l-1.89-1.417a.72.72 0 00-.866.001l-2.553 1.938a.454.454 0 01-.653-.662z"/>
+          </svg>
+        </button>
+
+        {/* Notifications */}
+        <button style={{
+          background: 'none',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s',
+          position: 'relative'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="#050505">
+            <path d="M10 20a2 2 0 01-2-2h4a2 2 0 01-2 2zm8-4.5v.5H2v-.5l2-2v-5C4 4.86 6.86 2 10.5 2S17 4.86 17 8.5v5l1 1z"/>
+          </svg>
+          {/* Notification Badge */}
+          <div style={{
+            position: 'absolute',
+            top: '4px',
+            right: '4px',
+            width: '18px',
+            height: '18px',
+            background: '#fa3e3e',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '11px',
+            fontWeight: 'bold',
+            border: '2px solid white'
+          }}>
+            1
+          </div>
+        </button>
+
+        {/* Profile */}
+        <button style={{
+          background: 'none',
+          border: 'none',
+          padding: '4px',
+          cursor: 'pointer',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s',
+          position: 'relative'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
+          <img 
+            src="/leandro-castro.jpg"
+            alt="Leandro Castro"
+            style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              objectFit: 'cover'
+            }}
+          />
+          {/* Online Indicator */}
+          <div style={{
+            position: 'absolute',
+            bottom: '2px',
+            right: '2px',
+            width: '10px',
+            height: '10px',
+            background: '#31a24c',
+            borderRadius: '50%',
+            border: '2px solid white'
+          }} />
+        </button>
+      </div>
+
+      {/* Main Content Container */}
+      <div style={{
+        marginTop: '56px',
+        minHeight: 'calc(100vh - 56px)',
+        display: 'flex',
+        alignItems: isMobile ? 'flex-start' : 'center',
+        justifyContent: 'center',
+        padding: isMobile ? '0' : '20px'
+      }}>
+        {/* Facebook Card Container */}
+        <div style={{
+          width: '100%',
+          maxWidth: isMobile ? '100%' : '680px',
+          minHeight: isMobile ? 'calc(100vh - 56px)' : 'auto',
+          background: '#ffffff',
+          borderRadius: isMobile ? '0' : '8px',
+          boxShadow: isMobile ? 'none' : '0 1px 2px rgba(0, 0, 0, 0.2)',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
         {/* Post Header */}
         <div style={{
           padding: '12px 16px',
@@ -711,6 +897,7 @@ export default function App() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

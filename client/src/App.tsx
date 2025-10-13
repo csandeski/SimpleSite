@@ -4,6 +4,7 @@ export default function App() {
   const [liked, setLiked] = useState(false);
   const [commentText, setCommentText] = useState('');
   const [isMobile, setIsMobile] = useState(false);
+  const [videoFocused, setVideoFocused] = useState(false);
   const [reactions] = useState({
     likes: 2341,
     loves: 523,
@@ -26,8 +27,25 @@ export default function App() {
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+      position: 'relative'
     }}>
+      {/* Dark Overlay */}
+      <div 
+        onClick={() => setVideoFocused(false)}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: videoFocused ? 'rgba(0, 0, 0, 0.75)' : 'transparent',
+          zIndex: videoFocused ? 90 : -1,
+          cursor: videoFocused ? 'pointer' : 'default',
+          transition: 'background 0.3s ease',
+          pointerEvents: videoFocused ? 'auto' : 'none'
+        }}
+      />
       {/* Fixed Header */}
       <div style={{
         position: 'fixed',
@@ -37,12 +55,14 @@ export default function App() {
         height: '56px',
         background: '#ffffff',
         borderBottom: '1px solid #e4e6eb',
-        zIndex: 100,
+        zIndex: videoFocused ? 85 : 100,
         display: 'flex',
         alignItems: 'center',
         padding: '0 16px',
         gap: '12px',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        transition: 'filter 0.3s ease',
+        filter: videoFocused ? 'brightness(0.3)' : 'brightness(1)'
       }}>
         {/* Facebook Logo */}
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -219,7 +239,9 @@ export default function App() {
         display: 'flex',
         alignItems: isMobile ? 'flex-start' : 'center',
         justifyContent: 'center',
-        padding: isMobile ? '0' : '20px'
+        padding: isMobile ? '0' : '20px',
+        transition: 'filter 0.3s ease',
+        filter: videoFocused ? 'brightness(0.25)' : 'brightness(1)'
       }}>
         {/* Facebook Card Container */}
         <div style={{
@@ -334,15 +356,21 @@ export default function App() {
         </div>
 
         {/* Video Mockup Area */}
-        <div style={{
-          position: 'relative',
-          background: '#000',
-          aspectRatio: '16/9',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer'
-        }}>
+        <div 
+          onClick={() => setVideoFocused(!videoFocused)}
+          style={{
+            position: 'relative',
+            background: '#000',
+            aspectRatio: '16/9',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: videoFocused ? 95 : 1,
+            transition: 'all 0.3s ease',
+            boxShadow: videoFocused ? '0 20px 60px rgba(0, 0, 0, 0.8)' : 'none',
+            filter: videoFocused ? 'brightness(1)' : 'brightness(1)'
+          }}>
           {/* Play Button Overlay */}
           <div style={{
             position: 'absolute',

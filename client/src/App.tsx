@@ -25,20 +25,24 @@ export default function App() {
     <div style={{
       minHeight: '100vh',
       display: 'flex',
-      alignItems: 'center',
+      alignItems: isMobile ? 'flex-start' : 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%)',
+      background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%)',
       padding: isMobile ? '0' : '20px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      overflowX: 'hidden'
     }}>
       {/* Facebook Card Container */}
       <div style={{
         width: '100%',
         maxWidth: isMobile ? '100%' : '680px',
+        minHeight: isMobile ? '100vh' : 'auto',
         background: '#ffffff',
         borderRadius: isMobile ? '0' : '8px',
-        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
-        overflow: 'hidden'
+        boxShadow: isMobile ? 'none' : '0 1px 2px rgba(0, 0, 0, 0.2)',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column'
       }}>
         {/* Post Header */}
         <div style={{

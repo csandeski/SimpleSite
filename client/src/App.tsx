@@ -65,7 +65,7 @@ export default function App() {
               background: '#f0f2f5',
               border: 'none',
               borderRadius: '20px',
-              fontSize: '15px',
+              fontSize: isMobile ? '14px' : '15px',
               outline: 'none',
               fontFamily: 'inherit'
             }}
@@ -261,7 +261,7 @@ export default function App() {
               gap: '4px'
             }}>
               <span style={{
-                fontSize: '15px',
+                fontSize: isMobile ? '14px' : '15px',
                 fontWeight: '600',
                 color: '#050505'
               }}>
@@ -454,7 +454,7 @@ export default function App() {
                 </div>
               </div>
               <span style={{
-                fontSize: '15px',
+                fontSize: isMobile ? '13px' : '15px',
                 color: '#65676b'
               }}>
                 {(reactions.likes + reactions.loves + reactions.wows).toLocaleString()}
@@ -464,12 +464,12 @@ export default function App() {
             {/* Comments and Shares */}
             <div style={{
               display: 'flex',
-              gap: '16px',
-              fontSize: '15px',
+              gap: isMobile ? '8px' : '16px',
+              fontSize: isMobile ? '13px' : '15px',
               color: '#65676b'
             }}>
-              <span>{reactions.comments} comentários</span>
-              <span>{reactions.shares} compartilhamentos</span>
+              <span>{reactions.comments} {isMobile ? 'coment.' : 'comentários'}</span>
+              <span>{reactions.shares} {isMobile ? 'comp.' : 'compartilhamentos'}</span>
             </div>
           </div>
         </div>
@@ -497,7 +497,7 @@ export default function App() {
               transition: 'background 0.2s',
               color: liked ? '#1877f2' : '#65676b',
               fontWeight: '600',
-              fontSize: '15px'
+              fontSize: isMobile ? '14px' : '15px'
             }}
             onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
             onMouseLeave={(e) => e.currentTarget.style.background = 'none'}
@@ -607,7 +607,7 @@ export default function App() {
                     Maria Silva
                   </div>
                   <div style={{
-                    fontSize: '15px',
+                    fontSize: isMobile ? '14px' : '15px',
                     lineHeight: '1.4'
                   }}>
                     Incrível! Isso realmente funciona? 🤩
@@ -665,7 +665,7 @@ export default function App() {
                     Pedro Costa
                   </div>
                   <div style={{
-                    fontSize: '15px',
+                    fontSize: isMobile ? '14px' : '15px',
                     lineHeight: '1.4'
                   }}>
                     Já estou aplicando e os resultados são impressionantes! Recomendo muito 💪
@@ -725,7 +725,7 @@ export default function App() {
                     Ana Lima
                   </div>
                   <div style={{
-                    fontSize: '15px',
+                    fontSize: isMobile ? '14px' : '15px',
                     lineHeight: '1.4'
                   }}>
                     Onde posso saber mais sobre isso?
@@ -778,7 +778,7 @@ export default function App() {
                         Leandro Castro
                       </div>
                       <div style={{
-                        fontSize: '15px',
+                        fontSize: isMobile ? '14px' : '15px',
                         lineHeight: '1.4'
                       }}>
                         <span style={{ color: '#1877f2', fontWeight: '600' }}>@Ana Lima</span> Clique no vídeo para assistir a apresentação completa! 😊
@@ -806,7 +806,7 @@ export default function App() {
               background: 'none',
               border: 'none',
               color: '#65676b',
-              fontSize: '15px',
+              fontSize: isMobile ? '14px' : '15px',
               fontWeight: '600',
               cursor: 'pointer',
               padding: '8px 0',
@@ -852,7 +852,7 @@ export default function App() {
                   background: '#f0f2f5',
                   border: 'none',
                   borderRadius: '20px',
-                  fontSize: '15px',
+                  fontSize: isMobile ? '14px' : '15px',
                   outline: 'none',
                   fontFamily: 'inherit'
                 }}

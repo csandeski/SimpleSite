@@ -173,6 +173,33 @@ export default function App() {
               0% { stroke-dashoffset: 24; }
               100% { stroke-dashoffset: 0; }
             }
+            
+            /* Custom Scrollbar Styles */
+            ::-webkit-scrollbar {
+              width: 12px;
+              height: 12px;
+            }
+            
+            ::-webkit-scrollbar-track {
+              background: #f1f1f1;
+              border-radius: 10px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+              background: #1877f2;
+              border-radius: 10px;
+              border: 2px solid #f1f1f1;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+              background: #166fe5;
+            }
+            
+            /* Firefox */
+            * {
+              scrollbar-width: thin;
+              scrollbar-color: #1877f2 #f1f1f1;
+            }
           `}
         </style>
       </div>

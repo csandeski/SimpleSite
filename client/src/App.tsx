@@ -185,16 +185,19 @@ export default function App() {
         }}
         onMouseEnter={(e) => e.currentTarget.style.background = '#f0f2f5'}
         onMouseLeave={(e) => e.currentTarget.style.background = 'none'}>
-          <img 
-            src="/leandro-castro.jpg"
-            alt="Leandro Castro"
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              objectFit: 'cover'
-            }}
-          />
+          <div style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '50%',
+            background: '#e4e6eb',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="#65676b">
+              <path d="M10 10a3 3 0 100-6 3 3 0 000 6zm0 1.5c-4.5 0-8 2.5-8 5.5v1h16v-1c0-3-3.5-5.5-8-5.5z"/>
+            </svg>
+          </div>
           {/* Online Indicator */}
           <div style={{
             position: 'absolute',

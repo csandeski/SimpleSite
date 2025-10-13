@@ -136,7 +136,7 @@ export default function App() {
             margin: '0 0 8px 0',
             lineHeight: '1.3'
           }}>
-            🚀 Nova descoberta revoluciona o mercado digital!
+            🚀 A oportunidade de 2025 chegou no Brasil!
           </h3>
           <p style={{
             fontSize: '15px',
@@ -144,8 +144,7 @@ export default function App() {
             lineHeight: '1.5',
             margin: 0
           }}>
-            Método inovador permite resultados extraordinários em tempo recorde. 
-            Veja no vídeo abaixo como milhares de pessoas já estão transformando suas vidas com essa técnica simples e eficaz.
+            A nova oportunidade! A empresa onde você poderá trabalhar e receber um <strong>salário de até R$ 8.900/mês</strong>
           </p>
         </div>
 

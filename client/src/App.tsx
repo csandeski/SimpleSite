@@ -43,12 +43,13 @@ export default function App() {
               node.classList?.contains('smartplayer-call-action') ||
               node.classList?.contains('vturb-button') ||
               node.id?.includes('vturb') ||
-              node.id?.includes('smartplayer')
+              node.id?.includes('smartplayer') ||
+              node.classList?.contains('vturb-cta')
             )) {
-              // Force layout recalculation when button appears
-              const postContainer = document.getElementById('facebook-post');
-              if (postContainer) {
-                postContainer.style.paddingBottom = isMobile ? '100px' : '80px';
+              // Add margin to video container when button appears
+              const videoContainer = document.getElementById('video-player-container');
+              if (videoContainer) {
+                videoContainer.style.marginBottom = isMobile ? '80px' : '60px';
               }
             }
           });
@@ -669,12 +670,14 @@ export default function App() {
           </p>
         </div>
 
-        {/* Video Player Area with Button Space */}
-        <div style={{
-          position: 'relative',
-          marginBottom: isMobile ? '80px' : '60px', // Extra space for Vturb button
-          overflow: 'visible'
-        }}>
+        {/* Video Player Area */}
+        <div 
+          id="video-player-container"
+          style={{
+            position: 'relative',
+            marginBottom: '0',
+            transition: 'margin-bottom 0.3s ease'
+          }}>
           <div 
             style={{
               position: 'relative',
@@ -699,14 +702,6 @@ export default function App() {
               }}
             />
           </div>
-          
-          {/* Space reserved for Vturb button that appears below video */}
-          <div style={{
-            position: 'relative',
-            width: '100%',
-            minHeight: isMobile ? '70px' : '50px', // Reserve space for button
-            zIndex: 1
-          }} />
         </div>
 
         {/* Reactions Bar */}

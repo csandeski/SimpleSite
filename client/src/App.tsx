@@ -33,23 +33,84 @@ export default function App() {
       script.async = true;
       document.head.appendChild(script);
       
+      // Add CSS to properly position Vturb button
+      const style = document.createElement('style');
+      style.innerHTML = `
+        /* Force Vturb button to proper position */
+        .smartplayer-call-action-button,
+        .vturb-cta,
+        a[href*="vturb"],
+        button[style*="background-color: rgb(34, 197, 94)"],
+        button[style*="#22c55e"],
+        a[style*="background-color: rgb(34, 197, 94)"],
+        a[style*="#22c55e"],
+        div[style*="background-color: rgb(34, 197, 94)"] button,
+        div[style*="#22c55e"] button {
+          position: relative !important;
+          margin-top: 10px !important;
+          margin-bottom: 10px !important;
+          z-index: 10 !important;
+        }
+        
+        /* Ensure video container doesn't overflow */
+        #video-container > div {
+          overflow: visible !important;
+        }
+        
+        /* Specific for green CTA button */
+        #video-player-container button:has(+ div),
+        #video-player-container a:has(+ div) {
+          position: relative !important;
+        }
+      `;
+      document.head.appendChild(style);
+      
       // Monitor for Vturb button appearance and adjust layout
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           mutation.addedNodes.forEach((node: any) => {
             // Check if Vturb added a button or CTA element
-            if (node.nodeType === 1 && (
-              node.tagName === 'BUTTON' || 
-              node.classList?.contains('smartplayer-call-action') ||
-              node.classList?.contains('vturb-button') ||
-              node.id?.includes('vturb') ||
-              node.id?.includes('smartplayer') ||
-              node.classList?.contains('vturb-cta')
-            )) {
-              // Add margin to video container when button appears
-              const videoContainer = document.getElementById('video-player-container');
-              if (videoContainer) {
-                videoContainer.style.marginBottom = isMobile ? '80px' : '60px';
+            if (node.nodeType === 1) {
+              // Check for button by tag or class
+              const isVturbButton = 
+                node.tagName === 'BUTTON' || 
+                node.tagName === 'A' ||
+                (node.className && typeof node.className === 'string' && (
+                  node.className.includes('smartplayer') ||
+                  node.className.includes('vturb') ||
+                  node.className.includes('cta') ||
+                  node.className.includes('action')
+                )) ||
+                (node.id && (
+                  node.id.includes('vturb') ||
+                  node.id.includes('smartplayer')
+                )) ||
+                // Check for green button by style
+                (node.style && (
+                  node.style.backgroundColor === 'rgb(34, 197, 94)' ||
+                  node.style.backgroundColor === '#22c55e' ||
+                  node.style.background?.includes('34, 197, 94')
+                ));
+                
+              if (isVturbButton) {
+                // Add padding to container when button appears
+                const videoContainer = document.getElementById('video-player-container');
+                const buttonSpace = document.getElementById('vturb-button-space');
+                
+                if (videoContainer) {
+                  videoContainer.style.paddingBottom = isMobile ? '90px' : '70px';
+                }
+                
+                if (buttonSpace) {
+                  buttonSpace.style.minHeight = isMobile ? '80px' : '60px';
+                }
+                
+                // Try to move button to correct position
+                if (node.style) {
+                  node.style.position = 'relative';
+                  node.style.zIndex = '10';
+                  node.style.marginTop = '10px';
+                }
               }
             }
           });
@@ -675,8 +736,9 @@ export default function App() {
           id="video-player-container"
           style={{
             position: 'relative',
-            marginBottom: '0',
-            transition: 'margin-bottom 0.3s ease'
+            paddingBottom: '0',
+            transition: 'padding-bottom 0.3s ease',
+            overflow: 'visible'
           }}>
           <div 
             style={{
@@ -695,13 +757,24 @@ export default function App() {
               id="video-container" 
               style={{
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                position: 'relative'
               }}
               dangerouslySetInnerHTML={{
                 __html: `<vturb-smartplayer id="vid-68ed9e78e32037963bdebbd2" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></vturb-smartplayer>`
               }}
             />
           </div>
+          {/* Dynamic space for Vturb button */}
+          <div 
+            id="vturb-button-space" 
+            style={{
+              position: 'relative',
+              width: '100%',
+              minHeight: '0',
+              transition: 'min-height 0.3s ease'
+            }} 
+          />
         </div>
 
         {/* Reactions Bar */}

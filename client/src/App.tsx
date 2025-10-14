@@ -85,47 +85,87 @@ export default function App() {
           <div 
             onClick={handleVerification}
             style={{
-              width: '80px',
-              height: '80px',
-              margin: '0 auto 20px',
-              border: showCheckmark ? '3px solid #48bb78' : '3px solid #cbd5e0',
-              borderRadius: '12px',
+              width: '120px',
+              height: '120px',
+              margin: '0 auto 24px',
+              border: showCheckmark ? '4px solid #48bb78' : '4px solid #e2e8f0',
+              borderRadius: '20px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: isVerifying ? 'default' : 'pointer',
-              background: showCheckmark ? '#f0fff4' : 'white',
-              transition: 'all 0.3s ease',
-              transform: isVerifying && !showCheckmark ? 'rotate(360deg) scale(1.1)' : 'scale(1)',
-              animation: isVerifying && !showCheckmark ? 'spin 0.5s ease-in-out' : 'none',
-              ...((!isVerifying && !showCheckmark) ? {
-                ':hover': {
-                  transform: 'scale(1.05)',
-                  borderColor: '#667eea'
-                }
-              } : {})
+              background: showCheckmark 
+                ? 'linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%)' 
+                : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+              boxShadow: showCheckmark 
+                ? '0 4px 20px rgba(72, 187, 120, 0.3), inset 0 2px 4px rgba(0,0,0,0.05)'
+                : '0 4px 20px rgba(0,0,0,0.08), inset 0 2px 4px rgba(0,0,0,0.02)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              transform: isVerifying && !showCheckmark ? 'scale(0.95)' : 'scale(1)',
+              position: 'relative',
+              overflow: 'hidden'
             }}
             onMouseEnter={(e) => {
               if (!isVerifying && !showCheckmark) {
                 e.currentTarget.style.transform = 'scale(1.05)';
                 e.currentTarget.style.borderColor = '#667eea';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(102, 126, 234, 0.4), inset 0 2px 4px rgba(0,0,0,0.05)';
               }
             }}
             onMouseLeave={(e) => {
               if (!isVerifying && !showCheckmark) {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.borderColor = '#cbd5e0';
+                e.currentTarget.style.borderColor = '#e2e8f0';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08), inset 0 2px 4px rgba(0,0,0,0.02)';
               }
             }}
           >
+            {/* Loading animation circles */}
+            {isVerifying && !showCheckmark && (
+              <>
+                <div style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '16px',
+                  border: '3px solid transparent',
+                  borderTopColor: '#667eea',
+                  animation: 'spin 0.8s linear infinite'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  width: '80%',
+                  height: '80%',
+                  borderRadius: '12px',
+                  border: '2px solid transparent',
+                  borderBottomColor: '#764ba2',
+                  animation: 'spin 1s linear infinite reverse'
+                }} />
+              </>
+            )}
+            
+            {/* Checkbox icon when not checked */}
+            {!isVerifying && !showCheckmark && (
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '8px',
+                border: '3px solid #cbd5e0',
+                background: 'white',
+                transition: 'all 0.3s ease'
+              }} />
+            )}
+            
+            {/* Checkmark when verified */}
             {showCheckmark && (
               <svg 
-                width="40" 
-                height="40" 
+                width="60" 
+                height="60" 
                 viewBox="0 0 24 24" 
                 fill="none"
                 style={{
-                  animation: 'fadeIn 0.3s ease-in-out'
+                  animation: 'checkmarkBounce 0.6s ease-out',
+                  zIndex: 2
                 }}
               >
                 <path 
@@ -137,12 +177,38 @@ export default function App() {
                   style={{
                     strokeDasharray: '24',
                     strokeDashoffset: '0',
-                    animation: 'checkmark 0.4s ease-in-out'
+                    animation: 'checkmarkDraw 0.5s ease-out'
                   }}
                 />
               </svg>
             )}
+            
+            {/* Pulse effect on hover */}
+            {!isVerifying && !showCheckmark && (
+              <div style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                borderRadius: '20px',
+                background: 'radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%)',
+                animation: 'pulse 2s infinite',
+                pointerEvents: 'none'
+              }} />
+            )}
           </div>
+          
+          {/* Instruction text below the box */}
+          {!showCheckmark && !isVerifying && (
+            <p style={{
+              fontSize: '13px',
+              color: '#94a3b8',
+              marginTop: '-8px',
+              marginBottom: '20px',
+              animation: 'fadeIn 0.5s ease-in-out'
+            }}>
+              👆 Clique na caixa acima
+            </p>
+          )}
 
           {showCheckmark && (
             <p style={{
@@ -159,9 +225,8 @@ export default function App() {
         <style>
           {`
             @keyframes spin {
-              0% { transform: rotate(0deg) scale(1); }
-              50% { transform: rotate(180deg) scale(1.1); }
-              100% { transform: rotate(360deg) scale(1); }
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
             }
             
             @keyframes fadeIn {
@@ -169,9 +234,21 @@ export default function App() {
               100% { opacity: 1; transform: scale(1); }
             }
             
-            @keyframes checkmark {
+            @keyframes checkmarkDraw {
               0% { stroke-dashoffset: 24; }
               100% { stroke-dashoffset: 0; }
+            }
+            
+            @keyframes checkmarkBounce {
+              0% { transform: scale(0); }
+              50% { transform: scale(1.2); }
+              100% { transform: scale(1); }
+            }
+            
+            @keyframes pulse {
+              0% { opacity: 0; transform: scale(0.8); }
+              50% { opacity: 0.3; transform: scale(1); }
+              100% { opacity: 0; transform: scale(1.2); }
             }
             
             /* Custom Scrollbar Styles */

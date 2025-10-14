@@ -25,6 +25,23 @@ export default function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Load Vturb video player script when component mounts and verification is complete
+  useEffect(() => {
+    if (isVerified) {
+      const script = document.createElement("script");
+      script.src = "https://scripts.converteai.net/539ae18c-7f73-47fc-95db-69b6926424c0/players/68ed9e78e32037963bdebbd2/v4/player.js";
+      script.async = true;
+      document.head.appendChild(script);
+      
+      return () => {
+        // Clean up script when component unmounts
+        if (document.head.contains(script)) {
+          document.head.removeChild(script);
+        }
+      };
+    }
+  }, [isVerified]);
+
   const handleVerification = () => {
     setIsVerifying(true);
     setTimeout(() => {
@@ -616,9 +633,8 @@ export default function App() {
           </p>
         </div>
 
-        {/* Video Mockup Area */}
+        {/* Video Player Area */}
         <div 
-          onClick={() => setVideoFocused(!videoFocused)}
           style={{
             position: 'relative',
             background: '#000',
@@ -626,53 +642,21 @@ export default function App() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: 'pointer',
             zIndex: videoFocused ? 95 : 1,
             transition: 'all 0.3s ease',
-            boxShadow: videoFocused ? '0 20px 60px rgba(0, 0, 0, 0.8)' : 'none',
-            filter: videoFocused ? 'brightness(1)' : 'brightness(1)'
+            boxShadow: videoFocused ? '0 20px 60px rgba(0, 0, 0, 0.8)' : 'none'
           }}>
-          {/* Play Button Overlay */}
-          <div style={{
-            position: 'absolute',
-            width: '60px',
-            height: '60px',
-            background: 'rgba(23, 119, 242, 0.9)',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'transform 0.2s'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-          
-          {/* Video Thumbnail Placeholder */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            opacity: 0.3
-          }}/>
-          
-          {/* Video Duration */}
-          <div style={{
-            position: 'absolute',
-            bottom: '8px',
-            right: '8px',
-            background: 'rgba(0, 0, 0, 0.8)',
-            padding: '2px 6px',
-            borderRadius: '4px',
-            fontSize: '12px',
-            color: 'white',
-            fontWeight: '500'
-          }}>
-            3:45
-          </div>
+          {/* Vturb Smart Player */}
+          <div 
+            id="video-container" 
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+            dangerouslySetInnerHTML={{
+              __html: `<vturb-smartplayer id="vid-68ed9e78e32037963bdebbd2" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></vturb-smartplayer>`
+            }}
+          />
         </div>
 
         {/* Reactions Bar */}

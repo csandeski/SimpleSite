@@ -33,88 +33,122 @@ export default function App() {
       script.async = true;
       document.head.appendChild(script);
       
-      // Add CSS to properly position Vturb button
+      // Add CSS to properly position Vturb button and create space
       const style = document.createElement('style');
       style.innerHTML = `
-        /* Force Vturb button to proper position */
-        .smartplayer-call-action-button,
-        .vturb-cta,
-        a[href*="vturb"],
-        button[style*="background-color: rgb(34, 197, 94)"],
-        button[style*="#22c55e"],
-        a[style*="background-color: rgb(34, 197, 94)"],
-        a[style*="#22c55e"],
-        div[style*="background-color: rgb(34, 197, 94)"] button,
-        div[style*="#22c55e"] button {
+        /* Create permanent space below video for button */
+        #video-player-container {
+          padding-bottom: 80px !important;
           position: relative !important;
-          margin-top: 10px !important;
-          margin-bottom: 10px !important;
+        }
+        
+        /* Force any absolute positioned elements within video to be relative to container */
+        #video-container,
+        #video-container > *,
+        vturb-smartplayer,
+        vturb-smartplayer > * {
+          position: relative !important;
+        }
+        
+        /* Target the green Vturb button specifically */
+        button[style*="background"],
+        a[style*="background"],
+        div[style*="position: absolute"] button,
+        div[style*="position: fixed"] button,
+        #video-container button,
+        #video-container a,
+        .smartplayer-call-action-button,
+        [class*="smartplayer"],
+        [class*="vturb"] {
+          position: relative !important;
+          bottom: auto !important;
+          top: auto !important;
+          left: auto !important;
+          right: auto !important;
+          margin: 10px auto !important;
+          display: block !important;
+          width: auto !important;
+          max-width: 90% !important;
           z-index: 10 !important;
         }
         
-        /* Ensure video container doesn't overflow */
-        #video-container > div {
-          overflow: visible !important;
+        /* Specific targeting for green button */
+        button[style*="rgb(34, 197, 94)"],
+        a[style*="rgb(34, 197, 94)"],
+        button[style*="#22c55e"],
+        a[style*="#22c55e"],
+        button[style*="rgb(16, 185, 129)"],
+        a[style*="rgb(16, 185, 129)"] {
+          position: relative !important;
+          margin-top: 20px !important;
+          margin-bottom: 20px !important;
         }
         
-        /* Specific for green CTA button */
-        #video-player-container button:has(+ div),
-        #video-player-container a:has(+ div) {
+        /* Remove any fixed or absolute positioning from parent containers */
+        #video-container div[style*="position: absolute"],
+        #video-container div[style*="position: fixed"] {
           position: relative !important;
+        }
+        
+        /* Ensure reactions bar has proper spacing */
+        #video-player-container + div {
+          margin-top: 0 !important;
         }
       `;
       document.head.appendChild(style);
       
-      // Monitor for Vturb button appearance and adjust layout
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          mutation.addedNodes.forEach((node: any) => {
-            // Check if Vturb added a button or CTA element
-            if (node.nodeType === 1) {
-              // Check for button by tag or class
-              const isVturbButton = 
-                node.tagName === 'BUTTON' || 
-                node.tagName === 'A' ||
-                (node.className && typeof node.className === 'string' && (
-                  node.className.includes('smartplayer') ||
-                  node.className.includes('vturb') ||
-                  node.className.includes('cta') ||
-                  node.className.includes('action')
-                )) ||
-                (node.id && (
-                  node.id.includes('vturb') ||
-                  node.id.includes('smartplayer')
-                )) ||
-                // Check for green button by style
-                (node.style && (
-                  node.style.backgroundColor === 'rgb(34, 197, 94)' ||
-                  node.style.backgroundColor === '#22c55e' ||
-                  node.style.background?.includes('34, 197, 94')
-                ));
-                
-              if (isVturbButton) {
-                // Add padding to container when button appears
-                const videoContainer = document.getElementById('video-player-container');
-                const buttonSpace = document.getElementById('vturb-button-space');
-                
-                if (videoContainer) {
-                  videoContainer.style.paddingBottom = isMobile ? '90px' : '70px';
-                }
-                
-                if (buttonSpace) {
-                  buttonSpace.style.minHeight = isMobile ? '80px' : '60px';
-                }
-                
-                // Try to move button to correct position
-                if (node.style) {
-                  node.style.position = 'relative';
-                  node.style.zIndex = '10';
-                  node.style.marginTop = '10px';
-                }
+      // Monitor for Vturb button and force repositioning
+      const fixButtonPosition = () => {
+        // Find all potential Vturb buttons
+        const buttons = document.querySelectorAll(`
+          button[style*="background"],
+          a[style*="background"],
+          #video-container button,
+          #video-container a,
+          [class*="smartplayer"],
+          [class*="vturb"]
+        `);
+        
+        buttons.forEach((button: any) => {
+          // Check if it's the green CTA button
+          const style = window.getComputedStyle(button);
+          const bgColor = style.backgroundColor;
+          
+          if (bgColor && (
+            bgColor.includes('34, 197, 94') ||
+            bgColor.includes('16, 185, 129') ||
+            button.textContent?.toLowerCase().includes('quero') ||
+            button.textContent?.toLowerCase().includes('acesso')
+          )) {
+            // Force proper positioning
+            button.style.setProperty('position', 'relative', 'important');
+            button.style.setProperty('bottom', 'auto', 'important');
+            button.style.setProperty('top', 'auto', 'important');
+            button.style.setProperty('left', 'auto', 'important');
+            button.style.setProperty('right', 'auto', 'important');
+            button.style.setProperty('margin', '20px auto', 'important');
+            button.style.setProperty('display', 'block', 'important');
+            button.style.setProperty('z-index', '10', 'important');
+            
+            // Move button to button space if it exists
+            const buttonSpace = document.getElementById('vturb-button-space');
+            if (buttonSpace && !buttonSpace.contains(button)) {
+              try {
+                buttonSpace.appendChild(button);
+              } catch (e) {
+                console.log('Could not move button:', e);
               }
             }
-          });
+          }
         });
+      };
+      
+      // Run fix periodically
+      const interval = setInterval(fixButtonPosition, 500);
+      
+      // Also use MutationObserver
+      const observer = new MutationObserver(() => {
+        fixButtonPosition();
       });
       
       // Start observing the video container and its parent
@@ -130,9 +164,13 @@ export default function App() {
       
       return () => {
         // Clean up
+        clearInterval(interval);
         observer.disconnect();
         if (document.head.contains(script)) {
           document.head.removeChild(script);
+        }
+        if (document.head.contains(style)) {
+          document.head.removeChild(style);
         }
       };
     }

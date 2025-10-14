@@ -33,139 +33,30 @@ export default function App() {
       script.async = true;
       document.head.appendChild(script);
       
-      // Add CSS to properly position Vturb button and create space
+      // Add CSS to ensure proper flow
       const style = document.createElement('style');
       style.innerHTML = `
-        /* Create permanent space below video for button */
+        /* Ensure video container expands naturally */
         #video-player-container {
-          padding-bottom: 80px !important;
           position: relative !important;
+          overflow: visible !important;
         }
         
-        /* Force any absolute positioned elements within video to be relative to container */
-        #video-container,
-        #video-container > *,
-        vturb-smartplayer,
-        vturb-smartplayer > * {
-          position: relative !important;
+        /* Allow video container to expand with content */
+        #video-container {
+          overflow: visible !important;
         }
         
-        /* Target the green Vturb button specifically */
-        button[style*="background"],
-        a[style*="background"],
-        div[style*="position: absolute"] button,
-        div[style*="position: fixed"] button,
-        #video-container button,
-        #video-container a,
-        .smartplayer-call-action-button,
-        [class*="smartplayer"],
-        [class*="vturb"] {
-          position: relative !important;
-          bottom: auto !important;
-          top: auto !important;
-          left: auto !important;
-          right: auto !important;
-          margin: 10px auto !important;
+        /* Let Vturb elements flow naturally */
+        vturb-smartplayer {
           display: block !important;
-          width: auto !important;
-          max-width: 90% !important;
-          z-index: 10 !important;
-        }
-        
-        /* Specific targeting for green button */
-        button[style*="rgb(34, 197, 94)"],
-        a[style*="rgb(34, 197, 94)"],
-        button[style*="#22c55e"],
-        a[style*="#22c55e"],
-        button[style*="rgb(16, 185, 129)"],
-        a[style*="rgb(16, 185, 129)"] {
-          position: relative !important;
-          margin-top: 20px !important;
-          margin-bottom: 20px !important;
-        }
-        
-        /* Remove any fixed or absolute positioning from parent containers */
-        #video-container div[style*="position: absolute"],
-        #video-container div[style*="position: fixed"] {
-          position: relative !important;
-        }
-        
-        /* Ensure reactions bar has proper spacing */
-        #video-player-container + div {
-          margin-top: 0 !important;
         }
       `;
       document.head.appendChild(style);
       
-      // Monitor for Vturb button and force repositioning
-      const fixButtonPosition = () => {
-        // Find all potential Vturb buttons
-        const buttons = document.querySelectorAll(`
-          button[style*="background"],
-          a[style*="background"],
-          #video-container button,
-          #video-container a,
-          [class*="smartplayer"],
-          [class*="vturb"]
-        `);
-        
-        buttons.forEach((button: any) => {
-          // Check if it's the green CTA button
-          const style = window.getComputedStyle(button);
-          const bgColor = style.backgroundColor;
-          
-          if (bgColor && (
-            bgColor.includes('34, 197, 94') ||
-            bgColor.includes('16, 185, 129') ||
-            button.textContent?.toLowerCase().includes('quero') ||
-            button.textContent?.toLowerCase().includes('acesso')
-          )) {
-            // Force proper positioning
-            button.style.setProperty('position', 'relative', 'important');
-            button.style.setProperty('bottom', 'auto', 'important');
-            button.style.setProperty('top', 'auto', 'important');
-            button.style.setProperty('left', 'auto', 'important');
-            button.style.setProperty('right', 'auto', 'important');
-            button.style.setProperty('margin', '20px auto', 'important');
-            button.style.setProperty('display', 'block', 'important');
-            button.style.setProperty('z-index', '10', 'important');
-            
-            // Move button to button space if it exists
-            const buttonSpace = document.getElementById('vturb-button-space');
-            if (buttonSpace && !buttonSpace.contains(button)) {
-              try {
-                buttonSpace.appendChild(button);
-              } catch (e) {
-                console.log('Could not move button:', e);
-              }
-            }
-          }
-        });
-      };
-      
-      // Run fix periodically
-      const interval = setInterval(fixButtonPosition, 500);
-      
-      // Also use MutationObserver
-      const observer = new MutationObserver(() => {
-        fixButtonPosition();
-      });
-      
-      // Start observing the video container and its parent
-      setTimeout(() => {
-        const videoContainer = document.getElementById('video-container');
-        if (videoContainer && videoContainer.parentElement) {
-          observer.observe(videoContainer.parentElement, { 
-            childList: true, 
-            subtree: true 
-          });
-        }
-      }, 1000);
       
       return () => {
         // Clean up
-        clearInterval(interval);
-        observer.disconnect();
         if (document.head.contains(script)) {
           document.head.removeChild(script);
         }
@@ -774,8 +665,6 @@ export default function App() {
           id="video-player-container"
           style={{
             position: 'relative',
-            paddingBottom: '0',
-            transition: 'padding-bottom 0.3s ease',
             overflow: 'visible'
           }}>
           <div 
@@ -795,24 +684,13 @@ export default function App() {
               id="video-container" 
               style={{
                 width: '100%',
-                height: '100%',
-                position: 'relative'
+                height: '100%'
               }}
               dangerouslySetInnerHTML={{
                 __html: `<vturb-smartplayer id="vid-68ed9e78e32037963bdebbd2" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></vturb-smartplayer>`
               }}
             />
           </div>
-          {/* Dynamic space for Vturb button */}
-          <div 
-            id="vturb-button-space" 
-            style={{
-              position: 'relative',
-              width: '100%',
-              minHeight: '0',
-              transition: 'min-height 0.3s ease'
-            }} 
-          />
         </div>
 
         {/* Reactions Bar */}

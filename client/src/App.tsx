@@ -872,7 +872,7 @@ export default function App() {
                     fontSize: isMobile ? '14px' : '15px',
                     lineHeight: '1.4'
                   }}>
-                    Incrível! Isso realmente funciona? 🤩
+                    Estou a 9 dias e já no primeiro dia consegui fazer um saque de R$ 188, depois de tanta porcaria na internet, esse eu posso vir aqui recomendar.
                   </div>
                 </div>
                 <div style={{
@@ -1121,7 +1121,7 @@ export default function App() {
                     fontSize: isMobile ? '14px' : '15px',
                     lineHeight: '1.4'
                   }}>
-                    Já enviei meu currículo! Tomara que dê certo 🙏
+                    Comecei ontem, estou esperando cair meu primeiro pagamento, minha amiga falou que da certinho
                   </div>
                 </div>
                 <div style={{
@@ -1306,7 +1306,7 @@ export default function App() {
                         fontSize: isMobile ? '14px' : '15px',
                         lineHeight: '1.4'
                       }}>
-                        Eu comecei sem experiência e hoje ganho R$ 7.000! Vale muito a pena 🚀
+                        Comecei a pouco tempo e to gostando, eu também n tinha experiencia
                       </div>
                     </div>
                     <div style={{

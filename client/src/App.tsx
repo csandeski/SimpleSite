@@ -33,14 +33,48 @@ export default function App() {
       script.async = true;
       document.head.appendChild(script);
       
+      // Monitor for Vturb button appearance and adjust layout
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node: any) => {
+            // Check if Vturb added a button or CTA element
+            if (node.nodeType === 1 && (
+              node.tagName === 'BUTTON' || 
+              node.classList?.contains('smartplayer-call-action') ||
+              node.classList?.contains('vturb-button') ||
+              node.id?.includes('vturb') ||
+              node.id?.includes('smartplayer')
+            )) {
+              // Force layout recalculation when button appears
+              const postContainer = document.getElementById('facebook-post');
+              if (postContainer) {
+                postContainer.style.paddingBottom = isMobile ? '100px' : '80px';
+              }
+            }
+          });
+        });
+      });
+      
+      // Start observing the video container and its parent
+      setTimeout(() => {
+        const videoContainer = document.getElementById('video-container');
+        if (videoContainer && videoContainer.parentElement) {
+          observer.observe(videoContainer.parentElement, { 
+            childList: true, 
+            subtree: true 
+          });
+        }
+      }, 1000);
+      
       return () => {
-        // Clean up script when component unmounts
+        // Clean up
+        observer.disconnect();
         if (document.head.contains(script)) {
           document.head.removeChild(script);
         }
       };
     }
-  }, [isVerified]);
+  }, [isVerified, isMobile]);
 
   const handleVerification = () => {
     setIsVerifying(true);
@@ -522,7 +556,9 @@ export default function App() {
         filter: videoFocused ? 'brightness(0.25)' : 'brightness(1)'
       }}>
         {/* Facebook Card Container */}
-        <div style={{
+        <div 
+          id="facebook-post"
+          style={{
           width: '100%',
           maxWidth: isMobile ? '100%' : '680px',
           minHeight: isMobile ? 'calc(100vh - 56px)' : 'auto',
@@ -633,30 +669,44 @@ export default function App() {
           </p>
         </div>
 
-        {/* Video Player Area */}
-        <div 
-          style={{
-            position: 'relative',
-            background: '#000',
-            aspectRatio: '16/9',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: videoFocused ? 95 : 1,
-            transition: 'all 0.3s ease',
-            boxShadow: videoFocused ? '0 20px 60px rgba(0, 0, 0, 0.8)' : 'none'
-          }}>
-          {/* Vturb Smart Player */}
+        {/* Video Player Area with Button Space */}
+        <div style={{
+          position: 'relative',
+          marginBottom: isMobile ? '80px' : '60px', // Extra space for Vturb button
+          overflow: 'visible'
+        }}>
           <div 
-            id="video-container" 
             style={{
-              width: '100%',
-              height: '100%'
-            }}
-            dangerouslySetInnerHTML={{
-              __html: `<vturb-smartplayer id="vid-68ed9e78e32037963bdebbd2" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></vturb-smartplayer>`
-            }}
-          />
+              position: 'relative',
+              background: '#000',
+              aspectRatio: '16/9',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: videoFocused ? 95 : 1,
+              transition: 'all 0.3s ease',
+              boxShadow: videoFocused ? '0 20px 60px rgba(0, 0, 0, 0.8)' : 'none'
+            }}>
+            {/* Vturb Smart Player */}
+            <div 
+              id="video-container" 
+              style={{
+                width: '100%',
+                height: '100%'
+              }}
+              dangerouslySetInnerHTML={{
+                __html: `<vturb-smartplayer id="vid-68ed9e78e32037963bdebbd2" style="display: block; margin: 0 auto; width: 100%; height: 100%;"></vturb-smartplayer>`
+              }}
+            />
+          </div>
+          
+          {/* Space reserved for Vturb button that appears below video */}
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            minHeight: isMobile ? '70px' : '50px', // Reserve space for button
+            zIndex: 1
+          }} />
         </div>
 
         {/* Reactions Bar */}
